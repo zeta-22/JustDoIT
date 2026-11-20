@@ -1,0 +1,13 @@
+# Contesto atleta (Matteo)
+- Uomo, ~78 kg, già abbastanza magro; vuole convertire un po' di massa grassa in massa muscolare (ricomposizione).
+- BJJ: cintura blu avanzata, 4 gare fatte, infortuni di poco conto.
+- GARA BJJ: obiettivo VINCERE. Gi principale, partecipa anche al no-gi (meno priorità). Data probabile metà/fine gennaio 2027 (forse dicembre 2026, da confermare). Oggi è il 20 novembre 2026.
+- Categoria: valuta la categoria sotto (analizzare pro/contro, salute prima di tutto; è già magro).
+- Viaggio in Messico 27 dic 2026 – 9 gen 2027: niente tatami e niente palestra, solo corpo libero/elastici in mini-sessioni da 20–30'. Il rientro è a ridosso della gara.
+- Settimana attuale: Lun gi · Mar palestra · Mer riposo · Gio no-gi · Ven palestra · Sab gi · Dom corsa o palestra o mantenimento.
+- Palestra: 2 sedute/settimana da ~1,5 h, attrezzatura completa (bilancieri, manubri, kettlebell, cavi, macchine, sbarra, panca).
+- Carichi attuali in palestra non noti: usare RPE/RIR, non kg assoluti.
+- DOPO LA GARA: solo Ironman per circa 2 anni. Obiettivo Ironman sotto le 10 ore. Punti deboli: nuoto e corsa di resistenza (è scarso). Timeline almeno 2 anni.
+- VOLUME: per ogni seduta NON scegliere un volume unico: dare SEMPRE tre opzioni BASSO / MEDIO / ALTO, così sceglie in base a come si sente quel giorno.
+- Vuole linee guida generali di alimentazione (proteine, timing, ricomposizione, Ironman) – indicative, non una dieta.
+- Preferisce spiegazioni chiare, in italiano, e capire il perché delle scelte.

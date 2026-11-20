@@ -1,0 +1,5906 @@
+{
+ "meta": {
+  "athlete": "Matteo, ~78 kg",
+  "created": "2026-11-20",
+  "start": "2026-11-23",
+  "hypotheses": "Gara BJJ sab 23 gen 2027 · 70.3 dom 21 mag 2028 · Ironman dom 1 ott 2028. Se una data cambia, sposta il blocco intero (vedi piani B nel .md)."
+ },
+ "exercises": {
+  "mob_90_90": {
+   "name": "Mobilità 90/90 e CARs dell'anca",
+   "how": [
+    "Seduto in 90/90 (entrambe le ginocchia a 90°), ruota da un lato all'altro senza usare le mani.",
+    "CARs: a quattro zampe, disegna con il ginocchio il cerchio più grande e lento possibile.",
+    "Bacino e schiena fermi: si muove solo l'anca."
+   ],
+   "why": "Più rotazione all'anca = meno torsione sul ginocchio negli entanglement e nelle guardie.",
+   "mistake": "Fare cerchi veloci e piccoli compensando con la schiena.",
+   "fig": "cars"
+  },
+  "dorsiflessione": {
+   "name": "Dorsiflessione in mezzo-ginocchio",
+   "how": [
+    "In mezzo-ginocchio, piede anteriore piatto a terra.",
+    "Porta il ginocchio avanti oltre le dita tenendo il tallone giù.",
+    "Tieni o oscilla avanti-indietro per il tempo indicato."
+   ],
+   "why": "Caviglie mobili = squat, combat base e corsa più sicuri.",
+   "mistake": "Staccare il tallone o far crollare il ginocchio verso l'interno.",
+   "fig": null
+  },
+  "mcgill": {
+   "name": "McGill Big 3 (curl-up, side plank, bird dog)",
+   "how": [
+    "Curl-up: supino, una gamba piegata, mani sotto la zona lombare, alza appena testa e spalle e tieni 10\".",
+    "Side plank su gomito (ginocchia o piedi), corpo in linea, 10\".",
+    "Bird dog: a quattro zampe estendi braccio e gamba opposti, tieni 10\".",
+    "Schema a piramide 5-3-1 ripetizioni per esercizio; si progredisce aggiungendo ripetizioni, non secondi."
+   ],
+   "why": "Core rigido senza flessioni ripetute: reggere la pressione in side control e uscire dal fondo.",
+   "mistake": "Farlo appena alzato dal letto o allungare le tenute invece delle ripetizioni.",
+   "fig": "cat"
+  },
+  "bird_dog": {
+   "name": "Bird dog",
+   "how": [
+    "In quadrupedia: mani sotto le spalle, ginocchia sotto le anche.",
+    "Estendi un braccio e la gamba opposta fino all'orizzontale.",
+    "Pausa 2–3\" senza ruotare il bacino, poi torna lento e cambia lato."
+   ],
+   "why": "Stabilità del tronco a costo zero, ottimo nel riscaldamento.",
+   "mistake": "Inarcare la schiena o aprire il bacino dal lato della gamba sollevata.",
+   "fig": "cat"
+  },
+  "cossack": {
+   "name": "Cossack squat",
+   "how": [
+    "Piedi molto larghi, punte leggermente aperte.",
+    "Scendi su un lato tenendo l'altra gamba tesa con la punta verso l'alto.",
+    "Tallone della gamba piegata a terra, petto alto; torna al centro e cambia lato."
+   ],
+   "why": "Forza e mobilità in abduzione per guardia aperta e De la Riva.",
+   "mistake": "Alzare il tallone o arrotondare la schiena per scendere di più.",
+   "fig": "squat"
+  },
+  "tgu": {
+   "name": "Turkish get-up",
+   "how": [
+    "Supino, kettlebell al braccio teso verso il soffitto, sguardo sulla campana.",
+    "Rotola sul gomito, poi sulla mano, ponte alto e porta la gamba sotto fino al mezzo-ginocchio.",
+    "Raddrizza il busto e alzati; poi scendi invertendo i passaggi.",
+    "Scapola sempre 'indietro e in basso', movimento lento."
+   ],
+   "why": "Stabilità della spalla sotto carico; ricorda il technical stand-up.",
+   "mistake": "Andare veloce e perdere la stabilità della scapola.",
+   "fig": "tgu"
+  },
+  "snapdown": {
+   "name": "Snapdown",
+   "how": [
+    "In piedi, posizione alta.",
+    "Cadi rapidamente in posizione di sprawl: anche giù, petto alto, mani pronte.",
+    "Torna su subito; poche ripetizioni, sempre veloci."
+   ],
+   "why": "Accende il cambio di livello per takedown e difesa senza stancare.",
+   "mistake": "Farne tante fino a farle diventare lente.",
+   "fig": null
+  },
+  "mobilita_im": {
+   "name": "Mobilità: open book + couch stretch + sleeper stretch",
+   "how": [
+    "Open book: sul fianco, ginocchia a 90°, apri il braccio sopra fino al pavimento opposto seguendolo con lo sguardo (2\" di pausa).",
+    "Couch stretch: ginocchio a terra vicino a muro/divano, collo del piede appoggiato in alto, glutei contratti, busto dritto, 45–60\".",
+    "Sleeper stretch: sul fianco, braccio a 90° davanti, porta delicatamente l'avambraccio verso il pavimento, 30\" senza dolore."
+   ],
+   "why": "Rotazione toracica per respirare nel nuoto e stare in aero; flessori d'anca accorciati dalla bici e dal BJJ.",
+   "mistake": "Forzare fino al dolore (soprattutto lo sleeper) o inarcare la schiena nel couch stretch.",
+   "fig": "couch"
+  },
+  "trap_bar": {
+   "name": "Stacco con trap bar",
+   "how": [
+    "Entra nel bilanciere esagonale, piedi larghezza anche, maniglie al centro (alte se l'anca è rigida).",
+    "Respiro nella pancia, tronco bloccato, anche indietro e prendi le maniglie.",
+    "Spingi il pavimento: anche e spalle salgono insieme, chiudi in piedi senza inarcare.",
+    "Scendi controllato; in cluster 5:2 = 5 ripetizioni, 10\" di pausa, di nuovo 5."
+   ],
+   "why": "Catena posteriore per alzarsi in base, sollevare e finire il double leg; più potenza dello stacco classico.",
+   "mistake": "Schiena che si arrotonda o anche che salgono prima delle spalle.",
+   "fig": "rdl"
+  },
+  "rdl": {
+   "name": "Stacco rumeno (RDL)",
+   "how": [
+    "Bilanciere (o manubri) preso dal rack all'altezza delle cosce, ginocchia appena piegate.",
+    "Spingi il bacino indietro (non giù): il bilanciere scivola lungo le cosce.",
+    "Scendi finché senti tirare forte dietro le cosce, schiena dritta.",
+    "Risali portando le anche avanti, senza iperestendere."
+   ],
+   "why": "Femorali e glutei forti: proteggono la corsa e la schiena in aero.",
+   "mistake": "Trasformarlo in uno squat piegando troppo le ginocchia, o arrotondare la schiena.",
+   "fig": "rdl"
+  },
+  "sl_rdl": {
+   "name": "Stacco rumeno monopodalico (single-leg RDL)",
+   "how": [
+    "In piedi su una gamba, ginocchio leggermente piegato, manubrio (o zaino) nella mano opposta.",
+    "Piega l'anca portando la gamba libera indietro in linea col busto.",
+    "Bacino 'a squadra' (non ruota), poi risali contraendo il gluteo.",
+    "In viaggio può diventare glute bridge a una gamba."
+   ],
+   "why": "Stabilità su una gamba con l'avversario appeso al single leg; femorali e glutei a basso carico.",
+   "mistake": "Bacino che ruota verso l'alto o schiena rotonda.",
+   "fig": "rdl"
+  },
+  "zercher": {
+   "name": "Zercher squat",
+   "how": [
+    "Bilanciere nel rack poco sotto il gomito; mettilo nell'incavo dei gomiti (con asciugamano se fa male).",
+    "Gomiti stretti, tira il bilanciere verso il corpo.",
+    "Esci, respiro e brace, scendi profondo con la schiena dritta, risali.",
+    "Cluster 5:2 come per lo stacco."
+   ],
+   "why": "Riproduce il body lock e il sollevamento dell'avversario.",
+   "mistake": "Troppo peso troppo presto: gli incavi dei gomiti devono abituarsi.",
+   "fig": "squat"
+  },
+  "front_squat": {
+   "name": "Front squat",
+   "how": [
+    "Bilanciere sulla parte anteriore delle spalle, gomiti alti (o braccia incrociate se polsi rigidi).",
+    "Brace, esci dal rack, scendi profondo con busto verticale.",
+    "Risali espirando, spingendo con tutto il piede."
+   ],
+   "why": "Forza massima delle gambe (protocollo grappler 4×4) per passaggi e stand-up.",
+   "mistake": "Busto che crolla in avanti: riduci il carico e alza i gomiti.",
+   "fig": "squat"
+  },
+  "back_squat": {
+   "name": "Back squat / mezzo squat (anche goblet)",
+   "how": [
+    "Bilanciere alto sui trapezi (goblet = manubrio al petto), piedi larghezza spalle, punte un po' aperte.",
+    "Respiro nella pancia, addome bloccato a 360°.",
+    "Scendi con anca indietro e ginocchia verso le punte: full = anca sotto il ginocchio; mezzo squat = ginocchio a 90°.",
+    "Risali spingendo il pavimento, anche e spalle insieme."
+   ],
+   "why": "Forza massima delle gambe = pedalata e corsa più economiche senza aumentare di peso.",
+   "mistake": "Ginocchia che cadono verso l'interno o talloni che si alzano.",
+   "fig": "squat"
+  },
+  "bulgaro": {
+   "name": "Squat bulgaro (split squat bulgaro)",
+   "how": [
+    "Dorso del piede posteriore su una panca (30–50 cm), piede anteriore abbastanza avanti da tenere il tallone a terra.",
+    "Scendi in verticale con ~90% del peso sulla gamba davanti.",
+    "Ginocchio in linea con il 2°–3° dito, niente valgo.",
+    "Risali spingendo con tallone e alluce; busto dritto = quadricipite, inclinato = gluteo."
+   ],
+   "why": "Forza su una gamba e controllo del ginocchio: single leg, combat base, corsa in salita.",
+   "mistake": "Piede troppo vicino alla panca (tallone che si alza) o troppo peso sulla gamba dietro.",
+   "fig": "bss"
+  },
+  "spanish_squat": {
+   "name": "Spanish squat / wall sit isometrico",
+   "how": [
+    "Elastico pesante dietro le ginocchia ancorato davanti (oppure schiena al muro).",
+    "Siediti indietro con tibie verticali fino a 60–90° di ginocchio.",
+    "Tieni con sforzo alto (≥70%) per il tempo indicato, respirando."
+   ],
+   "why": "Tendine rotuleo robusto senza dolori muscolari.",
+   "mistake": "Angolo troppo chiuso se fa male: con dolore > 3/10 apri l'angolo.",
+   "fig": "squat"
+  },
+  "nordic": {
+   "name": "Nordic curl",
+   "how": [
+    "In ginocchio su un tappetino, caviglie bloccate (partner, macchina, divano o letto).",
+    "Corpo dritto da ginocchia a testa, glutei contratti.",
+    "Lasciati cadere in avanti il più lentamente possibile frenando con i femorali.",
+    "Prendi la caduta con le mani e torna su aiutandoti: conta solo la discesa."
+   ],
+   "why": "Femorali forti in allungamento: proteggono LCA e femorali (prove miste, ma dose piccola).",
+   "mistake": "Piegarsi alle anche, o fare troppo volume alla prima seduta (dolori per giorni).",
+   "fig": null
+  },
+  "copenhagen": {
+   "name": "Copenhagen (adduction / plank)",
+   "how": [
+    "Di fianco sull'avambraccio, la gamba di sopra appoggiata alla panca: sotto il ginocchio = leva corta (facile), sotto la caviglia = leva lunga.",
+    "In 3\" solleva il bacino portando la gamba di sotto a toccare la panca.",
+    "In 3\" scendi fino a sfiorare il pavimento, senza appoggiarti.",
+    "Tronco dritto, niente piegamento laterale; respira."
+   ],
+   "why": "Adduttori forti per guardia chiusa, triangolo e knee shield; nella corsa proteggono l'inguine.",
+   "mistake": "Partire subito con la leva lunga o lasciar cadere/ruotare il bacino.",
+   "fig": "cop"
+  },
+  "adductor_squeeze": {
+   "name": "Adductor squeeze isometrico",
+   "how": [
+    "Supino, ginocchia piegate, palla o rullo tra le ginocchia.",
+    "Stringi al 70–100% per il tempo indicato.",
+    "Rilascia piano; respira durante la tenuta."
+   ],
+   "why": "Simula la chiusura della guardia; è anche la regressione se l'inguine fa male.",
+   "mistake": "Trattenere il fiato o stringere 'a scatti'.",
+   "fig": null
+  },
+  "mtp": {
+   "name": "Mid-thigh pull isometrico",
+   "how": [
+    "Bilanciere bloccato nel rack (o con perni) a metà coscia.",
+    "Posizione da inizio stacco alto, schiena neutra.",
+    "Tira 'a strappare' con intenzione esplosiva per 3–5\", il bilanciere non si muove."
+   ],
+   "why": "Forza rapida con pochissimi dolori muscolari: ideale vicino alla gara.",
+   "mistake": "Partire piano e salire lentamente invece di esplodere subito.",
+   "fig": "rdl"
+  },
+  "hip_thrust": {
+   "name": "Hip thrust / ponte glutei (anche esplosivo)",
+   "how": [
+    "Scapole sul bordo di una panca, bilanciere imbottito sulle anche, piedi larghezza anche.",
+    "Spingi con i talloni fino a busto parallelo al pavimento, ginocchia a ~90°.",
+    "Mento verso il petto, costole giù, pausa 1–2\" con glutei al massimo.",
+    "Versione esplosiva: carico leggero e salita più veloce possibile."
+   ],
+   "why": "È l'upa dalla monta; estensione d'anca per la corsa e protezione lombare.",
+   "mistake": "Inarcare la schiena invece di estendere le anche, piedi troppo lontani.",
+   "fig": null
+  },
+  "panca": {
+   "name": "Panca piana (o inclinata)",
+   "how": [
+    "Scapole strette e abbassate, piedi a terra.",
+    "Bilanciere giù al basso petto con gomiti a 45–70° dal busto.",
+    "Risali spingendo, senza rimbalzare sul petto."
+   ],
+   "why": "Frame e spinta per creare spazio; pesante e a poche ripetizioni per non aumentare di peso.",
+   "mistake": "Gomiti aperti a 90° o glutei che si staccano dalla panca.",
+   "fig": "lm"
+  },
+  "piegamenti": {
+   "name": "Piegamenti lenti o pliometrici",
+   "how": [
+    "Mani poco più larghe delle spalle, corpo in linea.",
+    "Lenti: scendi in 3\" e risali.",
+    "Pliometrici: risali esplosivo staccando le mani."
+   ],
+   "why": "Spinta e frame in viaggio, senza attrezzi.",
+   "mistake": "Bacino che cede o collo che va avanti.",
+   "fig": null
+  },
+  "trazioni_gi": {
+   "name": "Trazioni al gi",
+   "how": [
+    "Appendi un gi vecchio (o due asciugamani) alla sbarra; presa da gara a manica o bavero.",
+    "Spalle attive: scapole leggermente giù prima di tirare.",
+    "Tira i gomiti verso le tasche fino al mento sopra le mani, scendi in 2–3\".",
+    "Tenuta isometrica: resta in alto o a 90° di gomito per il tempo indicato."
+   ],
+   "why": "Tirata + presa sul tessuto: i test al kimono distinguono gli élite.",
+   "mistake": "Kipping, mezze ripetizioni, spalle alle orecchie; troppa presa il giorno prima del gi.",
+   "fig": "hang"
+  },
+  "trazioni": {
+   "name": "Trazioni alla sbarra / lat machine (anche zavorrate)",
+   "how": [
+    "Presa neutra o prona alla larghezza delle spalle.",
+    "Costole giù, glutei contratti; ogni ripetizione inizia abbassando le scapole.",
+    "Tira i gomiti verso le tasche fino al mento sopra la sbarra; scendi controllato.",
+    "Oltre 8–10 pulite: aggiungi zavorra invece di ripetizioni (lat machine se non ne fai almeno 6)."
+   ],
+   "why": "Forza di tirata per il BJJ; dorsali e spalle sane per reggere 3–4 nuotate a settimana.",
+   "mistake": "Inarcare la schiena o tirare con le braccia senza fissare prima le scapole.",
+   "fig": "hang"
+  },
+  "rope": {
+   "name": "Arrampicata alla corda",
+   "how": [
+    "Prima con le gambe: avvolgi la corda a una gamba e bloccala con l'altro piede.",
+    "Alzati sulle gambe, sposta le mani più in alto, ripeti.",
+    "Senza gambe solo se pulita: mani alternate, core contratto.",
+    "Scendi sempre mano dopo mano, mai scivolando."
+   ],
+   "why": "La presa più 'tirata' possibile (Danaher); conta come 2° esercizio di presa della settimana.",
+   "mistake": "Scivolare in discesa (ustioni) o farla con le mani già cotte.",
+   "fig": "hang"
+  },
+  "rematore_gi": {
+   "name": "Rematore col gi",
+   "how": [
+    "Gi o asciugamano avvolto alla maniglia del cavo o al landmine; prendilo come manica/bavero.",
+    "Busto inclinato ~45° (o petto su panca), schiena neutra.",
+    "Tira il gomito verso il fianco, pausa 1\", ritorno controllato."
+   ],
+   "why": "Tirata orizzontale con presa sul tessuto: rompere la postura.",
+   "mistake": "Arrotondare la schiena o tirare con lo slancio.",
+   "fig": "row"
+  },
+  "cs_row": {
+   "name": "Chest-supported row",
+   "how": [
+    "Petto appoggiato a una panca inclinata, manubri in mano.",
+    "Tira i gomiti verso i fianchi, scapole indietro.",
+    "Pausa 1\" in alto, scendi controllato."
+   ],
+   "why": "Tirata orizzontale pesante senza caricare la presa né la schiena.",
+   "mistake": "Staccare il petto dalla panca per usare lo slancio.",
+   "fig": "row"
+  },
+  "rematore_manubrio": {
+   "name": "Rematore con manubrio o al cavo",
+   "how": [
+    "Una mano e un ginocchio (o la mano e la gamba opposta estesa) su una panca.",
+    "Tira il manubrio verso l'anca, non verso il petto.",
+    "Spalla giù e indietro, scendi lento."
+   ],
+   "why": "Schiena alta e scapole: bilancia la spalla 'chiusa' da grappler e aiuta la postura in aero.",
+   "mistake": "Tirare verso il petto (diventa un curl e sforza la spalla davanti).",
+   "fig": "row"
+  },
+  "inverted_row": {
+   "name": "Rematore con elastico / inverted row (viaggio)",
+   "how": [
+    "Sotto un tavolo robusto (o elastico ancorato a una porta), prese su un asciugamano.",
+    "Corpo dritto, tira il petto verso il bordo.",
+    "Pausa 1\", scendi controllato."
+   ],
+   "why": "Tirata + presa 'da tessuto' senza palestra.",
+   "mistake": "Bacino che cede o tavolo poco stabile: prova prima la tenuta.",
+   "fig": "row"
+  },
+  "pulldown_bt": {
+   "name": "Pulldown a braccia tese",
+   "how": [
+    "Barra o corda al cavo alto; passo indietro, busto inclinato 35–45°.",
+    "Braccia tese, porta la barra verso le cosce abbassando le scapole.",
+    "Torna lento lasciando allungare il dorsale; pensa 'gomiti verso le tasche'."
+   ],
+   "why": "Dorsali nella stessa catena della bracciata, senza bicipite.",
+   "mistake": "Piegare e distendere i gomiti: diventa un pushdown per i tricipiti.",
+   "fig": null
+  },
+  "face_pull": {
+   "name": "Face pull",
+   "how": [
+    "Corda al cavo alto (altezza occhi/fronte), presa prona, passo indietro.",
+    "Tira la corda verso la fronte con i gomiti alti e in fuori.",
+    "In fondo ruota le mani verso l'alto (posizione 'doppio bicipite'), poi torna lento."
+   ],
+   "why": "Scapole e cuffia: il 65% dei praticanti di BJJ ha discinesia scapolare; serve anche alla bracciata.",
+   "mistake": "Gomiti bassi o carico eccessivo che fa inarcare la schiena.",
+   "fig": "face"
+  },
+  "band_pull_apart": {
+   "name": "Band pull-apart",
+   "how": [
+    "Elastico davanti al petto, braccia tese.",
+    "Apri fino a toccare il petto stringendo le scapole.",
+    "Ritorno lento."
+   ],
+   "why": "Scapole attive in pochi secondi, ovunque.",
+   "mistake": "Alzare le spalle verso le orecchie.",
+   "fig": "face"
+  },
+  "ytw": {
+   "name": "Y-T-W",
+   "how": [
+    "Prono su panca a 45° (o a terra), manubri leggerissimi 1–3 kg.",
+    "Y: braccia avanti-alto, pollici su. T: braccia di lato. W: gomiti ai fianchi e rotazione esterna.",
+    "Ogni posizione: sali 1–2\", pausa 1–2\", scendi 2\"."
+   ],
+   "why": "Trapezio basso e cuffia per la spalla del nuotatore.",
+   "mistake": "Usare pesi troppo alti e compensare con il collo.",
+   "fig": "face"
+  },
+  "extrarot": {
+   "name": "Rotazione esterna / extrarotazioni al cavo o elastico",
+   "how": [
+    "Gomito a 90° attaccato al fianco con un asciugamano arrotolato in mezzo (versione a 0°).",
+    "Ruota l'avambraccio verso l'esterno senza staccare il braccio e senza ruotare il busto.",
+    "Ritorno lento (3–4\"): è la parte che conta per la kimura.",
+    "Versione 90/90: braccio alzato di lato a 90°, ruota fino all'avambraccio verticale."
+   ],
+   "why": "Spalla forte contro kimura e americana; nel nuoto regge il volume di bracciate.",
+   "mistake": "Gomito che si stacca dal fianco o carico troppo alto (lavorano deltoide e trapezio).",
+   "fig": "face"
+  },
+  "collo": {
+   "name": "Isometrie del collo nei 4 piani (+ chin tuck)",
+   "how": [
+    "Colonna neutra, mento leggermente retratto (chin tuck), spalle basse.",
+    "Spingi la testa contro la mano (avanti, dietro, lati): la mano resiste, la testa non si muove.",
+    "Sali di intensità in 2\", tieni, rilascia in 2\".",
+    "Respira durante la tenuta; mai a cedimento."
+   ],
+   "why": "Cravatte, ghigliottine e posture rotte nel BJJ; testa alta in aero per ore nell'Ironman.",
+   "mistake": "Muovere la testa, andare in apnea o spingere a scatti.",
+   "fig": "neck"
+  },
+  "estensioni_dita": {
+   "name": "Estensioni delle dita con elastico",
+   "how": [
+    "Elastico attorno alle dita chiuse.",
+    "Apri la mano il più possibile.",
+    "Ritorno controllato; anche ogni giorno dopo il tatami."
+   ],
+   "why": "Contrappeso al volume di presa del gi: protegge dita e gomito.",
+   "mistake": "Usare un elastico troppo duro e fare movimenti piccoli.",
+   "fig": null
+  },
+  "farmer": {
+   "name": "Farmer's walk",
+   "how": [
+    "Manubri o kettlebell pesanti ai lati.",
+    "Brace leggero, corpo in linea, spalle basse.",
+    "Passi corti che si allungano, niente inclinazioni."
+   ],
+   "why": "Presa di supporto per il no-gi e anti-flessione laterale.",
+   "mistake": "Farlo con le mani già cotte prima del gi del sabato.",
+   "fig": "farmer"
+  },
+  "suitcase": {
+   "name": "Suitcase carry / farmer walk monolaterale",
+   "how": [
+    "Un solo manubrio o kettlebell pesante in una mano.",
+    "Cammina dritto con spalle e bacino orizzontali, addome contratto.",
+    "Cambia lato alla fine della distanza."
+   ],
+   "why": "Bacino orizzontale a fine maratona.",
+   "mistake": "Inclinarsi verso il peso (o dall'altra parte) e alzare la spalla.",
+   "fig": "farmer"
+  },
+  "dead_bug": {
+   "name": "Dead bug",
+   "how": [
+    "Supino, braccia verso il soffitto, anche e ginocchia a 90°.",
+    "Schiena bassa schiacciata al pavimento, costole giù.",
+    "Estendi un braccio dietro la testa e la gamba opposta verso terra espirando.",
+    "Torna e cambia lato; ripeti solo se la schiena resta giù."
+   ],
+   "why": "Anti-estensione: guardia compatta nel BJJ, tronco stabile nella corsa.",
+   "mistake": "Schiena che si stacca dal pavimento o gambe troppo basse per la tua forza.",
+   "fig": "deadbug"
+  },
+  "rollout": {
+   "name": "Ab rollout (o hollow hold)",
+   "how": [
+    "In ginocchio con la ruota (o il bilanciere) sotto le spalle.",
+    "Rotola avanti in 3\" tenendo addome e glutei contratti, schiena neutra.",
+    "Torna indietro senza piegarti alle anche. Alternativa: hollow hold 20\"."
+   ],
+   "why": "Anti-estensione avanzata.",
+   "mistake": "Lasciar cadere la zona lombare in avanti.",
+   "fig": "deadbug"
+  },
+  "pallof": {
+   "name": "Pallof press",
+   "how": [
+    "Cavo o elastico all'altezza del petto, di fianco all'ancoraggio.",
+    "Maniglia allo sterno, ginocchia morbide (o mezzo-ginocchio / affondo / una gamba per progredire).",
+    "Spingi le braccia dritte avanti senza far ruotare il busto.",
+    "Tieni 2–3\" (un respiro completo), torna al petto."
+   ],
+   "why": "Anti-rotazione: resistere agli sweep; bacino stabile nella corsa.",
+   "mistake": "Busto che ruota verso la macchina, carico troppo alto.",
+   "fig": "pallof"
+  },
+  "side_plank": {
+   "name": "Side plank (anche con abduzione)",
+   "how": [
+    "Sul fianco, gomito sotto la spalla, gambe tese e sovrapposte.",
+    "Solleva il bacino: testa, bacino e piedi in linea.",
+    "Con abduzione: in tenuta solleva e abbassa lentamente la gamba sopra."
+   ],
+   "why": "Fianchi e medio gluteo: anti-flessione laterale per la corsa.",
+   "mistake": "Bacino che cede o ruota avanti/indietro.",
+   "fig": null
+  },
+  "box_jump": {
+   "name": "Box jump",
+   "how": [
+    "Davanti a un box di 40–60 cm, piedi larghezza anche.",
+    "Contromovimento rapido e salto esplosivo con le braccia.",
+    "Atterra morbido in mezzo squat, ginocchia allineate ai piedi.",
+    "Scendi camminando, non saltando."
+   ],
+   "why": "Potenza di gambe per takedown e scramble, da freschi.",
+   "mistake": "Atterrare rigido o in valgo, scendere saltando dal box.",
+   "fig": null
+  },
+  "kb_swing": {
+   "name": "Kettlebell swing",
+   "how": [
+    "Kettlebell 45–60 cm davanti, piedi poco più larghi delle spalle.",
+    "Cerniera d'anca (non squat), lancia la campana indietro tra le gambe.",
+    "Esplodi con le anche: glutei contratti, la campana sale al petto grazie alle anche.",
+    "Espira salendo, inspira scendendo."
+   ],
+   "why": "Estensione esplosiva dell'anca = upa e hip escape.",
+   "mistake": "Tirare con le braccia, schiena rotonda, squattare invece di piegare le anche.",
+   "fig": "rdl"
+  },
+  "hang_clean": {
+   "name": "Hang power clean",
+   "how": [
+    "Presa a uncino poco più larga delle spalle, bilanciere sopra le ginocchia, schiena dritta.",
+    "Piccolo dip, poi estensione esplosiva di anche, ginocchia e caviglie col bilanciere vicino.",
+    "Gira i gomiti sotto e ricevi sulle spalle in mezzo squat, gomiti alti.",
+    "Se la tecnica non è solida: kettlebell swing a un braccio."
+   ],
+   "why": "Tripla estensione = entrata del double leg e upa esplosivo.",
+   "mistake": "Bilanciere lontano dal corpo o gomiti bassi in ricezione.",
+   "fig": null
+  },
+  "jump_squat": {
+   "name": "Jump squat / squat jump (CMJ)",
+   "how": [
+    "A corpo libero o con carico leggero (≤ 20–30% dello squat; trap bar o manubri).",
+    "Scendi a ~¼ di squat (o contromovimento rapido).",
+    "Salta più in alto possibile, atterra morbido, resetta e ripeti."
+   ],
+   "why": "Potenza per cambio di livello e scramble; nell'Ironman forza esplosiva che l'endurance tende a togliere.",
+   "mistake": "Troppe ripetizioni (diventa condizionamento) o atterraggio rigido.",
+   "fig": "squat"
+  },
+  "broad_jump": {
+   "name": "Broad jump (salto in lungo da fermo)",
+   "how": [
+    "Piedi larghezza anche, braccia indietro.",
+    "Salta in avanti il più lontano possibile.",
+    "Atterra morbido e stabile, poi torna camminando."
+   ],
+   "why": "Tiene viva la potenza in viaggio, senza attrezzi.",
+   "mistake": "Atterrare con le ginocchia che cedono verso l'interno.",
+   "fig": null
+  },
+  "pistol": {
+   "name": "Pistol squat assistito o step-up alto",
+   "how": [
+    "Pistol: su una gamba, tenendoti a una porta, scendi in 3\" più che puoi.",
+    "Risali spingendo con tutto il piede, ginocchio in linea.",
+    "Alternativa: step-up su un rialzo all'altezza del ginocchio."
+   ],
+   "why": "Forza su una gamba senza pesi.",
+   "mistake": "Ginocchio che crolla verso l'interno.",
+   "fig": "step"
+  },
+  "solo_drill": {
+   "name": "Solo-drill BJJ",
+   "how": [
+    "Shrimp, ponte (upa) esplosivo, technical stand-up, sprawl, granby roll.",
+    "Ritmo continuo, gesto pulito.",
+    "Nel riscaldamento di gara: lenti; in viaggio: a ritmo."
+   ],
+   "why": "Mantiene i movimenti specifici e il ritmo da tatami.",
+   "mistake": "Farli trascurati: contano come tecnica, non come fatica.",
+   "fig": null
+  },
+  "p1_match": {
+   "name": "P1 — Round 'match simulato' da 6'",
+   "how": [
+    "Assault bike, vogatore o SkiErg.",
+    "25\" moderato + 5\" all-out, × 12 = 6'.",
+    "3–5' di pausa camminando tra i round."
+   ],
+   "why": "Replica i picchi di 4–5\" dentro un match da 6'.",
+   "mistake": "Andare troppo forte nei 25\" moderati: poi i 5\" non sono più all-out.",
+   "fig": null
+  },
+  "p2_franchini": {
+   "name": "P2 — HIIT tipo Franchini (20\"/10\")",
+   "how": [
+    "20\" all-out / 10\" pausa, × 8–10.",
+    "Blocchi separati da 5' facili.",
+    "Su bike o vogatore."
+   ],
+   "why": "+17% di potenza di picco in 4 settimane nei judoka.",
+   "mistake": "Partire così forte da 'morire' alla 4ª ripetizione.",
+   "fig": null
+  },
+  "p3_long_hiit": {
+   "name": "P3 — Long HIIT (45\"/45\")",
+   "how": [
+    "45\" forte + 45\" moderato, × 4 = 6'.",
+    "3–5' di pausa tra le serie.",
+    "Forte = parli a monosillabi; moderato = frasi brevi."
+   ],
+   "why": "Capacità di reggere un round intero da 6'.",
+   "mistake": "Trasformare i 45\" moderati in recupero passivo.",
+   "fig": null
+  },
+  "p4_sprint": {
+   "name": "P4 — Sprint brevi",
+   "how": [
+    "6–10\" all-out su bike o vogatore.",
+    "60–180\" di recupero completo.",
+    "Ogni sprint deve essere esplosivo come il primo."
+   ],
+   "why": "Potenza ripetibile senza fatica: il protocollo giusto vicino alla gara.",
+   "mistake": "Accorciare i recuperi: diventa fatica, non potenza.",
+   "fig": null
+  },
+  "p6": {
+   "name": "P6 — Intervalli a corpo libero",
+   "how": [
+    "Opzione 1 Tabata: 20\" forte / 10\" pausa × 8 (burpee, sprawl, jump squat, mountain climber).",
+    "Opzione 2 round da 6': 25\" facile (shrimp o bear crawl) + 5\" massimale (sprawl o burpee) × 12.",
+    "In alternativa: corsa in spiaggia/città con 8–10 allunghi da 10\"."
+   ],
+   "why": "Condizionamento in viaggio; l'opzione 2 allena il ritmo da tatami.",
+   "mistake": "Farli nelle ore calde o con lo stomaco non a posto.",
+   "fig": null
+  },
+  "corsa_facile": {
+   "name": "Corsa facile (o corsa-cammino)",
+   "how": [
+    "Ritmo in cui riesci a dire frasi intere, terreno piatto.",
+    "Se non corri già con regolarità: corsa-cammino 1' / 1'.",
+    "Aumenta la durata al massimo del 10–15% a settimana; in intensificazione 4–6 allunghi da 10\" alla fine."
+   ],
+   "why": "Base aerobica e primo ponte verso l'Ironman: i tendini si adattano in mesi, il cuore in settimane.",
+   "mistake": "Correre 'a tutta' come in uno sparring: la corsa facile deve essere davvero facile.",
+   "fig": null
+  },
+  "nuoto_tecnica": {
+   "name": "Nuoto tecnico facile",
+   "how": [
+    "20–30' quasi solo esercizi di tecnica, meglio con istruttore o squadra master.",
+    "Espira in modo continuo sott'acqua; testa neutra, gambe alte.",
+    "Fermati quando la tecnica cede; niente palette né pull buoy in fase BJJ."
+   ],
+   "why": "Il nuoto è il tuo punto debole n. 1 e la tecnica richiede mesi: iniziare a impararla costa poca fatica.",
+   "mistake": "Trasformarlo in allenamento duro o in volume: in fase BJJ è solo tecnica.",
+   "fig": null
+  },
+  "calf_seduto": {
+   "name": "Calf raise a ginocchio piegato (seduto pesante o su un gradino)",
+   "how": [
+    "Ginocchia a ~90° alla macchina (o su panca con peso sulle cosce); a casa: su un gradino con ginocchio piegato a 30–45°.",
+    "Avampiede sul rialzo, scendi col tallone sotto il livello del piede e fai 1–2\" di pausa.",
+    "Spingi su alluce e prime dita fino in alto, pausa 1\"."
+   ],
+   "why": "Soleo forte: la protezione n. 1 di chi corre poco.",
+   "mistake": "Ampiezza a metà con rimbalzo; aumentare il carico più del 5–10% a settimana.",
+   "fig": "calf"
+  },
+  "calf_mono": {
+   "name": "Calf raise in piedi monopodalico con deficit",
+   "how": [
+    "Su un gradino con l'avampiede di una gamba, ginocchio teso ma non bloccato.",
+    "Una mano al muro solo per equilibrio, manubrio nella mano dello stesso lato.",
+    "Scendi in 3\" sotto il gradino, sali più in alto possibile, pausa 1\".",
+    "Test: ripetizioni fino a cedimento per gamba (obiettivo > 25)."
+   ],
+   "why": "Gastrocnemio e Achille pronti alla corsa; il test dice quando sei pronto per i salti.",
+   "mistake": "Piegare il ginocchio per aiutarti o tirarti su con la mano.",
+   "fig": "calf"
+  },
+  "tibialis": {
+   "name": "Tibialis raise",
+   "how": [
+    "Schiena al muro, talloni a 20–30 cm dal muro, gambe tese.",
+    "Solleva le punte il più in alto possibile tenendo i talloni a terra.",
+    "Scendi lento; con carico: tib-bar o disco sui piedi da seduto."
+   ],
+   "why": "Tibiale anteriore: tibia e caviglia più robuste per l'avvio della corsa.",
+   "mistake": "Staccare i talloni o usare lo slancio.",
+   "fig": "tib"
+  },
+  "pogo": {
+   "name": "Pogo hops",
+   "how": [
+    "Piedi larghezza anche, ginocchia quasi tese.",
+    "Saltelli piccoli e veloci solo di caviglia, sull'avampiede.",
+    "Contatto a terra brevissimo, atterraggio silenzioso.",
+    "Monopodalici solo se fai ≥ 25 calf raise per gamba."
+   ],
+   "why": "Rigidità elastica del tendine = corsa più economica.",
+   "mistake": "Piegare le ginocchia (diventa uno squat jump) o continuare quando i contatti rallentano.",
+   "fig": null
+  },
+  "corda": {
+   "name": "Saltelli con la corda",
+   "how": [
+    "Corda alla misura giusta, gomiti vicini ai fianchi.",
+    "Saltelli bassi sull'avampiede.",
+    "Blocchi da 30\" con 30\" di pausa."
+   ],
+   "why": "L'ingresso più semplice alla plyometria; perfetta in viaggio.",
+   "mistake": "Saltare alto con le ginocchia piegate o atterrare sui talloni.",
+   "fig": null
+  },
+  "bounding": {
+   "name": "Bounding e saltelli monopodalici",
+   "how": [
+    "Dopo un buon riscaldamento: corsa a balzi, spinta da una gamba e atterraggio sull'altra.",
+    "Ritmo medio, contatto fluido: 'lascia che il terreno arrivi a te'.",
+    "Saltelli monopodalici: piccoli, ginocchio in linea con il piede."
+   ],
+   "why": "Forza reattiva orizzontale per la corsa.",
+   "mistake": "Trasformarlo in uno sprint con contatti rigidi.",
+   "fig": null
+  },
+  "drop_jump": {
+   "name": "Drop jump bassi (20–30 cm)",
+   "how": [
+    "Da un box di 20–30 cm fai un passo giù (non saltare giù).",
+    "Atterra a due piedi e rimbalza subito in alto con contatto breve.",
+    "Ginocchia allineate ai piedi; solo da freschi."
+   ],
+   "why": "Forza reattiva, la più sensibile all'interferenza con l'endurance (solo da Fase 6).",
+   "mistake": "Box troppo alto: contatto lungo e ginocchia che cedono.",
+   "fig": null
+  },
+  "leg_press_mono": {
+   "name": "Leg press monopodalica",
+   "how": [
+    "Schiena e testa appoggiate, bacino fermo sul sedile.",
+    "Un piede al centro della pedana, larghezza anca.",
+    "Scendi fino a ~90° di ginocchio, spingi con tutto il piede senza bloccare il ginocchio.",
+    "Finisci una gamba, poi l'altra."
+   ],
+   "why": "Forza di spinta a una gamba come nella pedalata, senza caricare la schiena.",
+   "mistake": "Ginocchio che cade verso l'interno o bloccato in alto.",
+   "fig": null
+  },
+  "flex_anca": {
+   "name": "Flessione d'anca monopodalica al cavo",
+   "how": [
+    "Cavigliera al cavo basso, passi avanti finché il cavo è teso.",
+    "Postura da corsa, gamba con la cavigliera estesa dietro.",
+    "Porta il ginocchio avanti e in alto, pausa 1\", ritorno lento."
+   ],
+   "why": "Flessori d'anca forti per la falcata a fine gara.",
+   "mistake": "Inarcare la schiena o lavorare solo nella parte alta.",
+   "fig": null
+  },
+  "abduzione": {
+   "name": "Abduzione d'anca sul fianco o al cavo",
+   "how": [
+    "Sul fianco, schiena contro un muro, gamba sotto piegata.",
+    "Punta del piede sopra leggermente verso il basso, tallone che guida.",
+    "Solleva 30–40° senza ruotare il bacino, pausa 1–2\", scendi in 2–3\".",
+    "Al cavo: in piedi, cavigliera al cavo basso, porta la gamba di lato."
+   ],
+   "why": "Medio gluteo: ginocchio stabile in corsa (bandelletta, rotula).",
+   "mistake": "Bacino che ruota indietro o gamba che va in avanti.",
+   "fig": null
+  },
+  "pelvic_drop": {
+   "name": "Pelvic drop",
+   "how": [
+    "In piedi su un gradino con una gamba tesa.",
+    "Lascia scendere il bacino dal lato libero.",
+    "Riportalo su contraendo il gluteo d'appoggio, busto fermo."
+   ],
+   "why": "Medio gluteo in una posizione molto simile alla corsa.",
+   "mistake": "Piegare il ginocchio d'appoggio o inclinare il busto.",
+   "fig": null
+  },
+  "passi_laterali": {
+   "name": "Passi laterali con elastico",
+   "how": [
+    "Mini-band sopra caviglie o ginocchia, mezzo squat.",
+    "Passi laterali piccoli mantenendo l'elastico teso.",
+    "Punte avanti, busto fermo."
+   ],
+   "why": "Abduttori, come nel programma RunRCT (−39% infortuni da sovraccarico).",
+   "mistake": "Piedi che si toccano (elastico lento) o busto che dondola.",
+   "fig": null
+  },
+  "short_foot": {
+   "name": "'Short foot' (piede corto)",
+   "how": [
+    "In piedi o seduto, accorcia il piede sollevando l'arco senza piegare le dita.",
+    "Tieni 5–10\".",
+    "Poi su una gamba, poi durante i calf raise."
+   ],
+   "why": "Muscoli del piede: costa poco, prove contrastanti.",
+   "mistake": "Arricciare le dita invece di sollevare l'arco.",
+   "fig": null
+  },
+  "step_up": {
+   "name": "Step-up alto / step-down laterale",
+   "how": [
+    "Step-up: gradino all'altezza del ginocchio, manubri, spingi con la gamba sopra senza slancio.",
+    "Step-down: su un gradino di 15–25 cm, scendi in 3\" fino a sfiorare il pavimento col tallone libero.",
+    "Ginocchio in linea con il 2° dito, bacino orizzontale."
+   ],
+   "why": "Controllo del ginocchio sotto carico, spinta come in salita.",
+   "mistake": "Ginocchio verso l'interno o spinta della gamba a terra.",
+   "fig": "step"
+  }
+ },
+ "phases": [
+  {
+   "id": "bjj1_accumulo",
+   "program": "bjj",
+   "name": "BJJ 1 — Accumulo",
+   "dates": "lun 23 nov – dom 6 dic 2026 (S1–S2)",
+   "goal": "Volume, tecnica degli esercizi e tessuti (tendini, adduttori, femorali, cuffia). RPE 7, niente cedimenti. Perché: prima si costruisce la tolleranza, poi si carica.",
+   "weekly": "Lun gi · Mar Forza A · Mer riposo · Gio no-gi · Ven Forza B + potenza · Sab gi · Dom opzione 1/2/3 (con prevenzione corsa)",
+   "sessions": [
+    {
+     "id": "bjj1_mar",
+     "day": "Martedì",
+     "title": "Forza A — gambe pesanti + tirate + eccentrici",
+     "duration": "B ~55' · M ~80' · A ~90'",
+     "warmup": "R-MAR ~12': 3' assault bike/vogatore facile · dorsiflessione in mezzo-ginocchio 2×20\"/lato · 90/90 e CARs 1×5/lato · McGill Big 3 5-3-1 · Cossack squat 1×6/lato · 2–3 serie di avvicinamento (50%×5, 70%×3, 85%×1–2)",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "trap_bar",
+       "vol": {
+        "basso": "2 × Cl (10)",
+        "medio": "3 × Cl (15)",
+        "alto": "4 × Cl (15)"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-0-X-1",
+       "rest": "2–3'",
+       "note": "Cluster 5:2. S2: +2,5–5 kg se la S1 era RPE ≤ 7 con tecnica pulita"
+      },
+      {
+       "code": "A2",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 giro × 10\"",
+        "medio": "3 giri × 10\"",
+        "alto": "3 giri × 15\""
+       },
+       "intensity": "50–70%",
+       "tempo": "tenuta",
+       "rest": "—",
+       "note": "Nel recupero di A1"
+      },
+      {
+       "code": "B1",
+       "ex": "trazioni_gi",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "4 × 6",
+        "alto": "4 × 8"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-0-1-0",
+       "rest": "90\""
+      },
+      {
+       "code": "B2",
+       "ex": "bulgaro",
+       "vol": {
+        "basso": "2 × 6/gamba",
+        "medio": "3 × 8/gamba",
+        "alto": "4 × 10/gamba"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-1-1-0",
+       "rest": "90\"",
+       "note": "Pausa 1\" in basso; nel MEDIO salta B2 al 4° giro di B1"
+      },
+      {
+       "code": "C1",
+       "ex": "nordic",
+       "vol": {
+        "basso": "2 × 4",
+        "medio": "S1 2 × 5 · S2 3 × 5",
+        "alto": "come MEDIO"
+       },
+       "intensity": "discesa più lenta possibile",
+       "tempo": "5-0-mani-0",
+       "rest": "2'",
+       "note": "ALTO = MEDIO: il limite è il dolore muscolare, non la voglia"
+      },
+      {
+       "code": "C2",
+       "ex": "pallof",
+       "vol": {
+        "basso": "2 × 6/lato",
+        "medio": "3 × 8/lato",
+        "alto": "4 × 10/lato"
+       },
+       "intensity": "RIR 3",
+       "tempo": "1-2-1-0",
+       "rest": "45\"",
+       "note": "Tenuta 2\""
+      },
+      {
+       "code": "D1",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 6/lato",
+        "medio": "S1 2 × 6 · S2 2 × 8 /lato",
+        "alto": "3 × 10/lato"
+       },
+       "intensity": "controllo",
+       "tempo": "3-0-3-0",
+       "rest": "60\"",
+       "note": "Leva corta (panca sotto il ginocchio)"
+      },
+      {
+       "code": "D2",
+       "ex": "sl_rdl",
+       "vol": {
+        "basso": "—",
+        "medio": "2 × 8/gamba",
+        "alto": "3 × 8/gamba"
+       },
+       "intensity": "RPE 7",
+       "tempo": "3-0-1-0",
+       "rest": "60\""
+      },
+      {
+       "code": "E1",
+       "ex": "spanish_squat",
+       "vol": {
+        "basso": "—",
+        "medio": "—",
+        "alto": "3 × 45\""
+       },
+       "intensity": "≥ 70% sforzo",
+       "tempo": "tenuta",
+       "rest": "60\""
+      },
+      {
+       "code": "F",
+       "ex": "estensioni_dita",
+       "vol": {
+        "basso": "1 × 25",
+        "medio": "2 × 25",
+        "alto": "2 × 25"
+       },
+       "intensity": "facile",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": "Perché martedì: il giorno dopo è riposo, i dolori da Nordic e Copenhagen hanno 48 h prima del no-gi."
+    },
+    {
+     "id": "bjj1_ven",
+     "day": "Venerdì",
+     "title": "Forza B + potenza",
+     "duration": "B ~50' · M ~80' · A ~90'",
+     "warmup": "R-VEN ~12': 3' assault bike/vogatore facile · dorsiflessione 2×20\"/lato + 90/90 1×5/lato · Turkish get-up 1×2/lato leggero · rotazione esterna con elastico 1×15/braccio · snapdown 2×3 · 2 salti submassimali + 2 serie di avvicinamento al primo esercizio di potenza",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "box_jump",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 5",
+        "alto": "4 × 5"
+       },
+       "intensity": "massima intenzione",
+       "tempo": "X",
+       "rest": "60\"",
+       "note": "Scendi camminando"
+      },
+      {
+       "code": "A2",
+       "ex": "kb_swing",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 12"
+       },
+       "intensity": "veloce, RPE 7",
+       "tempo": "X",
+       "rest": "90\""
+      },
+      {
+       "code": "B1",
+       "ex": "zercher",
+       "vol": {
+        "basso": "2 × Cl (10)",
+        "medio": "3 × Cl (15)",
+        "alto": "4 × Cl (15)"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-0-X-0",
+       "rest": "2'",
+       "note": "Cluster 5:2; parti leggero (incavi dei gomiti). [Corretto: ALTO era '4 × 6']"
+      },
+      {
+       "code": "B2",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 15",
+        "alto": "4 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "1-0-1-2",
+       "rest": "45\""
+      },
+      {
+       "code": "C1",
+       "ex": "panca",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 8",
+        "alto": "4 × 8"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-0-X-0",
+       "rest": "90\""
+      },
+      {
+       "code": "C2",
+       "ex": "rematore_gi",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-0-1-1",
+       "rest": "90\"",
+       "note": "Nell'ALTO (se fai il farmer) usa la maniglia normale: max 2 esercizi di presa a settimana"
+      },
+      {
+       "code": "D1",
+       "ex": "hip_thrust",
+       "vol": {
+        "basso": "—",
+        "medio": "3 × 8",
+        "alto": "4 × 10"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-0-1-2",
+       "rest": "90\""
+      },
+      {
+       "code": "D2",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 12/braccio",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-0-1-0",
+       "rest": "45\"",
+       "note": "Braccio al fianco"
+      },
+      {
+       "code": "E1",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "—",
+        "medio": "3 × 8/lato",
+        "alto": "3 × 10/lato"
+       },
+       "intensity": "lento",
+       "tempo": "—",
+       "rest": "45\""
+      },
+      {
+       "code": "E2",
+       "ex": "farmer",
+       "vol": {
+        "basso": "—",
+        "medio": "—",
+        "alto": "4 × 40 m"
+       },
+       "intensity": "pesante, corpo in linea",
+       "tempo": "—",
+       "rest": "60\"",
+       "note": "Solo ALTO e solo se le mani non sono cotte. [Corretto: era anche nel MEDIO]"
+      }
+     ],
+     "notes": "Niente Nordic, niente RDL pesante, niente cedimento: sabato c'è il gi."
+    }
+   ]
+  },
+  {
+   "id": "bjj2_intens",
+   "program": "bjj",
+   "name": "BJJ 2 — Intensificazione",
+   "dates": "lun 7 – dom 20 dic 2026 (S3–S4; S4 = settimana più dura)",
+   "goal": "Forza massima e potenza: 3–5 ripetizioni a RPE 8 (RIR 2), recuperi lunghi, entra il clean. S4: +2–5% sui principali se la S3 era RPE ≤ 8.",
+   "weekly": "Come la fase 1. Dom 13: P1 · Dom 20: P1 o P2 più lungo (oppure corsa/mantenimento)",
+   "sessions": [
+    {
+     "id": "bjj2_mar",
+     "day": "Martedì",
+     "title": "Forza A — pesante",
+     "duration": "B ~55' · M ~85' · A ~90'",
+     "warmup": "R-MAR ~12': 3' assault bike/vogatore facile · dorsiflessione in mezzo-ginocchio 2×20\"/lato · 90/90 e CARs 1×5/lato · McGill Big 3 5-3-1 · Cossack squat 1×6/lato · 2–3 serie di avvicinamento (50%×5, 70%×3, 85%×1–2)",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "trap_bar",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "4 × 3",
+        "alto": "5 × 4"
+       },
+       "intensity": "RPE 8 (~82–88%)",
+       "tempo": "2-0-X-1",
+       "rest": "3–4'"
+      },
+      {
+       "code": "A2",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 giro × 10\"",
+        "medio": "3 giri × 12\" + 1 serie nella direzione più debole",
+        "alto": "3 giri × 15\" + 1 extra"
+       },
+       "intensity": "70–80%",
+       "tempo": "tenuta",
+       "rest": "—",
+       "note": "Mai a cedimento"
+      },
+      {
+       "code": "B1",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "4 × 4",
+        "alto": "5 × 5"
+       },
+       "intensity": "RPE 8",
+       "tempo": "2-0-X-0",
+       "rest": "2–3'",
+       "note": "Zavorrate, presa sbarra o gi"
+      },
+      {
+       "code": "B1b",
+       "ex": "trazioni_gi",
+       "vol": {
+        "basso": "1 tenuta 30\"",
+        "medio": "1 tenuta 30\"",
+        "alto": "2 tenute 30\""
+       },
+       "intensity": "presa da gara",
+       "tempo": "tenuta",
+       "rest": "—",
+       "note": "Dopo l'ultima serie di B1"
+      },
+      {
+       "code": "B2",
+       "ex": "bulgaro",
+       "vol": {
+        "basso": "2 × 4/gamba",
+        "medio": "3 × 5/gamba",
+        "alto": "4 × 6/gamba"
+       },
+       "intensity": "RPE 8",
+       "tempo": "2-0-X-0",
+       "rest": "2'",
+       "note": "Pesante"
+      },
+      {
+       "code": "C1",
+       "ex": "mtp",
+       "vol": {
+        "basso": "2 × 5\"",
+        "medio": "4 × 5\"",
+        "alto": "5 × 5\""
+       },
+       "intensity": "massimale, intenzione esplosiva",
+       "tempo": "5\"",
+       "rest": "2'"
+      },
+      {
+       "code": "C2",
+       "ex": "pallof",
+       "vol": {
+        "basso": "2 × 6/lato",
+        "medio": "3 × 8/lato",
+        "alto": "3 × 8/lato"
+       },
+       "intensity": "RIR 2",
+       "tempo": "1-2-1-0",
+       "rest": "60\"",
+       "note": "In mezzo-ginocchio"
+      },
+      {
+       "code": "D1",
+       "ex": "nordic",
+       "vol": {
+        "basso": "1 × 4",
+        "medio": "2 × 5",
+        "alto": "3 × 6"
+       },
+       "intensity": "mai oltre RIR 1",
+       "tempo": "5-0-mani-0",
+       "rest": "2'"
+      },
+      {
+       "code": "D2",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 8/lato",
+        "medio": "2 × 10/lato",
+        "alto": "3 × 12/lato"
+       },
+       "intensity": "controllo",
+       "tempo": "3-0-3-0",
+       "rest": "60–90\"",
+       "note": "Leva lunga (panca sotto la caviglia)"
+      },
+      {
+       "code": "E1",
+       "ex": "rope",
+       "vol": {
+        "basso": "—",
+        "medio": "—",
+        "alto": "3–5 salite"
+       },
+       "intensity": "RPE 8",
+       "tempo": "—",
+       "rest": "2'",
+       "note": "Solo ALTO: è il 2° esercizio di presa della settimana"
+      },
+      {
+       "code": "F",
+       "ex": "estensioni_dita",
+       "vol": {
+        "basso": "1 × 25",
+        "medio": "2 × 25",
+        "alto": "2 × 25"
+       },
+       "intensity": "facile",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "bjj2_ven",
+     "day": "Venerdì",
+     "title": "Forza B + potenza — pesante",
+     "duration": "B ~55' · M ~85' · A ~90'",
+     "warmup": "R-VEN ~12': 3' assault bike/vogatore facile · dorsiflessione 2×20\"/lato + 90/90 1×5/lato · Turkish get-up 1×2/lato leggero · rotazione esterna con elastico 1×15/braccio · snapdown 2×3 · 2 salti submassimali + 2 serie di avvicinamento al primo esercizio di potenza",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "hang_clean",
+       "vol": {
+        "basso": "3 × 2",
+        "medio": "4 × 3",
+        "alto": "5 × 3"
+       },
+       "intensity": "70–80%, velocità prima del carico",
+       "tempo": "X",
+       "rest": "90\"",
+       "note": "Alternativa: KB swing a un braccio 3 × 6–8/braccio"
+      },
+      {
+       "code": "A2",
+       "ex": "jump_squat",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 4",
+        "alto": "4 × 5"
+       },
+       "intensity": "massima, 10–30% 1RM squat",
+       "tempo": "X",
+       "rest": "2'"
+      },
+      {
+       "code": "B1",
+       "ex": "front_squat",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "4 × 4",
+        "alto": "5 × 4"
+       },
+       "intensity": "RPE 8 (mai 9: domani gi)",
+       "tempo": "2-0-X-0",
+       "rest": "3'"
+      },
+      {
+       "code": "B2",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 12",
+        "alto": "4 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "1-0-1-2",
+       "rest": "45\""
+      },
+      {
+       "code": "C1",
+       "ex": "panca",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "4 × 4",
+        "alto": "5 × 5"
+       },
+       "intensity": "RPE 8",
+       "tempo": "2-0-X-0",
+       "rest": "2–3'"
+      },
+      {
+       "code": "C2",
+       "ex": "cs_row",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 8",
+        "alto": "4 × 8"
+       },
+       "intensity": "RPE 8",
+       "tempo": "2-0-1-1",
+       "rest": "2'",
+       "note": "Niente presa sul tessuto prima del gi"
+      },
+      {
+       "code": "D1",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 10/braccio",
+        "medio": "3 × 12",
+        "alto": "4 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "4-0-1-0",
+       "rest": "60\"",
+       "note": "Alterna 90/90 e braccio al fianco"
+      },
+      {
+       "code": "D2",
+       "ex": "rollout",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "—",
+       "tempo": "3-0-1-0",
+       "rest": "60\"",
+       "note": "O hollow hold 20\""
+      },
+      {
+       "code": "E1",
+       "ex": "hip_thrust",
+       "vol": {
+        "basso": "—",
+        "medio": "—",
+        "alto": "3 × 5"
+       },
+       "intensity": "velocità massima",
+       "tempo": "1-0-X-1",
+       "rest": "90\"",
+       "note": "Versione esplosiva, solo ALTO"
+      }
+     ],
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "bjj2b_natale",
+   "program": "bjj",
+   "name": "BJJ 2b — Natale (pre-taper)",
+   "dates": "lun 21 – sab 26 dic 2026 (S5)",
+   "goal": "Tenere l'intensità, tagliare il volume del ~40%, arrivare al volo di dom 27 senza dolori. Perché: il taper efficace taglia il volume del 41–60% mantenendo l'intensità.",
+   "weekly": "Lun 21 gi · Mar 22 seduta unica · Mer riposo · Gio 24 no-gi se aperto · Ven 25 kit A a casa · Sab 26 gi moderato o kit B BASSO · Dom 27 volo",
+   "sessions": [
+    {
+     "id": "bjj2b_mar22",
+     "day": "Martedì 22 dic",
+     "title": "Full-body pesante (unica seduta piena)",
+     "duration": "B ~50' · M ~70' · A ~75'",
+     "warmup": "R-VEN ~12': 3' assault bike/vogatore facile · dorsiflessione 2×20\"/lato + 90/90 1×5/lato · Turkish get-up 1×2/lato leggero · rotazione esterna con elastico 1×15/braccio · snapdown 2×3 · 2 salti submassimali + 2 serie di avvicinamento al primo esercizio di potenza",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "hang_clean",
+       "vol": {
+        "basso": "2 × 2",
+        "medio": "3 × 2",
+        "alto": "3 × 2"
+       },
+       "intensity": "70–75%, veloce",
+       "tempo": "X",
+       "rest": "90\"",
+       "note": "O kettlebell swing"
+      },
+      {
+       "code": "A2",
+       "ex": "jump_squat",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "2 × 3",
+        "alto": "3 × 3"
+       },
+       "intensity": "massima",
+       "tempo": "X",
+       "rest": "2'"
+      },
+      {
+       "code": "B1",
+       "ex": "trap_bar",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 3",
+        "alto": "3 × 3"
+       },
+       "intensity": "RPE 8",
+       "tempo": "2-0-X-1",
+       "rest": "3'",
+       "note": "Stimolo pesante che 'dura' durante il viaggio"
+      },
+      {
+       "code": "B2",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 giro × 10\"",
+        "medio": "2 giri × 12\"",
+        "alto": "2 giri × 12\""
+       },
+       "intensity": "70%",
+       "tempo": "tenuta",
+       "rest": "—"
+      },
+      {
+       "code": "C1",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 3",
+        "alto": "3 × 3"
+       },
+       "intensity": "RPE 8",
+       "tempo": "2-0-X-0",
+       "rest": "2'",
+       "note": "Zavorrate"
+      },
+      {
+       "code": "C2",
+       "ex": "panca",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 3",
+        "alto": "3 × 3"
+       },
+       "intensity": "RPE 8",
+       "tempo": "2-0-X-0",
+       "rest": "2'"
+      },
+      {
+       "code": "D1",
+       "ex": "bulgaro",
+       "vol": {
+        "basso": "1 × 5/gamba",
+        "medio": "2 × 5/gamba",
+        "alto": "2 × 5/gamba"
+       },
+       "intensity": "RPE 8",
+       "tempo": "2-0-X-0",
+       "rest": "90\""
+      },
+      {
+       "code": "D2",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 8/lato",
+        "medio": "2 × 8/lato",
+        "alto": "2 × 8/lato"
+       },
+       "intensity": "controllo",
+       "tempo": "3-0-3-0",
+       "rest": "60\"",
+       "note": "Leva lunga"
+      },
+      {
+       "code": "E1",
+       "ex": "nordic",
+       "vol": {
+        "basso": "1 × 4",
+        "medio": "2 × 4",
+        "alto": "2 × 4"
+       },
+       "intensity": "RIR 2",
+       "tempo": "5-0-mani-0",
+       "rest": "2'",
+       "note": "Ultima dose prima del viaggio"
+      },
+      {
+       "code": "E2",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "—",
+       "rest": "45\"",
+       "note": "In superserie con E3"
+      },
+      {
+       "code": "E3",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "—",
+       "rest": "45\""
+      },
+      {
+       "code": "F",
+       "ex": "pallof",
+       "vol": {
+        "basso": "—",
+        "medio": "—",
+        "alto": "2 × 8/lato"
+       },
+       "intensity": "RIR 2",
+       "tempo": "1-2-1-0",
+       "rest": "45\"",
+       "note": "Unico extra dell'ALTO (tagliato)"
+      }
+     ],
+     "notes": "Ven 25 (Natale): Sessione A del kit viaggio a casa, BASSO o MEDIO, 20–25' — così la provi prima di partire. Sab 26: gi moderato se l'accademia è aperta, altrimenti Sessione B BASSO."
+    }
+   ]
+  },
+  {
+   "id": "bjj_domenica",
+   "program": "bjj",
+   "name": "BJJ — Domenica (tutte le fasi fino al 17 gen)",
+   "dates": "dom 29 nov – dom 17 gen (in Messico vale il kit)",
+   "goal": "Una sola delle tre opzioni. Qui entra la parte di Ironman che NON danneggia la gara: corsa facile e prevenzione di polpacci e tibia.",
+   "weekly": "Settimana di tatami normale e ti senti bene → Opz. 1 · sparring duri/gambe pesanti/sonno scarso → Opz. 2 · acciaccato o poco tempo → Opz. 3 o riposo",
+   "sessions": [
+    {
+     "id": "dom_opz1",
+     "day": "Domenica",
+     "title": "Opzione 1 — Condizionamento specifico (max 1 a settimana)",
+     "duration": "30–50'",
+     "warmup": "8': 5' progressivi + 3 accelerazioni da 5\". Defaticamento 5' facile.",
+     "items": [
+      {
+       "code": "A",
+       "ex": "p3_long_hiit",
+       "vol": {
+        "basso": "2 serie",
+        "medio": "3 serie",
+        "alto": "4 serie"
+       },
+       "intensity": "forte 8/10 · moderato 5–6/10",
+       "tempo": "45\"/45\" × 4",
+       "rest": "3–5'",
+       "note": "Accumulo: dom 29 nov, dom 6 dic"
+      },
+      {
+       "code": "B",
+       "ex": "p1_match",
+       "vol": {
+        "basso": "2 round",
+        "medio": "3 round",
+        "alto": "4 round"
+       },
+       "intensity": "5\" all-out",
+       "tempo": "25\"+5\" × 12",
+       "rest": "3–5'",
+       "note": "Intensificazione: dom 13 dic"
+      },
+      {
+       "code": "C",
+       "ex": "p2_franchini",
+       "vol": {
+        "basso": "P1 2 round / P2 1 × 8",
+        "medio": "P1 4 round / P2 2 × 8",
+        "alto": "P1 5 round / P2 2 × 10"
+       },
+       "intensity": "all-out",
+       "tempo": "20\"/10\"",
+       "rest": "5'",
+       "note": "Picco: dom 20 dic (scegli P1 o P2)"
+      },
+      {
+       "code": "D",
+       "ex": "p4_sprint",
+       "vol": {
+        "basso": "4 × 6\"",
+        "medio": "6 × 8\"",
+        "alto": "6 × 8\" (tagliato)"
+       },
+       "intensity": "all-out",
+       "tempo": "6–10\"",
+       "rest": "60–180\"",
+       "note": "Rientro: dom 17 gen"
+      }
+     ],
+     "notes": "Ogni domenica fai SOLO il protocollo della fase in corso (A, B, C o D)."
+    },
+    {
+     "id": "dom_opz2",
+     "day": "Domenica",
+     "title": "Opzione 2 — Corsa facile + prevenzione corsa (ponte Ironman)",
+     "duration": "35–65'",
+     "warmup": "5' di camminata veloce + dorsiflessione 1×20\"/lato",
+     "items": [
+      {
+       "code": "A",
+       "ex": "corsa_facile",
+       "vol": {
+        "basso": "25'",
+        "medio": "40'",
+        "alto": "50'"
+       },
+       "intensity": "frasi intere",
+       "tempo": "—",
+       "rest": "—",
+       "note": "ALTO solo se nelle 2 settimane prima hai già corso ≥ 40' senza dolori; se non corri da tempo: corsa-cammino 1'/1'. In intensificazione +4–6 allunghi da 10\". [Corretto]"
+      },
+      {
+       "code": "A-alt",
+       "ex": "nuoto_tecnica",
+       "vol": {
+        "basso": "20'",
+        "medio": "25'",
+        "alto": "30'"
+       },
+       "intensity": "facile, solo tecnica",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Facoltativo AL POSTO della corsa, solo S1–S4 e S8 (non in viaggio, non nella settimana gara). Niente palette/pull buoy"
+      },
+      {
+       "code": "B1",
+       "ex": "tibialis",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "2 × 15",
+        "alto": "2 × 20"
+       },
+       "intensity": "RIR 2",
+       "tempo": "1-1-2",
+       "rest": "45\"",
+       "note": "Nuovo dal piano Ironman"
+      },
+      {
+       "code": "B2",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "1 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-1-2-1",
+       "rest": "45\"",
+       "note": "A casa: su un gradino a ginocchio piegato, una gamba alla volta. Nuovo dal piano Ironman"
+      },
+      {
+       "code": "C",
+       "ex": "mobilita_im",
+       "vol": {
+        "basso": "1 × 45\"/lato",
+        "medio": "2 × 45\"/lato",
+        "alto": "2 × 60\"/lato"
+       },
+       "intensity": "senza dolore",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Couch stretch + open book"
+      }
+     ],
+     "notes": "Perché: base aerobica e primi adattamenti di tendini e polpacci, in un giorno lontano dalla forza (nessuna interferenza con la potenza). Dosi piccole e a RIR 3 per non portarti polpacci doloranti al gi del lunedì."
+    },
+    {
+     "id": "dom_opz3",
+     "day": "Domenica",
+     "title": "Opzione 3 — Mantenimento / prevenzione (20–30')",
+     "duration": "20–30'",
+     "warmup": "nessuno: è già leggero",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "mob_90_90",
+       "vol": {
+        "basso": "1 × 5/lato",
+        "medio": "2 × 5/lato",
+        "alto": "2 × 5/lato"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "A2",
+       "ex": "dorsiflessione",
+       "vol": {
+        "basso": "2 × 20\"",
+        "medio": "3 × 20\"",
+        "alto": "4 × 20\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "B",
+       "ex": "mcgill",
+       "vol": {
+        "basso": "5-3-1",
+        "medio": "6-4-2",
+        "alto": "8-6-4"
+       },
+       "intensity": "tenute 10\"",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "C1",
+       "ex": "adductor_squeeze",
+       "vol": {
+        "basso": "2 × 10\"",
+        "medio": "3 × 15\"",
+        "alto": "5 × 20\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "C2",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 12",
+        "alto": "4 × 15"
+       },
+       "intensity": "elastico",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "D1",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 × 20\"",
+        "medio": "2 × 20\"",
+        "alto": "2 × 30\""
+       },
+       "intensity": "40–50%",
+       "tempo": "tenuta",
+       "rest": "—"
+      },
+      {
+       "code": "D2",
+       "ex": "band_pull_apart",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 15",
+        "alto": "4 × 20"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "E",
+       "ex": "estensioni_dita",
+       "vol": {
+        "basso": "1 × 25",
+        "medio": "2 × 25",
+        "alto": "2 × 25"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "F1",
+       "ex": "tibialis",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "2 × 15",
+        "alto": "2 × 20"
+       },
+       "intensity": "RIR 2",
+       "tempo": "1-1-2",
+       "rest": "45\"",
+       "note": "Facoltativo (ponte Ironman)"
+      },
+      {
+       "code": "F2",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "1 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-1-2-1",
+       "rest": "45\"",
+       "note": "Facoltativo (ponte Ironman)"
+      }
+     ],
+     "notes": "Piccole dosi per anca, inguine, spalla, collo, tibia e polpacci senza togliere niente al gi del lunedì."
+    }
+   ]
+  },
+  {
+   "id": "bjj3_viaggio",
+   "program": "bjj",
+   "name": "BJJ 3 — Viaggio in Messico (taper forzato)",
+   "dates": "dom 27 dic 2026 – sab 9 gen 2027 (S6–S7)",
+   "goal": "Mantenere forza e potenza con poco volume ma vicino al cedimento (RIR 1–2). È il taper: il volume scende da solo, l'intensità no.",
+   "weekly": "S6: A (lun 28 o mar 29) · B (mer 30 o gio 31) · A (sab 2) — Nordic solo nella prima A · S7: B (lun 4) · A (mer 6, con Nordic) · B (ven 8, facoltativa, BASSO). Giorni di volo/bus = riposo",
+   "sessions": [
+    {
+     "id": "viaggio_A",
+     "day": "Lun/Mar e Sab (S6) · Mer (S7)",
+     "title": "Sessione A — gambe + tirate + prevenzione",
+     "duration": "~25'",
+     "warmup": "3': 30\" saltelli sul posto · 90/90 1×5/lato · dorsiflessione 1×20\"/lato · band pull-apart 1×15 · 3 jump squat leggeri",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "bulgaro",
+       "vol": {
+        "basso": "1 × 10/gamba",
+        "medio": "2 × 10–12",
+        "alto": "3 × 12 + 1 × 6 jump lunge/gamba"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "3-1-X-0",
+       "rest": "—",
+       "note": "Su sedia/letto, zaino come carico"
+      },
+      {
+       "code": "A2",
+       "ex": "inverted_row",
+       "vol": {
+        "basso": "1 × 12",
+        "medio": "2 × 12–15",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "2-0-1-1",
+       "rest": "60–90\""
+      },
+      {
+       "code": "B1",
+       "ex": "nordic",
+       "vol": {
+        "basso": "1 × 4",
+        "medio": "2 × 4–5",
+        "alto": "2 × 6"
+       },
+       "intensity": "RIR 2",
+       "tempo": "5-0-mani-0",
+       "rest": "—",
+       "note": "1 volta a settimana (piedi sotto il letto)"
+      },
+      {
+       "code": "B2",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 6/lato",
+        "medio": "2 × 8/lato",
+        "alto": "2 × 10–12/lato"
+       },
+       "intensity": "RIR 2",
+       "tempo": "3-0-3-0",
+       "rest": "60\"",
+       "note": "Su sedia o letto"
+      },
+      {
+       "code": "C1",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "2 × 15",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 2",
+       "tempo": "3-0-1-0",
+       "rest": "—",
+       "note": "Elastico"
+      },
+      {
+       "code": "C2",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 × 10\"/piano",
+        "medio": "2 × 10\"",
+        "alto": "3 × 15\""
+       },
+       "intensity": "70%",
+       "tempo": "tenuta",
+       "rest": "30\""
+      },
+      {
+       "code": "C3",
+       "ex": "tibialis",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "1 × 20",
+        "alto": "2 × 20"
+       },
+       "intensity": "RIR 2",
+       "tempo": "1-1-2",
+       "rest": "—",
+       "note": "Facoltativo, al muro: non è nuovo se l'hai fatto la domenica"
+      },
+      {
+       "code": "D",
+       "ex": "p6",
+       "vol": {
+        "basso": "6'",
+        "medio": "8'",
+        "alto": "10'"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Nella S7 preferisci l'opzione 2 (round da 6')"
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "viaggio_B",
+     "day": "Mer/Gio (S6) · Lun e Ven (S7)",
+     "title": "Sessione B — spinta + potenza + core + specifico",
+     "duration": "~25'",
+     "warmup": "3': 30\" saltelli sul posto · 90/90 1×5/lato · dorsiflessione 1×20\"/lato · band pull-apart 1×15 · 3 jump squat leggeri",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "broad_jump",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 4",
+        "alto": "4 × 5"
+       },
+       "intensity": "massima intenzione",
+       "tempo": "X",
+       "rest": "60–90\"",
+       "note": "O jump squat"
+      },
+      {
+       "code": "B1",
+       "ex": "piegamenti",
+       "vol": {
+        "basso": "1 × (max − 2)",
+        "medio": "2 × (max − 2)",
+        "alto": "3 × (max − 1)"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "3-0-1-0 / X",
+       "rest": "—"
+      },
+      {
+       "code": "B2",
+       "ex": "pistol",
+       "vol": {
+        "basso": "1 × 5/gamba",
+        "medio": "2 × 6",
+        "alto": "3 × 8"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "3-0-1-0",
+       "rest": "60–90\""
+      },
+      {
+       "code": "C1",
+       "ex": "sl_rdl",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "2 × 10–12",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "3-0-1-2",
+       "rest": "—",
+       "note": "O glute bridge a una gamba"
+      },
+      {
+       "code": "C2",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "1 × 8",
+        "medio": "2 × 10",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 2",
+       "tempo": "lento",
+       "rest": "45\"",
+       "note": "Giro con Pallof press con elastico e band pull-apart"
+      },
+      {
+       "code": "C3",
+       "ex": "pallof",
+       "vol": {
+        "basso": "1 × 8",
+        "medio": "2 × 10",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 2",
+       "tempo": "lento",
+       "rest": "—",
+       "note": "Elastico"
+      },
+      {
+       "code": "C4",
+       "ex": "band_pull_apart",
+       "vol": {
+        "basso": "1 × 8",
+        "medio": "2 × 10",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 2",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "D",
+       "ex": "solo_drill",
+       "vol": {
+        "basso": "3'",
+        "medio": "5'",
+        "alto": "8'"
+       },
+       "intensity": "ritmo",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "bjj4_rientro",
+   "program": "bjj",
+   "name": "BJJ 4 — Rientro",
+   "dates": "dom 10 – sab 16 gen 2027 (S8)",
+   "goal": "Le ultime due settimane sono del tatami: ritrovare il ritmo. Palestra = una riattivazione e l'ultima seduta pesante a 8 giorni dalla gara.",
+   "weekly": "Sab 9 volo di rientro (riposo) · Dom 10 camminata + mobilità · Lun 11 gi moderato · Mar 12 Riattivazione · Mer 13 riposo + prova peso · Gio 14 no-gi a ritmo gara · Ven 15 Ultima pesante · Sab 16 ultimo sparring duro · Dom 17 P4 o riposo + prova peso",
+   "sessions": [
+    {
+     "id": "rientro_mar12",
+     "day": "Martedì 12 gen",
+     "title": "Riattivazione",
+     "duration": "B ~40' · M ~55' · A ~65'",
+     "warmup": "R-MAR ~12': 3' assault bike/vogatore facile · dorsiflessione in mezzo-ginocchio 2×20\"/lato · 90/90 e CARs 1×5/lato · McGill Big 3 5-3-1 · Cossack squat 1×6/lato · 2–3 serie di avvicinamento (50%×5, 70%×3, 85%×1–2)",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "trap_bar",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "2 × 3",
+        "alto": "2 × 3"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-0-X-1",
+       "rest": "3'"
+      },
+      {
+       "code": "A2",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 giro × 10\"",
+        "medio": "2 giri × 10\"",
+        "alto": "2 giri × 10\""
+       },
+       "intensity": "60%",
+       "tempo": "tenuta",
+       "rest": "—"
+      },
+      {
+       "code": "B1",
+       "ex": "trazioni_gi",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 3",
+        "alto": "3 × 3"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-0-1-0",
+       "rest": "2'"
+      },
+      {
+       "code": "B2",
+       "ex": "bulgaro",
+       "vol": {
+        "basso": "1 × 5/gamba",
+        "medio": "2 × 5/gamba",
+        "alto": "2 × 5/gamba"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-0-X-0",
+       "rest": "90\""
+      },
+      {
+       "code": "C1",
+       "ex": "nordic",
+       "vol": {
+        "basso": "—",
+        "medio": "1 × 4",
+        "alto": "1 × 4"
+       },
+       "intensity": "RIR 3",
+       "tempo": "5-0-mani-0",
+       "rest": "2'",
+       "note": "Solo se l'hai fatto in viaggio"
+      },
+      {
+       "code": "C2",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 6/lato",
+        "medio": "2 × 6/lato",
+        "alto": "2 × 8/lato"
+       },
+       "intensity": "controllo",
+       "tempo": "3-0-3-0",
+       "rest": "60\"",
+       "note": "Leva lunga"
+      },
+      {
+       "code": "D1",
+       "ex": "pallof",
+       "vol": {
+        "basso": "—",
+        "medio": "2 × 8/lato",
+        "alto": "2 × 8/lato"
+       },
+       "intensity": "RIR 3",
+       "tempo": "1-2-1-0",
+       "rest": "45\""
+      },
+      {
+       "code": "D2",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "1 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "—",
+       "rest": "45\"",
+       "note": "In superserie con D3"
+      },
+      {
+       "code": "D3",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "1 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "E1",
+       "ex": "sl_rdl",
+       "vol": {
+        "basso": "—",
+        "medio": "—",
+        "alto": "2 × 6/gamba"
+       },
+       "intensity": "RPE 7",
+       "tempo": "3-0-1-0",
+       "rest": "60\""
+      }
+     ],
+     "notes": "Obiettivo: risentire il bilanciere, niente cedimenti, niente dolori il giorno dopo. L'ALTO qui è già 'tagliato'."
+    },
+    {
+     "id": "rientro_ven15",
+     "day": "Venerdì 15 gen",
+     "title": "Ultima seduta pesante (8 giorni prima)",
+     "duration": "B ~40' · M ~55'",
+     "warmup": "R-VEN ~12': 3' assault bike/vogatore facile · dorsiflessione 2×20\"/lato + 90/90 1×5/lato · Turkish get-up 1×2/lato leggero · rotazione esterna con elastico 1×15/braccio · snapdown 2×3 · 2 salti submassimali + 2 serie di avvicinamento al primo esercizio di potenza",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "hang_clean",
+       "vol": {
+        "basso": "2 × 2",
+        "medio": "3 × 2",
+        "alto": "3 × 2"
+       },
+       "intensity": "~70%, veloce",
+       "tempo": "X",
+       "rest": "90\"",
+       "note": "O kettlebell swing"
+      },
+      {
+       "code": "A2",
+       "ex": "jump_squat",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "2 × 3",
+        "alto": "2 × 3"
+       },
+       "intensity": "massima",
+       "tempo": "X",
+       "rest": "2'"
+      },
+      {
+       "code": "B1",
+       "ex": "front_squat",
+       "vol": {
+        "basso": "2 × 2",
+        "medio": "3 × 2",
+        "alto": "3 × 2"
+       },
+       "intensity": "RPE 7–8",
+       "tempo": "2-0-X-0",
+       "rest": "3'",
+       "note": "O trap bar: scegli quello con cui ti senti meglio"
+      },
+      {
+       "code": "B2",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 12"
+       },
+       "intensity": "RIR 3",
+       "tempo": "1-0-1-2",
+       "rest": "45\""
+      },
+      {
+       "code": "C1",
+       "ex": "panca",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "2 × 3",
+        "alto": "2 × 3"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-0-X-0",
+       "rest": "2'"
+      },
+      {
+       "code": "C2",
+       "ex": "rematore_gi",
+       "vol": {
+        "basso": "—",
+        "medio": "2 × 8",
+        "alto": "2 × 8"
+       },
+       "intensity": "RPE 7",
+       "tempo": "2-0-1-1",
+       "rest": "90\"",
+       "note": "Leggero: domani gi"
+      },
+      {
+       "code": "D1",
+       "ex": "mtp",
+       "vol": {
+        "basso": "2 × 3\"",
+        "medio": "3 × 3\"",
+        "alto": "3 × 3\""
+       },
+       "intensity": "intenzione esplosiva",
+       "tempo": "3\"",
+       "rest": "2'"
+      },
+      {
+       "code": "D2",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "—",
+        "medio": "2 × 8/lato",
+        "alto": "2 × 8/lato"
+       },
+       "intensity": "—",
+       "tempo": "lento",
+       "rest": "45\""
+      }
+     ],
+     "notes": "Default BASSO, MEDIO solo con punteggio ≥ 7. Niente ALTO e niente Nordic. [Corretto: era previsto un ALTO 'tagliato' con hip thrust extra]"
+    }
+   ]
+  },
+  {
+   "id": "bjj5_gara",
+   "program": "bjj",
+   "name": "BJJ 5 — Settimana gara",
+   "dates": "lun 18 – sab 23 gen 2027 (S9) · GARA sab 23 gen (ipotesi)",
+   "goal": "Arrivare fresco e veloce: una sola attivazione, niente pesi pesanti, niente Nordic, niente cose nuove, niente ALTO.",
+   "weekly": "Lun 18 gi tecnico leggero · Mar 19 Attivazione · Mer 20 riposo · Gio 21 tatami leggero 30–45' · Ven 22 riposo o 15' mobilità + 3 jump squat + 3 KB swing · Sab 23 GARA",
+   "sessions": [
+    {
+     "id": "gara_mar19",
+     "day": "Martedì 19 gen",
+     "title": "Attivazione 30–40' (4 giorni prima)",
+     "duration": "B ~30' · M ~40'",
+     "warmup": "R-VEN ridotto (8')",
+     "items": [
+      {
+       "code": "A1",
+       "ex": "kb_swing",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 5",
+        "alto": "3 × 5"
+       },
+       "intensity": "RPE ≤ 7, veloce",
+       "tempo": "X",
+       "rest": "60\""
+      },
+      {
+       "code": "A2",
+       "ex": "box_jump",
+       "vol": {
+        "basso": "2 × 2",
+        "medio": "2 × 3",
+        "alto": "2 × 3"
+       },
+       "intensity": "RPE ≤ 7",
+       "tempo": "X",
+       "rest": "90\""
+      },
+      {
+       "code": "B1",
+       "ex": "trazioni_gi",
+       "vol": {
+        "basso": "1 × 2",
+        "medio": "2 × 2",
+        "alto": "2 × 2"
+       },
+       "intensity": "RPE ≤ 7",
+       "tempo": "—",
+       "rest": "2'"
+      },
+      {
+       "code": "B2",
+       "ex": "mtp",
+       "vol": {
+        "basso": "1 × 3\"",
+        "medio": "2 × 3\"",
+        "alto": "2 × 3\""
+       },
+       "intensity": "esplosiva",
+       "tempo": "3\"",
+       "rest": "90\""
+      },
+      {
+       "code": "C1",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "1 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 12"
+       },
+       "intensity": "facile",
+       "tempo": "—",
+       "rest": "30\"",
+       "note": "Con band pull-apart"
+      },
+      {
+       "code": "C2",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 × 10\"",
+        "medio": "2 × 10\"",
+        "alto": "2 × 10\""
+       },
+       "intensity": "60%",
+       "tempo": "tenuta",
+       "rest": "—"
+      }
+     ],
+     "notes": "Esci con la sensazione di averne ancora tanto. ALTO = MEDIO. [Corretto: l'ALTO 'tagliato' con Pallof extra è stato tolto: la ricerca dice mai ALTO nella settimana della gara]"
+    },
+    {
+     "id": "gara_warmup",
+     "day": "Sabato 23 gen",
+     "title": "Giorno di gara — riscaldamento pre-incontro (~20')",
+     "duration": "~20', finisci 5–10' prima della chiamata",
+     "warmup": "—",
+     "items": [
+      {
+       "code": "1",
+       "ex": "solo_drill",
+       "vol": {
+        "basso": "3'",
+        "medio": "3'",
+        "alto": "3'"
+       },
+       "intensity": "lento",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Shrimp, technical stand-up, bear crawl lento"
+      },
+      {
+       "code": "2a",
+       "ex": "mob_90_90",
+       "vol": {
+        "basso": "1 × 5/lato",
+        "medio": "1 × 5/lato",
+        "alto": "1 × 5/lato"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Blocco mobilità 5': con dorsiflessione"
+      },
+      {
+       "code": "2b",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "1 × 15",
+        "alto": "1 × 15"
+       },
+       "intensity": "elastico",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "2c",
+       "ex": "band_pull_apart",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "1 × 15",
+        "alto": "1 × 15"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "2d",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 giro × 5\"",
+        "medio": "1 giro × 5\"",
+        "alto": "1 giro × 5\""
+       },
+       "intensity": "50%",
+       "tempo": "tenuta",
+       "rest": "—"
+      },
+      {
+       "code": "3a",
+       "ex": "snapdown",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "2 × 3",
+        "alto": "2 × 3"
+       },
+       "intensity": "veloce",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "3b",
+       "ex": "jump_squat",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "2 × 3",
+        "alto": "2 × 3"
+       },
+       "intensity": "corpo libero",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "4",
+       "ex": "p6",
+       "vol": {
+        "basso": "25\" facile + 5\" forte × 4",
+        "medio": "× 4",
+        "alto": "× 4"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Shrimp + sprawl, 2'"
+      },
+      {
+       "code": "5",
+       "ex": "solo_drill",
+       "vol": {
+        "basso": "5–8' drilling con compagno",
+        "medio": "5–8'",
+        "alto": "5–8'"
+       },
+       "intensity": "ultimo minuto all'80%",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Grip fight, entrate, passaggi"
+      }
+     ],
+     "notes": "Colazione 3–4 h prima (1–2 g/kg di carboidrati, la stessa provata il 16) · ultima ora 25–30 g di carboidrati facili · caffeina 3 mg/kg (~230 mg) 60' prima solo se provata · tra gli incontri 300–500 ml con sali + 20–40 g di carboidrati · pausa > 2 h: ~80 g carboidrati + 20–25 g proteine. Se la chiamata slitta > 15', ripeti i blocchi 4–5."
+    }
+   ]
+  },
+  {
+   "id": "transizione",
+   "program": "transizione",
+   "name": "Transizione BJJ → Ironman (= Ironman Fase 0)",
+   "dates": "dom 24 gen – dom 7 feb 2027 (T1 + T2)",
+   "goal": "Recuperare dalla gara, sistemare gli acciacchi (dita, gomiti, collo, costole), ripartire con movimenti facili senza indolenzimento, fare i test di partenza. Niente BJJ in queste 2 settimane.",
+   "weekly": "T1 (24–31 gen): Dom 24 riposo · Lun 25 camminata 30–45' + mobilità · Mar 26 nuoto tecnico 20–30' · Mer 27 bici facile 45' · Gio 28 Seduta R BASSO · Ven 29 nuoto tecnico 30' · Sab 30 bici facile 60' · Dom 31 corsa-cammino 20' o riposo — T2 (1–7 feb): Lun nuoto + Seduta R MEDIO · Mar bici 45–60' · Mer nuoto + mobilità · Gio corsa-cammino 20–25' · Ven nuoto + Seduta R con test · Sab bici 60–90' · Dom riposo",
+   "sessions": [
+    {
+     "id": "seduta_R",
+     "day": "T1: Gio 28 · T2: Lun 1 e Ven 5",
+     "title": "Seduta R — Rientro (45–60')",
+     "duration": "45–60'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "1",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "3-1-1",
+       "rest": "90\"",
+       "note": "Versione goblet"
+      },
+      {
+       "code": "2",
+       "ex": "rdl",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "3-1-1",
+       "rest": "90\"",
+       "note": "Con manubri"
+      },
+      {
+       "code": "3",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-0-1",
+       "rest": "90\"",
+       "note": "Lat machine"
+      },
+      {
+       "code": "4",
+       "ex": "rematore_manubrio",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-0-1",
+       "rest": "60\""
+      },
+      {
+       "code": "5",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-1-2-1",
+       "rest": "90\"",
+       "note": "Leggero"
+      },
+      {
+       "code": "6",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-1-3",
+       "rest": "45\"",
+       "note": "A 0°"
+      },
+      {
+       "code": "7",
+       "ex": "abduzione",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-1-2",
+       "rest": "45\""
+      },
+      {
+       "code": "8",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 6",
+        "alto": "3 × 8"
+       },
+       "intensity": "—",
+       "tempo": "lento",
+       "rest": "45\""
+      },
+      {
+       "code": "9",
+       "ex": "mobilita_im",
+       "vol": {
+        "basso": "5'",
+        "medio": "8'",
+        "alto": "10'"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Open book + couch + sleeper; + chin tuck"
+      }
+     ],
+     "notes": "T1 sempre BASSO, T2 MEDIO; ALTO solo se non hai nessun acciacco dalla gara. Qualsiasi dolore articolare → togli l'esercizio che lo provoca. Test di ven 5 feb (al posto dell'esercizio 5): calf raise monopodalico con deficit fino a cedimento per gamba + wall angel. Nella T2 anche: test 400 m a nuoto e zone di frequenza cardiaca in bici e corsa."
+    }
+   ]
+  },
+  {
+   "id": "im_f1",
+   "program": "ironman",
+   "name": "Ironman F1 — Adattamento",
+   "dates": "lun 8 feb – dom 7 mar 2027 (S3–S6)",
+   "goal": "Preparare tendini, articolazioni e tecnica ai carichi pesanti: RIR 3, 8–12 ripetizioni, tempi lenti. Inizia polpacci, anca e spalla da nuotatore.",
+   "weekly": "Lun nuoto tecnica + Palestra A · Mar corsa facile (corsa-cammino) + BJJ tecnico facoltativo la sera · Mer nuoto + bici facile (+ mini M) · Gio corsa con allunghi + Palestra B (≥ 3 h dopo) · Ven nuoto · Sab bici lunga Z2 · Dom corsa lunga facile + mobilità",
+   "sessions": [
+    {
+     "id": "im_a1",
+     "day": "Lunedì",
+     "title": "A1 — Forza bilaterale + soleo + spalla",
+     "duration": "~75'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "pogo",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "2 × 15",
+        "alto": "3 × 15"
+       },
+       "intensity": "contatto breve",
+       "tempo": "—",
+       "rest": "60–90\"",
+       "note": "Bipodalici"
+      },
+      {
+       "code": "1",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8–10",
+        "alto": "4 × 8–10"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-1-1",
+       "rest": "2'",
+       "note": "Full squat"
+      },
+      {
+       "code": "2",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 6",
+        "alto": "4 × 6"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-0-1",
+       "rest": "2'",
+       "note": "Assistite se serve"
+      },
+      {
+       "code": "3",
+       "ex": "leg_press_mono",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-0-1",
+       "rest": "90\""
+      },
+      {
+       "code": "4",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12–15",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-1-2-1",
+       "rest": "90\""
+      },
+      {
+       "code": "5",
+       "ex": "flex_anca",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "1-1-3",
+       "rest": "60\""
+      },
+      {
+       "code": "6a",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-1-3",
+       "rest": "60\"",
+       "note": "A 0°, superserie con 6b"
+      },
+      {
+       "code": "6b",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-1-3",
+       "rest": "60\""
+      },
+      {
+       "code": "7",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 6",
+        "alto": "3 × 8"
+       },
+       "intensity": "—",
+       "tempo": "3\" estensione",
+       "rest": "45\""
+      },
+      {
+       "code": "8",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 6/lato",
+        "medio": "2 × 8/lato",
+        "alto": "2 × 10/lato"
+       },
+       "intensity": "controllo",
+       "tempo": "3-0-3-0",
+       "rest": "45\"",
+       "note": "Leva lunga se l'inguine è ok, altrimenti corta. [Corretto: la tabella originale mescolava settimane e livelli]"
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "im_b1",
+     "day": "Giovedì (≥ 3 h dopo la corsa)",
+     "title": "B1 — Unilaterale + catena posteriore + anca/core",
+     "duration": "~75'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "corda",
+       "vol": {
+        "basso": "5 × 30\"",
+        "medio": "6 × 30\"",
+        "alto": "8 × 30\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "30\""
+      },
+      {
+       "code": "1",
+       "ex": "rdl",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "4 × 8"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-1-1",
+       "rest": "2'",
+       "note": "Bilanciere"
+      },
+      {
+       "code": "2",
+       "ex": "bulgaro",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-1-1",
+       "rest": "90\""
+      },
+      {
+       "code": "3",
+       "ex": "rematore_manubrio",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-1",
+       "rest": "60\""
+      },
+      {
+       "code": "4",
+       "ex": "calf_mono",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "3-1-1-1",
+       "rest": "60–90\"",
+       "note": "Corpo libero"
+      },
+      {
+       "code": "5",
+       "ex": "pulldown_bt",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-2",
+       "rest": "60\""
+      },
+      {
+       "code": "6",
+       "ex": "abduzione",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "4 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-2",
+       "rest": "60\""
+      },
+      {
+       "code": "7",
+       "ex": "side_plank",
+       "vol": {
+        "basso": "2 × 20\"",
+        "medio": "3 × 30\"",
+        "alto": "3 × 30\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "45\""
+      },
+      {
+       "code": "8",
+       "ex": "pallof",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "—",
+       "tempo": "2–3\" tenuta",
+       "rest": "45\""
+      },
+      {
+       "code": "9",
+       "ex": "tibialis",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "2 × 20",
+        "alto": "3 × 20"
+       },
+       "intensity": "RIR 2",
+       "tempo": "1-1-2",
+       "rest": "45\""
+      },
+      {
+       "code": "10",
+       "ex": "nordic",
+       "vol": {
+        "basso": "1 × 4",
+        "medio": "2 × 4",
+        "alto": "2 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "5-0-mani-0",
+       "rest": "2'",
+       "note": "Facoltativo, mantenimento 1×/settimana. [Aggiunto: non buttare l'adattamento costruito nel BJJ]"
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "im_m1",
+     "day": "Mar o Mer (dopo corsa facile o a casa)",
+     "title": "Mini-seduta M (15–20', facoltativa)",
+     "duration": "15–20'",
+     "warmup": "nessuno",
+     "items": [
+      {
+       "code": "1",
+       "ex": "pelvic_drop",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 15",
+        "alto": "3 × 20"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "2",
+       "ex": "passi_laterali",
+       "vol": {
+        "basso": "2 × 15 passi",
+        "medio": "3 × 20",
+        "alto": "3 × 30"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "3",
+       "ex": "short_foot",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "3 × 15"
+       },
+       "intensity": "tenute 5\"",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "4",
+       "ex": "ytw",
+       "vol": {
+        "basso": "1 giro",
+        "medio": "2 giri",
+        "alto": "3 giri"
+       },
+       "intensity": "1–3 kg",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "5",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "2 × 10",
+        "alto": "2 × 10"
+       },
+       "intensity": "chin tuck + isometrie 50–70%",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": "Esercizi a interferenza quasi nulla per anca, piede e spalla."
+    }
+   ]
+  },
+  {
+   "id": "im_f2",
+   "program": "ironman",
+   "name": "Ironman F2 — Forza massima, base anno 1",
+   "dates": "lun 8 mar – dom 2 mag 2027 (S7–S14; S10 e S14 deload)",
+   "goal": "La finestra d'oro: forza massima di gambe, soleo forte, spalla da nuotatore, ricomposizione. S7–S9 carico crescente · S10 deload · S11–S13 carico crescente · S14 deload + ri-test.",
+   "weekly": "Come F1; dal giovedì corse con allunghi o ripetute brevi (Palestra B ≥ 3 h dopo). Se la corsa lunga supera 60', l'A2 del lunedì tende a MEDIO/BASSO",
+   "sessions": [
+    {
+     "id": "im_a2",
+     "day": "Lunedì",
+     "title": "A2 — Forza massima bilaterale + soleo + spalla (seduta pesante)",
+     "duration": "~75–90'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "pogo",
+       "vol": {
+        "basso": "2 × 15",
+        "medio": "3 × 20",
+        "alto": "3 × 20"
+       },
+       "intensity": "contatto breve",
+       "tempo": "—",
+       "rest": "60–90\""
+      },
+      {
+       "code": "1",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 5",
+        "alto": "4 × 5"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "2-0-X",
+       "rest": "3'"
+      },
+      {
+       "code": "2",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "3 × 4",
+        "medio": "4 × 5",
+        "alto": "5 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-1",
+       "rest": "2'",
+       "note": "Zavorrate se ne fai > 10 pulite"
+      },
+      {
+       "code": "3",
+       "ex": "leg_press_mono",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 6",
+        "alto": "3 × 6"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "2-0-X",
+       "rest": "2'"
+      },
+      {
+       "code": "4",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "4 × 8–10"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "3-1-2-1",
+       "rest": "2'"
+      },
+      {
+       "code": "5",
+       "ex": "flex_anca",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 8",
+        "alto": "3 × 8"
+       },
+       "intensity": "RIR 2",
+       "tempo": "1-1-3",
+       "rest": "60–90\""
+      },
+      {
+       "code": "6a",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-1-3",
+       "rest": "60\"",
+       "note": "A 90° da S11"
+      },
+      {
+       "code": "6b",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-1-3",
+       "rest": "60\""
+      },
+      {
+       "code": "7",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "—",
+       "tempo": "3\" estensione",
+       "rest": "45\""
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "im_b2",
+     "day": "Giovedì (≥ 3 h dopo la corsa)",
+     "title": "B2 — Unilaterale + catena posteriore + anca/core (seduta media)",
+     "duration": "~75–90'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "corda",
+       "vol": {
+        "basso": "5 × 30\"",
+        "medio": "6 × 30\"",
+        "alto": "8 × 30\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "30–60\"",
+       "note": "+ pogo monopodalici solo se fai ≥ 25 calf raise per gamba"
+      },
+      {
+       "code": "1",
+       "ex": "rdl",
+       "vol": {
+        "basso": "2 × 5–6",
+        "medio": "3 × 5–6",
+        "alto": "4 × 5–6"
+       },
+       "intensity": "RIR 2",
+       "tempo": "3-0-X",
+       "rest": "2–3'",
+       "note": "O stacco con trap bar (2-0-X)"
+      },
+      {
+       "code": "2",
+       "ex": "bulgaro",
+       "vol": {
+        "basso": "2 × 6–8",
+        "medio": "3 × 6–8",
+        "alto": "4 × 6–8"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-X",
+       "rest": "2'",
+       "note": "Manubri"
+      },
+      {
+       "code": "3",
+       "ex": "rematore_manubrio",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-1",
+       "rest": "60–90\""
+      },
+      {
+       "code": "4",
+       "ex": "calf_mono",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "4 × 8"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "3-1-1-1",
+       "rest": "90\"",
+       "note": "Con manubrio"
+      },
+      {
+       "code": "5",
+       "ex": "pulldown_bt",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-2",
+       "rest": "60\""
+      },
+      {
+       "code": "6",
+       "ex": "abduzione",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "4 × 12"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "2-1-2",
+       "rest": "60–90\"",
+       "note": "Al cavo"
+      },
+      {
+       "code": "7a",
+       "ex": "side_plank",
+       "vol": {
+        "basso": "2 × 20\"",
+        "medio": "3 × 30\"",
+        "alto": "3 × 45\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "45–60\""
+      },
+      {
+       "code": "7b",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 5",
+        "medio": "1 × 10",
+        "alto": "2 × 12"
+       },
+       "intensity": "controllo",
+       "tempo": "—",
+       "rest": "45–60\""
+      },
+      {
+       "code": "8",
+       "ex": "pallof",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "4 × 12"
+       },
+       "intensity": "—",
+       "tempo": "2–3\" tenuta",
+       "rest": "45\""
+      },
+      {
+       "code": "9",
+       "ex": "nordic",
+       "vol": {
+        "basso": "1 × 4",
+        "medio": "2 × 4",
+        "alto": "2 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "5-0-mani-0",
+       "rest": "2'",
+       "note": "Facoltativo, 1×/settimana; mai il giorno prima di corsa di qualità. [Aggiunto]"
+      }
+     ],
+     "notes": "S10 e S14: BASSO obbligatorio con lo stesso RIR. Test in S14: calf raise monopodalico, wall angel."
+    },
+    {
+     "id": "im_m2",
+     "day": "Mar o Mer (dopo corsa facile o a casa)",
+     "title": "Mini-seduta M (15–20', facoltativa)",
+     "duration": "15–20'",
+     "warmup": "nessuno",
+     "items": [
+      {
+       "code": "1",
+       "ex": "pelvic_drop",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 15",
+        "alto": "3 × 20"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "2",
+       "ex": "passi_laterali",
+       "vol": {
+        "basso": "2 × 15 passi",
+        "medio": "3 × 20",
+        "alto": "3 × 30"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "3",
+       "ex": "short_foot",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "3 × 15"
+       },
+       "intensity": "tenute 5\"",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "4",
+       "ex": "ytw",
+       "vol": {
+        "basso": "1 giro",
+        "medio": "2 giri",
+        "alto": "3 giri"
+       },
+       "intensity": "1–3 kg",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "5",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "2 × 10",
+        "alto": "2 × 10"
+       },
+       "intensity": "chin tuck + isometrie 50–70%",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": "Esercizi a interferenza quasi nulla per anca, piede e spalla."
+    }
+   ]
+  },
+  {
+   "id": "im_f3",
+   "program": "ironman",
+   "name": "Ironman F3 — Stagione gare brevi 2027",
+   "dates": "lun 3 mag – ~dom 10 ott 2027 (S15 → ultima gara)",
+   "goal": "Tenere la forza e trasformarla in forza esplosiva/reattiva (bounding dalla 4ª settimana). Blocchi 3 + 1 deload, allineati con lo scarico di nuoto/bici/corsa. Mai più di 3 settimane senza una seduta pesante di gambe.",
+   "weekly": "Lun nuoto + A3 · Mar corsa facile + mini M · Mer bici qualità · Gio corsa qualità + B3 (≥ 3 h dopo) · Ven nuoto · Sab bici lunga + brick corto · Dom corsa lunga facile. Settimane di gara: solo A3 BASSO senza bounding entro martedì",
+   "sessions": [
+    {
+     "id": "im_a3",
+     "day": "Lunedì",
+     "title": "A3 — Forza + reattività",
+     "duration": "~65–80'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "pogo",
+       "vol": {
+        "basso": "2 × 15 bip",
+        "medio": "3 × 20 bip",
+        "alto": "3 × 20 bip + 2 × 10 mono/gamba"
+       },
+       "intensity": "contatto breve",
+       "tempo": "—",
+       "rest": "90\""
+      },
+      {
+       "code": "1",
+       "ex": "bounding",
+       "vol": {
+        "basso": "2 × 15 m",
+        "medio": "3 × 20 m",
+        "alto": "4 × 20 m"
+       },
+       "intensity": "ritmo medio",
+       "tempo": "—",
+       "rest": "2'",
+       "note": "Dalla 4ª settimana della fase"
+      },
+      {
+       "code": "2",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "2 × 4",
+        "medio": "3 × 4",
+        "alto": "3 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "3'",
+       "note": "Mezzo squat a 90°"
+      },
+      {
+       "code": "3",
+       "ex": "jump_squat",
+       "vol": {
+        "basso": "2 × 4",
+        "medio": "3 × 5",
+        "alto": "3 × 5"
+       },
+       "intensity": "esplosivo",
+       "tempo": "—",
+       "rest": "nel rec. dello squat",
+       "note": "Corpo libero, subito dopo ogni serie di squat"
+      },
+      {
+       "code": "4",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "3 × 4",
+        "medio": "4 × 4",
+        "alto": "4 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "2'"
+      },
+      {
+       "code": "5",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "2 × 6–8",
+        "medio": "3 × 6–8",
+        "alto": "4 × 6–8"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "2-1-X-1",
+       "rest": "2'"
+      },
+      {
+       "code": "6",
+       "ex": "flex_anca",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 6",
+        "alto": "3 × 8"
+       },
+       "intensity": "RIR 2",
+       "tempo": "X-1-2",
+       "rest": "90\""
+      },
+      {
+       "code": "7a",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-3",
+       "rest": "60\"",
+       "note": "A 90°"
+      },
+      {
+       "code": "7b",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-3",
+       "rest": "60\"",
+       "note": "2\" di tenuta"
+      },
+      {
+       "code": "8",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "45\"",
+       "note": "Con manubrio/elastico + chin tuck"
+      }
+     ],
+     "notes": "Contatti di plyometria: BASSO ~40 · MEDIO ~80 · ALTO ~110 (tetto 120)."
+    },
+    {
+     "id": "im_b3",
+     "day": "Giovedì (≥ 3 h dopo la corsa)",
+     "title": "B3 — Catena posteriore pesante + unilaterale + anca/core",
+     "duration": "~65–80'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "corda",
+       "vol": {
+        "basso": "5 × 30\"",
+        "medio": "6 × 30\"",
+        "alto": "8 × 30\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "30\""
+      },
+      {
+       "code": "1",
+       "ex": "trap_bar",
+       "vol": {
+        "basso": "2 × 4",
+        "medio": "3 × 4",
+        "alto": "3 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "3'"
+      },
+      {
+       "code": "2",
+       "ex": "step_up",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 6",
+        "alto": "4 × 6"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "2'",
+       "note": "Step-up alto con manubri"
+      },
+      {
+       "code": "3",
+       "ex": "calf_mono",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8 + 1 × 15 rimbalzo",
+        "alto": "3 × 8 + 2 × 15 rimbalzo"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X-0",
+       "rest": "90\"",
+       "note": "Pesante + rimbalzo veloce"
+      },
+      {
+       "code": "4",
+       "ex": "rematore_manubrio",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "4 × 8"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-1",
+       "rest": "90\""
+      },
+      {
+       "code": "5",
+       "ex": "pulldown_bt",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-2",
+       "rest": "60\""
+      },
+      {
+       "code": "6",
+       "ex": "side_plank",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "60\"",
+       "note": "Con abduzione"
+      },
+      {
+       "code": "7",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "1 × 12",
+        "alto": "2 × 12"
+       },
+       "intensity": "controllo",
+       "tempo": "—",
+       "rest": "60\"",
+       "note": "Caviglia sulla panca"
+      },
+      {
+       "code": "8",
+       "ex": "suitcase",
+       "vol": {
+        "basso": "2 × 20 m",
+        "medio": "3 × 30 m",
+        "alto": "4 × 30 m"
+       },
+       "intensity": "RIR 2",
+       "tempo": "passo normale",
+       "rest": "60\""
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "im_m3",
+     "day": "Mar o Mer (dopo corsa facile o a casa)",
+     "title": "Mini-seduta M (15–20', facoltativa)",
+     "duration": "15–20'",
+     "warmup": "nessuno",
+     "items": [
+      {
+       "code": "1",
+       "ex": "pelvic_drop",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 15",
+        "alto": "3 × 20"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "2",
+       "ex": "passi_laterali",
+       "vol": {
+        "basso": "2 × 15 passi",
+        "medio": "3 × 20",
+        "alto": "3 × 30"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "3",
+       "ex": "short_foot",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "3 × 15"
+       },
+       "intensity": "tenute 5\"",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "4",
+       "ex": "ytw",
+       "vol": {
+        "basso": "1 giro",
+        "medio": "2 giri",
+        "alto": "3 giri"
+       },
+       "intensity": "1–3 kg",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "5",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "2 × 10",
+        "alto": "2 × 10"
+       },
+       "intensity": "chin tuck + isometrie 50–70%",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": "Esercizi a interferenza quasi nulla per anca, piede e spalla."
+    }
+   ]
+  },
+  {
+   "id": "im_f4",
+   "program": "ironman",
+   "name": "Ironman F4 — Transizione d'autunno",
+   "dates": "~lun 11 – dom 31 ott 2027 (2–3 settimane)",
+   "goal": "Staccare dopo la prima stagione: endurance libero e facile, palestra leggera, ri-test (calf raise, wall angel, carico da 5 rip. a RIR 2 in squat e trap bar), fisioterapista se qualcosa tira da mesi, esame del sangue (ferritina, vitamina D).",
+   "weekly": "Nuoto 2–3 facile/tecnica · bici e corsa per piacere · Seduta R lun e gio (prima settimana anche 0) · almeno 2 giorni liberi · BJJ facoltativo",
+   "sessions": [
+    {
+     "id": "im_r4",
+     "day": "Lunedì e giovedì",
+     "title": "Seduta R — Rientro (45–60')",
+     "duration": "45–60'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "1",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "3-1-1",
+       "rest": "90\"",
+       "note": "Versione goblet"
+      },
+      {
+       "code": "2",
+       "ex": "rdl",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "3-1-1",
+       "rest": "90\"",
+       "note": "Con manubri"
+      },
+      {
+       "code": "3",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-0-1",
+       "rest": "90\"",
+       "note": "Lat machine"
+      },
+      {
+       "code": "4",
+       "ex": "rematore_manubrio",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-0-1",
+       "rest": "60\""
+      },
+      {
+       "code": "5",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-1-2-1",
+       "rest": "90\"",
+       "note": "Leggero"
+      },
+      {
+       "code": "6",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-1-3",
+       "rest": "45\"",
+       "note": "A 0°"
+      },
+      {
+       "code": "7",
+       "ex": "abduzione",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-1-2",
+       "rest": "45\""
+      },
+      {
+       "code": "8",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 6",
+        "alto": "3 × 8"
+       },
+       "intensity": "—",
+       "tempo": "lento",
+       "rest": "45\""
+      },
+      {
+       "code": "9",
+       "ex": "mobilita_im",
+       "vol": {
+        "basso": "5'",
+        "medio": "8'",
+        "alto": "10'"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Open book + couch + sleeper; + chin tuck"
+      }
+     ],
+     "notes": "Di solito BASSO o MEDIO."
+    }
+   ]
+  },
+  {
+   "id": "im_f5",
+   "program": "ironman",
+   "name": "Ironman F5 — Base anno 2",
+   "dates": "lun 1 nov 2027 – dom 20 feb 2028 (~16 settimane)",
+   "goal": "Seconda costruzione di forza massima partendo più in alto: trazioni zavorrate, polpacci monopodalici pesanti, Nordic. Seconda finestra di ricomposizione. Struttura: 3 sett. riadattamento + deload · blocchi 3+1 · Natale = Seduta V o BASSO.",
+   "weekly": "Come F1/F2 (Lun A5 dopo nuoto tecnico, Gio B5 ≥ 3 h dopo la corsa di qualità; se la corsa è tanta, B5 al venerdì)",
+   "sessions": [
+    {
+     "id": "im_a5",
+     "day": "Lunedì",
+     "title": "A5 — Forza massima bilaterale + soleo + spalla, livello 2",
+     "duration": "~80–90'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "pogo",
+       "vol": {
+        "basso": "2 × 15 bip",
+        "medio": "3 × 20 bip",
+        "alto": "3 × 20 bip + 2 × 10 mono/gamba"
+       },
+       "intensity": "contatto breve",
+       "tempo": "—",
+       "rest": "60–90\""
+      },
+      {
+       "code": "1",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "2 × 4–6",
+        "medio": "3 × 4–6",
+        "alto": "4 × 4–6"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "2-0-X",
+       "rest": "3'",
+       "note": "Full; nelle 3 sett. di riadattamento 6–8 rip a RIR 2–3"
+      },
+      {
+       "code": "2",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "3 × 3–4",
+        "medio": "4 × 4–5",
+        "alto": "6 × 3"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-1",
+       "rest": "2'",
+       "note": "Zavorrate"
+      },
+      {
+       "code": "3",
+       "ex": "leg_press_mono",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 5–6",
+        "alto": "4 × 5"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "4-0-X",
+       "rest": "2'",
+       "note": "Discesa lenta 4\""
+      },
+      {
+       "code": "4",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "4 × 8–10"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "3-1-2-1",
+       "rest": "2'",
+       "note": "Monopodalico o '2 su / 1 giù'"
+      },
+      {
+       "code": "5",
+       "ex": "flex_anca",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 8",
+        "alto": "3 × 8"
+       },
+       "intensity": "RIR 2",
+       "tempo": "1-1-3",
+       "rest": "60–90\""
+      },
+      {
+       "code": "6a",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-3",
+       "rest": "60\"",
+       "note": "A 90°, eccentrica lenta"
+      },
+      {
+       "code": "6b",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-3",
+       "rest": "60\"",
+       "note": "Con tenuta"
+      },
+      {
+       "code": "7a",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "45–60\"",
+       "note": "Con manubrio"
+      },
+      {
+       "code": "7b",
+       "ex": "abduzione",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "2-1-2",
+       "rest": "45–60\"",
+       "note": "Al cavo"
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "im_b5",
+     "day": "Giovedì (o venerdì)",
+     "title": "B5 — Catena posteriore + unilaterale pesante + core/anca, livello 2",
+     "duration": "~80–90'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "corda",
+       "vol": {
+        "basso": "5 × 30\"",
+        "medio": "8 × 30\"",
+        "alto": "10 × 45\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "30\""
+      },
+      {
+       "code": "1",
+       "ex": "trap_bar",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 5",
+        "alto": "4 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "3'",
+       "note": "Alterna ogni blocco con RDL"
+      },
+      {
+       "code": "2",
+       "ex": "bulgaro",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 6",
+        "alto": "4 × 6"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-X",
+       "rest": "2'",
+       "note": "Bilanciere o Smith"
+      },
+      {
+       "code": "3",
+       "ex": "nordic",
+       "vol": {
+        "basso": "1 × 4",
+        "medio": "2 × 5",
+        "alto": "3 × 6"
+       },
+       "intensity": "—",
+       "tempo": "lento",
+       "rest": "2'",
+       "note": "Prime 2 settimane sempre BASSO"
+      },
+      {
+       "code": "4",
+       "ex": "calf_mono",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "4 × 8"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "3-1-1-1",
+       "rest": "90\"",
+       "note": "Manubrio pesante"
+      },
+      {
+       "code": "5",
+       "ex": "rematore_manubrio",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-1",
+       "rest": "90\""
+      },
+      {
+       "code": "6",
+       "ex": "pulldown_bt",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "4 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-3",
+       "rest": "60\"",
+       "note": "Eccentrica lenta"
+      },
+      {
+       "code": "7",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "1 × 12–15",
+        "alto": "2 × 12–15"
+       },
+       "intensity": "controllo",
+       "tempo": "—",
+       "rest": "60\"",
+       "note": "Caviglia sulla panca"
+      },
+      {
+       "code": "8",
+       "ex": "pallof",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "4 × 12"
+       },
+       "intensity": "—",
+       "tempo": "tenuta 2–3\"",
+       "rest": "45\"",
+       "note": "In affondo"
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "im_v",
+     "day": "Viaggi / Natale",
+     "title": "Seduta V — Viaggio (25–35', corpo libero + zaino + elastico)",
+     "duration": "25–35'",
+     "warmup": "3' di saltelli + mobilità",
+     "items": [
+      {
+       "code": "1",
+       "ex": "corda",
+       "vol": {
+        "basso": "5 × 30\" (o pogo 2 × 15)",
+        "medio": "8 × 30\" (o pogo 3 × 20)",
+        "alto": "10 × 45\" (o pogo 3 × 20)"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "2",
+       "ex": "bulgaro",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "4 × 10"
+       },
+       "intensity": "—",
+       "tempo": "4-2-1",
+       "rest": "—",
+       "note": "Con zaino"
+      },
+      {
+       "code": "3",
+       "ex": "sl_rdl",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Con zaino"
+      },
+      {
+       "code": "4",
+       "ex": "calf_mono",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "—",
+       "tempo": "discesa 5\"",
+       "rest": "—"
+      },
+      {
+       "code": "5a",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "elastico",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "5b",
+       "ex": "ytw",
+       "vol": {
+        "basso": "1 giro",
+        "medio": "2 giri",
+        "alto": "3 giri"
+       },
+       "intensity": "a terra",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "6a",
+       "ex": "side_plank",
+       "vol": {
+        "basso": "2 × 20\"",
+        "medio": "3 × 30\"",
+        "alto": "3 × 45\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "6b",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 5",
+        "medio": "1 × 10",
+        "alto": "2 × 12"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Su divano/letto"
+      },
+      {
+       "code": "7",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": "Valida in tutte le fasi di base: evita di stare più di 2–3 settimane senza stimolo."
+    },
+    {
+     "id": "im_m5",
+     "day": "Mar o Mer (dopo corsa facile o a casa)",
+     "title": "Mini-seduta M (15–20', facoltativa)",
+     "duration": "15–20'",
+     "warmup": "nessuno",
+     "items": [
+      {
+       "code": "1",
+       "ex": "pelvic_drop",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 15",
+        "alto": "3 × 20"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "2",
+       "ex": "passi_laterali",
+       "vol": {
+        "basso": "2 × 15 passi",
+        "medio": "3 × 20",
+        "alto": "3 × 30"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "3",
+       "ex": "short_foot",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "3 × 15"
+       },
+       "intensity": "tenute 5\"",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "4",
+       "ex": "ytw",
+       "vol": {
+        "basso": "1 giro",
+        "medio": "2 giri",
+        "alto": "3 giri"
+       },
+       "intensity": "1–3 kg",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "5",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "2 × 10",
+        "alto": "2 × 10"
+       },
+       "intensity": "chin tuck + isometrie 50–70%",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": "Esercizi a interferenza quasi nulla per anca, piede e spalla."
+    }
+   ]
+  },
+  {
+   "id": "im_f6",
+   "program": "ironman",
+   "name": "Ironman F6 — Costruzione verso il 70.3",
+   "dates": "lun 21 feb – dom 7 mag 2028 (~11 settimane)",
+   "goal": "Forza esplosiva e plyometria completa (drop jump, bounding) mentre crescono i lunghi; la forza massima si mantiene con poche serie pesanti. 2/sett. nelle prime 7 settimane, poi 1–2.",
+   "weekly": "Lun nuoto + A6 · Mar bici facile/media + mini M · Mer corsa qualità + nuoto facile · Gio nuoto + B6 · Ven corsa facile · Sab bici lunga + brick · Dom corsa lunga. [Corretto: la corsa di qualità era il martedì, il giorno dopo la forza gambe]",
+   "sessions": [
+    {
+     "id": "im_a6",
+     "day": "Lunedì",
+     "title": "A6 — Esplosività + forza",
+     "duration": "~60–75'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "pogo",
+       "vol": {
+        "basso": "2 × 15 bip",
+        "medio": "3 × 20 bip + 2 × 10 mono/gamba",
+        "alto": "3 × 20 bip + 2 × 10 mono/gamba"
+       },
+       "intensity": "contatto breve",
+       "tempo": "—",
+       "rest": "90\""
+      },
+      {
+       "code": "1",
+       "ex": "drop_jump",
+       "vol": {
+        "basso": "2 × 4",
+        "medio": "3 × 5",
+        "alto": "4 × 5"
+       },
+       "intensity": "contatto breve",
+       "tempo": "—",
+       "rest": "2'",
+       "note": "Da 20–30 cm"
+      },
+      {
+       "code": "2",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 4",
+        "alto": "3 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "3'",
+       "note": "Mezzo squat a 90°"
+      },
+      {
+       "code": "3",
+       "ex": "jump_squat",
+       "vol": {
+        "basso": "2 × 4",
+        "medio": "3 × 4",
+        "alto": "3 × 5"
+       },
+       "intensity": "esplosivo",
+       "tempo": "—",
+       "rest": "2'",
+       "note": "Con 20–30% del carico dello squat (o CMJ)"
+      },
+      {
+       "code": "4",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "3 × 3",
+        "medio": "3 × 4",
+        "alto": "4 × 4"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "2'"
+      },
+      {
+       "code": "5",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 6",
+        "alto": "3 × 8"
+       },
+       "intensity": "RIR 1–2",
+       "tempo": "2-1-X-1",
+       "rest": "2'"
+      },
+      {
+       "code": "6",
+       "ex": "flex_anca",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 6",
+        "alto": "3 × 8"
+       },
+       "intensity": "RIR 2",
+       "tempo": "X-1-2",
+       "rest": "90\""
+      },
+      {
+       "code": "7a",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-3",
+       "rest": "60\"",
+       "note": "A 90°"
+      },
+      {
+       "code": "7b",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-3",
+       "rest": "60\"",
+       "note": "Con tenuta"
+      },
+      {
+       "code": "8",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "45\"",
+       "note": "Con carico + chin tuck e isometrie collo"
+      }
+     ],
+     "notes": "Contatti: BASSO ~40 · MEDIO ~95 · ALTO ~100–110 (tetto 120)."
+    },
+    {
+     "id": "im_b6",
+     "day": "Giovedì",
+     "title": "B6 — Reattività orizzontale + catena posteriore + anca/core",
+     "duration": "~60–75'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "bounding",
+       "vol": {
+        "basso": "2 × 15 m",
+        "medio": "3 × 20 m + 2 × 8/gamba",
+        "alto": "4 × 20 m + 3 × 8/gamba"
+       },
+       "intensity": "ritmo medio",
+       "tempo": "—",
+       "rest": "2'",
+       "note": "+ saltelli monopodalici in avanti"
+      },
+      {
+       "code": "1",
+       "ex": "trap_bar",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 4",
+        "alto": "3 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "3'"
+      },
+      {
+       "code": "2",
+       "ex": "bulgaro",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 5",
+        "alto": "3 × 6"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "2'",
+       "note": "Pesante"
+      },
+      {
+       "code": "3",
+       "ex": "calf_mono",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8 + 1 × 15 rimbalzo",
+        "alto": "3 × 8 + 2 × 20 rimbalzo"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X-0",
+       "rest": "90\""
+      },
+      {
+       "code": "4",
+       "ex": "rematore_manubrio",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 6–8",
+        "alto": "3 × 8"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-1",
+       "rest": "90\""
+      },
+      {
+       "code": "5",
+       "ex": "pulldown_bt",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-2",
+       "rest": "60\""
+      },
+      {
+       "code": "6",
+       "ex": "side_plank",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "60\"",
+       "note": "Con abduzione"
+      },
+      {
+       "code": "7",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "1 × 12–15",
+        "alto": "2 × 12–15"
+       },
+       "intensity": "controllo",
+       "tempo": "—",
+       "rest": "60\"",
+       "note": "Caviglia"
+      },
+      {
+       "code": "8",
+       "ex": "pallof",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "—",
+       "tempo": "tenuta",
+       "rest": "45\"",
+       "note": "Su una gamba"
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "im_m6",
+     "day": "Mar o Mer (dopo corsa facile o a casa)",
+     "title": "Mini-seduta M (15–20', facoltativa)",
+     "duration": "15–20'",
+     "warmup": "nessuno",
+     "items": [
+      {
+       "code": "1",
+       "ex": "pelvic_drop",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 15",
+        "alto": "3 × 20"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "2",
+       "ex": "passi_laterali",
+       "vol": {
+        "basso": "2 × 15 passi",
+        "medio": "3 × 20",
+        "alto": "3 × 30"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "3",
+       "ex": "short_foot",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "3 × 15"
+       },
+       "intensity": "tenute 5\"",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "4",
+       "ex": "ytw",
+       "vol": {
+        "basso": "1 giro",
+        "medio": "2 giri",
+        "alto": "3 giri"
+       },
+       "intensity": "1–3 kg",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "5",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "2 × 10",
+        "alto": "2 × 10"
+       },
+       "intensity": "chin tuck + isometrie 50–70%",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": "Esercizi a interferenza quasi nulla per anca, piede e spalla."
+    }
+   ]
+  },
+  {
+   "id": "im_f7",
+   "program": "ironman",
+   "name": "Ironman F7 — 70.3 (taper + recupero)",
+   "dates": "lun 8 mag – dom 4 giu 2028 · 70.3 dom 21 mag 2028 (ipotesi)",
+   "goal": "Arrivare fresco al 70.3 (è un test, non la gara A) e recuperare in fretta. Prima della gara MEDIO al massimo.",
+   "weekly": "Settimana prima: Seduta T MEDIO con mezzo squat gio 11 o ven 12 mag (9–10 gg prima) · Settimana gara: Lun 15 Seduta T BASSO senza squat (6 gg) = ultima palestra; poi niente · Dopo: 5–7 giorni senza pesi, poi Seduta R BASSO → MEDIO. [Corretto: 'lunedì o martedì della settimana prima' = 12–13 giorni, non 8–10]",
+   "sessions": [
+    {
+     "id": "im_t7",
+     "day": "Gio/Ven settimana prima (con squat) · Lun settimana gara (senza squat)",
+     "title": "Seduta T — Taper / attivazione (25–40')",
+     "duration": "25–40'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "1",
+       "ex": "pogo",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "2 × 15",
+        "alto": "2 × 15"
+       },
+       "intensity": "contatto breve",
+       "tempo": "—",
+       "rest": "60\"",
+       "note": "Solo se mancano ≥ 5–7 giorni"
+      },
+      {
+       "code": "2",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "—",
+        "medio": "1 × 3",
+        "alto": "2 × 3"
+       },
+       "intensity": "RIR 4 (~80%)",
+       "tempo": "2-0-X",
+       "rest": "3'",
+       "note": "Mezzo squat, SOLO nella seduta 'ultimo pesante'"
+      },
+      {
+       "code": "3",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "1 × 5",
+        "medio": "2 × 5",
+        "alto": "2 × 5"
+       },
+       "intensity": "RIR 4",
+       "tempo": "—",
+       "rest": "90\""
+      },
+      {
+       "code": "4",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "1 × 8",
+        "medio": "2 × 8",
+        "alto": "2 × 8"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "2-1-2-1",
+       "rest": "2'",
+       "note": "Carico −30%"
+      },
+      {
+       "code": "5",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "2 × 15",
+        "alto": "2 × 15"
+       },
+       "intensity": "RIR 4",
+       "tempo": "—",
+       "rest": "30\"",
+       "note": "Elastico leggero"
+      },
+      {
+       "code": "6",
+       "ex": "abduzione",
+       "vol": {
+        "basso": "1 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 12"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "2-1-2",
+       "rest": "45\"",
+       "note": "Sul fianco"
+      },
+      {
+       "code": "7a",
+       "ex": "side_plank",
+       "vol": {
+        "basso": "1 × 20\"",
+        "medio": "2 × 30\"",
+        "alto": "2 × 30\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "45\""
+      },
+      {
+       "code": "7b",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "1 × 6",
+        "medio": "2 × 6",
+        "alto": "2 × 6"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "8",
+       "ex": "mobilita_im",
+       "vol": {
+        "basso": "5'",
+        "medio": "5'",
+        "alto": "8'"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "im_r7",
+     "day": "Dalla 2ª settimana dopo il 70.3",
+     "title": "Seduta R — Rientro (45–60')",
+     "duration": "45–60'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "1",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "3-1-1",
+       "rest": "90\"",
+       "note": "Versione goblet"
+      },
+      {
+       "code": "2",
+       "ex": "rdl",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "3-1-1",
+       "rest": "90\"",
+       "note": "Con manubri"
+      },
+      {
+       "code": "3",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-0-1",
+       "rest": "90\"",
+       "note": "Lat machine"
+      },
+      {
+       "code": "4",
+       "ex": "rematore_manubrio",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-0-1",
+       "rest": "60\""
+      },
+      {
+       "code": "5",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-1-2-1",
+       "rest": "90\"",
+       "note": "Leggero"
+      },
+      {
+       "code": "6",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-1-3",
+       "rest": "45\"",
+       "note": "A 0°"
+      },
+      {
+       "code": "7",
+       "ex": "abduzione",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-1-2",
+       "rest": "45\""
+      },
+      {
+       "code": "8",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 6",
+        "alto": "3 × 8"
+       },
+       "intensity": "—",
+       "tempo": "lento",
+       "rest": "45\""
+      },
+      {
+       "code": "9",
+       "ex": "mobilita_im",
+       "vol": {
+        "basso": "5'",
+        "medio": "8'",
+        "alto": "10'"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Open book + couch + sleeper; + chin tuck"
+      }
+     ],
+     "notes": "BASSO finché scendere le scale non è normale."
+    }
+   ]
+  },
+  {
+   "id": "im_f8",
+   "program": "ironman",
+   "name": "Ironman F8 — Costruzione Ironman",
+   "dates": "lun 5 giu – dom 30 lug 2028 (settimane −16 → −9)",
+   "goal": "Mantenere forza massima e reattività con il minimo di fatica mentre arrivano bici da 4–5 h, brick e corse lunghe. Meno esercizi, stessa intensità. 2/sett. nelle prime 4 settimane, poi 1–2. Mai forza gambe nelle 48 h prima dei lunghissimi.",
+   "weekly": "Lun nuoto + A8 · Mar nuoto + bici media + mini prevenzione 10' · Mer corsa qualità + B8 (≥ 3 h dopo, nelle settimane da 2) · Gio corsa facile · Ven nuoto · Sab bici 4–5 h + corsa di transizione · Dom corsa lunga facile. [Corretto: prima B8 era giovedì (meno di 48 h dal lunghissimo) e A8 il giorno prima della corsa di qualità]",
+   "sessions": [
+    {
+     "id": "im_a8",
+     "day": "Lunedì",
+     "title": "A8 — Forza + reattività, versione corta",
+     "duration": "~50–65'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "pogo",
+       "vol": {
+        "basso": "2 × 15 bip",
+        "medio": "3 × 20 bip",
+        "alto": "3 × 20 bip + 2 × 10 mono/gamba"
+       },
+       "intensity": "contatto breve",
+       "tempo": "—",
+       "rest": "90\""
+      },
+      {
+       "code": "1",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 4",
+        "alto": "3 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "3'",
+       "note": "Mezzo squat; schiena stanca dalla bici → leg press monopodalica 3 × 5"
+      },
+      {
+       "code": "2",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "2 × 4",
+        "medio": "3 × 4",
+        "alto": "3 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "2'"
+      },
+      {
+       "code": "3",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "2 × 6",
+        "medio": "3 × 6–8",
+        "alto": "3 × 8"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-X-1",
+       "rest": "2'"
+      },
+      {
+       "code": "4",
+       "ex": "flex_anca",
+       "vol": {
+        "basso": "—",
+        "medio": "2 × 6",
+        "alto": "3 × 6"
+       },
+       "intensity": "RIR 2",
+       "tempo": "X-1-2",
+       "rest": "90\""
+      },
+      {
+       "code": "5a",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-1-3",
+       "rest": "60\""
+      },
+      {
+       "code": "5b",
+       "ex": "face_pull",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-1-3",
+       "rest": "60\""
+      },
+      {
+       "code": "6a",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 giro",
+        "medio": "2 giri",
+        "alto": "2 giri"
+       },
+       "intensity": "chin tuck + isometrie",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "6b",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "1 giro",
+        "medio": "2 giri",
+        "alto": "2 giri"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": ""
+    },
+    {
+     "id": "im_b8",
+     "day": "Mercoledì (≥ 3 h dopo la corsa di qualità)",
+     "title": "B8 — Catena posteriore + unilaterale + anca/core, versione corta",
+     "duration": "~50–65'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "bounding",
+       "vol": {
+        "basso": "—",
+        "medio": "2 × 15 m",
+        "alto": "3 × 20 m"
+       },
+       "intensity": "ritmo medio",
+       "tempo": "—",
+       "rest": "2'"
+      },
+      {
+       "code": "1",
+       "ex": "trap_bar",
+       "vol": {
+        "basso": "2 × 3",
+        "medio": "3 × 4",
+        "alto": "3 × 4"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "3'"
+      },
+      {
+       "code": "2",
+       "ex": "leg_press_mono",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 5",
+        "alto": "3 × 5"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X",
+       "rest": "2'",
+       "note": "O step-down / step-up"
+      },
+      {
+       "code": "3",
+       "ex": "calf_mono",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 8 + 1 × 15 rimbalzo"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-X-0",
+       "rest": "90\""
+      },
+      {
+       "code": "4",
+       "ex": "rematore_manubrio",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 8"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-0-1",
+       "rest": "90\""
+      },
+      {
+       "code": "5a",
+       "ex": "side_plank",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 10",
+        "alto": "3 × 10"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "60\"",
+       "note": "Con abduzione"
+      },
+      {
+       "code": "5b",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "1 × 12",
+        "alto": "1 × 15"
+       },
+       "intensity": "controllo",
+       "tempo": "—",
+       "rest": "60\""
+      },
+      {
+       "code": "6",
+       "ex": "suitcase",
+       "vol": {
+        "basso": "2 × 20 m",
+        "medio": "3 × 30 m",
+        "alto": "3 × 30 m"
+       },
+       "intensity": "RIR 2",
+       "tempo": "—",
+       "rest": "60\""
+      }
+     ],
+     "notes": "Se la settimana ha un brick lunghissimo: 1 sola seduta, BASSO o MEDIO. ALTO in pratica quasi mai."
+    }
+   ]
+  },
+  {
+   "id": "im_f9",
+   "program": "ironman",
+   "name": "Ironman F9 — Specifica Ironman",
+   "dates": "lun 31 lug – dom 10 set 2028 (settimane −8 → −3)",
+   "goal": "Solo mantenimento: una Seduta S breve e pesante ogni 7–10 giorni (alterna squat e trap bar) + 1–2 mini-sedute P. Nessuna seduta a meno di 72 h dalla simulazione di gara.",
+   "weekly": "Lun nuoto · Mar corsa qualità a ritmo gara + Seduta S (≥ 3 h dopo, circa ogni 8 giorni: se salta, mercoledì) · Mer nuoto + bici facile + mini P · Gio bici con blocchi a ritmo gara · Ven acque libere o riposo + mini P (opz.) · Sab simulazione bici lunga + corsa · Dom corsa lunga o riposo. [Corretto: la Seduta S il lunedì cadeva il giorno prima della corsa di qualità]",
+   "sessions": [
+    {
+     "id": "im_s",
+     "day": "Martedì pomeriggio (ogni 7–10 giorni)",
+     "title": "Seduta S — Mantenimento (40–50')",
+     "duration": "40–50'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "0",
+       "ex": "pogo",
+       "vol": {
+        "basso": "—",
+        "medio": "2 × 20",
+        "alto": "2 × 20 + bounding 2 × 15 m"
+       },
+       "intensity": "contatto breve",
+       "tempo": "—",
+       "rest": "90\""
+      },
+      {
+       "code": "1",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "1 × 4",
+        "medio": "2 × 4",
+        "alto": "2 × 5"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-0-X",
+       "rest": "3'",
+       "note": "Mezzo squat OPPURE trap bar, alternati"
+      },
+      {
+       "code": "2",
+       "ex": "leg_press_mono",
+       "vol": {
+        "basso": "1 × 5",
+        "medio": "2 × 5",
+        "alto": "2 × 5"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-0-X",
+       "rest": "2'"
+      },
+      {
+       "code": "3",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "1 × 8",
+        "medio": "2 × 8",
+        "alto": "3 × 8"
+       },
+       "intensity": "RIR 2",
+       "tempo": "2-1-X-1",
+       "rest": "2'"
+      },
+      {
+       "code": "4",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "2 × 4",
+        "medio": "3 × 4",
+        "alto": "3 × 5"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-0-1",
+       "rest": "2'"
+      },
+      {
+       "code": "5",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "1 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-1-3",
+       "rest": "45\""
+      },
+      {
+       "code": "6",
+       "ex": "side_plank",
+       "vol": {
+        "basso": "1 × 30\"",
+        "medio": "2 × 30\"",
+        "alto": "2 × 30\" + Copenhagen 1 × 12"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "45\""
+      }
+     ],
+     "notes": "Default MEDIO; BASSO se cade a meno di 72 h dalla simulazione più lunga. Se una settimana salta, non raddoppiare."
+    },
+    {
+     "id": "im_p",
+     "day": "Mer e Ven (dopo seduta facile)",
+     "title": "Mini-seduta P — Prevenzione (10–15')",
+     "duration": "10–15'",
+     "warmup": "nessuno",
+     "items": [
+      {
+       "code": "1",
+       "ex": "calf_mono",
+       "vol": {
+        "basso": "1 × 8",
+        "medio": "2 × 8",
+        "alto": "2 × 8"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "2",
+       "ex": "abduzione",
+       "vol": {
+        "basso": "1 × 10",
+        "medio": "2 × 10–12",
+        "alto": "2 × 12"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "3",
+       "ex": "copenhagen",
+       "vol": {
+        "basso": "1 × 8",
+        "medio": "1 × 12",
+        "alto": "1 × 15"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—",
+       "note": "1 volta a settimana"
+      },
+      {
+       "code": "4",
+       "ex": "tibialis",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "2 × 15",
+        "alto": "2 × 15"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "5",
+       "ex": "collo",
+       "vol": {
+        "basso": "1 giro",
+        "medio": "2 giri",
+        "alto": "2 giri"
+       },
+       "intensity": "chin tuck + isometrie",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": ""
+    }
+   ]
+  },
+  {
+   "id": "im_f10",
+   "program": "ironman",
+   "name": "Ironman F10 — Taper",
+   "dates": "lun 11 set – dom 1 ott 2028 (settimane −2, −1, gara) · IRONMAN dom 1 ott 2028 (ipotesi)",
+   "goal": "Freschezza: nessuno stimolo nuovo, tendini 'svegli' e spalle attive. Mai ALTO: in dubbio BASSO o niente.",
+   "weekly": "Sett. −2: Seduta S MEDIO normale · Sett. −1: Lun 18 Seduta T MEDIO con mezzo squat (13 gg prima = ultimo pesante) e Sab 23/Dom 24 Seduta T BASSO senza squat (7–8 gg) · Settimana gara: niente pesi, 10' di mobilità + extrarotazioni con elastico leggero 1–2 × 15 prima dei nuoti. [Corretto: F9 e F10 si sovrapponevano sulla settimana −3 e le distanze in giorni non tornavano]",
+   "sessions": [
+    {
+     "id": "im_t10",
+     "day": "Lun sett. −1 (con squat) · Sab/Dom sett. −1 (senza squat)",
+     "title": "Seduta T — Taper / attivazione (25–40')",
+     "duration": "25–40'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "1",
+       "ex": "pogo",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "2 × 15",
+        "alto": "2 × 15"
+       },
+       "intensity": "contatto breve",
+       "tempo": "—",
+       "rest": "60\"",
+       "note": "Solo se mancano ≥ 5–7 giorni"
+      },
+      {
+       "code": "2",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "—",
+        "medio": "1 × 3",
+        "alto": "2 × 3"
+       },
+       "intensity": "RIR 4 (~80%)",
+       "tempo": "2-0-X",
+       "rest": "3'",
+       "note": "Mezzo squat, SOLO nella seduta 'ultimo pesante'"
+      },
+      {
+       "code": "3",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "1 × 5",
+        "medio": "2 × 5",
+        "alto": "2 × 5"
+       },
+       "intensity": "RIR 4",
+       "tempo": "—",
+       "rest": "90\""
+      },
+      {
+       "code": "4",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "1 × 8",
+        "medio": "2 × 8",
+        "alto": "2 × 8"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "2-1-2-1",
+       "rest": "2'",
+       "note": "Carico −30%"
+      },
+      {
+       "code": "5",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "1 × 15",
+        "medio": "2 × 15",
+        "alto": "2 × 15"
+       },
+       "intensity": "RIR 4",
+       "tempo": "—",
+       "rest": "30\"",
+       "note": "Elastico leggero"
+      },
+      {
+       "code": "6",
+       "ex": "abduzione",
+       "vol": {
+        "basso": "1 × 12",
+        "medio": "2 × 12",
+        "alto": "2 × 12"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "2-1-2",
+       "rest": "45\"",
+       "note": "Sul fianco"
+      },
+      {
+       "code": "7a",
+       "ex": "side_plank",
+       "vol": {
+        "basso": "1 × 20\"",
+        "medio": "2 × 30\"",
+        "alto": "2 × 30\""
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "45\""
+      },
+      {
+       "code": "7b",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "1 × 6",
+        "medio": "2 × 6",
+        "alto": "2 × 6"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      },
+      {
+       "code": "8",
+       "ex": "mobilita_im",
+       "vol": {
+        "basso": "5'",
+        "medio": "5'",
+        "alto": "8'"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—"
+      }
+     ],
+     "notes": "La Seduta T del lunedì è l'unica eccezione alla regola 'mai gambe il giorno prima della qualità': 1–2 × 3 a RIR 4 non lasciano fatica."
+    }
+   ]
+  },
+  {
+   "id": "im_f11",
+   "program": "ironman",
+   "name": "Ironman F11 — Post-Ironman",
+   "dates": "lun 2 – dom 29 ott 2028 (+1 → +4)",
+   "goal": "Recupero completo, poi decidere il ciclo successivo. +1: niente pesi (camminate, nuoto facilissimo, mobilità). +2/+4: Seduta R 1–2/sett., BASSO → MEDIO. Se il sub-10 non è arrivato, si riparte da F4 → F5.",
+   "weekly": "Nuoto 2 facile · bici 2 facile · corsa 1–2 brevi · Seduta R lunedì (e giovedì da +3) · niente deficit",
+   "sessions": [
+    {
+     "id": "im_r11",
+     "day": "Lunedì (+ giovedì da +3)",
+     "title": "Seduta R — Rientro (45–60')",
+     "duration": "45–60'",
+     "warmup": "~10–12': 5' bici o vogatore facile · open book e couch stretch brevi + caviglie + bird dog 1×6/lato · 2–3 serie di avvicinamento per ogni esercizio pesante (50%×8, 70%×4, 85%×2)",
+     "items": [
+      {
+       "code": "1",
+       "ex": "back_squat",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "3-1-1",
+       "rest": "90\"",
+       "note": "Versione goblet"
+      },
+      {
+       "code": "2",
+       "ex": "rdl",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3–4",
+       "tempo": "3-1-1",
+       "rest": "90\"",
+       "note": "Con manubri"
+      },
+      {
+       "code": "3",
+       "ex": "trazioni",
+       "vol": {
+        "basso": "2 × 8",
+        "medio": "3 × 8",
+        "alto": "3 × 10"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-0-1",
+       "rest": "90\"",
+       "note": "Lat machine"
+      },
+      {
+       "code": "4",
+       "ex": "rematore_manubrio",
+       "vol": {
+        "basso": "2 × 10",
+        "medio": "3 × 10",
+        "alto": "3 × 12"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-0-1",
+       "rest": "60\""
+      },
+      {
+       "code": "5",
+       "ex": "calf_seduto",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "3-1-2-1",
+       "rest": "90\"",
+       "note": "Leggero"
+      },
+      {
+       "code": "6",
+       "ex": "extrarot",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 3",
+       "tempo": "2-1-3",
+       "rest": "45\"",
+       "note": "A 0°"
+      },
+      {
+       "code": "7",
+       "ex": "abduzione",
+       "vol": {
+        "basso": "2 × 12",
+        "medio": "3 × 12",
+        "alto": "3 × 15"
+       },
+       "intensity": "RIR 2–3",
+       "tempo": "2-1-2",
+       "rest": "45\""
+      },
+      {
+       "code": "8",
+       "ex": "dead_bug",
+       "vol": {
+        "basso": "2 × 5",
+        "medio": "3 × 6",
+        "alto": "3 × 8"
+       },
+       "intensity": "—",
+       "tempo": "lento",
+       "rest": "45\""
+      },
+      {
+       "code": "9",
+       "ex": "mobilita_im",
+       "vol": {
+        "basso": "5'",
+        "medio": "8'",
+        "alto": "10'"
+       },
+       "intensity": "—",
+       "tempo": "—",
+       "rest": "—",
+       "note": "Open book + couch + sleeper; + chin tuck"
+      }
+     ],
+     "notes": "BASSO → MEDIO."
+    }
+   ]
+  }
+ ],
+ "volume_rules": [
+  {
+   "id": "principio",
+   "text": "Tra BASSO, MEDIO e ALTO cambia solo il volume (serie ed esercizi accessori), mai l'intensità (RPE/RIR). Perché: lo stimolo di forza viene dall'intensità, la fatica dal volume."
+  },
+  {
+   "id": "default",
+   "text": "MEDIO è il default e dovrebbe essere la scelta più frequente. BASSO ≈ metà delle serie, solo gli esercizi principali + prevenzione. ALTO = +1 serie sui principali + accessori 'solo ALTO'."
+  },
+  {
+   "id": "punteggio_bjj",
+   "phase": "bjj",
+   "text": "Fase BJJ (fino al 23 gen): 0/1/2 punti per Sonno (ultime 2 notti: <6 h=0, 6–7 h=1, ≥7 h e buono=2), Botte del tatami 24–48 h (guerra=0, normale=1, tecnica/leggero=2), Dolori (articolare o che cambia il movimento=0, indolenzimento=1, niente=2), Energia/stress (a terra=0, normale=1, carico=2). 0–3 → BASSO · 4–6 → MEDIO · 7–8 → ALTO."
+  },
+  {
+   "id": "punteggio_im",
+   "phase": "ironman",
+   "text": "Fase Ironman (dal 24 gen): 0/1/2 punti per Sonno, Gambe (pesanti=0, un po' stanche=1, fresche=2), Fatica/motivazione, Ultime 24 h (lungo o lavoro intenso=0, seduta media=1, facile/riposo=2), Domani (seduta chiave=0, media=1, facile/riposo=2). 0–4 → BASSO (sotto 3: solo prevenzione) · 5–7 → MEDIO · 8–10 → ALTO."
+  },
+  {
+   "id": "dolore",
+   "text": "Dolore articolare o tendineo > 3/10 (ginocchio, spalla, gomito, collo, Achille, tibia): BASSO e togli/regredisci l'esercizio che lo provoca. Se dura più di 1 settimana (tendini 1–2): fisioterapista."
+  },
+  {
+   "id": "guerra",
+   "phase": "bjj",
+   "text": "Se il gi del lunedì o il no-gi del giovedì è stato 'una guerra', il giorno dopo BASSO anche se il punteggio dice altro."
+  },
+  {
+   "id": "finestre_bjj",
+   "phase": "bjj",
+   "text": "Natale (21–26 dic) e rientro (12 gen): ALTO solo nella versione già 'tagliata' della tabella. Dal 15 gen alla gara: niente ALTO; default BASSO, MEDIO solo con punteggio ≥ 7."
+  },
+  {
+   "id": "viaggio",
+   "phase": "bjj",
+   "text": "In viaggio al posto di 'botte del tatami' valuta caldo/viaggio/stomaco: giornata di spostamento o caldo pesante = 0 punti. Stomaco non a posto = niente sessione."
+  },
+  {
+   "id": "deload",
+   "phase": "ironman",
+   "text": "Deload (1 settimana ogni 4, nella stessa settimana dello scarico di nuoto/bici/corsa): BASSO obbligatorio, RIR +1 o carico −10%, niente salti nuovi. [Corretto: è stata tolta la regola 'in settimana di scarico sali di un livello', che contraddiceva questa]"
+  },
+  {
+   "id": "carico_alto",
+   "phase": "ironman",
+   "text": "Terza settimana di un blocco di endurance (carico alto) → mai ALTO. Settimana di gara, taper, lunghissimo nelle 48 h successive → BASSO o MEDIO. Malato (febbre o sintomi sotto il collo) → niente palestra."
+  },
+  {
+   "id": "base",
+   "phase": "ironman",
+   "text": "Nelle fasi di base (F1, F2, F5) con poco volume di endurance l'ALTO è spesso possibile; nelle fasi di costruzione e specifica (F6, F8, F9) il MEDIO è il tetto normale."
+  },
+  {
+   "id": "progressione",
+   "phase": "ironman",
+   "text": "Doppia progressione: quando tutte le serie arrivano al massimo del range con 1 RIR in più dell'obiettivo, aumenta il carico (squat/trap bar/leg press +2,5–5 kg; manubri/cavi/zavorra +1–2 kg; polpacci e tendini max +5–10% a settimana). Serie a RIR 0 o tecnica rotta → −5%. Una variabile alla volta."
+  }
+ ],
+ "weight": {
+  "summary": "Gi Médio (≤ 82,3 kg con il kimono) senza problemi. No-gi Médio (≤ 79,5 kg con la divisa) solo se la media del mattino nella settimana gara è 77–77,5 kg; altrimenti no-gi Meio-pesado (≤ 85,5 kg). Leve escluso. Mai tagli d'acqua.",
+  "categories": [
+   {
+    "div": "Gi",
+    "cat": "Médio",
+    "limit": "82,3 kg con kimono",
+    "margin": "1,3–2,3 kg",
+    "decision": "Médio. Punto."
+   },
+   {
+    "div": "No-gi",
+    "cat": "Médio",
+    "limit": "79,5 kg con divisa",
+    "margin": "0–0,7 kg",
+    "decision": "Médio con obiettivo 77–77,5 kg al mattino nella settimana gara"
+   },
+   {
+    "div": "No-gi riserva",
+    "cat": "Meio-pesado",
+    "limit": "85,5 kg",
+    "margin": "ampio",
+    "decision": "Se il peso non collabora"
+   },
+   {
+    "div": "Leve (gi ≤ 76 / no-gi ≤ 73,5)",
+    "cat": "—",
+    "limit": "—",
+    "margin": "servirebbero −3,5/−5,5 kg di tessuto",
+    "decision": "Escluso"
+   }
+  ],
+  "why_not_lower": [
+   "Nel BJJ ti pesi subito prima del primo incontro: non c'è tempo per reidratarti (ISSN: con < 4 h al massimo 0–3% di acqua, meglio puntare sul tessuto). Già il 2,5% di disidratazione peggiora la prestazione.",
+   "3,5–4 kg di tessuto in 8 settimane, con Natale e Messico in mezzo e da già magro, significa perdere muscolo e forza proprio mentre li costruisci.",
+   "Un solo tentativo di pesata: sopra il limite = squalifica, nessun cambio di categoria."
+  ],
+  "monitoring": [
+   "Oggi: pesa il gi da gara e la divisa no-gi (sono il dato per i calcoli).",
+   "Ogni mattina dopo il bagno, senza vestiti, prima di mangiare: guarda la media degli ultimi 7 giorni.",
+   "Media ≤ 77,5 kg: perfetto, mangia per allenarti · 77,6–78,5: niente extra, alcol minimo, porzioni un po' più piccole nei giorni di riposo · > 78,5: deficit −300/−400 kcal, proteine ~180 g, carboidrati intorno agli allenamenti — ma il deficit finisce mercoledì 20 gen [Corretto].",
+   "Checkpoint: 23 nov, 20 dic, 26 dic (prima del volo), 11 gen, prove generali mer 13 e dom 17 gen (dopo la colazione tipo, con gi e poi con divisa no-gi).",
+   "Se il 17 gen il no-gi supera 79,0 kg → no-gi Meio-pesado (se l'iscrizione lo consente). Se le iscrizioni chiudono prima del rientro: Médio solo se in quel momento la media è ≤ 77,5 kg.",
+   "Natale: non salire più di +1 kg sulla media. Messico: cintura e pantaloni come riferimento, proteine a ogni pasto.",
+   "Creatina: non iniziarla prima della gara (trattiene 0,5–1 kg d'acqua). Si può iniziare in F1 Ironman (3–5 g/die)."
+  ],
+  "after_race": "Dopo la gara niente deficit per almeno 2 settimane: torna al tuo peso normale. La ricomposizione si concentra nelle fasi di forza con poco endurance (F2 e F5): −200/−300 kcal solo nei giorni di riposo o leggeri. Nell'Ironman il rischio vero è mangiare troppo poco (REDs), non troppo."
+ },
+ "nutrition": [
+  {
+   "phase": "Sempre",
+   "text": "Proteine 1,6–2,2 g/kg (≈ 130–170 g) in 4–5 pasti da 25–40 g ogni 3–4 h; 30–40 g di caseina prima di dormire (skyr, yogurt greco, fiocchi di latte). Dopo l'allenamento proteine + carboidrati entro 2 h: un pasto vero va benissimo."
+  },
+  {
+   "phase": "BJJ — energia",
+   "text": "Mantenimento o lievissimo deficit: peso stabile ±0,5 kg, girovita che cala piano, carichi che salgono. Perché: sei già magro e hai una gara."
+  },
+  {
+   "phase": "BJJ — carboidrati",
+   "text": "Palestra ~4–5 g/kg (310–390 g) · tatami ~5–6 g/kg (390–470 g), pasto 2–3 h prima o 25–30 g facili se manca < 1 h · riposo 3–4 g/kg (mai sotto 3)."
+  },
+  {
+   "phase": "Natale e Messico",
+   "text": "Goditi i pasti ma proteine a ogni pasto e alcol solo nei giorni di festa veri. In Messico ≥ 1,6 g/kg di proteine (uova, pollo, pesce cotto, fagioli neri, yogurt pastorizzato), acqua in bottiglia, niente latticini non pastorizzati/crudi/verdura cruda/frutta non sbucciata, sali di reidratazione in valigia. Una gastroenterite costa 1–3 kg e giorni di allenamento."
+  },
+  {
+   "phase": "Settimana gara BJJ",
+   "text": "Niente cibi nuovi; carboidrati 5–7 g/kg negli ultimi 2 giorni (da gio 21); sera prima poche fibre. Giorno gara: colazione 3–4 h prima (1–2 g/kg di carboidrati), 25–30 g nell'ultima ora, tra gli incontri sali + 20–40 g di carboidrati (fino a ~60 g/h se ravvicinati), pausa > 2 h: ~80 g carboidrati + 20–25 g proteine."
+  },
+  {
+   "phase": "Ironman — regola",
+   "text": "Carboidrati in base al giorno, non alla fase: riposo/palestra leggera 3–5 g/kg · ~1 h moderato 5–7 · 1–3 h 6–10 · 4–5 h 8–12. Due sedute a < 4 h: tra le due ~90 g/h di carboidrati (o 60 g/h + proteine)."
+  },
+  {
+   "phase": "Ironman F0–F1",
+   "text": "Pareggio, proteine 1,8–2,0 g/kg (140–155 g). Da F1 creatina 3–5 g/die facoltativa (+~1% di peso in acqua)."
+  },
+  {
+   "phase": "Ironman F2 e F5",
+   "text": "Ricomposizione: −200/−300 kcal solo nei giorni di riposo o leggeri, proteine 2,0–2,4 g/kg (155–185 g). Mai deficit nei giorni di lungo o qualità."
+  },
+  {
+   "phase": "Ironman F3–F6",
+   "text": "Pareggio o sopra. Allena l'intestino: 40–60 g/h nei lunghi in bici (F3), poi fino a 70–80 g/h con glucosio + fruttosio (F6). Prova la caffeina (3 mg/kg) prima di una gara breve. Esame del sangue (ferritina, vitamina D) in F4."
+  },
+  {
+   "phase": "Ironman F7–F10",
+   "text": "Pareggio, nessun deficit. 8–12 g/kg nelle 36–48 h prima di 70.3 e Ironman. Nei lunghissimi fino a 80–90 g/h (non puntare a 120). Simula esattamente la nutrizione di gara 3–4 volte in F9. Se il peso medio cala > 0,5 kg/settimana → mangia di più."
+  },
+  {
+   "phase": "Integratori",
+   "text": "Solo quelli con prove (caffeina, creatina) e certificati di terze parti (es. Informed Sport). Ferro, vitamina D ecc. solo se un esame mostra una carenza. Tutto si prova in allenamento, mai la prima volta in gara."
+  }
+ ],
+ "warnings": [
+  {
+   "level": "verde",
+   "signal": "Indolenzimento muscolare che passa in 24–48 h; stanchezza normale dopo i lunghi o gli sparring",
+   "action": "Programma normale, scegli il volume con il punteggio."
+  },
+  {
+   "level": "giallo",
+   "signal": "Sonno peggiore 3+ notti; FC a riposo +5–7 battiti per 3+ giorni; carichi che calano 2 sedute di fila a parità di RIR; gambe pesanti che rovinano una seduta chiave; voglia che sparisce; indolenzimento > 72 h",
+   "action": "1 segnale = scendi di un livello; 2+ nella stessa settimana = deload anticipato (BASSO, niente plyometria). Controlla se mangi abbastanza."
+  },
+  {
+   "level": "rosso",
+   "signal": "Dolore articolare > 3/10 che cambia il movimento (ginocchio, spalla, gomito, collo), o che dura più di una settimana",
+   "action": "BASSO, togli l'esercizio che lo provoca, regressione della scheda; fisioterapista se non passa."
+  },
+  {
+   "level": "rosso",
+   "signal": "Tendine d'Achille > 3/10 durante o la mattina dopo, rigidità mattutina che peggiora",
+   "action": "Stop pogo, bounding, drop jump e calf raise con deficit; calf raise seduto senza deficit e carico ridotto. > 1–2 settimane → fisioterapista."
+  },
+  {
+   "level": "rosso",
+   "signal": "Dolore puntiforme su tibia, piede, anca o bacino che peggiora con l'impatto, anche a riposo o di notte",
+   "action": "Possibile frattura da stress: stop corsa e salti, medico subito. In palestra solo parte alta e core."
+  },
+  {
+   "level": "giallo",
+   "signal": "Dolore diffuso lungo il bordo interno della tibia",
+   "action": "Niente plyometria, riduci la corsa; continua calf raise e tibialis raise senza dolore."
+  },
+  {
+   "level": "giallo",
+   "signal": "Dolore sotto la rotula",
+   "action": "Isometrie (Spanish squat / wall sit) 4–5 × 45\" come anti-dolore; riduci la profondità di squat e bulgaro; niente salti finché non passa."
+  },
+  {
+   "level": "giallo",
+   "signal": "Inguine dolorante 1–2 giorni dopo il Copenhagen",
+   "action": "Torna alla leva corta o all'adductor squeeze, meno ripetizioni. Pubalgia acuta → fisioterapista."
+  },
+  {
+   "level": "giallo",
+   "signal": "Spalla irritata (vasca, wall angel, trazioni, kimura)",
+   "action": "1–2 settimane senza trazioni pesanti, extrarotazioni in isometria, niente Y sopra la testa. Se persiste → fisioterapista."
+  },
+  {
+   "level": "giallo",
+   "signal": "Gomito mediale o dita doloranti (presa)",
+   "action": "Presa neutra, meno trazioni al gi e meno tenute; più estensioni delle dita; max 2 esercizi di presa a settimana."
+  },
+  {
+   "level": "giallo",
+   "signal": "Lombare dopo stacchi, squat o ore in aero",
+   "action": "1–2 settimane: leg press monopodalica e hip thrust al posto di squat e stacchi. Dolore acuto o che scende nella gamba → medico."
+  },
+  {
+   "level": "giallo",
+   "signal": "Dolore sul lato del ginocchio in corsa (bandelletta)",
+   "action": "Più abduzione, side plank con abduzione e pelvic drop; riduci la corsa, non la palestra d'anca."
+  },
+  {
+   "level": "rosso",
+   "signal": "Febbre o sintomi sotto il collo; gastroenterite in viaggio",
+   "action": "Niente allenamento. Ripresa BASSO dopo 2–3 giorni senza sintomi; in viaggio prima reidratati (sali)."
+  },
+  {
+   "level": "rosso",
+   "signal": "Calo di libido o di erezioni mattutine, peso che scende di continuo, malattie frequenti, freddo costante (REDs)",
+   "action": "Stop a qualsiasi deficit, più carboidrati, visita medica; palestra BASSO finché non si chiarisce."
+  },
+  {
+   "level": "regola",
+   "signal": "Il dolore non si 'supera'",
+   "action": "L'indolenzimento muscolare va bene; dolore a tendini, ossa e articolazioni no. Fino a 3/10 che sparisce entro la mattina dopo è accettabile per i tendini; sopra, o se il giorno dopo è peggio, si riduce."
+  }
+ ],
+ "corrections": [
+  {
+   "id": "c01",
+   "where": "BJJ — calendario",
+   "what": "Verificati tutti i giorni della settimana 2026/2027 (23 nov lun, 22 dic mar, 25 dic ven, 27 dic dom, 28 dic lun, 2 gen sab, 4 gen lun, 12 gen mar, 15 gen ven, 19 gen mar, 23 gen sab, ecc.): corretti. Unica imprecisione: il volo di rientro è sabato 9 gen, non domenica 10.",
+   "fix": "Sab 9 = viaggio/riposo; dom 10 = primo giorno a casa (camminata + mobilità)."
+  },
+  {
+   "id": "c02",
+   "where": "BJJ Fase 1, venerdì B1",
+   "what": "Zercher squat ALTO '4 × 6' rompeva la notazione a cluster e dava meno volume del MEDIO.",
+   "fix": "ALTO = 4 × Cl (15), come lo stacco del martedì."
+  },
+  {
+   "id": "c03",
+   "where": "BJJ Fase 1, venerdì",
+   "what": "Trazioni al gi (mar) + rematore col gi + farmer's walk (ven) = 3 esercizi di presa a settimana; la ricerca dice massimo 2 [F19], e il farmer cade il giorno prima del gi.",
+   "fix": "Farmer's walk solo nell'ALTO; in quel caso rematore con maniglia normale."
+  },
+  {
+   "id": "c04",
+   "where": "BJJ Rientro e settimana gara",
+   "what": "Il programma prevedeva un ALTO 'tagliato' anche venerdì 15 (8 gg prima) e martedì 19 (settimana gara); il file di ricerca dice 'mai ALTO nella settimana della gara' e BASSO negli ultimi ~10 giorni.",
+   "fix": "Dal 15 gen niente ALTO: default BASSO, MEDIO solo con punteggio ≥ 7 (tolti hip thrust extra del 15 e Pallof extra del 19)."
+  },
+  {
+   "id": "c05",
+   "where": "BJJ Peso",
+   "what": "Deficit −300/−400 kcal 'per 7–10 giorni' dall'11 gen arrivava fino a 20–21 gen, sovrapponendosi al carico di carboidrati degli ultimi 2 giorni.",
+   "fix": "Il deficit finisce al massimo mercoledì 20 gen; da giovedì 21 carboidrati 5–7 g/kg."
+  },
+  {
+   "id": "c06",
+   "where": "BJJ Domenica, opzione corsa",
+   "what": "Corsa facile fino a 50' senza progressione: contrasta con la ricerca Ironman ('tendini prima del motore', +10–15% a settimana, corsa-cammino per chi viene dal grappling).",
+   "fix": "ALTO 50' solo se nelle 2 settimane prima hai già corso ≥ 40' senza dolori; altrimenti corsa-cammino 1'/1'."
+  },
+  {
+   "id": "c07",
+   "where": "Ironman F0",
+   "what": "La prima Seduta R era lunedì 25 gen, 2 giorni dopo la gara; la ricerca (§6.2) indica la settimana 0–1 come scarico.",
+   "fix": "Prima palestra giovedì 28 gen, BASSO; lunedì 25 camminata + mobilità; niente BJJ per 2 settimane."
+  },
+  {
+   "id": "c08",
+   "where": "Ironman date F1/F2",
+   "what": "Contando S1 dal 25 gen 2027, F1 (S3–S6) è 8 feb – 7 mar e F2 (S7–S14) è 8 mar – 2 mag, non 'metà mar – metà mag'.",
+   "fix": "Date ricalcolate per tutte le fasi; F3 dal 3 mag."
+  },
+  {
+   "id": "c09",
+   "where": "Ironman F7 (70.3)",
+   "what": "'Seduta T con squat il lunedì o martedì della settimana prima' = 12–13 giorni prima, non gli 8–10 dichiarati. Inoltre con il 70.3 'a fine maggio' la costruzione −16 non lasciava 2 settimane di recupero.",
+   "fix": "70.3 ipotizzato dom 21 mag 2028; T con squat gio 11 o ven 12 mag (9–10 gg); T BASSO lun 15 (6 gg)."
+  },
+  {
+   "id": "c10",
+   "where": "Ironman F9/F10",
+   "what": "F9 (−8 → −3) e F10 (−3 → gara) si sovrapponevano sulla settimana −3, e '−2 = 10–14 giorni prima' non corrisponde alle settimane.",
+   "fix": "F9 = −8…−3; F10 = −2, −1, gara. Ultimo pesante lun della −1 (13 gg), T BASSO sab/dom della −1 (7–8 gg), settimana gara niente pesi."
+  },
+  {
+   "id": "c11",
+   "where": "Ironman F6, F8, F9 — settimane tipo",
+   "what": "Violavano la regola della ricerca 'mai forza gambe il giorno prima di qualità o lunghi': A6/A8 lunedì con corsa di qualità martedì; B8 giovedì a < 48 h dal lunghissimo del sabato; Seduta S lunedì prima della qualità del martedì.",
+   "fix": "F6: qualità di corsa spostata a mercoledì. F8: B8 mercoledì dopo la corsa di qualità (giorno duro unico), martedì facile. F9: Seduta S martedì pomeriggio dopo la qualità."
+  },
+  {
+   "id": "c12",
+   "where": "Ironman §0.4",
+   "what": "'Settimana di scarico → puoi salire di un livello' contraddiceva '§3.3 deload = BASSO obbligatorio'.",
+   "fix": "Regola tolta: il deload è sempre BASSO."
+  },
+  {
+   "id": "c13",
+   "where": "Ironman F1, Copenhagen",
+   "what": "La tabella mescolava settimane e livelli ('BASSO S3: 3, MEDIO S5: 7') e ripartiva da 1 × 3 a ginocchio dopo 2 mesi di Copenhagen a leva lunga 3 × 12 nel BJJ.",
+   "fix": "B 1 × 6 · M 2 × 8 · A 2 × 10 per lato, leva lunga se l'inguine è ok."
+  },
+  {
+   "id": "c14",
+   "where": "Ironman F1–F2, Nordic",
+   "what": "Il Nordic spariva fino a novembre 2027 (F5): 10 mesi senza, buttando l'adattamento costruito nel BJJ (il DOMS torna forte dopo una pausa).",
+   "fix": "Nordic facoltativo di mantenimento 1×/settimana nella seduta B di F1 e F2 (1 × 4 → 2 × 5)."
+  },
+  {
+   "id": "c15",
+   "where": "Nomi esercizi",
+   "what": "Lo stesso esercizio aveva nomi diversi nei due programmi.",
+   "fix": "Unificati: Squat bulgaro = Split squat bulgaro; Rotazione esterna = Extrarotazioni; Copenhagen adduction = Copenhagen plank; Nordic curl = Nordic hamstring curl; Single-leg RDL = RDL monopodalico; Trazioni zavorrate/alla sbarra/lat machine; Stacco con trap bar; Jump squat = Squat jump/CMJ."
+  }
+ ]
+}
