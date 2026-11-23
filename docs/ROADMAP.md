@@ -10,6 +10,7 @@
 - Dati salvati sul telefono (localStorage), installabile come app
 
 ## Prossimi passi
+0. Piano rapido approvato: vedi `docs/PIANO-APP.md`
 1. **Pubblicazione su Vercel** e installazione sul telefono
 2. **Supabase**: dati online (sedute, pesate) per non perderli cambiando telefono
 3. **Libreria esercizi completa**: muscoli principali/secondari, indicazioni per fase (partenza/discesa/basso/risalita), regressioni, fonti — estratti da `docs/ricerca/2-*.md`
