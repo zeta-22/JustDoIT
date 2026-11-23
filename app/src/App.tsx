@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { PLAN, SCORE, START, currentPhaseId, exercise, isoToday, phase, restSeconds, setCount, type Item, type Phase, type Session, type Vol } from "./lib/plan";
-import { DIVISIONS, store, type ItemLog, type SessionLog, type Settings } from "./lib/store";
+import { DIVISIONS, signIn, signOut, store, sync, syncState, type ItemLog, type SessionLog, type Settings } from "./lib/store";
 import { FIGS } from "./data/figures";
 import Figure from "./components/Figure";
 import MuscleMap from "./components/MuscleMap";
 import { TimerProvider, useRest } from "./components/Timer";
 
-type Tab = "oggi" | "piano" | "peso" | "storico";
+type Tab = "oggi" | "piano" | "peso" | "storico" | "altro";
 const VOLS: Vol[] = ["basso", "medio", "alto"];
 const VL: Record<Vol, string> = { basso: "Basso", medio: "Medio", alto: "Alto" };
 const PROG_LABEL = { bjj: "Gara BJJ", transizione: "Transizione", ironman: "Ironman" };
@@ -15,18 +15,26 @@ export default function App() {
   const [tab, setTab] = useState<Tab>("oggi");
   const [running, setRunning] = useState<SessionLog | null>(() => store.sessions().find(s => !s.finished) ?? null);
   const [sheet, setSheet] = useState<string | null>(null);
+  const [rev, setRev] = useState(0); // cambia quando arrivano dati da un altro dispositivo
+  useEffect(() => {
+    const on = (e: Event) => { if ((e as CustomEvent).detail?.changed) setRev(r => r + 1); };
+    window.addEventListener("jdi:sync", on); return () => window.removeEventListener("jdi:sync", on);
+  }, []);
   return <TimerProvider>
     <div className="wrap">
       {running
         ? <Runner log={running} onChange={setRunning} onOpen={setSheet} onExit={() => { setRunning(null); setTab("storico"); }} />
         : <>
           <nav className="tabs" aria-label="Sezioni">
-            {(["oggi", "piano", "peso", "storico"] as Tab[]).map(t => <button key={t} type="button" aria-pressed={tab === t} onClick={() => setTab(t)}>{{ oggi: "Oggi", piano: "Piano", peso: "Peso", storico: "Storico" }[t]}</button>)}
+            {(["oggi", "piano", "peso", "storico", "altro"] as Tab[]).map(t => <button key={t} type="button" aria-pressed={tab === t} onClick={() => setTab(t)}>{{ oggi: "Oggi", piano: "Piano", peso: "Peso", storico: "Storico", altro: "Altro" }[t]}</button>)}
           </nav>
-          {tab === "oggi" && <Today onStart={l => { store.saveSession(l); setRunning(l); }} onOpen={setSheet} />}
-          {tab === "piano" && <PlanView onOpen={setSheet} />}
-          {tab === "peso" && <Weight />}
-          {tab === "storico" && <History />}
+          <div key={rev} className="stack">
+            {tab === "oggi" && <Today onStart={l => { store.saveSession(l); setRunning(l); }} onOpen={setSheet} />}
+            {tab === "piano" && <PlanView onOpen={setSheet} />}
+            {tab === "peso" && <Weight />}
+            {tab === "storico" && <History />}
+            {tab === "altro" && <More />}
+          </div>
         </>}
     </div>
     {sheet && <ExerciseSheet id={sheet} onClose={() => setSheet(null)} />}
@@ -206,6 +214,49 @@ function History() {
         {l.note && <p className="small muted">{l.note}</p>}
         <button type="button" className="ghost" onClick={() => { store.deleteSession(l.id); setAll(store.sessions().filter(s => s.finished).reverse()); }}>Elimina</button>
       </details>; })}
+  </section>;
+}
+
+/* ---------------- Altro: account, sincronizzazione, backup ---------------- */
+function useSync() {
+  const [, set] = useState(0);
+  useEffect(() => { const on = () => set(x => x + 1); window.addEventListener("jdi:sync", on); return () => window.removeEventListener("jdi:sync", on); }, []);
+  return syncState;
+}
+const SYNC_LABEL = { anon: "Non collegato: i dati restano solo su questo telefono", syncing: "Sincronizzo…", ok: "Dati salvati online", offline: "Senza rete: salvo sul telefono e invio appena torna", error: "Errore di sincronizzazione" };
+function More() {
+  const st = useSync(); const [email, setEmail] = useState(""); const [msg, setMsg] = useState<string | null>(null); const [busy, setBusy] = useState(false);
+  const exportFile = () => {
+    const blob = new Blob([store.exportAll()], { type: "application/json" }); const url = URL.createObjectURL(blob);
+    const a = document.createElement("a"); a.href = url; a.download = `justdoit-backup-${isoToday()}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url), 5000);
+  };
+  const importFile = async (f: File | undefined) => { if (!f) return; try { setMsg(store.importAll(await f.text())); } catch (e) { setMsg(e instanceof Error ? e.message : "File non valido."); } };
+  return <section className="stack">
+    <h1 className="h1s">Account e dati</h1>
+    <div className={"card pad stack-s sync " + st.status}>
+      <span className="lab">Sincronizzazione</span>
+      <p><b>{SYNC_LABEL[st.status]}</b>{st.status === "ok" && st.last ? ` · ultima alle ${st.last}` : ""}</p>
+      {st.pending > 0 && st.status !== "anon" && <p className="small muted">{st.pending} modifiche in attesa di invio.</p>}
+      {st.status === "error" && st.error && <p className="small warnbox">{st.error}</p>}
+      {st.email ? <>
+        <p className="small muted">Collegato come {st.email}</p>
+        <div className="row gap"><button type="button" className="primary" onClick={() => void sync()}>Sincronizza ora</button>
+          <button type="button" className="ghost" onClick={() => void signOut()}>Esci</button></div>
+      </> : <form className="stack-s" onSubmit={async e => { e.preventDefault(); setBusy(true); setMsg(null);
+          try { await signIn(email.trim()); setMsg(`Ti ho mandato un link a ${email.trim()}. Aprilo da questo telefono: l'app si collega da sola.`); }
+          catch (err) { setMsg(err instanceof Error ? err.message : "Invio non riuscito."); } finally { setBusy(false); } }}>
+        <label className="field" htmlFor="em">La tua email<input id="em" type="email" required autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="nome@esempio.it" /></label>
+        <button type="submit" className="primary" disabled={busy}>{busy ? "Invio…" : "Mandami il link di accesso"}</button>
+        <p className="small muted">Niente password: ricevi un link via email una volta sola, poi resti collegato.</p>
+      </form>}
+      {msg && <p className="small">{msg}</p>}
+    </div>
+    <div className="card pad stack-s">
+      <h2>Backup</h2>
+      <p className="small muted">Un file con tutte le sedute, le pesate e le impostazioni. Utile come copia di sicurezza in più.</p>
+      <div className="row gap"><button type="button" className="ghost" onClick={exportFile}>Scarica backup</button>
+        <label className="ghost filebtn">Importa backup<input type="file" accept="application/json,.json" onChange={e => void importFile(e.target.files?.[0])} /></label></div>
+    </div>
   </section>;
 }
 

@@ -129,11 +129,13 @@ function torso(s, mus, op) {
   o += path(smooth(wb), C.shorts);
   return `<g transform="${tr(s.P, ang)}">${o}</g>`;
 }
-function neckHead(s) {
+function neckHead(s, mus, op) {
   const { len, ang } = frame(s.S, s.Hd);
   // collo: dalla spalla verso la testa
   const neck = [[-1, -4.2], [len * .55, -3.4], [len * .62, 0], [len * .55, 3.6], [-1, 4.8]];
-  let o = `<g transform="${tr(s.S, ang)}">${path(smooth(neck), C.skin)}${path(smooth([[0, 1.4], [len * .5, 1.6], [len * .5, 3.4], [0, 4.6]]), C.shade, `fill-opacity=".5"`)}</g>`;
+  // trapezio sul retro del collo (y negativo = dietro): resta visibile anche con le braccia alzate
+  const trap = musPath([[-2.5, -5.6], [len * .25, -4.6], [len * .55, -3.2], [len * .45, -1.4], [-1, -1.6]], mus, "trapezi", op);
+  let o = `<g transform="${tr(s.S, ang)}">${path(smooth(neck), C.skin)}${trap}</g>`;
   // testa: sistema con y verso il basso del viso, x verso lo sguardo
   const a = ang + 90; // ang punta "su" lungo il collo; ruoto per avere lo sguardo lungo x
   const skull = [[-8.2, -1], [-7, -6.6], [-1.6, -9.6], [4.6, -8.6], [8.4, -4.2], [9.2, .6], [10.2, 3], [9, 4.2], [8.6, 6.6], [5.6, 9.4], [.6, 9.6], [-4.2, 7], [-7.4, 3.6]];
@@ -163,7 +165,7 @@ function heroFlat(s, mus, op) {
   o += thigh(s, 1, true, mus, op) + shin(s, 1, true, mus, op) + shoe(s, 1, true) + shorts(s, 1, true, mus, op);
   o += torso(s, mus, op);
   o += thigh(s, 0, false, mus, op) + shin(s, 0, false, mus, op) + shoe(s, 0, false) + shorts(s, 0, false, mus, op);
-  o += neckHead(s);
+  o += neckHead(s, mus, op);
   o += arm(s, 0, false, mus, op);
   return o;
 }

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
-import { FIG, PROP, skel, lerp, hero } from "../engine/figure.js";
+import { FIG, PROP, skel, lerp } from "../engine/figure.js";
+import { heroFlat } from "../engine/flat.js";
 import type { FigInfo } from "../data/figures";
 
 const ease = (x: number) => 0.5 - 0.5 * Math.cos(Math.PI * x);
@@ -25,7 +26,7 @@ export default function Figure({ info, speed = 1 }: { info: FigInfo; speed?: num
       const st = state(ex, t); const s = skel(st.pose);
       const op = Math.min(.95, .45 + st.act * (.75 + .25 * Math.sin(t * 5)) * .5);
       const pr = (front: boolean) => (ex.props || []).filter(p => (p.z === "front") === front).map(p => PROP[p.k](p, s, t)).join("");
-      g.current!.innerHTML = `<line class="gnd" x1="0" y1="130" x2="200" y2="130"/>` + pr(false) + hero(s, mus, op) + pr(true);
+      g.current!.innerHTML = `<line class="gnd" x1="0" y1="130" x2="200" y2="130"/>` + pr(false) + heroFlat(s, mus, op) + pr(true);
     };
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     if (reduce) { draw((ex.h1 || 0) + (ex.t1 || 1) + .01); return; }
