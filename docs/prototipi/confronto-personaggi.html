@@ -51,7 +51,7 @@ td:first-child { font-weight: 600; white-space: nowrap; }
 <main class="wrap">
   <header style="display:grid;gap:8px">
     <h1>Quale personaggio tieni?</h1>
-    <p class="muted">Stesse pose, stessi muscoli, stesso motore. A sinistra il personaggio attuale (fumetto, contorno nero). A destra la proposta nuova, l'«Atleta flat»: pezzi rigidi senza contorno, pelle in due toni, muscoli sempre dentro la sagoma. Rosso = muscoli principali, arancio = secondari; si accendono di più nella fase di sforzo.</p>
+    <p class="muted">Stesse pose, stessi muscoli, stesso motore. A sinistra il personaggio attuale (fumetto, contorno nero). A destra la proposta nuova, l'«Atleta flat»: corpo grigio e quasi senza dettagli, così gli unici colori sono i muscoli che lavorano. Rosso = muscoli principali, arancio = secondari; si accendono di più nella fase di sforzo.</p>
   </header>
 
   <div class="bar" role="group" aria-label="Velocità">
@@ -70,13 +70,13 @@ td:first-child { font-weight: 600; white-space: nowrap; }
       <tbody>
         <tr><td>Disegno</td><td>Contorno nero spesso, sagoma ricostruita a ogni fotogramma</td><td>Nessun contorno: ogni pezzo del corpo è una forma unica che ruota sull'articolazione</td></tr>
         <tr><td>Articolazioni</td><td>A volte si vedono giunture</td><td>Pezzi dello stesso colore che si sovrappongono: nessuna giuntura</td></tr>
-        <tr><td>Muscoli</td><td>Sopra la sagoma, possono uscire</td><td>Dentro ogni pezzo, non escono mai; glutei visti attraverso i pantaloncini aderenti</td></tr>
-        <tr><td>Volume</td><td>Ombre e linee di definizione</td><td>Pelle a due toni (luce davanti, ombra dietro), poche linee</td></tr>
-        <tr><td>Leggibilità da piccolo</td><td>Molto alta grazie al contorno</td><td>Alta, più «da app»; i muscoli risaltano sulla pelle chiara</td></tr>
+        <tr><td>Muscoli</td><td>Sopra la sagoma, possono uscire</td><td>Gli unici elementi colorati, con un bordo scuro; restano dentro la sagoma</td></tr>
+        <tr><td>Volume</td><td>Ombre e linee di definizione</td><td>Grigio uniforme con un'ombra leggera sul retro; niente linee né dettagli del viso</td></tr>
+        <tr><td>Leggibilità da piccolo</td><td>Molto alta grazie al contorno</td><td>Alta: l'occhio va subito al muscolo che lavora</td></tr>
         <tr><td>Lavoro per i 71 esercizi</td><td>Uguale: le pose sono le stesse</td><td>Uguale: si cambia solo il disegnatore</td></tr>
       </tbody>
     </table></div>
-    <p class="muted">Dimmi quale preferisci, o cosa prendere da ciascuno (per esempio il contorno del primo con la pelle a due toni del secondo).</p>
+    <p class="muted">Dimmi quale preferisci, o cosa prendere da ciascuno (per esempio un contorno sottile intorno al corpo grigio).</p>
   </section>
 </main>
 
@@ -399,16 +399,16 @@ function maps(mp,ms){return `<div class="maps"><figure><svg viewBox="0 0 120 245
 
 
 const heroFlat=(()=>{/* Personaggio "Atleta flat" (proposta 2): stesse pose e stesso scheletro di figure.js (skel),
-   ma disegnato a pezzi rigidi senza contorno nero, pelle a due toni e muscoli dentro la sagoma.
+   ma disegnato a pezzi rigidi senza contorno nero, corpo grigio uniforme e quasi senza dettagli,
+   così gli unici elementi colorati sono i muscoli che lavorano (dentro la sagoma, con un bordo scuro).
    Ogni pezzo vive in un sistema locale: x lungo l'osso (0 → lunghezza), y perpendicolare.
    sgn = -1: il lato anatomico anteriore è y negativo (gambe, braccia); sgn = +1 per il busto. */
 
 const C = {
-  skin: "var(--fl-skin,#e9b089)", skinFar: "var(--fl-skinFar,#c98d68)", shade: "var(--fl-shade,#c4835f)", shadeFar: "var(--fl-shadeFar,#a8704f)",
-  light: "var(--fl-light,#f6cfae)", def: "var(--fl-def,#b06e4c)", hair: "var(--fl-hair,#2b2220)",
-  shorts: "var(--fl-shorts,#2b4c7e)", shortsFar: "var(--fl-shortsFar,#203a62)", stripe: "var(--fl-stripe,#f4f1ea)",
-  shoe: "var(--fl-shoe,#ececec)", shoeFar: "var(--fl-shoeFar,#c9cdd1)", sole: "var(--fl-sole,#3d4650)", eye: "var(--fl-eye,#1f1a18)",
-  mus: "var(--mus,#e8333a)", mus2: "var(--mus2,#ff9f1a)",
+  skin: "var(--fl-skin,#d3d9df)", skinFar: "var(--fl-skinFar,#b9c1c9)", shade: "var(--fl-shade,#c3cad1)", shadeFar: "var(--fl-shadeFar,#b3bbc3)",
+  hair: "var(--fl-hair,#9aa3ad)", shorts: "var(--fl-shorts,#aeb7c0)", shortsFar: "var(--fl-shortsFar,#99a3ad)",
+  shoe: "var(--fl-shoe,#aeb7c0)", shoeFar: "var(--fl-shoeFar,#99a3ad)", sole: "var(--fl-sole,#8a949e)", eye: "var(--fl-eye,#7d8791)",
+  mus: "var(--mus,#e8333a)", mus2: "var(--mus2,#ff9f1a)", edge: "var(--mus-edge,#a3161c)", edge2: "var(--mus2-edge,#b86a00)",
 };
 const fx = n => n.toFixed(2);
 const deg = r => r * 180 / Math.PI;
@@ -466,7 +466,8 @@ const path = (d, fill, extra = "") => `<path d="${d}" fill="${fill}" ${extra}/>`
 const lvl = (mus, name) => mus.p.includes(name) ? 1 : mus.s.includes(name) ? 2 : 0;
 function musPath(pts, mus, name, op) {
   const l = lvl(mus, name); if (!l) return "";
-  return path(smooth(pts), l === 1 ? C.mus : C.mus2, `fill-opacity="${fx(l === 1 ? op : op * .85)}"`);
+  const a = .6 + .4 * op;
+  return path(smooth(pts), l === 1 ? C.mus : C.mus2, `fill-opacity="${fx(l === 1 ? a : a * .9)}" stroke="${l === 1 ? C.edge : C.edge2}" stroke-width=".6" stroke-linejoin="round"`);
 }
 
 /* ---------- profili (unità dello scheletro: coscia 32, gamba 32, busto 40, braccio 24, avambraccio 22) ---------- */
@@ -481,15 +482,14 @@ function limbSeg(A, B, prof, sgn, far, muscles, mus, op, extra = "") {
   const { len, ang } = frame(A, B);
   const sil = silhouette(len, prof, sgn);
   let o = path(smooth(sil), far ? C.skinFar : C.skin);
-  o += path(smooth(band(len, prof, sgn, "b", -.02, 1.02, .38, 1, false)), far ? C.shadeFar : C.shade, `fill-opacity=".55"`);
-  if (!far) o += path(smooth(band(len, prof, sgn, "f", .12, .88, .55, .82)), C.light, `fill-opacity=".6"`);
+  o += path(smooth(band(len, prof, sgn, "b", -.02, 1.02, .45, 1, false)), far ? C.shadeFar : C.shade, `fill-opacity=".6"`);
   muscles.forEach(([name, side, t0, t1, a0, a1]) => { o += musPath(band(len, prof, sgn, side, t0, t1, a0, a1), mus, name, op); });
   return `<g transform="${tr(A, ang)}">${o}${extra}</g>`;
 }
 function thigh(s, i, far, mus, op) {
   const L = s.legs[i]; if (!L) return "";
   return limbSeg(s.P, L.k, P_THIGH, -1, far, [
-    ["quadricipiti", "f", .12, .9, .05, .9], ["femorali", "b", .2, .88, .05, .88], ["adduttori", "b", .05, .55, -.35, .05],
+    ["quadricipiti", "f", .12, .9, .05, .9], ["femorali", "b", .2, .88, .05, .88], ["adduttori", "b", .04, .62, -.62, .3],
   ], mus, op);
 }
 function shin(s, i, far, mus, op) {
@@ -511,7 +511,6 @@ function shorts(s, i, far, mus, op) {
     ...[.38, .3, .2, .1, 0].map(t => [t * len, -at(pr, t)[2]]), [-6, 5]];
   const shape = n.map(([x, y]) => [x, -y]); // sgn = -1: anteriore = y negativo
   let o = path(smooth(shape), far ? C.shortsFar : C.shorts);
-  if (!far) o += `<path d="M${fx(.43 * len)} ${fx(-at(pr, .43)[1] + .4)} L${fx(.43 * len)} ${fx(at(pr, .43)[2] - .4)}" stroke="${C.stripe}" stroke-width="1.1" stroke-linecap="round" fill="none" opacity=".85"/>`;
   // glutei visti "in trasparenza" sui pantaloncini aderenti
   if (!far) o += musPath([[-6, 3], [-2, 9.4], [5, 10.4], [10.5, 8.8], [12, 5], [6, 3.2], [0, 2.4]], mus, "glutei", op * .9);
   return `<g transform="${tr(s.P, ang)}">${o}</g>`;
@@ -520,20 +519,13 @@ function torso(s, mus, op) {
   const { len, ang } = frame(s.P, s.S);
   const sgn = 1, sil = silhouette(len, P_TORSO, sgn);
   let o = path(smooth(sil), C.skin);
-  o += path(smooth(band(len, P_TORSO, sgn, "b", -.02, 1.02, .36, 1, false)), C.shade, `fill-opacity=".55"`);
-  o += path(smooth(band(len, P_TORSO, sgn, "f", .1, .92, .5, .8)), C.light, `fill-opacity=".55"`);
+  o += path(smooth(band(len, P_TORSO, sgn, "b", -.02, 1.02, .45, 1, false)), C.shade, `fill-opacity=".6"`);
   [["addominali", "f", .1, .55, .1, .92], ["obliqui", "f", .05, .5, -.35, .18], ["pettorali", "f", .6, .92, .12, .95],
-   ["erettori", "b", .02, .55, .1, .78], ["dorsali", "b", .45, .86, .12, .95], ["trapezi", "b", .82, 1.04, .02, .85]]
+   ["erettori", "b", .02, .6, .05, .92], ["dorsali", "b", .45, .86, .12, .95], ["trapezi", "b", .82, 1.04, .02, .85]]
     .forEach(([name, side, t0, t1, a0, a1]) => { o += musPath(band(len, P_TORSO, sgn, side, t0, t1, a0, a1), mus, name, op); });
-  // linee di definizione: addominali e pettorale
-  const d = (t, a) => { const w = at(P_TORSO, t); return [t * len, w[1] * a]; };
-  const ab = [.16, .27, .38].map(t => `M${fx(d(t, .25)[0])} ${fx(d(t, .25)[1])} Q ${fx(d(t, .55)[0] + .6)} ${fx(d(t, .55)[1])} ${fx(d(t, .85)[0])} ${fx(d(t, .85)[1])}`).join(" ");
-  const pec = `M${fx(d(.6, .35)[0])} ${fx(d(.6, .35)[1])} Q ${fx(d(.62, .9)[0])} ${fx(d(.62, .9)[1])} ${fx(d(.72, 1)[0])} ${fx(d(.72, 1)[1])}`;
-  o += `<path d="${ab} ${pec}" stroke="${C.def}" stroke-width=".7" fill="none" stroke-linecap="round" opacity=".55"/>`;
   // vita dei pantaloncini sul bacino
   const wb = [[-7.5, -9.6], [6.2, -8.8], [6.6, 0], [6.2, 9.8], [-7.5, 10.4]];
   o += path(smooth(wb), C.shorts);
-  o += `<path d="M5.6 -8.6 L5.9 9.4" stroke="${C.stripe}" stroke-width="1" opacity=".8"/>`;
   return `<g transform="${tr(s.P, ang)}">${o}</g>`;
 }
 function neckHead(s) {
@@ -546,11 +538,8 @@ function neckHead(s) {
   const skull = [[-8.2, -1], [-7, -6.6], [-1.6, -9.6], [4.6, -8.6], [8.4, -4.2], [9.2, .6], [10.2, 3], [9, 4.2], [8.6, 6.6], [5.6, 9.4], [.6, 9.6], [-4.2, 7], [-7.4, 3.6]];
   const hair = [[-8.8, -.4], [-7.6, -7.2], [-1.8, -10.6], [5, -9.6], [9, -5], [7.2, -4.6], [3.4, -6.2], [-1.2, -5.6], [-3.6, -2.4], [-5.6, 1.6]];
   let h = path(smooth(skull), C.skin);
-  h += path(smooth([[-7.4, 3.6], [-4.2, 7], [.6, 9.6], [-2.6, 4.2]]), C.shade, `fill-opacity=".5"`);
   h += path(smooth(hair), C.hair);
-  h += `<ellipse cx="-1.6" cy="1.2" rx="2" ry="2.8" fill="${C.skin}"/><ellipse cx="-1.4" cy="1.3" rx="1" ry="1.6" fill="${C.shade}" opacity=".6"/>`;
-  h += `<circle cx="5.6" cy="-.4" r="1.05" fill="${C.eye}"/><path d="M4.1 -2.6 L7.4 -2.9" stroke="${C.hair}" stroke-width="1" stroke-linecap="round"/>`;
-  h += `<path d="M6.6 6 Q 7.9 6.5 8.8 6" stroke="${C.def}" stroke-width=".7" fill="none" stroke-linecap="round"/>`;
+  h += `<circle cx="5.6" cy="-.4" r="1" fill="${C.eye}"/>`;
   o += `<g transform="${tr(s.Hd, a)}">${h}</g>`;
   return o;
 }
