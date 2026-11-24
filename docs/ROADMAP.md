@@ -12,7 +12,8 @@
 ## v0.2 — fatto (23 novembre)
 - Personaggio "Atleta flat" approvato e usato nell'app (`engine/flat.js`): corpo grigio semplice, muscoli unico colore
 - Dati online su Supabase (`supabase/schema.sql`, tabella `records` con RLS), accesso con link via email, funziona offline e sincronizza al ritorno della rete
-- Scheda "Altro": stato della sincronizzazione, accesso/uscita, backup su file (scarica/importa)
+- Scheda "Altro": stato della sincronizzazione, accesso con email e password (o link), backup su file (scarica/importa)
+- Collegamento verificato il 24/11: pesate e impostazioni arrivano su Supabase (progetto JustDoIt, app su just-do-it-psi.vercel.app)
 
 ## Prossimi passi
 0. Piano rapido approvato: vedi `docs/PIANO-APP.md`
