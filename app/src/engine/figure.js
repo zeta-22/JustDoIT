@@ -216,7 +216,7 @@ const FIG={};
   FIG.pullup={poses:[A,mod(A,P=>{P.hip=[100,62];P.legs=[{f:[84,86],b:[1,0],fa:60},{f:[80,85],b:[1,0],fa:60}];P.arms=[{h:[112,20],b:[1,.6]},{h:[106,20],b:[1,.6]}];})],t1:1.1,t2:2,h1:.6,h2:.5,
   props:[{k:"bar",x1:66,x2:134,y:19}]};})();
 
-/* ---------- gruppo 2 (in revisione) ---------- */
+/* ---------- gruppo 2 (approvato il 25/11, collegato in data/figures.ts) ---------- */
 /* Rematore col gi: busto a 45°, gi agganciato al cavo basso, gomiti verso i fianchi */
 (()=>{const A={hip:[84,68],t:45,hd:-12,legs:[{f:[102,127],b:[1,0]},{f:[96,127],b:[1,0]}],arms:[{h:[146,86],b:[0,1]},{h:[144,87],b:[0,1]}]};
   FIG.girow={poses:[A,mod(A,P=>{P.arms=[{h:[112,64],b:[-1,.3]},{h:[110,65],b:[-1,.3]}];})],t1:1,t2:1.8,h1:.4,h2:1,
