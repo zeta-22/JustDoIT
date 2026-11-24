@@ -36,7 +36,15 @@
 - Analisi e confronto con Hevy, Strong, Fitbod, TrainingPeaks, Whoop; mockup delle schermate nuove: `docs/prototipi/rinnovo-ux.html` (schermate attuali in `docs/prototipi/rinnovo/`)
 - Sei decisioni da approvare (D1–D6), poi 3 fasi: 1 fondamenta + seduta (prima della prova in palestra), 2 progressi + libreria esercizi + diario tatami (dicembre), 3 rifiniture e promemoria (dopo la gara)
 - Fatto subito (24/11): conteggio delle serie (`setCount`, `volFor`, `planWeek` in `lib/plan.ts`): "3 giri", "2 tenute", "4 round", "3 × 8 + 1 × 15", piramidi "5-3-1", "P1 … / P2 …", "come MEDIO" e le voci per settimana "S1 … · S2 …" (Nordic, Copenhagen, collo). Pulsante "+ Aggiungi serie" in ogni esercizio
-- Bug da correggere nella Fase 1: la seduta si apre a metà pagina; "Annulla"/"Elimina" senza conferma; tasto Indietro di Android chiude l'app
+- **Fase 1 — fatta sul ramo `claude/loving-fermi-tjov7d`, da provare prima di main** (24/11):
+  - colori nuovi (blu cintura per le azioni, verde acqua nel blocco Ironman, rosso/arancio solo muscoli), icone (`components/Icon.tsx`), formati italiani (`lib/format.ts`)
+  - barra in basso Oggi · Piano · Esercizi · Progressi · Profilo; il tasto Indietro chiude la scheda, riduce la seduta, torna a Oggi (`App.tsx`)
+  - Oggi: giorno della settimana → seduta del giorno (`lib/today.ts`), conto alla rovescia e barra della fase a forma di cintura, settimana con i pallini, check-in del mattino con la pesata
+  - Seduta: si apre in cima, esercizi fatti chiusi, superserie in un blocco, colonna "Prima", valori proposti accettati con ✓, menu ⋯ (scheda, versione più facile, serie in più/in meno, dolore), riscaldamento da spuntare, vibrazione (`screens/Session.tsx`, `lib/session.ts`)
+  - Timer: compare solo nel recupero, recupero del piano, −15″/+15″/Salta, prossima serie, si riduce a pillola
+  - Riepilogo: durata, serie, kg totali, record (1RM stimato), RPE della seduta, muscoli lavorati; "Elimina" chiede conferma; nel diario si annulla per 5″
+  - Esercizi: libreria dei 71 con ricerca, filtri e miniature; la scheda mostra le ultime volte
+  - Progressi (palestra, resistenza, peso) e Profilo (gara, categoria, account, backup) prendono il posto di Diario, Peso e Altro
 
 ## Prossimi passi
 1. **Analisi generale di grafica e UX** e rinnovo (in una chat nuova): confronto con le migliori app di allenamento, prototipo da approvare, rinnovo a pezzi

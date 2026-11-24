@@ -9,6 +9,8 @@ Comunica in italiano, in modo semplice; spiega le scelte (vuole capire, non subi
 - Dati: `src/lib/store.ts`: scrive in localStorage e mette ogni modifica in coda; `sync()` la manda a Supabase (progetto JustDoIt, tabella `records` con RLS, `supabase/schema.sql`). Accesso con email e password. App online: https://just-do-it-psi.vercel.app (Vercel pubblica `main`).
 - Libreria esercizi (muscoli e regressioni per tutti): `src/data/library.ts`. Carico consigliato: `src/lib/progress.ts`. Data gara e fasi: `src/lib/plan.ts`.
 - Piano: `src/data/piano.json` (fonte unica per fasi/sedute/esercizi). Tipi e utility in `src/lib/plan.ts`.
+- Schermate in `src/screens/` (Today, Session, Plan, Progress, Library, Profile), navigazione e tasto Indietro in `src/App.tsx`; logica della seduta (gruppi/superserie, prossima serie, proposte, record) in `src/lib/session.ts`; giorno e fase in `src/lib/today.ts`; formati italiani in `src/lib/format.ts`.
+- Grafica approvata il 24/11 (`docs/prototipi/rinnovo-ux.html`): blu "cintura" per azioni e progresso (verde acqua nel blocco Ironman), **rosso e arancio solo per i muscoli**, icone a tratto in `components/Icon.tsx`, Barlow Condensed solo per numeri e titoli, niente librerie UI.
 - Animazioni: `src/engine/figure.js` (JS, `@ts-nocheck`).
   - `FIG[key]` = `{ poses:[A,B], t1,t2,h1,h2 | loop, props }`. Una posa: `hip`, `t` (inclinazione busto, gradi), `hd`, `legs:[{f:[x,y], b:[bx,by], fa}]` (IK verso il piede), `arms:[{h:[x,y], b} | {u,f}]`. Indice 0 = arti vicini (scuri), 1 = lontani. Suolo a y=130, viewBox 200×140, personaggio rivolto a destra.
   - Personaggio in uso: `heroFlat` in `src/engine/flat.js` ("Atleta flat": corpo grigio semplice, muscoli unico colore). `hero` in figure.js è il vecchio stile fumetto.

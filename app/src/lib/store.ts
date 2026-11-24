@@ -6,14 +6,17 @@ import { sb } from "./supabase";
 
 export interface SetLog { kg: string; reps: string; rpe: string; done: boolean }
 export interface ItemLog { code: string; ex: string; sets: SetLog[]; pain?: boolean }
-export interface SessionLog { id: string; date: string; phaseId: string; sessionId: string; vol: Vol; items: ItemLog[]; note?: string; finished: boolean }
+/** start/end: ora di inizio e fine (ms); srpe: quanto è stata dura la seduta (1–10); warm: voci del riscaldamento spuntate. */
+export interface SessionLog { id: string; date: string; phaseId: string; sessionId: string; vol: Vol; items: ItemLog[]; note?: string; finished: boolean; start?: number; end?: number; srpe?: number; warm?: boolean[] }
+/** Check-in del mattino: risposte alle domande e volume che ne esce. Resta solo sul telefono (vale per un giorno). */
+export interface Checkin { date: string; program: "bjj" | "ironman"; ans: number[]; vol: Vol }
 export interface WeightLog { date: string; kg: number }
 export type Sport = "nuoto" | "bici" | "corsa";
 export interface EnduranceLog { id: string; date: string; sport: Sport; min: number; km?: number; rpe?: number; note?: string }
 export interface Settings { division: "gi_medio" | "gi_leve" | "nogi_medio" | "nogi_leve" | "nogi_meio_pesado"; uniformKg: number; raceDate?: string }
 
 type Kind = "session" | "weight" | "settings" | "endurance";
-const K = { endurance: "jdi.endurance", sessions: "jdi.sessions", weights: "jdi.weights", settings: "jdi.settings", outbox: "jdi.outbox", pulled: "jdi.pulledAt" };
+const K = { checkin: "jdi.checkin", endurance: "jdi.endurance", sessions: "jdi.sessions", weights: "jdi.weights", settings: "jdi.settings", outbox: "jdi.outbox", pulled: "jdi.pulledAt" };
 const read = <T,>(k: string, d: T): T => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) as T : d; } catch { return d; } };
 const write = (k: string, v: unknown) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* storage pieno o bloccato */ } };
 const DEF_SETTINGS: Settings = { division: "gi_medio", uniformKg: 2 };
@@ -45,6 +48,8 @@ export const store = {
   saveEndurance(e: EnduranceLog) { const all = store.endurance().filter(x => x.id !== e.id); all.push(e); all.sort((a, b) => a.date.localeCompare(b.date)); write(K.endurance, all); mark("endurance", e.id); },
   deleteEndurance(id: string) { write(K.endurance, store.endurance().filter(x => x.id !== id)); mark("endurance", id); },
   settings: () => ({ ...DEF_SETTINGS, ...read<Partial<Settings>>(K.settings, {}) }),
+  checkin: (date: string): Checkin | null => { const c = read<Checkin | null>(K.checkin, null); return c && c.date === date ? c : null; },
+  saveCheckin(c: Checkin | null) { if (c) write(K.checkin, c); else { try { localStorage.removeItem(K.checkin); } catch { /* */ } } },
   saveSettings(s: Settings) { write(K.settings, s); mark("settings", "main"); },
 
   /** Backup completo in un file JSON (paracadute, indipendente da Supabase). */

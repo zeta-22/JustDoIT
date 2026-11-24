@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { dec } from "../lib/format";
 
 /* Grafico a linea semplice, una sola scala (y), date sull'asse x.
    - points: i valori registrati (punti); line: linea principale (es. media 7 giorni) — opzionale, altrimenti unisce i punti
@@ -9,7 +10,7 @@ const W = 340, H = 170, L = 34, R = 10, T = 14, B = 24;
 const t = (iso: string) => new Date(iso + "T12:00:00").getTime();
 const short = (iso: string) => new Date(iso + "T12:00:00").toLocaleDateString("it-IT", { day: "numeric", month: "short" });
 
-export default function LineChart({ points, line, refLine, unit, label, fmt = v => v.toFixed(1) }: {
+export default function LineChart({ points, line, refLine, unit, label, fmt = v => dec(v) }: {
   points: Pt[]; line?: Pt[]; refLine?: { y: number; label: string }; unit: string; label: string; fmt?: (v: number) => string;
 }) {
   const [hi, setHi] = useState<number | null>(null); const svg = useRef<SVGSVGElement>(null);
