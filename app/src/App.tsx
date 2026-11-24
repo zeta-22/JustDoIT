@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { PLAN, RACE_DEFAULT, SCORE, START, addDays, currentPhaseId, daysBetween, exercise, isoToday, noAltoFrom, phase, phaseDates, planB, restSeconds, setCount, type Item, type Phase, type Session, type Vol } from "./lib/plan";
+import { PLAN, RACE_DEFAULT, SCORE, START, addDays, currentPhaseId, daysBetween, exercise, isoToday, noAltoFrom, phase, phaseDates, planB, planWeek, restSeconds, setCount, volFor, type Item, type Phase, type Session, type Vol } from "./lib/plan";
 import { DIVISIONS, type EnduranceLog, type Sport, setPassword, signIn, signInPassword, signOut, store, sync, syncState, type ItemLog, type SessionLog, type Settings } from "./lib/store";
 import { FIGS } from "./data/figures";
 import { LIB } from "./data/library";
@@ -82,14 +82,15 @@ function Today({ onStart, onOpen, onAccount, onEndurance }: { onStart: (l: Sessi
       <div className="chips">{all.map(x => <button key={x.id} type="button" aria-pressed={x.id === sess.id} onClick={() => setSid(x.id)}>{x.day.length > 24 || x.day === "Domenica" ? x.title.split("—")[0].trim().replace(/^Opzione/, "Dom · opz.") : x.day}</button>)}</div>
     </div>
     <CheckIn program={ph.program === "bjj" ? "bjj" : "ironman"} vol={vol} onVol={v => setVol(noAlto && v === "alto" ? "medio" : v)} noAlto={noAlto} race={race} />
-    <SessionPreview s={sess} vol={vol} onOpen={onOpen} />
+    <SessionPreview s={sess} vol={vol} week={planWeek(pid, today, race)} onOpen={onOpen} />
     <button type="button" className="primary big" onClick={() => onStart(newLog(pid, sess, vol))}>Inizia la seduta · volume {VL[vol]}</button>
     <button type="button" className="card pad linkcard" onClick={onEndurance}><b>Hai nuotato, pedalato o corso?</b><span className="small muted">Registralo nel diario: durata, distanza e fatica.</span></button>
   </section>;
 }
 function newLog(phaseId: string, s: Session, vol: Vol): SessionLog {
+  const week = planWeek(phaseId, isoToday(), raceDate());
   return { id: `${Date.now()}`, date: isoToday(), phaseId, sessionId: s.id, vol, finished: false,
-    items: s.items.map(it => { const n = setCount(it.vol[vol]); const last = store.lastFor(it.ex); const adv = suggest(it.ex, it.vol[vol], it.intensity, last);
+    items: s.items.map(it => { const v = volFor(it, vol, week); const n = setCount(v); const last = store.lastFor(it.ex); const adv = suggest(it.ex, v, it.intensity, last);
       const kg = adv ? String(adv.kg).replace(".", ",") : last?.[0]?.kg ?? "";
       return { code: it.code, ex: it.ex, sets: Array.from({ length: n }, () => ({ kg, reps: "", rpe: "", done: false })) }; }) };
 }
@@ -110,16 +111,17 @@ function CheckIn({ program, vol, onVol, noAlto, race }: { program: "bjj" | "iron
     </div>}
   </div>;
 }
-function SessionPreview({ s, vol, onOpen }: { s: Session; vol: Vol; onOpen: (id: string) => void }) {
+/** week: settimana del piano per scegliere la parte giusta di "S1 … · S2 …"; senza, si vede la voce del piano così com'è. */
+function SessionPreview({ s, vol, week, onOpen }: { s: Session; vol: Vol; week?: number | null; onOpen: (id: string) => void }) {
   return <div className="card">
     <div className="pad"><h2>{s.title}</h2><p className="small muted">{s.day} · {s.duration}</p></div>
     {s.warmup && <p className="warm"><b>Riscaldamento.</b> {s.warmup}</p>}
-    {s.items.map((it, i) => <ItemRow key={i} it={it} vol={vol} onOpen={onOpen} />)}
+    {s.items.map((it, i) => <ItemRow key={i} it={it} vol={vol} week={week} onOpen={onOpen} />)}
     {s.notes && <p className="pad small muted">{s.notes}</p>}
   </div>;
 }
-function ItemRow({ it, vol, onOpen }: { it: Item; vol: Vol; onOpen: (id: string) => void }) {
-  const ex = exercise(it.ex); const v = it.vol[vol]; const skip = setCount(v) === 0;
+function ItemRow({ it, vol, week, onOpen }: { it: Item; vol: Vol; week?: number | null; onOpen: (id: string) => void }) {
+  const ex = exercise(it.ex); const v = week === undefined ? it.vol[vol] : volFor(it, vol, week); const skip = setCount(v) === 0;
   return <button type="button" className="irow" onClick={() => onOpen(it.ex)}>
     <span className="code">{it.code}</span>
     <span><span className="iname">{ex.name}{FIGS[it.ex] ? " ▶" : ""}</span><span className="isub">{it.intensity}{it.tempo ? ` · tempo ${it.tempo}` : ""}{it.rest && it.rest !== "—" ? ` · rec. ${it.rest}` : ""}</span></span>
@@ -143,20 +145,21 @@ function Runner({ log, onChange, onOpen, onExit }: { log: SessionLog; onChange: 
   const rest = useRest(); useWakeLock();
   const ph = phase(log.phaseId);
   const s = [...ph.sessions, ...phase("bjj_domenica").sessions].find(x => x.id === log.sessionId)!;
+  const week = planWeek(log.phaseId, log.date, raceDate());
   const upd = (l: SessionLog) => { store.saveSession(l); onChange(l); };
   const setItem = (i: number, it: ItemLog) => upd({ ...log, items: log.items.map((x, j) => j === i ? it : x) });
   /** Dolore > 3/10: fermo l'esercizio che fa male e porto a Basso tutto quello che non è ancora iniziato. */
   const toBasso = (i: number) => upd({ ...log, vol: "basso", items: log.items.map((x, j) => {
     if (j === i) return { ...x, pain: true, sets: x.sets.filter(z => z.done) };
     if (x.sets.some(z => z.done)) return x;
-    const n = setCount(s.items[j].vol.basso); return { ...x, sets: x.sets.slice(0, n) };
+    const n = setCount(volFor(s.items[j], "basso", week)); return { ...x, sets: x.sets.slice(0, n) };
   }) });
   const total = log.items.reduce((a, it) => a + it.sets.length, 0), done = log.items.reduce((a, it) => a + it.sets.filter(z => z.done).length, 0);
   return <section className="stack">
     <div className="row between"><div><span className="lab">Seduta in corso · {VL[log.vol]}</span><h1 className="h1s">{s.title}</h1></div>
       <span className="count">{done}/{total}</span></div>
     {s.warmup && <p className="card warm">{s.warmup}</p>}
-    {s.items.map((it, i) => <RunItem key={i} it={it} vol={log.vol} log={log.items[i]} onChange={x => setItem(i, x)} onOpen={onOpen} onRest={() => rest(restSeconds(it.rest))} onBasso={() => toBasso(i)} />)}
+    {s.items.map((it, i) => <RunItem key={i} it={it} vol={log.vol} v={volFor(it, log.vol, week)} log={log.items[i]} onChange={x => setItem(i, x)} onOpen={onOpen} onRest={() => rest(restSeconds(it.rest))} onBasso={() => toBasso(i)} />)}
     <textarea className="note" placeholder="Note sulla seduta (sensazioni, dolori, cosa cambiare)" value={log.note ?? ""} onChange={e => upd({ ...log, note: e.target.value })} />
     <div className="row gap">
       <button type="button" className="primary big" onClick={() => { upd({ ...log, finished: true }); onExit(); }}>Termina e salva</button>
@@ -164,15 +167,15 @@ function Runner({ log, onChange, onOpen, onExit }: { log: SessionLog; onChange: 
     </div>
   </section>;
 }
-function RunItem({ it, vol, log, onChange, onOpen, onRest, onBasso }: { it: Item; vol: Vol; log: ItemLog; onChange: (l: ItemLog) => void; onOpen: (id: string) => void; onRest: () => void; onBasso: () => void }) {
+function RunItem({ it, vol, v, log, onChange, onOpen, onRest, onBasso }: { it: Item; vol: Vol; v: string; log: ItemLog; onChange: (l: ItemLog) => void; onOpen: (id: string) => void; onRest: () => void; onBasso: () => void }) {
   const ex = exercise(it.ex); const last = useMemo(() => store.lastFor(it.ex), [it.ex]);
-  const adv = useMemo(() => suggest(it.ex, it.vol[vol], it.intensity, last), [it, vol, last]);
+  const adv = useMemo(() => suggest(it.ex, v, it.intensity, last), [it, v, last]);
   const lib = LIB[it.ex]; const trpe = targetRpe(it.intensity);
   const set = (i: number, k: "kg" | "reps" | "rpe", v: string) => onChange({ ...log, sets: log.sets.map((z, j) => j === i ? { ...z, [k]: v } : z) });
   return <div className={"card run" + (log.sets.length && log.sets.every(z => z.done) ? " ok" : "")}>
     <button type="button" className="irow" onClick={() => onOpen(it.ex)}>
       <span className="code">{it.code}</span>
-      <span><span className="iname">{ex.name}{FIGS[it.ex] ? " ▶" : ""}</span><span className="isub">{it.vol[vol]} · {it.intensity}{it.tempo ? ` · ${it.tempo}` : ""}{it.rest && it.rest !== "—" ? ` · rec. ${it.rest}` : ""}</span></span>
+      <span><span className="iname">{ex.name}{FIGS[it.ex] ? " ▶" : ""}</span><span className="isub">{v} · {it.intensity}{it.tempo ? ` · ${it.tempo}` : ""}{it.rest && it.rest !== "—" ? ` · rec. ${it.rest}` : ""}</span></span>
       <span />
     </button>
     {it.note && <p className="inote">{it.note}</p>}
@@ -187,6 +190,7 @@ function RunItem({ it, vol, log, onChange, onOpen, onRest, onBasso }: { it: Item
         <label>RPE<input inputMode="decimal" value={z.rpe} onChange={e => set(i, "rpe", e.target.value)} /></label>
         <button type="button" className="tick" aria-pressed={z.done} aria-label={`Serie ${i + 1} fatta`} onClick={() => { const d = !z.done; onChange({ ...log, sets: log.sets.map((y, j) => j === i ? { ...y, done: d } : y) }); if (d) onRest(); }}>✓</button>
       </div>)}</div>}
+    <button type="button" className="ghost addset" onClick={() => { const z = log.sets[log.sets.length - 1]; onChange({ ...log, sets: [...log.sets, { kg: z?.kg ?? "", reps: "", rpe: "", done: false }] }); }}>+ Aggiungi serie</button>
     <label className="pain"><input type="checkbox" checked={!!log.pain} onChange={e => onChange({ ...log, pain: e.target.checked })} /> Dolore sopra 3/10</label>
     {log.pain && <div className="warnbox stack-s">
       <p><b>Fermati con questo esercizio.</b> Il dolore sopra 3/10 vince su tutto: oggi volume Basso.</p>
@@ -232,7 +236,7 @@ function PlanView({ onOpen }: { onOpen: (id: string) => void }) {
     <div className="hscroll">{list.map(p => <button key={p.id} type="button" className="pchip" aria-pressed={p.id === ph.id} onClick={() => setPid(p.id)}>{p.id === cid && <span className="now">Ora · </span>}<span>{p.name.replace(/^(BJJ|Ironman)\s*/, "")}</span><small>{phaseDates(p.id, race).split("(")[0]}</small></button>)}</div>
     <div className="stack-s"><h1 className="h1s">{ph.name}</h1><p className="muted">{phaseDates(ph.id, race)}</p><p>{ph.goal}</p><p className="card pad small"><b>Settimana tipo.</b> {ph.weekly}</p></div>
     <div className="seg">{VOLS.map(v => <button key={v} type="button" aria-pressed={vol === v} onClick={() => setVol(v)}>{VL[v]}</button>)}</div>
-    {ph.sessions.map(s => <SessionPreview key={s.id} s={s} vol={vol} onOpen={onOpen} />)}
+    {ph.sessions.map(s => <SessionPreview key={s.id} s={s} vol={vol} week={ph.id === cid ? planWeek(cid, isoToday(), race) : undefined} onOpen={onOpen} />)}
     <details className="card pad"><summary>Regole del volume</summary><ul>{PLAN.volume_rules.map(r => <li key={r.id}>{r.text}</li>)}</ul></details>
     <details className="card pad"><summary>Alimentazione</summary>{PLAN.nutrition.map((n, i) => <p key={i}><b>{n.phase}.</b> {n.text}</p>)}</details>
     <details className="card pad"><summary>Segnali di allarme</summary>{PLAN.warnings.map((w, i) => <p key={i} className={"wl " + w.level}><b>{w.signal}</b><br />{w.action}</p>)}</details>

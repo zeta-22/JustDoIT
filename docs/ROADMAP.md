@@ -32,10 +32,11 @@
 - Tolti da piano.json i campi `fig` (inutilizzati e in parte sbagliati): le animazioni stanno solo in figures.ts
 - Estensioni delle dita: niente animazione (movimento della sola mano), restano testo e mappa muscoli
 
-## Rinnovo grafica e UX — proposta in attesa di approvazione (24 novembre)
+## Rinnovo grafica e UX — approvato tutto il 24 novembre (D1–D6 come consigliato)
 - Analisi e confronto con Hevy, Strong, Fitbod, TrainingPeaks, Whoop; mockup delle schermate nuove: `docs/prototipi/rinnovo-ux.html` (schermate attuali in `docs/prototipi/rinnovo/`)
 - Sei decisioni da approvare (D1–D6), poi 3 fasi: 1 fondamenta + seduta (prima della prova in palestra), 2 progressi + libreria esercizi + diario tatami (dicembre), 3 rifiniture e promemoria (dopo la gara)
-- Bug trovati nell'analisi, da correggere nella Fase 1: la seduta si apre a metà pagina; "Annulla"/"Elimina" senza conferma; tasto Indietro di Android chiude l'app; `setCount` conta 1 serie per le righe con "giri", "round" o "S1 … · S2 …" (es. Nordic, Copenhagen, collo)
+- Fatto subito (24/11): conteggio delle serie (`setCount`, `volFor`, `planWeek` in `lib/plan.ts`): "3 giri", "2 tenute", "4 round", "3 × 8 + 1 × 15", piramidi "5-3-1", "P1 … / P2 …", "come MEDIO" e le voci per settimana "S1 … · S2 …" (Nordic, Copenhagen, collo). Pulsante "+ Aggiungi serie" in ogni esercizio
+- Bug da correggere nella Fase 1: la seduta si apre a metà pagina; "Annulla"/"Elimina" senza conferma; tasto Indietro di Android chiude l'app
 
 ## Prossimi passi
 1. **Analisi generale di grafica e UX** e rinnovo (in una chat nuova): confronto con le migliori app di allenamento, prototipo da approvare, rinnovo a pezzi

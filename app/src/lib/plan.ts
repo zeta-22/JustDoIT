@@ -75,10 +75,45 @@ export function planB(race: string): string | null {
 export const phase = (id: string) => PLAN.phases.find(p => p.id === id)!;
 export const exercise = (id: string): Exercise => PLAN.exercises[id] ?? { name: id, how: [], why: "", mistake: "" };
 
-/** "3 × 8" → 3 serie; "2 × Cl (10)" → 2; "—" → 0; altro → 1. */
+/** Quante serie (righe da spuntare) indica una voce di volume del piano.
+ *  "3 × 8" → 3 · "2 × Cl (10)" → 2 · "3 giri × 10″" → 3 · "2 tenute 30″" → 2 · "4 round" → 4 · "3 serie" → 3
+ *  "3 × 8 + 1 × 15 rimbalzo" → 4 · "3 giri × 12″ + 1 serie nella direzione più debole" → 4 · "3–5 salite" → 5 (le serie in più restano da spuntare)
+ *  "S1 2 × 5 · S2 3 × 5" → 2 (la S1; per la settimana giusta usa prima volFor) · "P1 4 round / P2 2 × 8" → 4 (la più lunga delle due)
+ *  "5-3-1" (piramide) → 3 · "25″ facile + 5″ forte × 4" → 4 · "5 × 30″ (o pogo 2 × 15)" → 5 · "—" → 0 · durate come "40'" → 1. */
 export function setCount(v: string): number {
   if (!v || /^\s*—/.test(v)) return 0;
-  const m = v.match(/^\s*(\d+)\s*[×x]/); return m ? Math.min(8, +m[1]) : 1;
+  const alts = v.split(/\s+\/\s+(?=P\d)/);
+  if (alts.length > 1) return Math.max(...alts.map(a => setCount(a.replace(/^\s*P\d+\s*/, ""))));
+  if (/^\s*S\d/.test(v)) v = v.split("·")[0].replace(/^\s*S\d+\s*/, "");
+  v = v.replace(/\(o\s[^)]*\)/g, ""); // "5 × 30″ (o pogo 2 × 15)": l'alternativa non si somma
+  if (/^\s*\d+(\s*-\s*\d+){2,}\s*$/.test(v)) return v.split("-").length;
+  let n = 0;
+  for (const m of v.matchAll(/(\d+)(?:\s*[–-]\s*(\d+))?\s*(?:[×x]|giri\b|giro\b|serie\b|round\b|tenute\b|tenuta\b|salite\b|extra\b)/g)) n += +(m[2] ?? m[1]);
+  if (!n) { const t = v.match(/[×x]\s*(\d+)\s*$/); if (t) n = +t[1]; }
+  return Math.min(10, n || 1);
+}
+
+/** Settimana del piano (S1, S2…) in una data: la fase scrive la sua prima settimana in `dates`, es. "(S1–S2)".
+ *  null per le fasi senza numerazione o fuori calendario (es. le domeniche). */
+export function planWeek(phaseId: string, date = isoToday(), race = RACE_DEFAULT): number | null {
+  const m = phase(phaseId)?.dates.match(/\bS(\d+)/); const start = phaseStarts(race)[phaseId];
+  if (!m || !start) return null;
+  return +m[1] + Math.max(0, Math.floor(daysBetween(start, date) / 7));
+}
+
+/** La voce di volume da usare davvero: "come MEDIO" → il Medio; "S1 2 × 5 · S2 3 × 5" → la parte della settimana
+ *  (senza settimana: la prima). Un "/lato" scritto solo in fondo vale per tutte le parti. */
+export function volFor(it: Item, vol: Vol, week: number | null): string {
+  let v = it.vol[vol] ?? "";
+  const same = v.match(/^\s*come\s+(basso|medio|alto)\s*$/i);
+  if (same) v = it.vol[same[1].toLowerCase() as Vol] ?? v;
+  if (!/^\s*S\d/.test(v)) return v;
+  const parts = v.split("·").map(p => { const m = p.match(/^\s*S(\d+)\s*(.*?)\s*$/); return m ? { w: +m[1], v: m[2] } : null; });
+  if (parts.some(p => !p)) return v;
+  const ok = parts as { w: number; v: string }[];
+  const pick = week === null ? ok[0] : [...ok].reverse().find(p => p.w <= week) ?? ok[0];
+  const suf = ok[ok.length - 1].v.match(/\s*(\/\s*\S+)$/)?.[1];
+  return suf && !pick.v.includes("/") ? `${pick.v} ${suf.replace(/\s+/g, "")}` : pick.v;
 }
 /** "90\"" → 90; "2–3'" → 120; "60–180\"" → 60; "—" → 0. */
 export function restSeconds(r: string): number {
