@@ -99,6 +99,7 @@ export async function sync(): Promise<void> {
     const { data: { session } } = await sb.auth.getSession();
     if (!session) { syncState.status = "anon"; syncState.email = null; emit(); return; }
     syncState.email = session.user.email ?? null;
+    if (read<string | null>("jdi.uid", null) !== session.user.id) { write("jdi.uid", session.user.id); write(K.pulled, "1970-01-01T00:00:00Z"); }
     if (!navigator.onLine) { syncState.status = "offline"; return; }
     syncState.status = "syncing"; emit();
     const uid = session.user.id;
@@ -130,9 +131,27 @@ export async function sync(): Promise<void> {
   } finally { running = false; emit(); }
 }
 
+/* Messaggi di accesso in italiano */
+function authError(e: { message?: string } | null): Error | null {
+  if (!e) return null; const m = e.message ?? "";
+  if (/rate limit/i.test(m)) return new Error("Troppe email richieste: il servizio gratuito di Supabase ne manda circa 2 all'ora. Accedi con la password, oppure riprova tra un'ora.");
+  if (/invalid login credentials/i.test(m)) return new Error("Email o password sbagliate. Se non hai ancora una password, creala da Supabase (Authentication → Users) o accedi con il link.");
+  if (/not confirmed/i.test(m)) return new Error("Email non ancora confermata: apri il link di conferma, oppure su Supabase spunta \"Auto Confirm User\".");
+  if (/password should be|weak/i.test(m)) return new Error("Password troppo corta: usa almeno 8 caratteri.");
+  return new Error(m);
+}
 export async function signIn(email: string) {
   const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: window.location.origin } });
-  if (error) throw error;
+  const err = authError(error); if (err) throw err;
+}
+export async function signInPassword(email: string, password: string) {
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  const err = authError(error); if (err) throw err;
+}
+/** Da collegato: imposta (o cambia) la password, così le prossime volte non serve l'email. */
+export async function setPassword(password: string) {
+  const { error } = await sb.auth.updateUser({ password });
+  const err = authError(error); if (err) throw err;
 }
 export async function signOut() { await sb.auth.signOut(); syncState.status = "anon"; syncState.email = null; emit(); }
 

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { PLAN, SCORE, START, currentPhaseId, exercise, isoToday, phase, restSeconds, setCount, type Item, type Phase, type Session, type Vol } from "./lib/plan";
-import { DIVISIONS, signIn, signOut, store, sync, syncState, type ItemLog, type SessionLog, type Settings } from "./lib/store";
+import { DIVISIONS, setPassword, signIn, signInPassword, signOut, store, sync, syncState, type ItemLog, type SessionLog, type Settings } from "./lib/store";
 import { FIGS } from "./data/figures";
 import Figure from "./components/Figure";
 import MuscleMap from "./components/MuscleMap";
@@ -230,7 +230,7 @@ function useSync() {
 }
 const SYNC_LABEL = { init: "Controllo l'accesso…", anon: "Non collegato: i dati restano solo su questo telefono", syncing: "Sincronizzo…", ok: "Dati salvati online", offline: "Senza rete: salvo sul telefono e invio appena torna", error: "Errore di sincronizzazione" };
 function More() {
-  const st = useSync(); const [email, setEmail] = useState(""); const [msg, setMsg] = useState<string | null>(null); const [busy, setBusy] = useState(false);
+  const st = useSync(); const [email, setEmail] = useState(""); const [pw, setPw] = useState(""); const [newPw, setNewPw] = useState(""); const [msg, setMsg] = useState<string | null>(null); const [busy, setBusy] = useState(false);
   const exportFile = () => {
     const blob = new Blob([store.exportAll()], { type: "application/json" }); const url = URL.createObjectURL(blob);
     const a = document.createElement("a"); a.href = url; a.download = `justdoit-backup-${isoToday()}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(url), 5000);
@@ -247,12 +247,22 @@ function More() {
         <p className="small muted">Collegato come {st.email}</p>
         <div className="row gap"><button type="button" className="primary" onClick={() => void sync()}>Sincronizza ora</button>
           <button type="button" className="ghost" onClick={() => void signOut()}>Esci</button></div>
+        <form className="stack-s" onSubmit={async e => { e.preventDefault(); setBusy(true); setMsg(null);
+            try { await setPassword(newPw); setNewPw(""); setMsg("Password salvata: d'ora in poi puoi accedere con email e password."); }
+            catch (err) { setMsg(err instanceof Error ? err.message : "Non riuscito."); } finally { setBusy(false); } }}>
+          <label className="field" htmlFor="npw">Imposta o cambia la password<input id="npw" type="password" minLength={8} required autoComplete="new-password" value={newPw} onChange={e => setNewPw(e.target.value)} placeholder="almeno 8 caratteri" /></label>
+          <button type="submit" className="ghost" disabled={busy}>Salva password</button>
+        </form>
       </> : <form className="stack-s" onSubmit={async e => { e.preventDefault(); setBusy(true); setMsg(null);
-          try { await signIn(email.trim()); setMsg(`Ti ho mandato un link a ${email.trim()}. Aprilo da questo telefono: l'app si collega da sola.`); }
-          catch (err) { setMsg(err instanceof Error ? err.message : "Invio non riuscito."); } finally { setBusy(false); } }}>
+          try { await signInPassword(email.trim(), pw); setMsg(null); }
+          catch (err) { setMsg(err instanceof Error ? err.message : "Accesso non riuscito."); } finally { setBusy(false); } }}>
         <label className="field" htmlFor="em">La tua email<input id="em" type="email" required autoComplete="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="nome@esempio.it" /></label>
-        <button type="submit" className="primary" disabled={busy}>{busy ? "Invio…" : "Mandami il link di accesso"}</button>
-        <p className="small muted">Niente password: ricevi un link via email una volta sola, poi resti collegato.</p>
+        <label className="field" htmlFor="pw">Password<input id="pw" type="password" autoComplete="current-password" value={pw} onChange={e => setPw(e.target.value)} placeholder="la tua password" /></label>
+        <button type="submit" className="primary" disabled={busy || !pw}>{busy ? "Accesso…" : "Accedi"}</button>
+        <button type="button" className="ghost" disabled={busy || !email} onClick={async () => { setBusy(true); setMsg(null);
+          try { await signIn(email.trim()); setMsg(`Ti ho mandato un link a ${email.trim()}. Aprilo da questo telefono, in Chrome.`); }
+          catch (err) { setMsg(err instanceof Error ? err.message : "Invio non riuscito."); } finally { setBusy(false); } }}>Senza password: mandami un link via email</button>
+        <p className="small muted">Accedi una volta sola: poi resti collegato anche chiudendo l'app.</p>
       </form>}
       {msg && <p className="small">{msg}</p>}
     </div>
