@@ -27,10 +27,49 @@ export const START: Record<string, string> = {
 
 export const isoToday = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
 
-export function currentPhaseId(today = isoToday()): string {
-  const ids = Object.keys(START); let cur = ids[0];
-  for (const id of ids) if (START[id] <= today) cur = id;
+/* ---------- data della gara ---------- */
+export const RACE_DEFAULT = "2027-01-23";
+const toD = (iso: string) => new Date(iso + "T12:00:00");
+export const addDays = (iso: string, n: number) => { const d = toD(iso); d.setDate(d.getDate() + n); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`; };
+export const daysBetween = (a: string, b: string) => Math.round((toD(b).getTime() - toD(a).getTime()) / 86400000);
+/** Fasi che seguono la gara: la settimana gara (inizia il lunedì prima), la transizione e tutto l'Ironman. */
+const FOLLOW_RACE = ["bjj5_gara", "transizione", "im_f1", "im_f2", "im_f3", "im_f4", "im_f5", "im_f6", "im_f7", "im_f8", "im_f9", "im_f10", "im_f11"];
+
+/** Date di inizio delle fasi per una data di gara: se la gara si sposta, si spostano la settimana gara e tutto quello che viene dopo. */
+export function phaseStarts(race = RACE_DEFAULT): Record<string, string> {
+  const off = daysBetween(RACE_DEFAULT, race); const out = { ...START };
+  if (off) FOLLOW_RACE.forEach(id => { out[id] = addDays(START[id], off); });
+  // la settimana gara non può iniziare prima del rientro dal Messico
+  if (out.bjj5_gara <= START.bjj4_rientro) out.bjj5_gara = addDays(START.bjj4_rientro, 1);
+  return out;
+}
+export function currentPhaseId(today = isoToday(), race = RACE_DEFAULT): string {
+  const st = phaseStarts(race); const ids = Object.keys(st); let cur = ids[0];
+  for (const id of ids) if (st[id] <= today && (!cur || st[id] >= st[cur])) cur = id;
   return cur;
+}
+const fmtDay = (iso: string) => toD(iso).toLocaleDateString("it-IT", { weekday: "short", day: "numeric", month: "short" });
+/** Date della fase da mostrare: quelle del piano, o ricalcolate se la gara è stata spostata. */
+export function phaseDates(id: string, race = RACE_DEFAULT): string {
+  const ph = phase(id); if (race === RACE_DEFAULT || !FOLLOW_RACE.includes(id)) return ph.dates;
+  const st = phaseStarts(race); const ids = Object.keys(st).filter(k => st[k] > st[id]).sort((a, b) => st[a].localeCompare(st[b]));
+  const end = ids.length ? addDays(st[ids[0]], -1) : null;
+  return `${fmtDay(st[id])}${end ? ` – ${fmtDay(end)}` : ""} (ricalcolate sulla gara del ${fmtDay(race)})`;
+}
+/** Dal giorno gara − 8 niente volume Alto (regola del piano: 15 gennaio per la gara del 23). */
+export const noAltoFrom = (race = RACE_DEFAULT) => addDays(race, -8);
+/** Piani B già scritti nella ricerca (docs/ricerca/4-piano-finale.md §6.4). */
+export const PLAN_B: Record<string, string> = {
+  "2026-12-12": "Gara sab 12 dic: S1 accumulo · S2: mar 1 Forza A di intensificazione Basso/Medio (ultimo Nordic), ven 4 ultima pesante, sab 5 ultimo sparring duro, dom 6 P4 · S3: lun 7 gi tecnico, mar 8 attivazione, gio 10 tatami leggero, ven 11 riposo, sab 12 gara. Poi scarico, Natale e Messico libero (kit Medio).",
+  "2026-12-19": "Gara sab 19 dic: S1–S2 accumulo · S3: mar 8 Forza A intensificazione Medio (ultimo Nordic), ven 11 ultima pesante, sab 12 ultimo sparring duro, dom 13 P4 · S4: lun 14 gi tecnico, mar 15 attivazione, gio 17 tatami leggero, ven 18 riposo, sab 19 gara.",
+  "2027-01-16": "Gara sab 16 gen: S1–S5 come il piano (mar 22 dic = ultima pesante) · S6 kit, ultimo Nordic · S7 sempre Basso/Medio, niente Nordic (glute bridge a una gamba 2 × 5), round da 6' in ogni sessione · lun 11 gi moderato, mar 12 attivazione, mer 13 prova peso, gio 14 tatami leggero, ven 15 riposo, sab 16 gara.",
+};
+export function planB(race: string): string | null {
+  if (PLAN_B[race]) return PLAN_B[race];
+  if (toD(race).getDay() === 0 && PLAN_B[addDays(race, -1)] !== undefined) return PLAN_B[addDays(race, -1)] + " Gara di domenica: tutto uguale fino al giovedì, venerdì riposo, sabato 15' di mobilità e attivazione.";
+  if (toD(race).getDay() === 0) return "Gara di domenica: tutto uguale fino al giovedì; venerdì riposo; sabato 15' di mobilità + attivazione; domenica gara.";
+  if (race < START.bjj3_viaggio) return "Gara prima del Messico: il calendario dell'app non basta. Segui il piano B più vicino in docs/ricerca/4-piano-finale.md §6.4 (12 o 19 dicembre).";
+  return null;
 }
 export const phase = (id: string) => PLAN.phases.find(p => p.id === id)!;
 export const exercise = (id: string): Exercise => PLAN.exercises[id] ?? { name: id, how: [], why: "", mistake: "", fig: null };

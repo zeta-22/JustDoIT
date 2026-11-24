@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
-import { PLAN, SCORE, START, currentPhaseId, exercise, isoToday, phase, restSeconds, setCount, type Item, type Phase, type Session, type Vol } from "./lib/plan";
+import { PLAN, RACE_DEFAULT, SCORE, START, addDays, currentPhaseId, daysBetween, exercise, isoToday, noAltoFrom, phase, phaseDates, planB, restSeconds, setCount, type Item, type Phase, type Session, type Vol } from "./lib/plan";
 import { DIVISIONS, setPassword, signIn, signInPassword, signOut, store, sync, syncState, type ItemLog, type SessionLog, type Settings } from "./lib/store";
 import { FIGS } from "./data/figures";
+import { LIB } from "./data/library";
+import { suggest, targetRpe } from "./lib/progress";
 import Figure from "./components/Figure";
 import MuscleMap from "./components/MuscleMap";
 import { TimerProvider, useRest } from "./components/Timer";
@@ -10,6 +12,8 @@ type Tab = "oggi" | "piano" | "peso" | "storico" | "altro";
 const VOLS: Vol[] = ["basso", "medio", "alto"];
 const VL: Record<Vol, string> = { basso: "Basso", medio: "Medio", alto: "Alto" };
 const PROG_LABEL = { bjj: "Gara BJJ", transizione: "Transizione", ironman: "Ironman" };
+const raceDate = () => store.settings().raceDate || RACE_DEFAULT;
+const fmtDate = (iso: string) => new Date(iso + "T12:00:00").toLocaleDateString("it-IT", { weekday: "long", day: "numeric", month: "long" });
 
 export default function App() {
   const [tab, setTab] = useState<Tab>("oggi");
@@ -44,8 +48,11 @@ export default function App() {
 /* ---------------- Oggi ---------------- */
 function Today({ onStart, onOpen, onAccount }: { onStart: (l: SessionLog) => void; onOpen: (id: string) => void; onAccount: () => void }) {
   const sy = useSync();
-  const pid = currentPhaseId(); const ph = phase(pid);
-  const before = isoToday() < START.bjj1_accumulo;
+  const race = raceDate(); const today = isoToday();
+  const pid = currentPhaseId(today, race); const ph = phase(pid);
+  const before = today < START.bjj1_accumulo;
+  const noAlto = ph.program === "bjj" && today >= noAltoFrom(race);
+  const toRace = daysBetween(today, race); const pb = planB(race);
   const [sid, setSid] = useState(ph.sessions[0].id);
   const [vol, setVol] = useState<Vol>("medio");
   const s = ph.sessions.find(x => x.id === sid) ?? ph.sessions[0];
@@ -60,9 +67,11 @@ function Today({ onStart, onOpen, onAccount }: { onStart: (l: SessionLog) => voi
     <div className="hero-card" style={{ ["--pc" as string]: `var(--${ph.program})` }}>
       <span className="lab">{before ? "Si parte lunedì 23 novembre" : "Fase attuale"} · {PROG_LABEL[ph.program]}</span>
       <h1>{ph.name}</h1>
-      <p className="muted">{ph.dates}</p>
+      <p className="muted">{phaseDates(pid, race)}</p>
       <p>{ph.goal}</p>
     </div>
+    {toRace >= 0 && toRace <= 14 && <RaceWeek race={race} days={toRace} />}
+    {pb && toRace >= 0 && <p className="card pad small"><b>Piano B per la tua data.</b> {pb}</p>}
     <div className="card pad">
       <h2>Settimana tipo</h2><p className="small">{ph.weekly}</p>
     </div>
@@ -70,29 +79,31 @@ function Today({ onStart, onOpen, onAccount }: { onStart: (l: SessionLog) => voi
       <h2>Che seduta fai?</h2>
       <div className="chips">{all.map(x => <button key={x.id} type="button" aria-pressed={x.id === sess.id} onClick={() => setSid(x.id)}>{x.day.length > 24 || x.day === "Domenica" ? x.title.split("—")[0].trim().replace(/^Opzione/, "Dom · opz.") : x.day}</button>)}</div>
     </div>
-    <CheckIn program={ph.program === "bjj" ? "bjj" : "ironman"} vol={vol} onVol={setVol} />
+    <CheckIn program={ph.program === "bjj" ? "bjj" : "ironman"} vol={vol} onVol={v => setVol(noAlto && v === "alto" ? "medio" : v)} noAlto={noAlto} race={race} />
     <SessionPreview s={sess} vol={vol} onOpen={onOpen} />
     <button type="button" className="primary big" onClick={() => onStart(newLog(pid, sess, vol))}>Inizia la seduta · volume {VL[vol]}</button>
   </section>;
 }
 function newLog(phaseId: string, s: Session, vol: Vol): SessionLog {
   return { id: `${Date.now()}`, date: isoToday(), phaseId, sessionId: s.id, vol, finished: false,
-    items: s.items.map(it => { const n = setCount(it.vol[vol]); const last = store.lastFor(it.ex);
-      return { code: it.code, ex: it.ex, sets: Array.from({ length: n }, (_, i) => ({ kg: last?.[i]?.kg ?? last?.[0]?.kg ?? "", reps: "", rpe: "", done: false })) }; }) };
+    items: s.items.map(it => { const n = setCount(it.vol[vol]); const last = store.lastFor(it.ex); const adv = suggest(it.ex, it.vol[vol], it.intensity, last);
+      const kg = adv ? String(adv.kg).replace(".", ",") : last?.[0]?.kg ?? "";
+      return { code: it.code, ex: it.ex, sets: Array.from({ length: n }, () => ({ kg, reps: "", rpe: "", done: false })) }; }) };
 }
-function CheckIn({ program, vol, onVol }: { program: "bjj" | "ironman"; vol: Vol; onVol: (v: Vol) => void }) {
+function CheckIn({ program, vol, onVol, noAlto, race }: { program: "bjj" | "ironman"; vol: Vol; onVol: (v: Vol) => void; noAlto: boolean; race: string }) {
   const cfg = SCORE[program]; const [ans, setAns] = useState<(number | undefined)[]>([]); const [open, setOpen] = useState(false);
   const done = cfg.qs.every((_, i) => ans[i] !== undefined); const tot = ans.reduce<number>((a, b) => a + (b ?? 0), 0);
   const lvl = done ? cfg.range.find(r => tot >= r[0] && tot <= r[1])![2] : null;
   useEffect(() => { if (lvl) onVol(lvl); }, [lvl]); // eslint-disable-line react-hooks/exhaustive-deps
   return <div className="card pad stack-s">
     <div className="row between"><h2>Volume di oggi</h2><button type="button" className="ghost" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? "Chiudi" : "Check-in 30″"}</button></div>
-    <div className="seg">{VOLS.map(v => <button key={v} type="button" aria-pressed={vol === v} onClick={() => onVol(v)}>{VL[v]}</button>)}</div>
+    <div className="seg">{VOLS.map(v => <button key={v} type="button" aria-pressed={vol === v} disabled={noAlto && v === "alto"} onClick={() => onVol(v)}>{VL[v]}</button>)}</div>
+    {noAlto && <p className="small muted">Sei a meno di 8 giorni dalla gara: niente volume Alto.</p>}
     {open && <div className="stack-s">
       {cfg.qs.map(([q, opts], i) => <div key={q} className="q"><span className="qt">{q}</span>
         <div className="chips">{opts.map((o, j) => <button key={o} type="button" aria-pressed={ans[i] === j} onClick={() => { const a = [...ans]; a[i] = j; setAns(a); }}>{o}</button>)}</div></div>)}
       <p className="result">{done ? `${tot} punti → ${VL[lvl!]}` : "Rispondi a tutte le voci"}</p>
-      <p className="small muted">Un dolore articolare o tendineo sopra 3/10 vince sul punteggio: Basso e togli l’esercizio che lo provoca.{program === "bjj" ? " Dal 15 gennaio niente Alto." : ""}</p>
+      <p className="small muted">Un dolore articolare o tendineo sopra 3/10 vince sul punteggio: Basso e togli l’esercizio che lo provoca.{program === "bjj" ? ` Dal ${fmtDate(noAltoFrom(race))} niente Alto.` : ""}</p>
     </div>}
   </div>;
 }
@@ -120,12 +131,18 @@ function Runner({ log, onChange, onOpen, onExit }: { log: SessionLog; onChange: 
   const s = [...ph.sessions, ...phase("bjj_domenica").sessions].find(x => x.id === log.sessionId)!;
   const upd = (l: SessionLog) => { store.saveSession(l); onChange(l); };
   const setItem = (i: number, it: ItemLog) => upd({ ...log, items: log.items.map((x, j) => j === i ? it : x) });
+  /** Dolore > 3/10: fermo l'esercizio che fa male e porto a Basso tutto quello che non è ancora iniziato. */
+  const toBasso = (i: number) => upd({ ...log, vol: "basso", items: log.items.map((x, j) => {
+    if (j === i) return { ...x, pain: true, sets: x.sets.filter(z => z.done) };
+    if (x.sets.some(z => z.done)) return x;
+    const n = setCount(s.items[j].vol.basso); return { ...x, sets: x.sets.slice(0, n) };
+  }) });
   const total = log.items.reduce((a, it) => a + it.sets.length, 0), done = log.items.reduce((a, it) => a + it.sets.filter(z => z.done).length, 0);
   return <section className="stack">
     <div className="row between"><div><span className="lab">Seduta in corso · {VL[log.vol]}</span><h1 className="h1s">{s.title}</h1></div>
       <span className="count">{done}/{total}</span></div>
     {s.warmup && <p className="card warm">{s.warmup}</p>}
-    {s.items.map((it, i) => <RunItem key={i} it={it} vol={log.vol} log={log.items[i]} onChange={x => setItem(i, x)} onOpen={onOpen} onRest={() => rest(restSeconds(it.rest))} />)}
+    {s.items.map((it, i) => <RunItem key={i} it={it} vol={log.vol} log={log.items[i]} onChange={x => setItem(i, x)} onOpen={onOpen} onRest={() => rest(restSeconds(it.rest))} onBasso={() => toBasso(i)} />)}
     <textarea className="note" placeholder="Note sulla seduta (sensazioni, dolori, cosa cambiare)" value={log.note ?? ""} onChange={e => upd({ ...log, note: e.target.value })} />
     <div className="row gap">
       <button type="button" className="primary big" onClick={() => { upd({ ...log, finished: true }); onExit(); }}>Termina e salva</button>
@@ -133,8 +150,10 @@ function Runner({ log, onChange, onOpen, onExit }: { log: SessionLog; onChange: 
     </div>
   </section>;
 }
-function RunItem({ it, vol, log, onChange, onOpen, onRest }: { it: Item; vol: Vol; log: ItemLog; onChange: (l: ItemLog) => void; onOpen: (id: string) => void; onRest: () => void }) {
+function RunItem({ it, vol, log, onChange, onOpen, onRest, onBasso }: { it: Item; vol: Vol; log: ItemLog; onChange: (l: ItemLog) => void; onOpen: (id: string) => void; onRest: () => void; onBasso: () => void }) {
   const ex = exercise(it.ex); const last = useMemo(() => store.lastFor(it.ex), [it.ex]);
+  const adv = useMemo(() => suggest(it.ex, it.vol[vol], it.intensity, last), [it, vol, last]);
+  const lib = LIB[it.ex]; const trpe = targetRpe(it.intensity);
   const set = (i: number, k: "kg" | "reps" | "rpe", v: string) => onChange({ ...log, sets: log.sets.map((z, j) => j === i ? { ...z, [k]: v } : z) });
   return <div className={"card run" + (log.sets.length && log.sets.every(z => z.done) ? " ok" : "")}>
     <button type="button" className="irow" onClick={() => onOpen(it.ex)}>
@@ -143,7 +162,9 @@ function RunItem({ it, vol, log, onChange, onOpen, onRest }: { it: Item; vol: Vo
       <span />
     </button>
     {it.note && <p className="inote">{it.note}</p>}
-    {last && <p className="small muted pad-x">Ultima volta: {last.map(z => `${z.kg || "–"} kg × ${z.reps || "–"}`).join(" · ")}</p>}
+    {last && <p className="small muted pad-x">Ultima volta: {last.map(z => `${z.kg || "–"} kg × ${z.reps || "–"}${z.rpe ? ` @${z.rpe}` : ""}`).join(" · ")}</p>}
+    {adv && <p className="advice pad-x"><b>Consiglio: {String(adv.kg).replace(".", ",")} kg{adv.reps ? ` × ${adv.reps}` : ""}.</b> {adv.why}</p>}
+    {!last && log.sets.length > 0 && lib?.kind !== "cond" && trpe !== null && <p className="advice pad-x"><b>Prima volta: trova il carico.</b> Fai 2–3 serie di avvicinamento salendo di peso finché la serie ti sembra RPE {trpe} (ne restano {Math.max(0, 10 - trpe)}): quello è il carico di partenza. Segna kg, ripetizioni e RPE: dalla prossima volta il carico te lo consiglio io.</p>}
     {log.sets.length === 0 ? <p className="small muted pad-x pad-b">Con questo volume l’esercizio si salta.</p> :
       <div className="sets">{log.sets.map((z, i) => <div key={i} className="setrow">
         <span className="sn">{i + 1}</span>
@@ -153,13 +174,40 @@ function RunItem({ it, vol, log, onChange, onOpen, onRest }: { it: Item; vol: Vo
         <button type="button" className="tick" aria-pressed={z.done} aria-label={`Serie ${i + 1} fatta`} onClick={() => { const d = !z.done; onChange({ ...log, sets: log.sets.map((y, j) => j === i ? { ...y, done: d } : y) }); if (d) onRest(); }}>✓</button>
       </div>)}</div>}
     <label className="pain"><input type="checkbox" checked={!!log.pain} onChange={e => onChange({ ...log, pain: e.target.checked })} /> Dolore sopra 3/10</label>
-    {log.pain && <p className="warnbox">Fermati con questo esercizio: passa alla versione più facile indicata nella scheda o saltalo oggi. Se dura più di una settimana, fisioterapista.</p>}
+    {log.pain && <div className="warnbox stack-s">
+      <p><b>Fermati con questo esercizio.</b> Il dolore sopra 3/10 vince su tutto: oggi volume Basso.</p>
+      {lib?.reg && <p><b>Versione più facile, se non fa male:</b> {lib.reg}</p>}
+      {(vol !== "basso" || log.sets.some(z => !z.done)) && <button type="button" className="primary" onClick={onBasso}>Ferma l'esercizio e passa a Basso</button>}
+      <p className="small">Se il dolore dura più di una settimana, fisioterapista.</p>
+    </div>}
+  </div>;
+}
+
+/* ---------------- Settimana gara ---------------- */
+function RaceWeek({ race, days }: { race: string; days: number }) {
+  const st = store.settings(); const div = DIVISIONS[st.division];
+  const ws = store.weights().slice(-7); const avg = ws.length ? ws.reduce((a, w) => a + w.kg, 0) / ws.length : null;
+  const margin = avg !== null ? div.limit - (avg + st.uniformKg) : null;
+  const food = PLAN.nutrition.find(n => /settimana gara/i.test(n.phase));
+  const items: [string, boolean][] = [
+    [`Ultima seduta pesante entro ${fmtDate(addDays(race, -8))}; da lì niente volume Alto e niente esercizi nuovi.`, isoToday() > addDays(race, -8)],
+    [`Prove generali del peso con la divisa: ${fmtDate(addDays(race, -10))} e ${fmtDate(addDays(race, -6))}, dopo la colazione tipo.`, isoToday() > addDays(race, -6)],
+    ["Pesa il gi e la divisa no-gi che userai in gara e scrivi il peso in Peso.", false],
+    ["Iscrizione: la categoria non si cambia il giorno della gara. Niente tagli d'acqua.", false],
+    ["Due giorni prima: carboidrati 5–7 g/kg, la sera prima poche fibre, niente cibi nuovi.", isoToday() >= addDays(race, -2)],
+  ];
+  return <div className="card pad stack-s race">
+    <span className="lab">Settimana gara · {fmtDate(race)}</span>
+    <h2>{days === 0 ? "Oggi è il giorno della gara" : days === 1 ? "Gara domani" : `Gara tra ${days} giorni`}</h2>
+    {avg !== null && <p className="small">Peso: media {avg.toFixed(1)} kg + divisa {st.uniformKg} kg = <b>{(avg + st.uniformKg).toFixed(1)} kg</b> · limite {div.limit} kg · margine <b>{margin!.toFixed(1)} kg</b> ({div.label.split("(")[0].trim()})</p>}
+    <ul className="check">{items.map(([t, done], i) => <li key={i} className={done ? "done" : ""}>{t}</li>)}</ul>
+    {food && <p className="small muted"><b>Alimentazione.</b> {food.text}</p>}
   </div>;
 }
 
 /* ---------------- Piano ---------------- */
 function PlanView({ onOpen }: { onOpen: (id: string) => void }) {
-  const cid = currentPhaseId();
+  const race = raceDate(); const cid = currentPhaseId(isoToday(), race);
   const [prog, setProg] = useState<Phase["program"]>(phase(cid).program);
   const [pid, setPid] = useState(cid);
   const [vol, setVol] = useState<Vol>("medio");
@@ -167,8 +215,8 @@ function PlanView({ onOpen }: { onOpen: (id: string) => void }) {
   const ph = PLAN.phases.find(p => p.id === pid && p.program === prog) ?? list[0];
   return <section className="stack">
     <div className="seg">{(["bjj", "transizione", "ironman"] as const).map(p => <button key={p} type="button" aria-pressed={prog === p} onClick={() => { setProg(p); setPid(PLAN.phases.find(x => x.program === p)!.id); }}>{PROG_LABEL[p]}</button>)}</div>
-    <div className="hscroll">{list.map(p => <button key={p.id} type="button" className="pchip" aria-pressed={p.id === ph.id} onClick={() => setPid(p.id)}>{p.id === cid && <span className="now">Ora · </span>}<span>{p.name.replace(/^(BJJ|Ironman)\s*/, "")}</span><small>{p.dates.split("(")[0]}</small></button>)}</div>
-    <div className="stack-s"><h1 className="h1s">{ph.name}</h1><p className="muted">{ph.dates}</p><p>{ph.goal}</p><p className="card pad small"><b>Settimana tipo.</b> {ph.weekly}</p></div>
+    <div className="hscroll">{list.map(p => <button key={p.id} type="button" className="pchip" aria-pressed={p.id === ph.id} onClick={() => setPid(p.id)}>{p.id === cid && <span className="now">Ora · </span>}<span>{p.name.replace(/^(BJJ|Ironman)\s*/, "")}</span><small>{phaseDates(p.id, race).split("(")[0]}</small></button>)}</div>
+    <div className="stack-s"><h1 className="h1s">{ph.name}</h1><p className="muted">{phaseDates(ph.id, race)}</p><p>{ph.goal}</p><p className="card pad small"><b>Settimana tipo.</b> {ph.weekly}</p></div>
     <div className="seg">{VOLS.map(v => <button key={v} type="button" aria-pressed={vol === v} onClick={() => setVol(v)}>{VL[v]}</button>)}</div>
     {ph.sessions.map(s => <SessionPreview key={s.id} s={s} vol={vol} onOpen={onOpen} />)}
     <details className="card pad"><summary>Regole del volume</summary><ul>{PLAN.volume_rules.map(r => <li key={r.id}>{r.text}</li>)}</ul></details>
@@ -266,6 +314,7 @@ function More() {
       </form>}
       {msg && <p className="small">{msg}</p>}
     </div>
+    <RaceSetting />
     <div className="card pad stack-s">
       <h2>Backup</h2>
       <p className="small muted">Un file con tutte le sedute, le pesate e le impostazioni. Utile come copia di sicurezza in più.</p>
@@ -275,9 +324,22 @@ function More() {
   </section>;
 }
 
+function RaceSetting() {
+  const [st, setSt] = useState<Settings>(store.settings()); const race = st.raceDate || RACE_DEFAULT; const pb = planB(race);
+  return <div className="card pad stack-s">
+    <h2>Data della gara</h2>
+    <label className="field" htmlFor="race">Giorno della gara BJJ<input id="race" type="date" value={race} min="2026-12-01" max="2027-06-30"
+      onChange={e => { if (!e.target.value) return; const s = { ...st, raceDate: e.target.value }; setSt(s); store.saveSettings(s); }} /></label>
+    <p className="small muted">Se cambia, si spostano la settimana gara, la transizione e tutto l'Ironman (la prima settimana Ironman è sempre quella dopo la gara). Niente volume Alto da {fmtDate(noAltoFrom(race))}.</p>
+    {race !== RACE_DEFAULT && <button type="button" className="ghost" onClick={() => { const s = { ...st, raceDate: RACE_DEFAULT }; setSt(s); store.saveSettings(s); }}>Torna al 23 gennaio</button>}
+    {pb && <p className="small warnbox">{pb}</p>}
+  </div>;
+}
+
 /* ---------------- Scheda esercizio ---------------- */
 function ExerciseSheet({ id, onClose }: { id: string; onClose: () => void }) {
-  const ex = exercise(id); const fi = FIGS[id]; const [sp, setSp] = useState(1);
+  const ex = exercise(id); const fi = FIGS[id]; const lib = LIB[id]; const [sp, setSp] = useState(1);
+  const mus = fi ?? (lib && lib.p.length ? lib : null);
   useEffect(() => { const k = (e: KeyboardEvent) => e.key === "Escape" && onClose(); window.addEventListener("keydown", k); return () => window.removeEventListener("keydown", k); }, [onClose]);
   return <div className="sheet-bg" onClick={onClose}>
     <div className="sheet" role="dialog" aria-modal="true" aria-label={ex.name} onClick={e => e.stopPropagation()}>
@@ -285,12 +347,15 @@ function ExerciseSheet({ id, onClose }: { id: string; onClose: () => void }) {
       {fi ? <>
         <div className="stage"><Figure info={fi} speed={sp} />
           <div className="speed">{[0.5, 1, 0].map(v => <button key={v} type="button" aria-pressed={sp === v} onClick={() => setSp(v)}>{v === 0 ? "Pausa" : `${String(v).replace(".", ",")}×`}</button>)}</div></div>
-        <div className="row gap wrap-row">{fi.p.map(m => <span key={m} className="tag p">{m}</span>)}{fi.s.map(m => <span key={m} className="tag s">{m}</span>)}</div>
-        <MuscleMap p={fi.p} s={fi.s} />
-      </> : <p className="small muted">Animazione in arrivo per questo esercizio.</p>}
+      </> : <p className="small muted">{lib?.kind === "cond" ? "Lavoro di condizionamento: coinvolge tutto il corpo." : "Animazione in arrivo per questo esercizio."}</p>}
+      {mus && <>
+        <div className="row gap wrap-row">{mus.p.map(m => <span key={m} className="tag p">{m}</span>)}{mus.s.map(m => <span key={m} className="tag s">{m}</span>)}</div>
+        <MuscleMap p={mus.p} s={mus.s} />
+      </>}
       {ex.how.length > 0 && <ol>{ex.how.map((h, i) => <li key={i}>{h}</li>)}</ol>}
       {ex.why && <p><b>Perché:</b> {ex.why}</p>}
       {ex.mistake && <p className="muted"><b>Errore tipico:</b> {ex.mistake}</p>}
+      {lib?.reg && <p className="regbox"><b>Versione più facile</b> (se fa male o sei stanco): {lib.reg}</p>}
     </div>
   </div>;
 }

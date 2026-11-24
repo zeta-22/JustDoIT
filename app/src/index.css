@@ -139,3 +139,10 @@ details[open] summary { margin-bottom: 8px; }
 .filebtn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
 .syncbanner { display: grid; gap: 2px; text-align: left; width: 100%; border-left: 4px solid var(--warn); cursor: pointer; font: inherit; color: inherit; }
 .syncbanner.error { border-left-color: var(--bad); }
+.advice { font-size: .95rem; margin: 2px 0 8px; }
+.advice b { color: var(--ok); }
+.regbox { background: color-mix(in srgb, var(--ok) 10%, transparent); border-radius: 10px; padding: 10px 12px; }
+.race { border-left: 4px solid var(--bjj); }
+.check { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; }
+.check li.done { color: var(--muted); text-decoration: line-through; }
+.seg button:disabled { opacity: .35; cursor: not-allowed; }
