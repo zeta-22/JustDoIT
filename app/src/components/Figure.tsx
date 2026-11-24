@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { FIG, PROP, skel, lerp } from "../engine/figure.js";
 import { heroFlat } from "../engine/flat.js";
+import { FIGB, renderBack } from "../engine/back.js";
 import type { FigInfo } from "../data/figures";
 
 const ease = (x: number) => 0.5 - 0.5 * Math.cos(Math.PI * x);
@@ -20,10 +21,13 @@ export default function Figure({ info, speed = 1 }: { info: FigInfo; speed?: num
   const g = useRef<SVGGElement>(null);
   const sp = useRef(speed); sp.current = speed;
   useEffect(() => {
-    const ex = FIG[info.fig] as Ex; if (!ex || !g.current) return;
+    const back = info.view === "back";
+    const ex = (back ? FIGB[info.fig] : FIG[info.fig]) as Ex; if (!ex || !g.current) return;
     const mus = { p: info.p, s: info.s };
     const draw = (t: number) => {
-      const st = state(ex, t); const s = skel(st.pose);
+      const st = state(ex, t);
+      if (back) { g.current!.innerHTML = renderBack(ex, st.pose, mus, Math.min(.95, .45 + st.act * (.75 + .25 * Math.sin(t * 5)) * .5)); return; }
+      const s = skel(st.pose);
       const op = Math.min(.95, .45 + st.act * (.75 + .25 * Math.sin(t * 5)) * .5);
       const pr = (front: boolean) => (ex.props || []).filter(p => (p.z === "front") === front).map(p => PROP[p.k](p, s, t)).join("");
       g.current!.innerHTML = `<line class="gnd" x1="0" y1="130" x2="200" y2="130"/>` + pr(false) + heroFlat(s, mus, op) + pr(true);

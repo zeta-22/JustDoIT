@@ -14,8 +14,7 @@
     "Bacino e schiena fermi: si muove solo l'anca."
    ],
    "why": "Più rotazione all'anca = meno torsione sul ginocchio negli entanglement e nelle guardie.",
-   "mistake": "Fare cerchi veloci e piccoli compensando con la schiena.",
-   "fig": "cars"
+   "mistake": "Fare cerchi veloci e piccoli compensando con la schiena."
   },
   "dorsiflessione": {
    "name": "Dorsiflessione in mezzo-ginocchio",
@@ -25,8 +24,7 @@
     "Tieni o oscilla avanti-indietro per il tempo indicato."
    ],
    "why": "Caviglie mobili = squat, combat base e corsa più sicuri.",
-   "mistake": "Staccare il tallone o far crollare il ginocchio verso l'interno.",
-   "fig": null
+   "mistake": "Staccare il tallone o far crollare il ginocchio verso l'interno."
   },
   "mcgill": {
    "name": "McGill Big 3 (curl-up, side plank, bird dog)",
@@ -37,8 +35,7 @@
     "Schema a piramide 5-3-1 ripetizioni per esercizio; si progredisce aggiungendo ripetizioni, non secondi."
    ],
    "why": "Core rigido senza flessioni ripetute: reggere la pressione in side control e uscire dal fondo.",
-   "mistake": "Farlo appena alzato dal letto o allungare le tenute invece delle ripetizioni.",
-   "fig": "cat"
+   "mistake": "Farlo appena alzato dal letto o allungare le tenute invece delle ripetizioni."
   },
   "bird_dog": {
    "name": "Bird dog",
@@ -48,8 +45,7 @@
     "Pausa 2–3\" senza ruotare il bacino, poi torna lento e cambia lato."
    ],
    "why": "Stabilità del tronco a costo zero, ottimo nel riscaldamento.",
-   "mistake": "Inarcare la schiena o aprire il bacino dal lato della gamba sollevata.",
-   "fig": "cat"
+   "mistake": "Inarcare la schiena o aprire il bacino dal lato della gamba sollevata."
   },
   "cossack": {
    "name": "Cossack squat",
@@ -59,8 +55,7 @@
     "Tallone della gamba piegata a terra, petto alto; torna al centro e cambia lato."
    ],
    "why": "Forza e mobilità in abduzione per guardia aperta e De la Riva.",
-   "mistake": "Alzare il tallone o arrotondare la schiena per scendere di più.",
-   "fig": "squat"
+   "mistake": "Alzare il tallone o arrotondare la schiena per scendere di più."
   },
   "tgu": {
    "name": "Turkish get-up",
@@ -71,8 +66,7 @@
     "Scapola sempre 'indietro e in basso', movimento lento."
    ],
    "why": "Stabilità della spalla sotto carico; ricorda il technical stand-up.",
-   "mistake": "Andare veloce e perdere la stabilità della scapola.",
-   "fig": "tgu"
+   "mistake": "Andare veloce e perdere la stabilità della scapola."
   },
   "snapdown": {
    "name": "Snapdown",
@@ -82,8 +76,7 @@
     "Torna su subito; poche ripetizioni, sempre veloci."
    ],
    "why": "Accende il cambio di livello per takedown e difesa senza stancare.",
-   "mistake": "Farne tante fino a farle diventare lente.",
-   "fig": null
+   "mistake": "Farne tante fino a farle diventare lente."
   },
   "mobilita_im": {
    "name": "Mobilità: open book + couch stretch + sleeper stretch",
@@ -93,8 +86,7 @@
     "Sleeper stretch: sul fianco, braccio a 90° davanti, porta delicatamente l'avambraccio verso il pavimento, 30\" senza dolore."
    ],
    "why": "Rotazione toracica per respirare nel nuoto e stare in aero; flessori d'anca accorciati dalla bici e dal BJJ.",
-   "mistake": "Forzare fino al dolore (soprattutto lo sleeper) o inarcare la schiena nel couch stretch.",
-   "fig": "couch"
+   "mistake": "Forzare fino al dolore (soprattutto lo sleeper) o inarcare la schiena nel couch stretch."
   },
   "trap_bar": {
    "name": "Stacco con trap bar",
@@ -105,8 +97,7 @@
     "Scendi controllato; in cluster 5:2 = 5 ripetizioni, 10\" di pausa, di nuovo 5."
    ],
    "why": "Catena posteriore per alzarsi in base, sollevare e finire il double leg; più potenza dello stacco classico.",
-   "mistake": "Schiena che si arrotonda o anche che salgono prima delle spalle.",
-   "fig": "rdl"
+   "mistake": "Schiena che si arrotonda o anche che salgono prima delle spalle."
   },
   "rdl": {
    "name": "Stacco rumeno (RDL)",
@@ -117,8 +108,7 @@
     "Risali portando le anche avanti, senza iperestendere."
    ],
    "why": "Femorali e glutei forti: proteggono la corsa e la schiena in aero.",
-   "mistake": "Trasformarlo in uno squat piegando troppo le ginocchia, o arrotondare la schiena.",
-   "fig": "rdl"
+   "mistake": "Trasformarlo in uno squat piegando troppo le ginocchia, o arrotondare la schiena."
   },
   "sl_rdl": {
    "name": "Stacco rumeno monopodalico (single-leg RDL)",
@@ -129,8 +119,7 @@
     "In viaggio può diventare glute bridge a una gamba."
    ],
    "why": "Stabilità su una gamba con l'avversario appeso al single leg; femorali e glutei a basso carico.",
-   "mistake": "Bacino che ruota verso l'alto o schiena rotonda.",
-   "fig": "rdl"
+   "mistake": "Bacino che ruota verso l'alto o schiena rotonda."
   },
   "zercher": {
    "name": "Zercher squat",
@@ -141,8 +130,7 @@
     "Cluster 5:2 come per lo stacco."
    ],
    "why": "Riproduce il body lock e il sollevamento dell'avversario.",
-   "mistake": "Troppo peso troppo presto: gli incavi dei gomiti devono abituarsi.",
-   "fig": "squat"
+   "mistake": "Troppo peso troppo presto: gli incavi dei gomiti devono abituarsi."
   },
   "front_squat": {
    "name": "Front squat",
@@ -152,8 +140,7 @@
     "Risali espirando, spingendo con tutto il piede."
    ],
    "why": "Forza massima delle gambe (protocollo grappler 4×4) per passaggi e stand-up.",
-   "mistake": "Busto che crolla in avanti: riduci il carico e alza i gomiti.",
-   "fig": "squat"
+   "mistake": "Busto che crolla in avanti: riduci il carico e alza i gomiti."
   },
   "back_squat": {
    "name": "Back squat / mezzo squat (anche goblet)",
@@ -164,8 +151,7 @@
     "Risali spingendo il pavimento, anche e spalle insieme."
    ],
    "why": "Forza massima delle gambe = pedalata e corsa più economiche senza aumentare di peso.",
-   "mistake": "Ginocchia che cadono verso l'interno o talloni che si alzano.",
-   "fig": "squat"
+   "mistake": "Ginocchia che cadono verso l'interno o talloni che si alzano."
   },
   "bulgaro": {
    "name": "Squat bulgaro (split squat bulgaro)",
@@ -176,8 +162,7 @@
     "Risali spingendo con tallone e alluce; busto dritto = quadricipite, inclinato = gluteo."
    ],
    "why": "Forza su una gamba e controllo del ginocchio: single leg, combat base, corsa in salita.",
-   "mistake": "Piede troppo vicino alla panca (tallone che si alza) o troppo peso sulla gamba dietro.",
-   "fig": "bss"
+   "mistake": "Piede troppo vicino alla panca (tallone che si alza) o troppo peso sulla gamba dietro."
   },
   "spanish_squat": {
    "name": "Spanish squat / wall sit isometrico",
@@ -187,8 +172,7 @@
     "Tieni con sforzo alto (≥70%) per il tempo indicato, respirando."
    ],
    "why": "Tendine rotuleo robusto senza dolori muscolari.",
-   "mistake": "Angolo troppo chiuso se fa male: con dolore > 3/10 apri l'angolo.",
-   "fig": "squat"
+   "mistake": "Angolo troppo chiuso se fa male: con dolore > 3/10 apri l'angolo."
   },
   "nordic": {
    "name": "Nordic curl",
@@ -199,8 +183,7 @@
     "Prendi la caduta con le mani e torna su aiutandoti: conta solo la discesa."
    ],
    "why": "Femorali forti in allungamento: proteggono LCA e femorali (prove miste, ma dose piccola).",
-   "mistake": "Piegarsi alle anche, o fare troppo volume alla prima seduta (dolori per giorni).",
-   "fig": null
+   "mistake": "Piegarsi alle anche, o fare troppo volume alla prima seduta (dolori per giorni)."
   },
   "copenhagen": {
    "name": "Copenhagen (adduction / plank)",
@@ -211,8 +194,7 @@
     "Tronco dritto, niente piegamento laterale; respira."
    ],
    "why": "Adduttori forti per guardia chiusa, triangolo e knee shield; nella corsa proteggono l'inguine.",
-   "mistake": "Partire subito con la leva lunga o lasciar cadere/ruotare il bacino.",
-   "fig": "cop"
+   "mistake": "Partire subito con la leva lunga o lasciar cadere/ruotare il bacino."
   },
   "adductor_squeeze": {
    "name": "Adductor squeeze isometrico",
@@ -222,8 +204,7 @@
     "Rilascia piano; respira durante la tenuta."
    ],
    "why": "Simula la chiusura della guardia; è anche la regressione se l'inguine fa male.",
-   "mistake": "Trattenere il fiato o stringere 'a scatti'.",
-   "fig": null
+   "mistake": "Trattenere il fiato o stringere 'a scatti'."
   },
   "mtp": {
    "name": "Mid-thigh pull isometrico",
@@ -233,8 +214,7 @@
     "Tira 'a strappare' con intenzione esplosiva per 3–5\", il bilanciere non si muove."
    ],
    "why": "Forza rapida con pochissimi dolori muscolari: ideale vicino alla gara.",
-   "mistake": "Partire piano e salire lentamente invece di esplodere subito.",
-   "fig": "rdl"
+   "mistake": "Partire piano e salire lentamente invece di esplodere subito."
   },
   "hip_thrust": {
    "name": "Hip thrust / ponte glutei (anche esplosivo)",
@@ -245,8 +225,7 @@
     "Versione esplosiva: carico leggero e salita più veloce possibile."
    ],
    "why": "È l'upa dalla monta; estensione d'anca per la corsa e protezione lombare.",
-   "mistake": "Inarcare la schiena invece di estendere le anche, piedi troppo lontani.",
-   "fig": null
+   "mistake": "Inarcare la schiena invece di estendere le anche, piedi troppo lontani."
   },
   "panca": {
    "name": "Panca piana (o inclinata)",
@@ -256,8 +235,7 @@
     "Risali spingendo, senza rimbalzare sul petto."
    ],
    "why": "Frame e spinta per creare spazio; pesante e a poche ripetizioni per non aumentare di peso.",
-   "mistake": "Gomiti aperti a 90° o glutei che si staccano dalla panca.",
-   "fig": "lm"
+   "mistake": "Gomiti aperti a 90° o glutei che si staccano dalla panca."
   },
   "piegamenti": {
    "name": "Piegamenti lenti o pliometrici",
@@ -267,8 +245,7 @@
     "Pliometrici: risali esplosivo staccando le mani."
    ],
    "why": "Spinta e frame in viaggio, senza attrezzi.",
-   "mistake": "Bacino che cede o collo che va avanti.",
-   "fig": null
+   "mistake": "Bacino che cede o collo che va avanti."
   },
   "trazioni_gi": {
    "name": "Trazioni al gi",
@@ -279,8 +256,7 @@
     "Tenuta isometrica: resta in alto o a 90° di gomito per il tempo indicato."
    ],
    "why": "Tirata + presa sul tessuto: i test al kimono distinguono gli élite.",
-   "mistake": "Kipping, mezze ripetizioni, spalle alle orecchie; troppa presa il giorno prima del gi.",
-   "fig": "hang"
+   "mistake": "Kipping, mezze ripetizioni, spalle alle orecchie; troppa presa il giorno prima del gi."
   },
   "trazioni": {
    "name": "Trazioni alla sbarra / lat machine (anche zavorrate)",
@@ -291,8 +267,7 @@
     "Oltre 8–10 pulite: aggiungi zavorra invece di ripetizioni (lat machine se non ne fai almeno 6)."
    ],
    "why": "Forza di tirata per il BJJ; dorsali e spalle sane per reggere 3–4 nuotate a settimana.",
-   "mistake": "Inarcare la schiena o tirare con le braccia senza fissare prima le scapole.",
-   "fig": "hang"
+   "mistake": "Inarcare la schiena o tirare con le braccia senza fissare prima le scapole."
   },
   "rope": {
    "name": "Arrampicata alla corda",
@@ -303,8 +278,7 @@
     "Scendi sempre mano dopo mano, mai scivolando."
    ],
    "why": "La presa più 'tirata' possibile (Danaher); conta come 2° esercizio di presa della settimana.",
-   "mistake": "Scivolare in discesa (ustioni) o farla con le mani già cotte.",
-   "fig": "hang"
+   "mistake": "Scivolare in discesa (ustioni) o farla con le mani già cotte."
   },
   "rematore_gi": {
    "name": "Rematore col gi",
@@ -314,8 +288,7 @@
     "Tira il gomito verso il fianco, pausa 1\", ritorno controllato."
    ],
    "why": "Tirata orizzontale con presa sul tessuto: rompere la postura.",
-   "mistake": "Arrotondare la schiena o tirare con lo slancio.",
-   "fig": "row"
+   "mistake": "Arrotondare la schiena o tirare con lo slancio."
   },
   "cs_row": {
    "name": "Chest-supported row",
@@ -325,8 +298,7 @@
     "Pausa 1\" in alto, scendi controllato."
    ],
    "why": "Tirata orizzontale pesante senza caricare la presa né la schiena.",
-   "mistake": "Staccare il petto dalla panca per usare lo slancio.",
-   "fig": "row"
+   "mistake": "Staccare il petto dalla panca per usare lo slancio."
   },
   "rematore_manubrio": {
    "name": "Rematore con manubrio o al cavo",
@@ -336,8 +308,7 @@
     "Spalla giù e indietro, scendi lento."
    ],
    "why": "Schiena alta e scapole: bilancia la spalla 'chiusa' da grappler e aiuta la postura in aero.",
-   "mistake": "Tirare verso il petto (diventa un curl e sforza la spalla davanti).",
-   "fig": "row"
+   "mistake": "Tirare verso il petto (diventa un curl e sforza la spalla davanti)."
   },
   "inverted_row": {
    "name": "Rematore con elastico / inverted row (viaggio)",
@@ -347,8 +318,7 @@
     "Pausa 1\", scendi controllato."
    ],
    "why": "Tirata + presa 'da tessuto' senza palestra.",
-   "mistake": "Bacino che cede o tavolo poco stabile: prova prima la tenuta.",
-   "fig": "row"
+   "mistake": "Bacino che cede o tavolo poco stabile: prova prima la tenuta."
   },
   "pulldown_bt": {
    "name": "Pulldown a braccia tese",
@@ -358,8 +328,7 @@
     "Torna lento lasciando allungare il dorsale; pensa 'gomiti verso le tasche'."
    ],
    "why": "Dorsali nella stessa catena della bracciata, senza bicipite.",
-   "mistake": "Piegare e distendere i gomiti: diventa un pushdown per i tricipiti.",
-   "fig": null
+   "mistake": "Piegare e distendere i gomiti: diventa un pushdown per i tricipiti."
   },
   "face_pull": {
    "name": "Face pull",
@@ -369,8 +338,7 @@
     "In fondo ruota le mani verso l'alto (posizione 'doppio bicipite'), poi torna lento."
    ],
    "why": "Scapole e cuffia: il 65% dei praticanti di BJJ ha discinesia scapolare; serve anche alla bracciata.",
-   "mistake": "Gomiti bassi o carico eccessivo che fa inarcare la schiena.",
-   "fig": "face"
+   "mistake": "Gomiti bassi o carico eccessivo che fa inarcare la schiena."
   },
   "band_pull_apart": {
    "name": "Band pull-apart",
@@ -380,8 +348,7 @@
     "Ritorno lento."
    ],
    "why": "Scapole attive in pochi secondi, ovunque.",
-   "mistake": "Alzare le spalle verso le orecchie.",
-   "fig": "face"
+   "mistake": "Alzare le spalle verso le orecchie."
   },
   "ytw": {
    "name": "Y-T-W",
@@ -391,8 +358,7 @@
     "Ogni posizione: sali 1–2\", pausa 1–2\", scendi 2\"."
    ],
    "why": "Trapezio basso e cuffia per la spalla del nuotatore.",
-   "mistake": "Usare pesi troppo alti e compensare con il collo.",
-   "fig": "face"
+   "mistake": "Usare pesi troppo alti e compensare con il collo."
   },
   "extrarot": {
    "name": "Rotazione esterna / extrarotazioni al cavo o elastico",
@@ -403,8 +369,7 @@
     "Versione 90/90: braccio alzato di lato a 90°, ruota fino all'avambraccio verticale."
    ],
    "why": "Spalla forte contro kimura e americana; nel nuoto regge il volume di bracciate.",
-   "mistake": "Gomito che si stacca dal fianco o carico troppo alto (lavorano deltoide e trapezio).",
-   "fig": "face"
+   "mistake": "Gomito che si stacca dal fianco o carico troppo alto (lavorano deltoide e trapezio)."
   },
   "collo": {
    "name": "Isometrie del collo nei 4 piani (+ chin tuck)",
@@ -415,8 +380,7 @@
     "Respira durante la tenuta; mai a cedimento."
    ],
    "why": "Cravatte, ghigliottine e posture rotte nel BJJ; testa alta in aero per ore nell'Ironman.",
-   "mistake": "Muovere la testa, andare in apnea o spingere a scatti.",
-   "fig": "neck"
+   "mistake": "Muovere la testa, andare in apnea o spingere a scatti."
   },
   "estensioni_dita": {
    "name": "Estensioni delle dita con elastico",
@@ -426,8 +390,7 @@
     "Ritorno controllato; anche ogni giorno dopo il tatami."
    ],
    "why": "Contrappeso al volume di presa del gi: protegge dita e gomito.",
-   "mistake": "Usare un elastico troppo duro e fare movimenti piccoli.",
-   "fig": null
+   "mistake": "Usare un elastico troppo duro e fare movimenti piccoli."
   },
   "farmer": {
    "name": "Farmer's walk",
@@ -437,8 +400,7 @@
     "Passi corti che si allungano, niente inclinazioni."
    ],
    "why": "Presa di supporto per il no-gi e anti-flessione laterale.",
-   "mistake": "Farlo con le mani già cotte prima del gi del sabato.",
-   "fig": "farmer"
+   "mistake": "Farlo con le mani già cotte prima del gi del sabato."
   },
   "suitcase": {
    "name": "Suitcase carry / farmer walk monolaterale",
@@ -448,8 +410,7 @@
     "Cambia lato alla fine della distanza."
    ],
    "why": "Bacino orizzontale a fine maratona.",
-   "mistake": "Inclinarsi verso il peso (o dall'altra parte) e alzare la spalla.",
-   "fig": "farmer"
+   "mistake": "Inclinarsi verso il peso (o dall'altra parte) e alzare la spalla."
   },
   "dead_bug": {
    "name": "Dead bug",
@@ -460,8 +421,7 @@
     "Torna e cambia lato; ripeti solo se la schiena resta giù."
    ],
    "why": "Anti-estensione: guardia compatta nel BJJ, tronco stabile nella corsa.",
-   "mistake": "Schiena che si stacca dal pavimento o gambe troppo basse per la tua forza.",
-   "fig": "deadbug"
+   "mistake": "Schiena che si stacca dal pavimento o gambe troppo basse per la tua forza."
   },
   "rollout": {
    "name": "Ab rollout (o hollow hold)",
@@ -471,8 +431,7 @@
     "Torna indietro senza piegarti alle anche. Alternativa: hollow hold 20\"."
    ],
    "why": "Anti-estensione avanzata.",
-   "mistake": "Lasciar cadere la zona lombare in avanti.",
-   "fig": "deadbug"
+   "mistake": "Lasciar cadere la zona lombare in avanti."
   },
   "pallof": {
    "name": "Pallof press",
@@ -483,8 +442,7 @@
     "Tieni 2–3\" (un respiro completo), torna al petto."
    ],
    "why": "Anti-rotazione: resistere agli sweep; bacino stabile nella corsa.",
-   "mistake": "Busto che ruota verso la macchina, carico troppo alto.",
-   "fig": "pallof"
+   "mistake": "Busto che ruota verso la macchina, carico troppo alto."
   },
   "side_plank": {
    "name": "Side plank (anche con abduzione)",
@@ -494,8 +452,7 @@
     "Con abduzione: in tenuta solleva e abbassa lentamente la gamba sopra."
    ],
    "why": "Fianchi e medio gluteo: anti-flessione laterale per la corsa.",
-   "mistake": "Bacino che cede o ruota avanti/indietro.",
-   "fig": null
+   "mistake": "Bacino che cede o ruota avanti/indietro."
   },
   "box_jump": {
    "name": "Box jump",
@@ -506,8 +463,7 @@
     "Scendi camminando, non saltando."
    ],
    "why": "Potenza di gambe per takedown e scramble, da freschi.",
-   "mistake": "Atterrare rigido o in valgo, scendere saltando dal box.",
-   "fig": null
+   "mistake": "Atterrare rigido o in valgo, scendere saltando dal box."
   },
   "kb_swing": {
    "name": "Kettlebell swing",
@@ -518,8 +474,7 @@
     "Espira salendo, inspira scendendo."
    ],
    "why": "Estensione esplosiva dell'anca = upa e hip escape.",
-   "mistake": "Tirare con le braccia, schiena rotonda, squattare invece di piegare le anche.",
-   "fig": "rdl"
+   "mistake": "Tirare con le braccia, schiena rotonda, squattare invece di piegare le anche."
   },
   "hang_clean": {
    "name": "Hang power clean",
@@ -530,8 +485,7 @@
     "Se la tecnica non è solida: kettlebell swing a un braccio."
    ],
    "why": "Tripla estensione = entrata del double leg e upa esplosivo.",
-   "mistake": "Bilanciere lontano dal corpo o gomiti bassi in ricezione.",
-   "fig": null
+   "mistake": "Bilanciere lontano dal corpo o gomiti bassi in ricezione."
   },
   "jump_squat": {
    "name": "Jump squat / squat jump (CMJ)",
@@ -541,8 +495,7 @@
     "Salta più in alto possibile, atterra morbido, resetta e ripeti."
    ],
    "why": "Potenza per cambio di livello e scramble; nell'Ironman forza esplosiva che l'endurance tende a togliere.",
-   "mistake": "Troppe ripetizioni (diventa condizionamento) o atterraggio rigido.",
-   "fig": "squat"
+   "mistake": "Troppe ripetizioni (diventa condizionamento) o atterraggio rigido."
   },
   "broad_jump": {
    "name": "Broad jump (salto in lungo da fermo)",
@@ -552,8 +505,7 @@
     "Atterra morbido e stabile, poi torna camminando."
    ],
    "why": "Tiene viva la potenza in viaggio, senza attrezzi.",
-   "mistake": "Atterrare con le ginocchia che cedono verso l'interno.",
-   "fig": null
+   "mistake": "Atterrare con le ginocchia che cedono verso l'interno."
   },
   "pistol": {
    "name": "Pistol squat assistito o step-up alto",
@@ -563,8 +515,7 @@
     "Alternativa: step-up su un rialzo all'altezza del ginocchio."
    ],
    "why": "Forza su una gamba senza pesi.",
-   "mistake": "Ginocchio che crolla verso l'interno.",
-   "fig": "step"
+   "mistake": "Ginocchio che crolla verso l'interno."
   },
   "solo_drill": {
    "name": "Solo-drill BJJ",
@@ -574,8 +525,7 @@
     "Nel riscaldamento di gara: lenti; in viaggio: a ritmo."
    ],
    "why": "Mantiene i movimenti specifici e il ritmo da tatami.",
-   "mistake": "Farli trascurati: contano come tecnica, non come fatica.",
-   "fig": null
+   "mistake": "Farli trascurati: contano come tecnica, non come fatica."
   },
   "p1_match": {
    "name": "P1 — Round 'match simulato' da 6'",
@@ -585,8 +535,7 @@
     "3–5' di pausa camminando tra i round."
    ],
    "why": "Replica i picchi di 4–5\" dentro un match da 6'.",
-   "mistake": "Andare troppo forte nei 25\" moderati: poi i 5\" non sono più all-out.",
-   "fig": null
+   "mistake": "Andare troppo forte nei 25\" moderati: poi i 5\" non sono più all-out."
   },
   "p2_franchini": {
    "name": "P2 — HIIT tipo Franchini (20\"/10\")",
@@ -596,8 +545,7 @@
     "Su bike o vogatore."
    ],
    "why": "+17% di potenza di picco in 4 settimane nei judoka.",
-   "mistake": "Partire così forte da 'morire' alla 4ª ripetizione.",
-   "fig": null
+   "mistake": "Partire così forte da 'morire' alla 4ª ripetizione."
   },
   "p3_long_hiit": {
    "name": "P3 — Long HIIT (45\"/45\")",
@@ -607,8 +555,7 @@
     "Forte = parli a monosillabi; moderato = frasi brevi."
    ],
    "why": "Capacità di reggere un round intero da 6'.",
-   "mistake": "Trasformare i 45\" moderati in recupero passivo.",
-   "fig": null
+   "mistake": "Trasformare i 45\" moderati in recupero passivo."
   },
   "p4_sprint": {
    "name": "P4 — Sprint brevi",
@@ -618,8 +565,7 @@
     "Ogni sprint deve essere esplosivo come il primo."
    ],
    "why": "Potenza ripetibile senza fatica: il protocollo giusto vicino alla gara.",
-   "mistake": "Accorciare i recuperi: diventa fatica, non potenza.",
-   "fig": null
+   "mistake": "Accorciare i recuperi: diventa fatica, non potenza."
   },
   "p6": {
    "name": "P6 — Intervalli a corpo libero",
@@ -629,8 +575,7 @@
     "In alternativa: corsa in spiaggia/città con 8–10 allunghi da 10\"."
    ],
    "why": "Condizionamento in viaggio; l'opzione 2 allena il ritmo da tatami.",
-   "mistake": "Farli nelle ore calde o con lo stomaco non a posto.",
-   "fig": null
+   "mistake": "Farli nelle ore calde o con lo stomaco non a posto."
   },
   "corsa_facile": {
    "name": "Corsa facile (o corsa-cammino)",
@@ -640,8 +585,7 @@
     "Aumenta la durata al massimo del 10–15% a settimana; in intensificazione 4–6 allunghi da 10\" alla fine."
    ],
    "why": "Base aerobica e primo ponte verso l'Ironman: i tendini si adattano in mesi, il cuore in settimane.",
-   "mistake": "Correre 'a tutta' come in uno sparring: la corsa facile deve essere davvero facile.",
-   "fig": null
+   "mistake": "Correre 'a tutta' come in uno sparring: la corsa facile deve essere davvero facile."
   },
   "nuoto_tecnica": {
    "name": "Nuoto tecnico facile",
@@ -651,8 +595,7 @@
     "Fermati quando la tecnica cede; niente palette né pull buoy in fase BJJ."
    ],
    "why": "Il nuoto è il tuo punto debole n. 1 e la tecnica richiede mesi: iniziare a impararla costa poca fatica.",
-   "mistake": "Trasformarlo in allenamento duro o in volume: in fase BJJ è solo tecnica.",
-   "fig": null
+   "mistake": "Trasformarlo in allenamento duro o in volume: in fase BJJ è solo tecnica."
   },
   "calf_seduto": {
    "name": "Calf raise a ginocchio piegato (seduto pesante o su un gradino)",
@@ -662,8 +605,7 @@
     "Spingi su alluce e prime dita fino in alto, pausa 1\"."
    ],
    "why": "Soleo forte: la protezione n. 1 di chi corre poco.",
-   "mistake": "Ampiezza a metà con rimbalzo; aumentare il carico più del 5–10% a settimana.",
-   "fig": "calf"
+   "mistake": "Ampiezza a metà con rimbalzo; aumentare il carico più del 5–10% a settimana."
   },
   "calf_mono": {
    "name": "Calf raise in piedi monopodalico con deficit",
@@ -674,8 +616,7 @@
     "Test: ripetizioni fino a cedimento per gamba (obiettivo > 25)."
    ],
    "why": "Gastrocnemio e Achille pronti alla corsa; il test dice quando sei pronto per i salti.",
-   "mistake": "Piegare il ginocchio per aiutarti o tirarti su con la mano.",
-   "fig": "calf"
+   "mistake": "Piegare il ginocchio per aiutarti o tirarti su con la mano."
   },
   "tibialis": {
    "name": "Tibialis raise",
@@ -685,8 +626,7 @@
     "Scendi lento; con carico: tib-bar o disco sui piedi da seduto."
    ],
    "why": "Tibiale anteriore: tibia e caviglia più robuste per l'avvio della corsa.",
-   "mistake": "Staccare i talloni o usare lo slancio.",
-   "fig": "tib"
+   "mistake": "Staccare i talloni o usare lo slancio."
   },
   "pogo": {
    "name": "Pogo hops",
@@ -697,8 +637,7 @@
     "Monopodalici solo se fai ≥ 25 calf raise per gamba."
    ],
    "why": "Rigidità elastica del tendine = corsa più economica.",
-   "mistake": "Piegare le ginocchia (diventa uno squat jump) o continuare quando i contatti rallentano.",
-   "fig": null
+   "mistake": "Piegare le ginocchia (diventa uno squat jump) o continuare quando i contatti rallentano."
   },
   "corda": {
    "name": "Saltelli con la corda",
@@ -708,8 +647,7 @@
     "Blocchi da 30\" con 30\" di pausa."
    ],
    "why": "L'ingresso più semplice alla plyometria; perfetta in viaggio.",
-   "mistake": "Saltare alto con le ginocchia piegate o atterrare sui talloni.",
-   "fig": null
+   "mistake": "Saltare alto con le ginocchia piegate o atterrare sui talloni."
   },
   "bounding": {
    "name": "Bounding e saltelli monopodalici",
@@ -719,8 +657,7 @@
     "Saltelli monopodalici: piccoli, ginocchio in linea con il piede."
    ],
    "why": "Forza reattiva orizzontale per la corsa.",
-   "mistake": "Trasformarlo in uno sprint con contatti rigidi.",
-   "fig": null
+   "mistake": "Trasformarlo in uno sprint con contatti rigidi."
   },
   "drop_jump": {
    "name": "Drop jump bassi (20–30 cm)",
@@ -730,8 +667,7 @@
     "Ginocchia allineate ai piedi; solo da freschi."
    ],
    "why": "Forza reattiva, la più sensibile all'interferenza con l'endurance (solo da Fase 6).",
-   "mistake": "Box troppo alto: contatto lungo e ginocchia che cedono.",
-   "fig": null
+   "mistake": "Box troppo alto: contatto lungo e ginocchia che cedono."
   },
   "leg_press_mono": {
    "name": "Leg press monopodalica",
@@ -742,8 +678,7 @@
     "Finisci una gamba, poi l'altra."
    ],
    "why": "Forza di spinta a una gamba come nella pedalata, senza caricare la schiena.",
-   "mistake": "Ginocchio che cade verso l'interno o bloccato in alto.",
-   "fig": null
+   "mistake": "Ginocchio che cade verso l'interno o bloccato in alto."
   },
   "flex_anca": {
    "name": "Flessione d'anca monopodalica al cavo",
@@ -753,8 +688,7 @@
     "Porta il ginocchio avanti e in alto, pausa 1\", ritorno lento."
    ],
    "why": "Flessori d'anca forti per la falcata a fine gara.",
-   "mistake": "Inarcare la schiena o lavorare solo nella parte alta.",
-   "fig": null
+   "mistake": "Inarcare la schiena o lavorare solo nella parte alta."
   },
   "abduzione": {
    "name": "Abduzione d'anca sul fianco o al cavo",
@@ -765,8 +699,7 @@
     "Al cavo: in piedi, cavigliera al cavo basso, porta la gamba di lato."
    ],
    "why": "Medio gluteo: ginocchio stabile in corsa (bandelletta, rotula).",
-   "mistake": "Bacino che ruota indietro o gamba che va in avanti.",
-   "fig": null
+   "mistake": "Bacino che ruota indietro o gamba che va in avanti."
   },
   "pelvic_drop": {
    "name": "Pelvic drop",
@@ -776,8 +709,7 @@
     "Riportalo su contraendo il gluteo d'appoggio, busto fermo."
    ],
    "why": "Medio gluteo in una posizione molto simile alla corsa.",
-   "mistake": "Piegare il ginocchio d'appoggio o inclinare il busto.",
-   "fig": null
+   "mistake": "Piegare il ginocchio d'appoggio o inclinare il busto."
   },
   "passi_laterali": {
    "name": "Passi laterali con elastico",
@@ -787,8 +719,7 @@
     "Punte avanti, busto fermo."
    ],
    "why": "Abduttori, come nel programma RunRCT (−39% infortuni da sovraccarico).",
-   "mistake": "Piedi che si toccano (elastico lento) o busto che dondola.",
-   "fig": null
+   "mistake": "Piedi che si toccano (elastico lento) o busto che dondola."
   },
   "short_foot": {
    "name": "'Short foot' (piede corto)",
@@ -798,8 +729,7 @@
     "Poi su una gamba, poi durante i calf raise."
    ],
    "why": "Muscoli del piede: costa poco, prove contrastanti.",
-   "mistake": "Arricciare le dita invece di sollevare l'arco.",
-   "fig": null
+   "mistake": "Arricciare le dita invece di sollevare l'arco."
   },
   "step_up": {
    "name": "Step-up alto / step-down laterale",
@@ -809,8 +739,7 @@
     "Ginocchio in linea con il 2° dito, bacino orizzontale."
    ],
    "why": "Controllo del ginocchio sotto carico, spinta come in salita.",
-   "mistake": "Ginocchio verso l'interno o spinta della gamba a terra.",
-   "fig": "step"
+   "mistake": "Ginocchio verso l'interno o spinta della gamba a terra."
   }
  },
  "phases": [

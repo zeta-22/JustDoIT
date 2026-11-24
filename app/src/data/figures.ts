@@ -1,6 +1,7 @@
 /* Esercizi con animazione approvata: chiave della posa in engine/FIG + muscoli (p = principali, s = secondari).
    Gli esercizi non elencati qui mostrano solo la scheda testuale finché non viene creata la loro animazione. */
-export interface FigInfo { fig: string; p: string[]; s: string[] }
+/* view "back" = figura vista da dietro (engine/back.js, FIGB); senza view = di profilo (engine/figure.js, FIG). */
+export interface FigInfo { fig: string; p: string[]; s: string[]; view?: "back" }
 export const FIGS: Record<string, FigInfo> = {
   rdl: { fig: "rdl", p: ["femorali", "glutei"], s: ["erettori", "avambracci"] },
   bulgaro: { fig: "bss", p: ["quadricipiti", "glutei"], s: ["adduttori", "femorali"] },

@@ -4,7 +4,8 @@ export type Vol = "basso" | "medio" | "alto";
 export interface Item { code: string; ex: string; vol: Record<Vol, string>; intensity: string; tempo: string; rest: string; note?: string }
 export interface Session { id: string; day: string; title: string; duration: string; warmup: string; items: Item[]; notes: string }
 export interface Phase { id: string; program: "bjj" | "ironman" | "transizione"; name: string; dates: string; goal: string; weekly: string; sessions: Session[] }
-export interface Exercise { name: string; how: string[]; why: string; mistake: string; fig: string | null }
+/** Scheda testuale dell'esercizio. Animazioni e muscoli NON stanno qui: vedi data/figures.ts e data/library.ts. */
+export interface Exercise { name: string; how: string[]; why: string; mistake: string }
 
 export const PLAN = raw as unknown as {
   meta: { hypotheses: string };
@@ -72,7 +73,7 @@ export function planB(race: string): string | null {
   return null;
 }
 export const phase = (id: string) => PLAN.phases.find(p => p.id === id)!;
-export const exercise = (id: string): Exercise => PLAN.exercises[id] ?? { name: id, how: [], why: "", mistake: "", fig: null };
+export const exercise = (id: string): Exercise => PLAN.exercises[id] ?? { name: id, how: [], why: "", mistake: "" };
 
 /** "3 × 8" → 3 serie; "2 × Cl (10)" → 2; "—" → 0; altro → 1. */
 export function setCount(v: string): number {

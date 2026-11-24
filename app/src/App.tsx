@@ -128,8 +128,19 @@ function ItemRow({ it, vol, onOpen }: { it: Item; vol: Vol; onOpen: (id: string)
 }
 
 /* ---------------- Seduta in corso ---------------- */
+/** Schermo sempre acceso durante la seduta (se il telefono lo permette): il timer resta visibile tra una serie e l'altra. */
+function useWakeLock() {
+  useEffect(() => {
+    let lock: { release: () => Promise<void> } | null = null; let alive = true;
+    const nav = navigator as Navigator & { wakeLock?: { request: (t: "screen") => Promise<{ release: () => Promise<void> }> } };
+    const get = async () => { try { if (alive && nav.wakeLock && document.visibilityState === "visible") lock = await nav.wakeLock.request("screen"); } catch { /* non concesso: pazienza */ } };
+    const onVis = () => { if (document.visibilityState === "visible") void get(); };
+    void get(); document.addEventListener("visibilitychange", onVis);
+    return () => { alive = false; document.removeEventListener("visibilitychange", onVis); void lock?.release().catch(() => {}); };
+  }, []);
+}
 function Runner({ log, onChange, onOpen, onExit }: { log: SessionLog; onChange: (l: SessionLog) => void; onOpen: (id: string) => void; onExit: () => void }) {
-  const rest = useRest();
+  const rest = useRest(); useWakeLock();
   const ph = phase(log.phaseId);
   const s = [...ph.sessions, ...phase("bjj_domenica").sessions].find(x => x.id === log.sessionId)!;
   const upd = (l: SessionLog) => { store.saveSession(l); onChange(l); };

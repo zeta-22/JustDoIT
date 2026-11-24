@@ -109,7 +109,7 @@ const f=n=>n.toFixed(1);
 const pts=a=>a.map(p=>f(p[0])+","+f(p[1])).join(" ");
 function pt(s,ref){
   if(Array.isArray(ref))return ref;
-  const m={h0:()=>s.arms[0].h,h1:()=>s.arms[1].h,e0:()=>s.arms[0].e,a0:()=>s.legs[0].a,a1:()=>s.legs[1].a,S:()=>s.S,P:()=>s.P,Hd:()=>s.Hd};
+  const m={k0:()=>s.legs[0].k,h0:()=>s.arms[0].h,h1:()=>s.arms[1].h,e0:()=>s.arms[0].e,a0:()=>s.legs[0].a,a1:()=>s.legs[1].a,S:()=>s.S,P:()=>s.P,Hd:()=>s.Hd};
   return m[ref]();
 }
 /* ---------- attrezzi ---------- */
@@ -121,7 +121,7 @@ const PROP={
   column:p=>`<rect class="pf" x="${p.x}" y="4" width="11" height="126" rx="2"/><circle class="pk" cx="${p.px}" cy="${p.py}" r="3.2"/>`,
   bar:p=>`<line class="pl" x1="${p.x1}" y1="${p.y}" x2="${p.x2}" y2="${p.y}" style="stroke-width:3.5"/><line class="pl" x1="${p.x1}" y1="${p.y-6}" x2="${p.x1}" y2="${p.y}"/><line class="pl" x1="${p.x2}" y1="${p.y-6}" x2="${p.x2}" y2="${p.y}"/>`,
   db:(p,s)=>{const h=pt(s,p.at);return `<line class="pl" x1="${f(h[0]-8)}" y1="${f(h[1])}" x2="${f(h[0]+8)}" y2="${f(h[1])}" style="stroke-width:2.6"/><rect class="pk" x="${f(h[0]-11)}" y="${f(h[1]-6)}" width="4.5" height="12" rx="1"/><rect class="pk" x="${f(h[0]+6.5)}" y="${f(h[1]-6)}" width="4.5" height="12" rx="1"/>`;},
-  kb:(p,s)=>{const h=pt(s,p.at);const dy=p.up?-9:9;const c=[h[0],h[1]+dy];return `<circle class="pk" cx="${f(c[0])}" cy="${f(c[1])}" r="6.5"/><path class="pl" d="M${f(h[0]-4)} ${f(c[1]-(p.up?-4:4))} Q ${f(h[0])} ${f(h[1]-(p.up?-1:1)*3)} ${f(h[0]+4)} ${f(c[1]-(p.up?-4:4))}"/>`;},
+  kb:(p,s)=>{const h=pt(s,p.at);const dy=p.up?-9:9;let c=[h[0],h[1]+dy];if(p.al){const e=s.arms[0].e,dx=h[0]-e[0],dd=h[1]-e[1],l=Math.hypot(dx,dd)||1;c=[h[0]+dx/l*8,h[1]+dd/l*8];}return `<circle class="pk" cx="${f(c[0])}" cy="${f(c[1])}" r="6.5"/><path class="pl" d="M${f(h[0]-4)} ${f(c[1]-(p.up?-4:4))} Q ${f(h[0])} ${f(h[1]-(p.up?-1:1)*3)} ${f(h[0]+4)} ${f(c[1]-(p.up?-4:4))}"/>`;},
   cable:(p,s)=>{const h=pt(s,p.at);return `<line class="cable" x1="${p.from[0]}" y1="${p.from[1]}" x2="${f(h[0])}" y2="${f(h[1])}" ${p.dash?'stroke-dasharray="3 3"':''}/>`;},
   rope:(p,s)=>{const a=s.arms[0].h,b=s.arms[1].h;return `<line class="pl" x1="${f(a[0])}" y1="${f(a[1])}" x2="${f(b[0])}" y2="${f(b[1]+3)}"/>`;},
   lm:(p,s)=>{const h=pt(s,p.at),pv=p.pivot;const dx=h[0]-pv[0],dy=h[1]-pv[1],d=Math.hypot(dx,dy),ux=dx/d,uy=dy/d;
@@ -132,6 +132,8 @@ const PROP={
     const op=p.pulse?(0.35+0.65*(0.5+0.5*Math.sin(ph*6.283*1.2))):1;
     return `<g style="opacity:${op.toFixed(2)}"><path class="arrow" d="M${a[0]} ${a[1]} L${b[0]} ${b[1]} M${f(w1[0])} ${f(w1[1])} L${b[0]} ${b[1]} L${f(w2[0])} ${f(w2[1])}"/></g>`;},
   plate:(p,s)=>{const h0=pt(s,p.at);const h=[h0[0]+(p.dx||0),h0[1]+(p.dy||0)];const r=p.r||16;return `<circle class="pk" cx="${f(h[0])}" cy="${f(h[1])}" r="${r}"/><circle class="pf" cx="${f(h[0])}" cy="${f(h[1])}" r="${(r*.28).toFixed(1)}"/>`;},
+  vrope:p=>`<line x1="${p.x}" y1="-10" x2="${p.x}" y2="130" stroke="var(--prop2)" stroke-width="3.2" stroke-linecap="round"/>`,
+  incline:p=>`<line class="pl" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}" style="stroke-width:6"/><line class="pl" x1="${p.x2-6}" y1="${p.y2+3}" x2="${p.x2-6}" y2="130"/><line class="pl" x1="${p.x1+4}" y1="${p.y1}" x2="${p.x1+4}" y2="130"/>`,
   txt:p=>`<text class="ptxt" x="${p.x}" y="${p.y}" text-anchor="${p.anchor||'start'}">${p.s}</text>`
 };
 function limb(a,b,c,cls){return `<polyline class="fg ${cls}" points="${pts([a,b,c])}"/>`;}
@@ -238,7 +240,7 @@ const FIG={};
 (()=>{const A={hip:[78,104],t:0,legs:[{f:[54,96],b:[0,1],fa:180},{f:[124,127],b:[1,-.3]}],arms:[{h:[108,94],b:[1,1]},{h:[110,95],b:[1,1]}]};
   FIG.couch={poses:[A,mod(A,P=>{P.hip=[81.5,107.4];P.t=-6;P.arms=[{h:[110,94],b:[1,1]},{h:[112,95],b:[1,1]}];})],t1:2,t2:2,h1:.8,h2:1.6,props:[{k:"wall",x:48}]};})();
 
-/* ---------- gruppo 2 (in revisione: entrano in figures.ts solo dopo l'approvazione) ---------- */
+/* ---------- gruppo 1 di animazioni nuove (approvato il 24/11, collegato in data/figures.ts) ---------- */
 /* Nordic curl: ginocchia ferme sul cuscino, corpo rigido che scende in avanti */
 (()=>{const A={hip:[100,94],t:0,legs:[{f:[68,126],b:[.3,1],fa:-90},{f:[66,126],b:[.3,1],fa:-90}],arms:[{u:25,f:160},{u:22,f:158}]};
   FIG.nordic={poses:[A,mod(A,P=>{P.hip=[126.2,107.6];P.t=55;P.arms=[{u:55,f:40},{u:52,f:38}];})],t1:3,t2:1.2,h1:.6,h2:.3,
@@ -246,7 +248,7 @@ const FIG={};
 /* Hip thrust: spalle sulla panca, bacino che sale */
 (()=>{const A={hip:[108,120],t:-55,hd:30,legs:[{f:[138,127],b:[0,-1]},{f:[134,127],b:[0,-1]}],arms:[{h:[106,114],b:[0,1]},{h:[104,113],b:[0,1]}]};
   FIG.hipthrust={poses:[A,mod(A,P=>{P.hip=[114,98];P.t=-82;P.hd=40;P.arms=[{h:[112,92],b:[0,1]},{h:[110,91],b:[0,1]}];})],t1:.9,t2:1.6,h1:.4,h2:.8,
-  props:[{k:"bench",x:30,y:96,w:48},{k:"plate",at:"h0",r:12,z:"front"}]};})();
+  props:[{k:"bench",x:30,y:96,w:48},{k:"plate",at:"h0",dx:5,dy:-2,r:9,z:"front"}]};})();
 /* Stacco con trap bar: più ginocchio dello stacco rumeno, dischi che toccano terra */
 (()=>{const A={hip:[86,92],t:48,hd:-20,legs:[{f:[104,127],b:[1,0]},{f:[100,127],b:[1,0]}],arms:[{u:0,f:0},{u:2,f:2}]};
   FIG.trapbar={poses:[A,mod(A,P=>{P.hip=[98,64];P.t=2;P.hd=0;})],t1:1.2,t2:2,h1:.6,h2:.5,
@@ -258,7 +260,7 @@ const FIG={};
 /* Kettlebell swing: cerniera d'anca e slancio fino all'altezza delle spalle */
 (()=>{const A={hip:[82,72],t:66,hd:-18,legs:[{f:[104,127],b:[1,0]},{f:[98,127],b:[1,0]}],arms:[{u:-24,f:-24},{u:-22,f:-22}]};
   FIG.swing={poses:[A,mod(A,P=>{P.hip=[98,64];P.t=-4;P.hd=0;P.arms=[{u:92,f:92},{u:90,f:90}];})],t1:.55,t2:.6,h1:.05,h2:.12,
-  props:[{k:"kb",at:"h0",z:"front"}]};})();
+  props:[{k:"kb",at:"h0",al:true,z:"front"}]};})();
 /* Front squat: bilanciere sulle spalle davanti, gomiti alti, busto dritto */
 (()=>{const A={hip:[100,64],t:0,legs:[{f:[104,127],b:[1,0]},{f:[100,127],b:[1,0]}],arms:[{u:95,f:268},{u:93,f:266}]};
   FIG.fsquat={poses:[A,mod(A,P=>{P.hip=[88,98];P.t=22;P.arms=[{u:110,f:285},{u:108,f:283}];})],t1:2.4,t2:1.4,h1:.5,h2:.4,
@@ -275,9 +277,46 @@ const FIG={};
   FIG.bench={poses:[A,mod(A,P=>{P.arms=[{h:[76,50],b:[0,1]},{h:[74,51],b:[0,1]}];})],t1:1,t2:1.8,h1:.5,h2:.4,
   props:[{k:"bench",x:52,y:100,w:76},{k:"plate",at:"h0",r:14,z:"front"}]};})();
 /* Trazioni (anche al gi): da appeso a mento sopra la sbarra */
-(()=>{const A={hip:[100,106],t:0,legs:[{f:[84,128],b:[1,0],fa:60},{f:[80,127],b:[1,0],fa:60}],arms:[{h:[104,20],b:[1,0]},{h:[98,20],b:[1,0]}]};
-  FIG.pullup={poses:[A,mod(A,P=>{P.hip=[100,62];P.legs=[{f:[84,86],b:[1,0],fa:60},{f:[80,85],b:[1,0],fa:60}];P.arms=[{h:[104,20],b:[1,.6]},{h:[98,20],b:[1,.6]}];})],t1:1.1,t2:2,h1:.6,h2:.5,
+(()=>{const A={hip:[100,106],t:0,legs:[{f:[84,128],b:[1,0],fa:60},{f:[80,127],b:[1,0],fa:60}],arms:[{h:[112,20],b:[1,0]},{h:[106,20],b:[1,0]}]};
+  FIG.pullup={poses:[A,mod(A,P=>{P.hip=[100,62];P.legs=[{f:[84,86],b:[1,0],fa:60},{f:[80,85],b:[1,0],fa:60}];P.arms=[{h:[112,20],b:[1,.6]},{h:[106,20],b:[1,.6]}];})],t1:1.1,t2:2,h1:.6,h2:.5,
   props:[{k:"bar",x1:66,x2:134,y:19}]};})();
+
+/* ---------- gruppo 2 (in revisione) ---------- */
+/* Rematore col gi: busto a 45°, gi agganciato al cavo basso, gomiti verso i fianchi */
+(()=>{const A={hip:[84,68],t:45,hd:-12,legs:[{f:[102,127],b:[1,0]},{f:[96,127],b:[1,0]}],arms:[{h:[146,86],b:[0,1]},{h:[144,87],b:[0,1]}]};
+  FIG.girow={poses:[A,mod(A,P=>{P.arms=[{h:[112,64],b:[-1,.3]},{h:[110,65],b:[-1,.3]}];})],t1:1,t2:1.8,h1:.4,h2:1,
+  props:[{k:"column",x:182,px:180,py:100},{k:"cable",from:[180,100],at:"h0"},{k:"rope",z:"front"},{k:"txt",x:150,y:118,s:"gi sul cavo"}]};})();
+/* Chest-supported row: petto sulla panca inclinata, manubri dal basso ai fianchi */
+(()=>{const A={hip:[82,86],t:58,hd:-6,legs:[{f:[66,127],b:[1,0]},{f:[62,127],b:[1,0]}],arms:[{u:0,f:0},{u:2,f:2}]};
+  FIG.csrow={poses:[A,mod(A,P=>{P.arms=[{u:-62,f:-5},{u:-60,f:-3}];})],t1:1,t2:1.8,h1:.4,h2:1,
+  props:[{k:"incline",x1:78,y1:96,x2:120,y2:71},{k:"db",at:"h1"},{k:"db",at:"h0",z:"front"}]};})();
+/* Zercher squat: bilanciere nell'incavo dei gomiti, discesa profonda */
+(()=>{const A={hip:[100,64],t:2,legs:[{f:[104,127],b:[1,0]},{f:[100,127],b:[1,0]}],arms:[{u:28,f:165},{u:26,f:163}]};
+  FIG.zercher={poses:[A,mod(A,P=>{P.hip=[86,100];P.t=28;P.arms=[{u:52,f:190},{u:50,f:188}];})],t1:2.4,t2:1.4,h1:.5,h2:.4,
+  props:[{k:"plate",at:"e0",dx:2,r:9,z:"front"}]};})();
+/* Hang power clean: dall'appeso sopra le ginocchia, estensione esplosiva, ricezione sulle spalle in mezzo squat */
+(()=>{const A={hip:[88,74],t:30,hd:-8,legs:[{f:[104,127],b:[1,0]},{f:[100,127],b:[1,0]}],arms:[{u:-2,f:-2},{u:0,f:0}]};
+  const X={hip:[100,58],t:-6,hd:0,legs:[{f:[104,121],b:[1,0],fa:40},{f:[100,121],b:[1,0],fa:40}],arms:[{u:-14,f:10},{u:-12,f:12}]};
+  const Cc={hip:[94,82],t:10,hd:0,legs:[{f:[104,127],b:[1,0]},{f:[100,127],b:[1,0]}],arms:[{u:105,f:278},{u:103,f:276}]};
+  FIG.clean={poses:[A,X,Cc,mod(Cc,P=>{P.hip=[99,64];P.t=2;})],loop:.65,props:[{k:"plate",at:"h0",r:10,z:"front"}]};})();
+/* Box jump: contromovimento, salto, atterraggio morbido sul box */
+(()=>{const A={hip:[70,64],t:0,legs:[{f:[74,127],b:[1,0]},{f:[70,127],b:[1,0]}],arms:[{u:4,f:4},{u:2,f:2}]};
+  const D={hip:[66,84],t:30,legs:[{f:[74,127],b:[1,0]},{f:[70,127],b:[1,0]}],arms:[{u:-45,f:-40},{u:-43,f:-38}]};
+  const J={hip:[104,48],t:6,legs:[{f:[122,78],b:[1,0],fa:50},{f:[118,80],b:[1,0],fa:50}],arms:[{u:150,f:160},{u:148,f:158}]};
+  const Lnd={hip:[124,60],t:26,legs:[{f:[138,87],b:[1,0]},{f:[134,87],b:[1,0]}],arms:[{u:70,f:80},{u:68,f:78}]};
+  FIG.boxjump={poses:[A,D,J,Lnd],loop:.6,props:[{k:"box",x:116,y:90,w:52}]};})();
+/* Ab rollout: in ginocchio, la ruota va avanti tenendo il corpo rigido */
+(()=>{const A={hip:[84,94],t:58,hd:-10,legs:[{f:[52,126],b:[.3,1],fa:-90},{f:[50,126],b:[.3,1],fa:-90}],arms:[{h:[120,118],b:[1,0]},{h:[118,118],b:[1,0]}]};
+  FIG.rollout={poses:[A,mod(A,P=>{P.hip=[110.2,107.6];P.t=82;P.hd=-14;P.arms=[{h:[178,118],b:[0,1]},{h:[176,118],b:[0,1]}];})],t1:3,t2:2,h1:.5,h2:.5,
+  props:[{k:"plate",at:"h0",dy:5,r:6.5,z:"front"},{k:"box",x:76,y:126,w:18}]};})();
+/* Arrampicata alla corda: tirata con le braccia, poi le gambe risalgono e bloccano la corda */
+(()=>{const A={hip:[100,96],t:-4,legs:[{f:[106,120],b:[1,0],fa:70},{f:[104,118],b:[1,0],fa:70}],arms:[{h:[108,6],b:[1,0]},{h:[108,20],b:[1,0]}]};
+  FIG.rope={poses:[A,mod(A,P=>{P.hip=[100,72];P.legs=[{f:[106,96],b:[1,0],fa:70},{f:[104,94],b:[1,0],fa:70}];P.arms=[{h:[108,6],b:[1,.5]},{h:[108,20],b:[1,.5]}];})],t1:1.2,t2:1.4,h1:.6,h2:.6,
+  props:[{k:"vrope",x:108}]};})();
+/* Spanish squat: elastico dietro le ginocchia, tibie verticali, tenuta isometrica */
+(()=>{const A={hip:[68.4,100],t:10,legs:[{f:[100,127],b:[1,0]},{f:[96,127],b:[1,0]}],arms:[{u:80,f:84},{u:78,f:82}]};
+  FIG.spanish={poses:[A,mod(A,P=>{P.hip=[68.4,100.6];})],t1:.3,t2:.3,h1:1.6,h2:1.6,
+  props:[{k:"column",x:182,px:180,py:95},{k:"cable",from:[180,95],at:"k0"},{k:"txt",x:120,y:84,s:"tieni 30–45\""}]};})();
 
 /* ---------- personaggio v3: sagome continue, muscoli parametrici ---------- */
 const H={skin:"var(--skin)",skinF:"var(--skinF)",shade:"var(--shade)",line:"var(--ink-line)",def:"var(--def)",shorts:"var(--shorts)",shortsF:"var(--shortsF)",shoe:"var(--shoe)",sole:"var(--sole)",hair:"var(--hair)",mus:"var(--mus)",mus2:"var(--mus2)"};
@@ -595,7 +634,112 @@ function heroFlat(s, mus, op) {
 
 
 return heroFlat;})();
-window.ENG={FIG,PROP,skel,lerp,hero,heroFlat};})();
+const BACK=(()=>{/* Vista DA DIETRO, per gli esercizi che di profilo non si capiscono (extrarotazioni, band pull-apart…).
+   Stesso stile dell'"Atleta flat": corpo grigio semplice, muscoli unico colore (rosso principali, arancio secondari).
+   Il corpo è simmetrico: si descrive il braccio di destra del disegno, quello di sinistra è lo specchio.
+   Una posa: { arm: { u:[dx,dy], f:[dx,dy] } } = direzione PROIETTATA di braccio e avambraccio (lunghezza 0–1):
+   un segmento che punta in avanti (via da chi guarda) si accorcia fino quasi a sparire.
+   Suolo a y=130, centro del corpo x=100 (viewBox 200×140 come le altre figure). */
+
+const C = {
+  skin: "var(--fl-skin,#d3d9df)", shade: "var(--fl-shade,#c3cad1)", far: "var(--fl-skinFar,#b9c1c9)",
+  hair: "var(--fl-hair,#9aa3ad)", shorts: "var(--fl-shorts,#aeb7c0)", shoe: "var(--fl-shoe,#aeb7c0)", sole: "var(--fl-sole,#8a949e)",
+  line: "var(--fl-line,#a9b2bb)", band: "var(--fl-band,#3f7fc4)", mus: "var(--mus,#e8333a)", mus2: "var(--mus2,#ff9f1a)", edge: "var(--mus-edge,#a3161c)", edge2: "var(--mus2-edge,#b86a00)",
+};
+const f = n => n.toFixed(1);
+const UA = 24, FA = 22, SH = [116, 32];
+const lvl = (mus, n) => mus.p.includes(n) ? 1 : mus.s.includes(n) ? 2 : 0;
+function m(mus, name, op, d) {
+  const l = lvl(mus, name); if (!l || !d) return "";
+  const a = .6 + .4 * op;
+  return `<path d="${d}" fill="${l === 1 ? C.mus : C.mus2}" fill-opacity="${f(l === 1 ? a : a * .9)}" stroke="${l === 1 ? C.edge : C.edge2}" stroke-width=".6" stroke-linejoin="round"/>`;
+}
+/* capsula da A a B con raggi ra, rb */
+function cap(A, B, ra, rb, fill, line = "") {
+  const dx = B[0] - A[0], dy = B[1] - A[1], L = Math.hypot(dx, dy);
+  if (L < .5) return `<circle cx="${f(A[0])}" cy="${f(A[1])}" r="${f(Math.max(ra, rb))}" fill="${fill}" ${line}/>`;
+  const nx = -dy / L, ny = dx / L;
+  return `<path d="M${f(A[0] + nx * ra)} ${f(A[1] + ny * ra)} L${f(B[0] + nx * rb)} ${f(B[1] + ny * rb)} A${f(rb)} ${f(rb)} 0 0 0 ${f(B[0] - nx * rb)} ${f(B[1] - ny * rb)} L${f(A[0] - nx * ra)} ${f(A[1] - ny * ra)} A${f(ra)} ${f(ra)} 0 0 0 ${f(A[0] + nx * ra)} ${f(A[1] + ny * ra)}Z" fill="${fill}" ${line}/>`;
+}
+/* ellisse lungo un segmento, da frazione t0 a t1, larga w */
+function seg(A, B, t0, t1, w) {
+  const P = t => [A[0] + (B[0] - A[0]) * t, A[1] + (B[1] - A[1]) * t]; const a = P(t0), b = P(t1);
+  const cx = (a[0] + b[0]) / 2, cy = (a[1] + b[1]) / 2, len = Math.hypot(b[0] - a[0], b[1] - a[1]) / 2;
+  const ang = Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI;
+  return len < .6 ? "" : `M${f(cx - len)} ${f(cy)} a${f(len)} ${f(w)} 0 1 0 ${f(2 * len)} 0 a${f(len)} ${f(w)} 0 1 0 ${f(-2 * len)} 0Z" transform="rotate(${f(ang)} ${f(cx)} ${f(cy)})`;
+}
+const mir = p => [200 - p[0], p[1]];
+
+/** Punti del braccio di destra (side = 1) o sinistra (side = -1). */
+function armPts(pose, side) {
+  const S = side > 0 ? SH : mir(SH); const u = pose.arm.u, fo = pose.arm.f;
+  const E = [S[0] + side * u[0] * UA, S[1] + u[1] * UA]; const H = [E[0] + side * fo[0] * FA, E[1] + fo[1] * FA];
+  return { S, E, H };
+}
+
+function heroBack(pose, mus, op) {
+  let o = "";
+  // gambe
+  for (const sd of [1, -1]) {
+    const hip = [100 + sd * 7, 72], kn = [100 + sd * 8.5, 100], an = [100 + sd * 9.5, 125];
+    o += cap(hip, kn, 8.5, 6.2, C.skin) + cap(kn, an, 6, 3.6, C.skin);
+    o += `<path d="M${f(an[0] - 4.5)} 125 Q${f(an[0])} 131 ${f(an[0] + 4.5)} 125 L${f(an[0] + 4)} 130.5 L${f(an[0] - 4)} 130.5Z" fill="${C.shoe}"/><rect x="${f(an[0] - 4.6)}" y="129" width="9.2" height="1.8" rx=".9" fill="${C.sole}"/>`;
+    o += m(mus, "femorali", op, seg(hip, kn, .3, .95, 5.2));
+    o += m(mus, "adduttori", op, seg([hip[0] - sd * 4, hip[1]], [kn[0] - sd * 3, kn[1]], .25, .8, 2.4));
+    o += m(mus, "polpacci", op, seg(kn, an, .05, .6, 4.6));
+  }
+  // pantaloncini
+  o += `<path d="M84 64 L116 64 L118 84 Q109 86.5 101.5 84 L100 76 L98.5 84 Q91 86.5 82 84Z" fill="${C.shorts}"/>`;
+  o += m(mus, "glutei", op, "M88 68 Q99 66 99 74 Q98 81 88 80 Q84 74 88 68Z") + m(mus, "glutei", op, "M112 68 Q101 66 101 74 Q102 81 112 80 Q116 74 112 68Z");
+  // busto (a V) e collo
+  o += `<path d="M84 30 Q100 25 116 30 L117 44 Q113 54 111 62 L113 66 L87 66 L89 62 Q87 54 83 44Z" fill="${C.skin}"/>`;
+  o += `<path d="M100 30 L100 64" stroke="${C.shade}" stroke-width="1.4" stroke-linecap="round"/>`;
+  o += m(mus, "dorsali", op, "M86 42 Q93 46 97 58 Q92 60 89 60 Q87 52 86 42Z") + m(mus, "dorsali", op, "M114 42 Q107 46 103 58 Q108 60 111 60 Q113 52 114 42Z");
+  o += m(mus, "erettori", op, "M96 44 L99 44 L99 64 L96.5 64Z") + m(mus, "erettori", op, "M104 44 L101 44 L101 64 L103.5 64Z");
+  o += m(mus, "obliqui", op, "M88 54 Q90 60 89 64 L87 64 Q87 59 88 54Z") + m(mus, "obliqui", op, "M112 54 Q110 60 111 64 L113 64 Q113 59 112 54Z");
+  o += m(mus, "trapezi", op, "M100 22 Q104 28 114 30.5 Q106 34 103 42 L100 48 L97 42 Q94 34 86 30.5 Q96 28 100 22Z");
+  o += `<rect x="95.5" y="19" width="9" height="12" rx="3" fill="${C.skin}"/>`;
+  // testa vista da dietro: quasi tutta capelli
+  o += `<ellipse cx="94.6" cy="15.5" rx="2" ry="3" fill="${C.skin}"/><ellipse cx="105.4" cy="15.5" rx="2" ry="3" fill="${C.skin}"/>`;
+  o += `<circle cx="100" cy="13.5" r="8.6" fill="${C.skin}"/><path d="M91.6 13 Q91 4.6 100 4.6 Q109 4.6 108.4 13 Q107 19 100 18.4 Q93 19 91.6 13Z" fill="${C.hair}"/>`;
+  // braccia
+  for (const sd of [1, -1]) {
+    const { S, E, H } = armPts(pose, sd);
+    // contorno leggero: le braccia passano davanti al busto dello stesso colore
+    const ln = `stroke="${C.line}" stroke-width=".9"`;
+    o += cap(S, E, 5.8, 4.4, C.skin, ln) + cap(E, H, 4.2, 3, C.skin, ln) + `<circle cx="${f(H[0])}" cy="${f(H[1])}" r="3.3" fill="${C.skin}" ${ln}/>` + cap(S, E, 5, 3.8, C.skin);
+    o += m(mus, "deltoidi", op, `M${f(S[0] - 6)} ${f(S[1])} a6 5.6 0 1 0 12 0 a6 5.6 0 1 0 -12 0Z`);
+    o += m(mus, "tricipiti", op, seg(S, E, .25, .9, 3));
+    o += m(mus, "avambracci", op, seg(E, H, .1, .7, 2.6));
+  }
+  return o;
+}
+
+/* ---------- pose ---------- */
+const FIGB = {};
+/* Extrarotazioni con elastico: gomiti attaccati ai fianchi, avambracci che dal davanti ruotano verso l'esterno */
+FIGB.extrarot = {
+  poses: [{ arm: { u: [.14, .99], f: [-.08, .06] } }, { arm: { u: [.16, .99], f: [.96, -.04] } }],
+  t1: 1.1, t2: 3, h1: .5, h2: .6, props: [{ k: "band" }],
+};
+/* Band pull-apart: braccia tese davanti, si aprono a T stringendo le scapole */
+FIGB.pullapart = {
+  poses: [{ arm: { u: [-.12, .06], f: [-.12, .04] } }, { arm: { u: [.99, .03], f: [.99, .03] } }],
+  t1: 1, t2: 2.2, h1: .5, h2: .6, props: [{ k: "band" }],
+};
+/* attrezzi vista da dietro */
+const PROPB = {
+  band: pose => { const r = armPts(pose, 1).H, l = armPts(pose, -1).H;
+    return `<path d="M${f(l[0])} ${f(l[1])} Q100 ${f((l[1] + r[1]) / 2 + 3)} ${f(r[0])} ${f(r[1])}" stroke="${C.band}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`; },
+};
+/** Disegna una posa vista da dietro: l'elastico sta davanti al corpo, quindi lo disegno PRIMA (dietro, per chi guarda). */
+function renderBack(ex, pose, mus, op) {
+  const pr = (ex.props || []).map(p => PROPB[p.k](pose)).join("");
+  return `<line class="gnd" x1="0" y1="130" x2="200" y2="130"/>` + pr + heroBack(pose, mus, op);
+}
+
+return {FIGB,renderBack};})();
+window.ENG={FIG,PROP,skel,lerp,hero,heroFlat,FIGB:BACK.FIGB,renderBack:BACK.renderBack};})();
 </script>
 <script>
 (() => {
