@@ -32,6 +32,11 @@
 - Tolti da piano.json i campi `fig` (inutilizzati e in parte sbagliati): le animazioni stanno solo in figures.ts
 - Estensioni delle dita: niente animazione (movimento della sola mano), restano testo e mappa muscoli
 
+## Rinnovo grafica e UX — proposta in attesa di approvazione (24 novembre)
+- Analisi e confronto con Hevy, Strong, Fitbod, TrainingPeaks, Whoop; mockup delle schermate nuove: `docs/prototipi/rinnovo-ux.html` (schermate attuali in `docs/prototipi/rinnovo/`)
+- Sei decisioni da approvare (D1–D6), poi 3 fasi: 1 fondamenta + seduta (prima della prova in palestra), 2 progressi + libreria esercizi + diario tatami (dicembre), 3 rifiniture e promemoria (dopo la gara)
+- Bug trovati nell'analisi, da correggere nella Fase 1: la seduta si apre a metà pagina; "Annulla"/"Elimina" senza conferma; tasto Indietro di Android chiude l'app; `setCount` conta 1 serie per le righe con "giri", "round" o "S1 … · S2 …" (es. Nordic, Copenhagen, collo)
+
 ## Prossimi passi
 1. Approvazione gruppo 2 → collegare in figures.ts (FIG: girow, csrow, zercher, clean, boxjump, rollout, rope, spanish; FIGB da dietro: extrarot, pullapart)
 2. **Gruppo 3** entro il 20 dicembre: kit Messico (piegamenti, inverted row, pistol, broad jump), mobilità (90/90, dorsiflessione, McGill, open book/couch), adductor squeeze, snapdown; poi Y-T-W da dietro ed esercizi Ironman
