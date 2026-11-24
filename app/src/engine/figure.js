@@ -66,6 +66,7 @@ const PROP={
     const w1=[b[0]-ux*4-uy*3,b[1]-uy*4+ux*3],w2=[b[0]-ux*4+uy*3,b[1]-uy*4-ux*3];
     const op=p.pulse?(0.35+0.65*(0.5+0.5*Math.sin(ph*6.283*1.2))):1;
     return `<g style="opacity:${op.toFixed(2)}"><path class="arrow" d="M${a[0]} ${a[1]} L${b[0]} ${b[1]} M${f(w1[0])} ${f(w1[1])} L${b[0]} ${b[1]} L${f(w2[0])} ${f(w2[1])}"/></g>`;},
+  plate:(p,s)=>{const h0=pt(s,p.at);const h=[h0[0]+(p.dx||0),h0[1]+(p.dy||0)];const r=p.r||16;return `<circle class="pk" cx="${f(h[0])}" cy="${f(h[1])}" r="${r}"/><circle class="pf" cx="${f(h[0])}" cy="${f(h[1])}" r="${(r*.28).toFixed(1)}"/>`;},
   txt:p=>`<text class="ptxt" x="${p.x}" y="${p.y}" text-anchor="${p.anchor||'start'}">${p.s}</text>`
 };
 function limb(a,b,c,cls){return `<polyline class="fg ${cls}" points="${pts([a,b,c])}"/>`;}
@@ -172,6 +173,46 @@ const FIG={};
 (()=>{const A={hip:[78,104],t:0,legs:[{f:[54,96],b:[0,1],fa:180},{f:[124,127],b:[1,-.3]}],arms:[{h:[108,94],b:[1,1]},{h:[110,95],b:[1,1]}]};
   FIG.couch={poses:[A,mod(A,P=>{P.hip=[81.5,107.4];P.t=-6;P.arms=[{h:[110,94],b:[1,1]},{h:[112,95],b:[1,1]}];})],t1:2,t2:2,h1:.8,h2:1.6,props:[{k:"wall",x:48}]};})();
 
+/* ---------- gruppo 2 (in revisione: entrano in figures.ts solo dopo l'approvazione) ---------- */
+/* Nordic curl: ginocchia ferme sul cuscino, corpo rigido che scende in avanti */
+(()=>{const A={hip:[100,94],t:0,legs:[{f:[68,126],b:[.3,1],fa:-90},{f:[66,126],b:[.3,1],fa:-90}],arms:[{u:25,f:160},{u:22,f:158}]};
+  FIG.nordic={poses:[A,mod(A,P=>{P.hip=[126.2,107.6];P.t=55;P.arms=[{u:55,f:40},{u:52,f:38}];})],t1:3,t2:1.2,h1:.6,h2:.3,
+  props:[{k:"box",x:56,y:116,w:16},{k:"box",x:88,y:126,w:26}]};})();
+/* Hip thrust: spalle sulla panca, bacino che sale */
+(()=>{const A={hip:[108,120],t:-55,hd:30,legs:[{f:[138,127],b:[0,-1]},{f:[134,127],b:[0,-1]}],arms:[{h:[106,114],b:[0,1]},{h:[104,113],b:[0,1]}]};
+  FIG.hipthrust={poses:[A,mod(A,P=>{P.hip=[114,98];P.t=-82;P.hd=40;P.arms=[{h:[112,92],b:[0,1]},{h:[110,91],b:[0,1]}];})],t1:.9,t2:1.6,h1:.4,h2:.8,
+  props:[{k:"bench",x:30,y:96,w:48},{k:"plate",at:"h0",r:12,z:"front"}]};})();
+/* Stacco con trap bar: più ginocchio dello stacco rumeno, dischi che toccano terra */
+(()=>{const A={hip:[86,92],t:48,hd:-20,legs:[{f:[104,127],b:[1,0]},{f:[100,127],b:[1,0]}],arms:[{u:0,f:0},{u:2,f:2}]};
+  FIG.trapbar={poses:[A,mod(A,P=>{P.hip=[98,64];P.t=2;P.hd=0;})],t1:1.2,t2:2,h1:.6,h2:.5,
+  props:[{k:"plate",at:"h1"},{k:"plate",at:"h0",z:"front"}]};})();
+/* Stacco rumeno monopodalico: la gamba dietro sale in linea con il busto */
+(()=>{const A={hip:[98,64],t:0,legs:[{f:[100,127],b:[1,0]},{f:[94,122],b:[0,1],fa:30}],arms:[{u:0,f:0},{u:3,f:3}]};
+  FIG.slrdl={poses:[A,mod(A,P=>{P.hip=[86,70];P.t=78;P.hd=-10;P.legs[1]={f:[26,82],b:[0,1],fa:0};})],t1:2.2,t2:1.4,h1:.5,h2:.4,
+  props:[{k:"db",at:"h0",z:"front"}]};})();
+/* Kettlebell swing: cerniera d'anca e slancio fino all'altezza delle spalle */
+(()=>{const A={hip:[82,72],t:66,hd:-18,legs:[{f:[104,127],b:[1,0]},{f:[98,127],b:[1,0]}],arms:[{u:-24,f:-24},{u:-22,f:-22}]};
+  FIG.swing={poses:[A,mod(A,P=>{P.hip=[98,64];P.t=-4;P.hd=0;P.arms=[{u:92,f:92},{u:90,f:90}];})],t1:.55,t2:.6,h1:.05,h2:.12,
+  props:[{k:"kb",at:"h0",z:"front"}]};})();
+/* Front squat: bilanciere sulle spalle davanti, gomiti alti, busto dritto */
+(()=>{const A={hip:[100,64],t:0,legs:[{f:[104,127],b:[1,0]},{f:[100,127],b:[1,0]}],arms:[{u:95,f:268},{u:93,f:266}]};
+  FIG.fsquat={poses:[A,mod(A,P=>{P.hip=[88,98];P.t=22;P.arms=[{u:110,f:285},{u:108,f:283}];})],t1:2.4,t2:1.4,h1:.5,h2:.4,
+  props:[{k:"plate",at:"S",dx:8,dy:-1,r:9,z:"front"}]};})();
+/* Jump squat: mezzo squat e salto, atterraggio morbido */
+(()=>{const A={hip:[92,84],t:26,legs:[{f:[104,127],b:[1,0]},{f:[100,127],b:[1,0]}],arms:[{u:-35,f:-30},{u:-33,f:-28}]};
+  FIG.jump={poses:[A,mod(A,P=>{P.hip=[100,56];P.t=0;P.legs=[{f:[103,119],b:[1,0],fa:40},{f:[99,119],b:[1,0],fa:40}];P.arms=[{u:120,f:130},{u:118,f:128}];})],t1:.35,t2:.7,h1:.6,h2:.12};})();
+/* Mid-thigh pull isometrico: bilanciere bloccato a metà coscia, spinta contro il pavimento */
+(()=>{const A={hip:[88,80],t:28,hd:-6,legs:[{f:[104,127],b:[1,0]},{f:[100,127],b:[1,0]}],arms:[{u:-4,f:-4},{u:-2,f:-2}]};
+  FIG.mtp={poses:[A,mod(A,P=>{P.hip=[88,79];P.t=27;})],t1:.3,t2:.3,h1:1.4,h2:2.2,
+  props:[{k:"post",x:134,y:40},{k:"plate",at:"h0",r:16,z:"front"},{k:"arrow",from:[150,100],to:[150,72],pulse:true,z:"front"},{k:"txt",x:154,y:90,s:"tira 3–5\""}]};})();
+/* Panca piana: sdraiato, bilanciere dal petto a braccia tese */
+(()=>{const A={hip:[112,96],t:-90,hd:0,legs:[{f:[146,127],b:[0,-1]},{f:[142,127],b:[0,-1]}],arms:[{h:[78,82],b:[0,1]},{h:[76,83],b:[0,1]}]};
+  FIG.bench={poses:[A,mod(A,P=>{P.arms=[{h:[76,50],b:[0,1]},{h:[74,51],b:[0,1]}];})],t1:1,t2:1.8,h1:.5,h2:.4,
+  props:[{k:"bench",x:52,y:100,w:76},{k:"plate",at:"h0",r:14,z:"front"}]};})();
+/* Trazioni (anche al gi): da appeso a mento sopra la sbarra */
+(()=>{const A={hip:[100,106],t:0,legs:[{f:[84,128],b:[1,0],fa:60},{f:[80,127],b:[1,0],fa:60}],arms:[{h:[104,20],b:[1,0]},{h:[98,20],b:[1,0]}]};
+  FIG.pullup={poses:[A,mod(A,P=>{P.hip=[100,62];P.legs=[{f:[84,86],b:[1,0],fa:60},{f:[80,85],b:[1,0],fa:60}];P.arms=[{h:[104,20],b:[1,.6]},{h:[98,20],b:[1,.6]}];})],t1:1.1,t2:2,h1:.6,h2:.5,
+  props:[{k:"bar",x1:66,x2:134,y:19}]};})();
 
 /* ---------- personaggio v3: sagome continue, muscoli parametrici ---------- */
 const H={skin:"var(--skin)",skinF:"var(--skinF)",shade:"var(--shade)",line:"var(--ink-line)",def:"var(--def)",shorts:"var(--shorts)",shortsF:"var(--shortsF)",shoe:"var(--shoe)",sole:"var(--sole)",hair:"var(--hair)",mus:"var(--mus)",mus2:"var(--mus2)"};

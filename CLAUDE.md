@@ -6,13 +6,15 @@ Comunica in italiano, in modo semplice; spiega le scelte (vuole capire, non subi
 
 ## Stack
 - `app/`: React 18 + TypeScript + Vite + vite-plugin-pwa. Niente librerie UI: CSS a mano in `src/index.css` con i token in `:root`.
-- Dati: `src/lib/store.ts` (localStorage). Ogni accesso ai dati passa da lì: quando arriva Supabase si cambia solo quel file.
+- Dati: `src/lib/store.ts`: scrive in localStorage e mette ogni modifica in coda; `sync()` la manda a Supabase (progetto JustDoIt, tabella `records` con RLS, `supabase/schema.sql`). Accesso con email e password. App online: https://just-do-it-psi.vercel.app (Vercel pubblica `main`).
+- Libreria esercizi (muscoli e regressioni per tutti): `src/data/library.ts`. Carico consigliato: `src/lib/progress.ts`. Data gara e fasi: `src/lib/plan.ts`.
 - Piano: `src/data/piano.json` (fonte unica per fasi/sedute/esercizi). Tipi e utility in `src/lib/plan.ts`.
 - Animazioni: `src/engine/figure.js` (JS, `@ts-nocheck`).
   - `FIG[key]` = `{ poses:[A,B], t1,t2,h1,h2 | loop, props }`. Una posa: `hip`, `t` (inclinazione busto, gradi), `hd`, `legs:[{f:[x,y], b:[bx,by], fa}]` (IK verso il piede), `arms:[{h:[x,y], b} | {u,f}]`. Indice 0 = arti vicini (scuri), 1 = lontani. Suolo a y=130, viewBox 200×140, personaggio rivolto a destra.
+  - Personaggio in uso: `heroFlat` in `src/engine/flat.js` ("Atleta flat": corpo grigio semplice, muscoli unico colore). `hero` in figure.js è il vecchio stile fumetto.
   - `hero(s, {p,s}, opacità)` disegna il personaggio stile fumetto con i muscoli colorati. Muscoli supportati: glutei, femorali, quadricipiti, adduttori, polpacci, tibiale, erettori, addominali, obliqui, dorsali, pettorali, deltoidi, tricipiti, bicipiti, avambracci, trapezi.
   - `src/data/figures.ts` collega un esercizio del piano alla sua animazione e ai muscoli. Mostra un'animazione SOLO se è stata controllata: una figura sbagliata è peggio di nessuna.
-- Stile del personaggio approvato da Matteo: fumetto, contorno nero spesso, fisico atletico, muscoli disegnati, rosso = principali, arancio = secondari. Prototipo di riferimento: `docs/prototipi/personaggio-stacco-rumeno.html`.
+- Stile del personaggio approvato da Matteo (24/11): "Atleta flat", corpo grigio con pochissimi dettagli così si vedono i muscoli; rosso = principali, arancio = secondari. Confronto: `docs/prototipi/confronto-personaggi.html`. Le animazioni nuove passano da una pagina di revisione (`docs/prototipi/src/build-confronto.mjs revisione ...`) prima di entrare in `figures.ts`.
 
 ## Regole del dominio (non cambiarle senza chiedere)
 - Ogni seduta ha 3 volumi Basso/Medio/Alto: cambia solo il numero di serie/esercizi, MAI l'RPE/RIR.

@@ -15,12 +15,18 @@
 - Scheda "Altro": stato della sincronizzazione, accesso con email e password (o link), backup su file (scarica/importa)
 - Collegamento verificato il 24/11: pesate e impostazioni arrivano su Supabase (progetto JustDoIt, app su just-do-it-psi.vercel.app)
 
+## v0.3 — fatto (24 novembre)
+- Libreria esercizi (`data/library.ts`): muscoli principali/secondari e versione più facile per tutti i 71 esercizi; mappa muscoli in ogni scheda
+- Dolore > 3/10: ferma l'esercizio, porta a Basso il resto della seduta, propone la versione più facile
+- Carico consigliato (doppia progressione su RPE, `lib/progress.ts`) e istruzioni per trovare il carico la prima volta
+- Data gara modificabile (Altro): fasi ricalcolate, niente Alto da gara−8, piani B; scheda "Settimana gara" negli ultimi 14 giorni
+- Grafici: peso (pesate, media 7 giorni, limite) e progressi per esercizio
+- Diario nuoto/bici/corsa: registro, passo, riepilogo settimanale, avviso +10%, ore/settimana (sincronizzato)
+- 10 animazioni nuove in revisione (`docs/prototipi/revisione-animazioni-1.html`): Nordic, trap bar, hip thrust, single-leg RDL, swing, front squat, jump squat, mid-thigh pull, panca, trazioni
+
 ## Prossimi passi
-0. Piano rapido approvato: vedi `docs/PIANO-APP.md`
-1. **Pubblicazione su Vercel** e installazione sul telefono
-3. **Libreria esercizi completa**: muscoli principali/secondari, indicazioni per fase (partenza/discesa/basso/risalita), regressioni, fonti — estratti da `docs/ricerca/2-*.md`
-4. **Animazioni per tutti i 71 esercizi** (pose in `engine/figure.js` → `FIG`), a gruppi, con revisione; vista frontale per Pallof, Y-T-W, band pull-apart
-5. Ritocchi personaggio: busto più pieno di profilo, meno linee sugli arti, glutei più leggibili sui pantaloncini
-6. Progressione suggerita (doppia progressione su RIR) e grafici dei carichi
-7. Parte Ironman: registro nuoto / bici / corsa, piano che si adatta ai risultati
-8. Data della gara modificabile → ricalcolo del calendario (piani B in `docs/ricerca/4-piano-finale.md`)
+1. **Approvazione del gruppo 1** di animazioni → collegarle in `data/figures.ts` (chiavi FIG: nordic, trapbar, hipthrust, slrdl, swing, fsquat, jump, mtp, bench, pullup)
+2. **Animazioni mancanti** (~45): vista frontale per extrarotazioni, Y-T-W, band pull-apart, Pallof; poi kit Messico, mobilità, Ironman
+3. Correggere i campi `fig` sbagliati in `piano.json` (es. panca → lm): non usati dall'app ma fuorvianti
+4. Ironman vero: ricerca nuoto/bici/corsa e valutazione sub-10 h, piano settimanale che si adatta al diario (oggi c'è solo il registro)
+5. Notifiche/promemoria (pesata del mattino, timer a schermo spento) — da valutare
