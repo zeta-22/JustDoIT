@@ -15,4 +15,16 @@ export const FIGS: Record<string, FigInfo> = {
   calf_mono: { fig: "calf", p: ["polpacci"], s: [] },
   calf_seduto: { fig: "calf", p: ["polpacci"], s: [] },
   tibialis: { fig: "tib", p: ["tibiale"], s: [] },
+  // gruppo 1, approvato da Matteo il 24/11 (docs/prototipi/revisione-animazioni-1.html)
+  nordic: { fig: "nordic", p: ["femorali"], s: ["glutei", "polpacci"] },
+  trap_bar: { fig: "trapbar", p: ["glutei", "quadricipiti", "femorali"], s: ["erettori", "trapezi", "avambracci"] },
+  hip_thrust: { fig: "hipthrust", p: ["glutei"], s: ["femorali", "quadricipiti"] },
+  sl_rdl: { fig: "slrdl", p: ["femorali", "glutei"], s: ["adduttori", "erettori", "obliqui"] },
+  kb_swing: { fig: "swing", p: ["glutei", "femorali"], s: ["erettori", "avambracci", "addominali"] },
+  front_squat: { fig: "fsquat", p: ["quadricipiti", "glutei"], s: ["addominali", "erettori", "adduttori"] },
+  jump_squat: { fig: "jump", p: ["quadricipiti", "glutei"], s: ["polpacci"] },
+  mtp: { fig: "mtp", p: ["glutei", "quadricipiti", "femorali"], s: ["trapezi", "avambracci", "erettori"] },
+  panca: { fig: "bench", p: ["pettorali"], s: ["tricipiti", "deltoidi"] },
+  trazioni_gi: { fig: "pullup", p: ["dorsali", "avambracci"], s: ["bicipiti", "trapezi"] },
+  trazioni: { fig: "pullup", p: ["dorsali"], s: ["bicipiti", "trapezi", "avambracci"] },
 };

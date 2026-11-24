@@ -173,7 +173,7 @@ const FIG={};
 (()=>{const A={hip:[78,104],t:0,legs:[{f:[54,96],b:[0,1],fa:180},{f:[124,127],b:[1,-.3]}],arms:[{h:[108,94],b:[1,1]},{h:[110,95],b:[1,1]}]};
   FIG.couch={poses:[A,mod(A,P=>{P.hip=[81.5,107.4];P.t=-6;P.arms=[{h:[110,94],b:[1,1]},{h:[112,95],b:[1,1]}];})],t1:2,t2:2,h1:.8,h2:1.6,props:[{k:"wall",x:48}]};})();
 
-/* ---------- gruppo 2 (in revisione: entrano in figures.ts solo dopo l'approvazione) ---------- */
+/* ---------- gruppo 1 di animazioni nuove (approvato il 24/11, collegato in data/figures.ts) ---------- */
 /* Nordic curl: ginocchia ferme sul cuscino, corpo rigido che scende in avanti */
 (()=>{const A={hip:[100,94],t:0,legs:[{f:[68,126],b:[.3,1],fa:-90},{f:[66,126],b:[.3,1],fa:-90}],arms:[{u:25,f:160},{u:22,f:158}]};
   FIG.nordic={poses:[A,mod(A,P=>{P.hip=[126.2,107.6];P.t=55;P.arms=[{u:55,f:40},{u:52,f:38}];})],t1:3,t2:1.2,h1:.6,h2:.3,

@@ -22,11 +22,11 @@
 - Data gara modificabile (Altro): fasi ricalcolate, niente Alto da gara−8, piani B; scheda "Settimana gara" negli ultimi 14 giorni
 - Grafici: peso (pesate, media 7 giorni, limite) e progressi per esercizio
 - Diario nuoto/bici/corsa: registro, passo, riepilogo settimanale, avviso +10%, ore/settimana (sincronizzato)
-- 10 animazioni nuove in revisione (`docs/prototipi/revisione-animazioni-1.html`): Nordic, trap bar, hip thrust, single-leg RDL, swing, front squat, jump squat, mid-thigh pull, panca, trazioni
+- 10 animazioni nuove approvate e nell'app (`docs/prototipi/revisione-animazioni-1.html`): Nordic, trap bar, hip thrust, single-leg RDL, swing, front squat, jump squat, mid-thigh pull, panca, trazioni
 
 ## Prossimi passi
-1. **Approvazione del gruppo 1** di animazioni → collegarle in `data/figures.ts` (chiavi FIG: nordic, trapbar, hipthrust, slrdl, swing, fsquat, jump, mtp, bench, pullup)
+1. Ritocchi ai piccoli difetti visivi del gruppo 1 (segnalati da Matteo, da dettagliare)
 2. **Animazioni mancanti** (~45): vista frontale per extrarotazioni, Y-T-W, band pull-apart, Pallof; poi kit Messico, mobilità, Ironman
 3. Correggere i campi `fig` sbagliati in `piano.json` (es. panca → lm): non usati dall'app ma fuorvianti
-4. Ironman vero: ricerca nuoto/bici/corsa e valutazione sub-10 h, piano settimanale che si adatta al diario (oggi c'è solo il registro)
+4. Ironman vero (dopo la gara): ricerca nuoto/bici/corsa e valutazione sub-10 h, piano settimanale che si adatta al diario (oggi c'è solo il registro)
 5. Notifiche/promemoria (pesata del mattino, timer a schermo spento) — da valutare
