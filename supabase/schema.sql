@@ -4,7 +4,7 @@
 
 create table if not exists public.records (
   user_id    uuid        not null default auth.uid() references auth.users (id) on delete cascade,
-  kind       text        not null check (kind in ('session', 'weight', 'settings')),
+  kind       text        not null check (kind in ('session', 'weight', 'settings', 'endurance')),
   id         text        not null,
   data       jsonb       not null default '{}'::jsonb,
   deleted    boolean     not null default false,
@@ -45,6 +45,10 @@ create policy "records: modifico i miei" on public.records
   for update to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
 create policy "records: cancello i miei" on public.records
   for delete to authenticated using ((select auth.uid()) = user_id);
+
+-- aggiornamento per chi aveva già la tabella (aggiunto il tipo 'endurance' per nuoto/bici/corsa)
+alter table public.records drop constraint if exists records_kind_check;
+alter table public.records add constraint records_kind_check check (kind in ('session', 'weight', 'settings', 'endurance'));
 
 -- fa rileggere subito la struttura all'API
 notify pgrst, 'reload schema';

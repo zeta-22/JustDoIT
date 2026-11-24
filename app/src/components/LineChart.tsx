@@ -16,7 +16,7 @@ export default function LineChart({ points, line, refLine, unit, label, fmt = v 
   if (points.length < 2) return <p className="small muted">Servono almeno 2 valori per il grafico.</p>;
   const xs = points.map(p => t(p.x)); const x0 = Math.min(...xs), x1 = Math.max(...xs) || x0 + 1;
   const ys = [...points.map(p => p.y), ...(line ?? []).map(p => p.y), ...(refLine ? [refLine.y] : [])];
-  let y0 = Math.min(...ys), y1 = Math.max(...ys); const pad = Math.max(.5, (y1 - y0) * .12); y0 -= pad; y1 += pad;
+  let y0 = Math.min(...ys), y1 = Math.max(...ys); const pos = y0 >= 0; const pad = Math.max(.5, (y1 - y0) * .12); y0 -= pad; y1 += pad; if (pos) y0 = Math.max(0, y0);
   const step = niceStep((y1 - y0) / 4); y0 = Math.floor(y0 / step) * step; y1 = Math.ceil(y1 / step) * step;
   const X = (iso: string) => L + (x1 === x0 ? (W - L - R) / 2 : (t(iso) - x0) / (x1 - x0) * (W - L - R));
   const Y = (v: number) => T + (1 - (v - y0) / (y1 - y0)) * (H - T - B);

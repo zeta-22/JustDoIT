@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { PLAN, RACE_DEFAULT, SCORE, START, addDays, currentPhaseId, daysBetween, exercise, isoToday, noAltoFrom, phase, phaseDates, planB, restSeconds, setCount, type Item, type Phase, type Session, type Vol } from "./lib/plan";
-import { DIVISIONS, setPassword, signIn, signInPassword, signOut, store, sync, syncState, type ItemLog, type SessionLog, type Settings } from "./lib/store";
+import { DIVISIONS, type EnduranceLog, type Sport, setPassword, signIn, signInPassword, signOut, store, sync, syncState, type ItemLog, type SessionLog, type Settings } from "./lib/store";
 import { FIGS } from "./data/figures";
 import { LIB } from "./data/library";
 import { suggest, targetRpe } from "./lib/progress";
@@ -20,6 +20,7 @@ export default function App() {
   const [tab, setTab] = useState<Tab>("oggi");
   const [running, setRunning] = useState<SessionLog | null>(() => store.sessions().find(s => !s.finished) ?? null);
   const [sheet, setSheet] = useState<string | null>(null);
+  const [diary, setDiary] = useState<"palestra" | "endurance">("palestra");
   const [rev, setRev] = useState(0); // cambia quando arrivano dati da un altro dispositivo
   useEffect(() => {
     const on = (e: Event) => { if ((e as CustomEvent).detail?.changed) setRev(r => r + 1); };
@@ -31,13 +32,13 @@ export default function App() {
         ? <Runner log={running} onChange={setRunning} onOpen={setSheet} onExit={() => { setRunning(null); setTab("storico"); }} />
         : <>
           <nav className="tabs" aria-label="Sezioni">
-            {(["oggi", "piano", "peso", "storico", "altro"] as Tab[]).map(t => <button key={t} type="button" aria-pressed={tab === t} onClick={() => setTab(t)}>{{ oggi: "Oggi", piano: "Piano", peso: "Peso", storico: "Storico", altro: "Altro" }[t]}</button>)}
+            {(["oggi", "piano", "peso", "storico", "altro"] as Tab[]).map(t => <button key={t} type="button" aria-pressed={tab === t} onClick={() => setTab(t)}>{{ oggi: "Oggi", piano: "Piano", peso: "Peso", storico: "Diario", altro: "Altro" }[t]}</button>)}
           </nav>
           <div key={rev} className="stack">
-            {tab === "oggi" && <Today onStart={l => { store.saveSession(l); setRunning(l); }} onOpen={setSheet} onAccount={() => setTab("altro")} />}
+            {tab === "oggi" && <Today onStart={l => { store.saveSession(l); setRunning(l); }} onOpen={setSheet} onAccount={() => setTab("altro")} onEndurance={() => { setDiary("endurance"); setTab("storico"); }} />}
             {tab === "piano" && <PlanView onOpen={setSheet} />}
             {tab === "peso" && <Weight />}
-            {tab === "storico" && <History />}
+            {tab === "storico" && <History mode={diary} onMode={setDiary} />}
             {tab === "altro" && <More />}
           </div>
         </>}
@@ -47,7 +48,7 @@ export default function App() {
 }
 
 /* ---------------- Oggi ---------------- */
-function Today({ onStart, onOpen, onAccount }: { onStart: (l: SessionLog) => void; onOpen: (id: string) => void; onAccount: () => void }) {
+function Today({ onStart, onOpen, onAccount, onEndurance }: { onStart: (l: SessionLog) => void; onOpen: (id: string) => void; onAccount: () => void; onEndurance: () => void }) {
   const sy = useSync();
   const race = raceDate(); const today = isoToday();
   const pid = currentPhaseId(today, race); const ph = phase(pid);
@@ -83,6 +84,7 @@ function Today({ onStart, onOpen, onAccount }: { onStart: (l: SessionLog) => voi
     <CheckIn program={ph.program === "bjj" ? "bjj" : "ironman"} vol={vol} onVol={v => setVol(noAlto && v === "alto" ? "medio" : v)} noAlto={noAlto} race={race} />
     <SessionPreview s={sess} vol={vol} onOpen={onOpen} />
     <button type="button" className="primary big" onClick={() => onStart(newLog(pid, sess, vol))}>Inizia la seduta · volume {VL[vol]}</button>
+    <button type="button" className="card pad linkcard" onClick={onEndurance}><b>Hai nuotato, pedalato o corso?</b><span className="small muted">Registralo nel diario: durata, distanza e fatica.</span></button>
   </section>;
 }
 function newLog(phaseId: string, s: Session, vol: Vol): SessionLog {
@@ -280,11 +282,12 @@ function Progress({ sessions }: { sessions: SessionLog[] }) {
     <LineChart label="Carico più alto della seduta" unit="kg" points={cur.pts} fmt={v => String(Math.round(v * 10) / 10).replace(".", ",")} />
   </div>;
 }
-function History() {
+function History({ mode, onMode }: { mode: "palestra" | "endurance"; onMode: (m: "palestra" | "endurance") => void }) {
   const [all, setAll] = useState(store.sessions().filter(s => s.finished).reverse());
-  if (!all.length) return <p className="muted pad">Ancora nessuna seduta salvata.</p>;
   return <section className="stack">
-    <h1 className="h1s">Storico</h1>
+    <h1 className="h1s">Diario</h1>
+    <div className="seg">{(["palestra", "endurance"] as const).map(m => <button key={m} type="button" aria-pressed={mode === m} onClick={() => onMode(m)}>{m === "palestra" ? "Palestra" : "Nuoto · bici · corsa"}</button>)}</div>
+    {mode === "endurance" ? <Endurance /> : !all.length ? <p className="muted pad">Ancora nessuna seduta salvata.</p> : <>
     <Progress sessions={all} />
     {all.map(l => { const ph = phase(l.phaseId); const s = [...ph.sessions, ...phase("bjj_domenica").sessions].find(x => x.id === l.sessionId);
       return <details key={l.id} className="card pad"><summary><b>{l.date}</b> · {s?.title ?? l.sessionId} · {VL[l.vol]}</summary>
@@ -292,7 +295,61 @@ function History() {
         {l.note && <p className="small muted">{l.note}</p>}
         <button type="button" className="ghost" onClick={() => { store.deleteSession(l.id); setAll(store.sessions().filter(s => s.finished).reverse()); }}>Elimina</button>
       </details>; })}
+    </>}
   </section>;
+}
+
+/* ---------------- Nuoto, bici, corsa ---------------- */
+const SPORTS: Record<Sport, string> = { nuoto: "Nuoto", bici: "Bici", corsa: "Corsa" };
+const mondayOf = (iso: string) => { const d = new Date(iso + "T12:00:00"); const k = (d.getDay() + 6) % 7; return addDays(iso, -k); };
+const hm = (min: number) => min >= 60 ? `${Math.floor(min / 60)} h ${String(Math.round(min % 60)).padStart(2, "0")}` : `${Math.round(min)}′`;
+function pace(e: EnduranceLog): string | null {
+  if (!e.km || !e.min) return null;
+  if (e.sport === "corsa") { const p = e.min / e.km; return `${Math.floor(p)}:${String(Math.round((p % 1) * 60)).padStart(2, "0")}/km`; }
+  if (e.sport === "nuoto") { const p = e.min / (e.km * 10); return `${Math.floor(p)}:${String(Math.round((p % 1) * 60)).padStart(2, "0")}/100 m`; }
+  return `${(e.km / (e.min / 60)).toFixed(1).replace(".", ",")} km/h`;
+}
+function Endurance() {
+  const [list, setList] = useState(store.endurance());
+  const [sport, setSport] = useState<Sport>("corsa"); const [date, setDate] = useState(isoToday());
+  const [min, setMin] = useState(""); const [km, setKm] = useState(""); const [rpe, setRpe] = useState(""); const [note, setNote] = useState("");
+  const n = (v: string) => { const x = parseFloat(v.replace(",", ".")); return isNaN(x) ? undefined : x; };
+  const save = () => { const m = n(min); if (!m || m <= 0) return;
+    store.saveEndurance({ id: `${Date.now()}`, date, sport, min: m, km: n(km), rpe: n(rpe), note: note.trim() || undefined });
+    setList(store.endurance()); setMin(""); setKm(""); setRpe(""); setNote(""); };
+  const wk = mondayOf(isoToday()), prev = addDays(wk, -7);
+  const sum = (from: string, to: string) => { const r = { nuoto: 0, bici: 0, corsa: 0, tot: 0, km: { nuoto: 0, bici: 0, corsa: 0 } };
+    list.filter(e => e.date >= from && e.date < to).forEach(e => { r[e.sport] += e.min; r.tot += e.min; r.km[e.sport] += e.km ?? 0; }); return r; };
+  const cur = sum(wk, addDays(wk, 7)), last = sum(prev, wk);
+  const jump = last.tot > 0 && cur.tot > last.tot * 1.1;
+  const weeks = Array.from({ length: 10 }, (_, i) => addDays(wk, -7 * (9 - i))).map(w => ({ x: w, y: sum(w, addDays(w, 7)).tot / 60 }));
+  return <div className="stack">
+    <div className="card pad stack-s">
+      <h2>Registra un allenamento</h2>
+      <div className="seg">{(Object.keys(SPORTS) as Sport[]).map(k => <button key={k} type="button" aria-pressed={sport === k} onClick={() => setSport(k)}>{SPORTS[k]}</button>)}</div>
+      <div className="grid2">
+        <label className="field" htmlFor="ed">Data<input id="ed" type="date" value={date} onChange={e => setDate(e.target.value || isoToday())} /></label>
+        <label className="field" htmlFor="em2">Minuti<input id="em2" inputMode="decimal" value={min} onChange={e => setMin(e.target.value)} placeholder="45" /></label>
+        <label className="field" htmlFor="ek">Km{sport === "nuoto" ? " (1,5 = 1500 m)" : ""}<input id="ek" inputMode="decimal" value={km} onChange={e => setKm(e.target.value)} placeholder={sport === "nuoto" ? "1,5" : sport === "bici" ? "30" : "8"} /></label>
+        <label className="field" htmlFor="er">Fatica (RPE 1–10)<input id="er" inputMode="decimal" value={rpe} onChange={e => setRpe(e.target.value)} placeholder="4" /></label>
+      </div>
+      <label className="field" htmlFor="en">Note<input id="en" value={note} onChange={e => setNote(e.target.value)} placeholder="sensazioni, fastidi, tecnica…" /></label>
+      <button type="button" className="primary" disabled={!n(min)} onClick={save}>Salva</button>
+      <p className="small muted">Facile = RPE 3–4 (riesci a parlare in frasi intere). La maggior parte del lavoro Ironman è a questa intensità.</p>
+    </div>
+    <div className="card pad stack-s">
+      <h2>Questa settimana</h2>
+      <ul className="plain">{(Object.keys(SPORTS) as Sport[]).map(k => <li key={k}><span>{SPORTS[k]}</span><b>{hm(cur[k])}{cur.km[k] ? ` · ${cur.km[k].toFixed(1).replace(".", ",")} km` : ""}</b></li>)}
+        <li><span>Totale</span><b>{hm(cur.tot)} <span className="small muted">(settimana scorsa {hm(last.tot)})</span></b></li></ul>
+      {jump && <p className="small warnbox">Stai aumentando più del 10% rispetto alla settimana scorsa: va bene ogni tanto, ma tieni d'occhio stinchi, polpacci e tendine d'Achille, soprattutto nella corsa.</p>}
+      {list.length > 1 && <LineChart label="Ore a settimana" unit="h" points={weeks} fmt={v => v.toFixed(1).replace(".", ",")} />}
+    </div>
+    {list.length > 0 && <div className="card pad"><h2>Ultimi allenamenti</h2>
+      <ul className="plain">{list.slice(-20).reverse().map(e => <li key={e.id}>
+        <span>{e.date} · {SPORTS[e.sport]}{e.note ? <span className="small muted"> · {e.note}</span> : null}</span>
+        <b>{hm(e.min)}{e.km ? ` · ${String(e.km).replace(".", ",")} km` : ""}{pace(e) ? ` · ${pace(e)}` : ""}{e.rpe ? ` · RPE ${e.rpe}` : ""}
+          <button type="button" className="xbtn" aria-label="Elimina" onClick={() => { store.deleteEndurance(e.id); setList(store.endurance()); }}>✕</button></b></li>)}</ul></div>}
+  </div>;
 }
 
 /* ---------------- Altro: account, sincronizzazione, backup ---------------- */
