@@ -3,5 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { startSync } from "./lib/store";
+import { applyTheme } from "./lib/prefs";
+applyTheme();
 startSync();
 createRoot(document.getElementById("root")!).render(<StrictMode><App /></StrictMode>);

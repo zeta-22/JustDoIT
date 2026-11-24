@@ -54,9 +54,17 @@
   - Dischi per lato e avvicinamento in kg nella seduta (primo esercizio col bilanciere) e nella scheda esercizio; Profilo → Attrezzi: bilanciere, trap bar, dischi (`lib/plates.ts`)
   - Scorciatoie dall'icona dell'app: check-in, tatami, progressi, esercizi
 
+- **Icona nuova** (24/11): la punta di una cintura blu con la barra nera, tre gradi e il quarto tratteggiato (`app/public/icon-*.png`, `favicon.svg`); al posto di "JDI" rosso
+- **Fase 3 — fatta sul ramo `claude/loving-fermi-tjov7d`, da provare prima di main** (24/11):
+  - Profilo → App (preferenze di questo telefono, `lib/prefs.ts`): tema automatico/chiaro/scuro, timer automatico, suono e vibrazione a fine recupero, schermo acceso in seduta, avviso di fine recupero con l'app in secondo piano (notifica; a schermo spento può arrivare in ritardo)
+  - Promemoria del mattino: evento giornaliero in Google Calendar con il link al check-in (una web app non può svegliarsi da sola; le notifiche push vere richiedono una funzione su Supabase, da fare se servono)
+  - Pulsante timer nella barra della seduta (per far partire il recupero a mano)
+  - Oggi: nuoto, bici e corsa previsti dalla settimana tipo (blocco Ironman), con "Registra" che apre il modulo sullo sport giusto
+  - Stati vuoti con l'Atleta flat, animazioni leggere (entrata delle schermate, record nel riepilogo), rispettano "riduci animazioni"
+
 ## Prossimi passi
 1. **Analisi generale di grafica e UX** e rinnovo (in una chat nuova): confronto con le migliori app di allenamento, prototipo da approvare, rinnovo a pezzi
 2. **Gruppo 3** entro il 20 dicembre: kit Messico (piegamenti, inverted row, pistol, broad jump), mobilità (90/90, dorsiflessione, McGill, open book/couch), adductor squeeze, snapdown; poi Y-T-W da dietro ed esercizi Ironman
 3. Prova sul campo: una settimana in palestra + prova in modalità aereo prima del Messico
 4. Ironman vero (dopo la gara): ricerca nuoto/bici/corsa e valutazione sub-10 h, piano settimanale che si adatta al diario (oggi c'è solo il registro)
-5. Notifiche/promemoria (pesata del mattino, timer a schermo spento) — da valutare
+5. Notifiche push vere (pesata, fine recupero a schermo spento): servono una funzione e una tabella su Supabase, da valutare dopo la gara

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { PLAN, SCORE, addDays, currentPhaseId, daysBetween, isoToday, noAltoFrom, phase, phaseDates, planB, planWeek, setCount, volFor, type Session, type Vol } from "../lib/plan";
-import { DIVISIONS, store, type SessionLog } from "../lib/store";
+import { DIVISIONS, store, type SessionLog, type Sport } from "../lib/store";
 import { durationFor, mondayOf, phaseProgress, sessionsFor, weekLabels, weekday } from "../lib/today";
 import { newLog } from "../lib/session";
 import { useSync } from "../lib/useSync";
@@ -13,7 +13,7 @@ import { VL, VOLS, raceDate } from "../lib/labels";
 
 
 /** running: seduta già aperta (ridotta): al posto di "Inizia" c'è "Riprendi", così non se ne apre una seconda. */
-export default function Today({ onStart, onOpen, onAccount, onEndurance, onTatami, running, onResume, openCheck = false }: { onStart: (l: SessionLog) => void; onOpen: (id: string) => void; onAccount: () => void; onEndurance: () => void; onTatami: () => void; running: SessionLog | null; onResume: () => void; openCheck?: boolean }) {
+export default function Today({ onStart, onOpen, onAccount, onEndurance, onTatami, running, onResume, openCheck = false }: { onStart: (l: SessionLog) => void; onOpen: (id: string) => void; onAccount: () => void; onEndurance: (sport?: Sport) => void; onTatami: () => void; running: SessionLog | null; onResume: () => void; openCheck?: boolean }) {
   const sy = useSync();
   const race = raceDate(); const today = isoToday();
   const pid = currentPhaseId(today, race); const ph = phase(pid);
@@ -30,6 +30,9 @@ export default function Today({ onStart, onOpen, onAccount, onEndurance, onTatam
   const [pick, setPick] = useState(false); const [list, setList] = useState(false);
   const sess = sid ? all.find(x => x.id === sid) ?? null : null;
   const labels = weekLabels(ph);
+  /* nuoto, bici, corsa previsti oggi dalla "settimana tipo" (blocco Ironman): "Lun nuoto tecnica + Palestra A" → nuoto */
+  const todayLabel = labels[weekday(today)] ?? ""; const planned: Sport[] = [];
+  if (/nuot/i.test(todayLabel)) planned.push("nuoto"); if (/bici|brick/i.test(todayLabel)) planned.push("bici"); if (/corsa|brick/i.test(todayLabel)) planned.push("corsa");
 
   return <section className="stack">
     <header className="top">
@@ -50,6 +53,11 @@ export default function Today({ onStart, onOpen, onAccount, onEndurance, onTatam
     <WeekStrip today={today} labels={labels} />
 
     <MorningCheck program={program} noAlto={noAlto} race={race} ck={ck} startOpen={openCheck} onDone={c => { setCk(c); if (c) setVol(c.vol); }} />
+    {/* nel blocco Ironman nuoto, bici e corsa vengono prima della palestra */}
+    {ph.program !== "bjj" && planned.length > 0 && <div className="card pad stack-s endplan">
+      <span className="over">In programma oggi</span><p className="hero-t" style={{ fontSize: "1.5rem" }}>{cap(todayLabel)}</p>
+      <div className="row gap wrap-row">{planned.map(sp => <button key={sp} type="button" className="chipbtn" onClick={() => onEndurance(sp)}><Icon n="wave" size={18} className="c-ironman" />Registra {sp}</button>)}</div>
+    </div>}
 
     {sess ? <div className="card hero">
       <div className="row between"><span className="over">{todays.some(x => x.id === sess.id) ? "Seduta di oggi" : "Seduta scelta"}</span>
@@ -73,9 +81,13 @@ export default function Today({ onStart, onOpen, onAccount, onEndurance, onTatam
     </div>}
     {sess && list && <SessionPreview s={sess} vol={vol} week={week} onOpen={onOpen} head={false} />}
 
+    {ph.program === "bjj" && planned.length > 0 && <div className="card pad stack-s endplan">
+      <span className="over">In programma oggi</span><p className="hero-t" style={{ fontSize: "1.5rem" }}>{cap(todayLabel)}</p>
+      <div className="row gap wrap-row">{planned.map(sp => <button key={sp} type="button" className="chipbtn" onClick={() => onEndurance(sp)}><Icon n="wave" size={18} className="c-ironman" />Registra {sp}</button>)}</div>
+    </div>}
     <div className="quick">
       <button type="button" className="chipbtn" onClick={onTatami}><Icon n="mat" size={18} className="c-accent" />Tatami</button>
-      <button type="button" className="chipbtn" onClick={onEndurance}><Icon n="wave" size={18} className="c-ironman" />Nuoto, bici, corsa</button>
+      <button type="button" className="chipbtn" onClick={() => onEndurance()}><Icon n="wave" size={18} className="c-ironman" />Nuoto, bici, corsa</button>
     </div>
   </section>;
 }

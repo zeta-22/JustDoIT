@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import Icon from "./Icon";
 import { clock } from "../lib/format";
+import { prefs } from "../lib/prefs";
 
 /* Timer di recupero. Compare solo quando parte un recupero: foglio in basso con l'anello, −15″/+15″, "Salta"
    e la prossima serie; si riduce a pillola. Alla fine suona e vibra, poi sparisce da solo. */
@@ -13,6 +14,14 @@ export const useRestStop = () => useContext(Ctx).stop;
 let actx: AudioContext | null = null;
 function beep() { try { if (!actx) return; const o = actx.createOscillator(), g = actx.createGain(); o.frequency.value = 880; o.connect(g); g.connect(actx.destination);
   g.gain.setValueAtTime(.001, actx.currentTime); g.gain.exponentialRampToValueAtTime(.3, actx.currentTime + .02); g.gain.exponentialRampToValueAtTime(.001, actx.currentTime + .5); o.start(); o.stop(actx.currentTime + .55); } catch { /* audio non disponibile */ } }
+
+/** Avviso di sistema quando il recupero finisce e l'app è in secondo piano (se hai dato il permesso in Profilo).
+ *  È un tentativo: con lo schermo spento Android può rallentare l'app e l'avviso può arrivare in ritardo. */
+function notifyEnd(next?: string) {
+  try { if (!("Notification" in window) || Notification.permission !== "granted") return;
+    void navigator.serviceWorker?.ready.then(reg => reg.showNotification("Recupero finito", { body: next ? `Ora: ${next}` : "Prossima serie", tag: "jdi-rest", icon: "/icon-192.png", badge: "/icon-192.png" }));
+  } catch { /* non supportato */ }
+}
 
 export function TimerProvider({ children }: { children: ReactNode }) {
   const [end, setEnd] = useState(0); const [total, setTotal] = useState(0); const [left, setLeft] = useState(0);
@@ -28,9 +37,11 @@ export function TimerProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     clearInterval(tick.current); if (!end) return;
     tick.current = window.setInterval(() => { const r = (end - Date.now()) / 1000; setLeft(Math.max(0, r));
-      if (r <= 0) { beep(); try { navigator.vibrate?.([200, 100, 200]); } catch { /* */ } setEnd(0); setReady(true); hide.current = window.setTimeout(() => setReady(false), 6000); } }, 250);
+      if (r <= 0) { const pf = prefs(); if (pf.sound) beep(); if (pf.vibrate) { try { navigator.vibrate?.([200, 100, 200]); } catch { /* */ } }
+        if (pf.notify && document.visibilityState === "hidden") notifyEnd(next);
+        setEnd(0); setReady(true); hide.current = window.setTimeout(() => setReady(false), 6000); } }, 250);
     return () => clearInterval(tick.current);
-  }, [end]);
+  }, [end, next]);
   const run = end > 0; const frac = total ? left / total : 0; const C = 2 * Math.PI * 40;
   return <Ctx.Provider value={{ start, stop, running: run }}>
     {children}

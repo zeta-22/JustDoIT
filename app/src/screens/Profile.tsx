@@ -3,6 +3,7 @@ import { RACE_DEFAULT, isoToday, noAltoFrom, planB } from "../lib/plan";
 import { ALL_PLATES, DEF_PLATES } from "../lib/plates";
 import { DIVISIONS, setPassword, signIn, signInPassword, signOut, store, sync, type Settings } from "../lib/store";
 import { SYNC_LABEL, useSync } from "../lib/useSync";
+import { prefs, savePrefs, type Prefs } from "../lib/prefs";
 import { dayLong, dec, parseNum } from "../lib/format";
 import Icon from "../components/Icon";
 import { useToast } from "../components/Toast";
@@ -14,6 +15,8 @@ export default function Profile() {
     <RaceSetting />
     <Category />
     <Gear />
+    <AppPrefs />
+    <Reminder />
     <Account />
     <Backup />
     <p className="small muted center">JustDoIT · uso personale</p>
@@ -60,6 +63,51 @@ function Gear() {
     <div className="chips">{ALL_PLATES.map(p => <button key={p} type="button" aria-pressed={plates.includes(p)} onClick={() => {
       const next = plates.includes(p) ? plates.filter(x => x !== p) : [...plates, p].sort((a, b) => b - a); if (next.length) save({ ...store.settings(), plates: next }); }}>{dec(p, p % 1 ? (p * 100 % 10 ? 2 : 1) : 0)}</button>)}</div>
     <p className="small muted">Servono per dirti quali dischi mettere per lato e per le serie di avvicinamento.</p>
+  </div>;
+}
+
+/** Preferenze di questo telefono: tema, fine del recupero, schermo acceso, timer automatico, avviso in secondo piano. */
+function AppPrefs() {
+  const [p, setP] = useState<Prefs>(prefs()); const [msg, setMsg] = useState<string | null>(null);
+  const set = (q: Partial<Prefs>) => { const n = { ...p, ...q }; setP(n); savePrefs(n); };
+  const notifOk = typeof Notification !== "undefined";
+  const toggleNotify = async () => {
+    if (p.notify) { set({ notify: false }); return; }
+    if (!notifOk) { setMsg("Questo browser non permette gli avvisi."); return; }
+    const r = Notification.permission === "granted" ? "granted" : await Notification.requestPermission();
+    if (r === "granted") { set({ notify: true }); setMsg(null); } else setMsg("Permesso negato: puoi darlo dalle impostazioni di Chrome → Notifiche.");
+  };
+  const Row = ({ k, label, sub }: { k: "sound" | "vibrate" | "wake" | "autoRest"; label: string; sub: string }) =>
+    <label className="switch"><span><b>{label}</b><span className="small muted">{sub}</span></span><input type="checkbox" role="switch" checked={p[k]} onChange={e => set({ [k]: e.target.checked } as Partial<Prefs>)} /></label>;
+  return <div className="card pad stack-s">
+    <h3>App</h3>
+    <span className="field">Tema</span>
+    <div className="seg" role="group" aria-label="Tema">{([["auto", "Automatico"], ["light", "Chiaro"], ["dark", "Scuro"]] as const).map(([v, l]) => <button key={v} type="button" aria-pressed={p.theme === v} onClick={() => set({ theme: v })}>{l}</button>)}</div>
+    <Row k="autoRest" label="Timer automatico" sub="Il recupero parte da solo quando spunti una serie." />
+    <Row k="sound" label="Suono a fine recupero" sub="Un bip quando il recupero finisce." />
+    <Row k="vibrate" label="Vibrazione" sub="Alla spunta e a fine recupero." />
+    <Row k="wake" label="Schermo acceso in seduta" sub="Il telefono non si spegne mentre ti alleni." />
+    <label className="switch"><span><b>Avviso se l'app è in secondo piano</b><span className="small muted">Notifica di fine recupero quando usi un'altra app. Con lo schermo spento può arrivare in ritardo.</span></span>
+      <input type="checkbox" role="switch" checked={p.notify} onChange={() => void toggleNotify()} /></label>
+    {msg && <p className="small warnbox">{msg}</p>}
+  </div>;
+}
+
+/** Promemoria della pesata del mattino: un evento ricorrente nel calendario del telefono, che suona anche ad app chiusa. */
+function Reminder() {
+  const [p, setP] = useState<Prefs>(prefs());
+  const link = () => { const t = new Date(); t.setDate(t.getDate() + 1); const d = `${t.getFullYear()}${String(t.getMonth() + 1).padStart(2, "0")}${String(t.getDate()).padStart(2, "0")}`;
+    const [h, m] = p.remindAt.split(":").map(Number); const hhmm = (x: number) => `${String(Math.floor(x / 60)).padStart(2, "0")}${String(x % 60).padStart(2, "0")}00`;
+    const q = new URLSearchParams({ action: "TEMPLATE", text: "Pesata e check-in (JustDoIT)", ctz: "Europe/Rome", recur: "RRULE:FREQ=DAILY",
+      dates: `${d}T${hhmm(h * 60 + m)}/${d}T${hhmm(h * 60 + m + 5)}`,
+      details: `Al mattino, dopo il bagno, prima di mangiare. Apri: ${location.origin}/?go=checkin` });
+    return `https://calendar.google.com/calendar/render?${q.toString()}`; };
+  return <div className="card pad stack-s">
+    <h3>Promemoria del mattino</h3>
+    <p className="small muted">Una web app non può svegliarsi da sola ad app chiusa. Il modo sicuro è un evento che si ripete ogni giorno nel tuo calendario: la notifica arriva dal calendario e dentro c'è il link al check-in.</p>
+    <label className="field inline" htmlFor="remat"><span>Ora</span><input id="remat" type="time" value={p.remindAt} onChange={e => { const n = { ...p, remindAt: e.target.value || "07:15" }; setP(n); savePrefs(n); }} style={{ width: 120 }} /></label>
+    <a className="primary" href={link()} target="_blank" rel="noreferrer">Aggiungi a Google Calendar</a>
+    <p className="small muted">Nel calendario controlla che la notifica sia "all'ora dell'evento".</p>
   </div>;
 }
 

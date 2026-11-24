@@ -13,10 +13,12 @@ import { PlateLine, RampChips } from "../components/Plates";
 import { BAR_OF, ramp as rampOf } from "../lib/plates";
 import { parseNum } from "../lib/format";
 import { VL, raceDate } from "../lib/labels";
+import { prefs } from "../lib/prefs";
 
 /** Schermo sempre acceso durante la seduta (se il telefono lo permette): il timer resta visibile tra una serie e l'altra. */
 function useWakeLock() {
   useEffect(() => {
+    if (!prefs().wake) return;
     let lock: { release: () => Promise<void> } | null = null; let alive = true;
     const nav = navigator as Navigator & { wakeLock?: { request: (t: "screen") => Promise<{ release: () => Promise<void> }> } };
     const get = async () => { try { if (alive && nav.wakeLock && document.visibilityState === "visible") lock = await nav.wakeLock.request("screen"); } catch { /* non concesso: pazienza */ } };
@@ -49,6 +51,7 @@ export function Runner({ log, onChange, onOpen, onFinish, onMinimize }: { log: S
     <div className="runbar">
       <button type="button" className="iconbtn" onClick={onMinimize} aria-label="Riduci la seduta"><Icon n="down" /></button>
       <div className="rt"><b>{s.title.split("—")[0].trim()} · {VL[log.vol]}</b><span className="num">{elapsed((now - (log.start ?? +log.id)) / 1000)}</span></div>
+      <button type="button" className="iconbtn" aria-label="Fai partire il recupero" onClick={() => { const n = nx ? s.items[nx.i] : null; rest(n ? restSeconds(n.rest) || 90 : 90, nextLabel(log)); }}><Icon n="timer" /></button>
       <button type="button" className="finebtn" onClick={onFinish}>Fine</button>
       <div className="prog" role="progressbar" aria-valuemin={0} aria-valuemax={st.total} aria-valuenow={st.done} aria-label={`${st.done} serie su ${st.total}`}><i style={{ width: `${st.total ? st.done / st.total * 100 : 0}%` }} /></div>
     </div>
@@ -71,7 +74,7 @@ export function Runner({ log, onChange, onOpen, onFinish, onMinimize }: { log: S
           onChange={x => {
             const ticked = x.sets.filter(z => z.done).length > log.items[i].sets.filter(z => z.done).length;
             const nl = { ...log, items: log.items.map((y, j) => j === i ? x : y) }; upd(nl);
-            if (ticked) { buzz(); rest(restSeconds(s.items[i].rest), nextLabel(nl)); }
+            if (ticked) { if (prefs().vibrate) buzz(); if (prefs().autoRest) rest(restSeconds(s.items[i].rest), nextLabel(nl)); }
           }}
           onOpen={onOpen} onBasso={() => toBasso(i)} onToggle={g.length === 1 ? toggle : undefined} />)}
       </div>;
@@ -153,6 +156,7 @@ export function Summary({ log, onBack, onSave, onDelete }: { log: SessionLog; on
   return <section className="stack summary">
     <div className="sum-head"><span className="okc"><Icon n="check" size={30} /></span>
       <h1>{st.done === st.total ? "Seduta completata" : "Fine della seduta"}</h1>
+      {recs.length > 0 && <span className="pill recpill"><Icon n="trophy" size={16} />{recs.length === 1 ? "Nuovo record" : `${recs.length} nuovi record`}</span>}
       <p className="small muted">{s?.title.split("—")[0].trim()} · {VL[log.vol]} · {dayLong(log.date)}</p></div>
     <div className="tiles">
       <div className="tile"><span>Durata</span><b>{minutes(st.min)}</b></div>

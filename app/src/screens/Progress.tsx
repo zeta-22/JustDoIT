@@ -10,6 +10,7 @@ import LineChart from "../components/LineChart";
 import BarChart from "../components/BarChart";
 import MuscleMap from "../components/MuscleMap";
 import Icon from "../components/Icon";
+import Empty from "../components/Empty";
 import { useToast } from "../components/Toast";
 
 export type ProgMode = "insieme" | "palestra" | "tatami" | "endurance" | "peso";
@@ -17,11 +18,11 @@ const MODES: [ProgMode, string][] = [["insieme", "Insieme"], ["palestra", "Pales
 const weeksBack = (n: number) => { const wk = mondayOf(isoToday()); return Array.from({ length: n }, (_, i) => addDays(wk, -7 * (n - 1 - i))); };
 const monthName = () => new Date(isoToday() + "T12:00:00").toLocaleDateString("it-IT", { month: "long" });
 
-export default function ProgressView({ mode, onMode, onTatami }: { mode: ProgMode; onMode: (m: ProgMode) => void; onTatami: () => void }) {
+export default function ProgressView({ mode, onMode, onTatami, sport }: { mode: ProgMode; onMode: (m: ProgMode) => void; onTatami: () => void; sport?: Sport }) {
   return <section className="stack">
     <header className="top"><div><span className="over">Storico e grafici</span><h1>Progressi</h1></div></header>
     <div className="hscroll chips nowrap" role="group" aria-label="Sezione">{MODES.map(([m, l]) => <button key={m} type="button" aria-pressed={mode === m} onClick={() => onMode(m)}>{l}</button>)}</div>
-    {mode === "insieme" ? <Overview onMode={onMode} /> : mode === "palestra" ? <Gym /> : mode === "tatami" ? <Tatami onAdd={onTatami} /> : mode === "endurance" ? <Endurance /> : <Weight />}
+    {mode === "insieme" ? <Overview onMode={onMode} /> : mode === "palestra" ? <Gym /> : mode === "tatami" ? <Tatami onAdd={onTatami} /> : mode === "endurance" ? <Endurance initial={sport} /> : <Weight />}
   </section>;
 }
 
@@ -71,7 +72,7 @@ function Gym() {
   const refresh = () => setAll(store.sessions().filter(s => s.finished).reverse());
   const lifts = useMemo(() => liftList(), [all]); // eslint-disable-line react-hooks/exhaustive-deps
   const [ex, setEx] = useState<string | null>(null); const [what, setWhat] = useState<"1rm" | "kg">("1rm");
-  if (!all.length) return <div className="empty"><Icon n="dumb" size={36} /><p><b>Ancora nessuna seduta salvata.</b></p><p className="small muted">Quando finisci una seduta, qui trovi i carichi e lo storico.</p></div>;
+  if (!all.length) return <Empty fig="trap_bar" title="Ancora nessuna seduta salvata." text="Quando finisci una seduta, qui trovi i carichi, il 1RM stimato e lo storico." />;
   const cur = lifts.find(x => x.ex === ex) ?? lifts[0];
   const pts = cur ? (what === "1rm" ? e1rmSeries(cur.ex) : topKgSeries(cur.ex)) : [];
   return <>
@@ -108,7 +109,7 @@ function Tatami({ onAdd }: { onAdd: () => void }) {
     return { x: w, parts: [ws.filter(t => t.kind === "gi").reduce((a, t) => a + t.min, 0) / 60, ws.filter(t => t.kind === "nogi").reduce((a, t) => a + t.min, 0) / 60] }; });
   return <div className="stack">
     <button type="button" className="primary big" onClick={onAdd}><Icon n="plus" size={20} />Registra il tatami</button>
-    {list.length === 0 ? <div className="empty"><Icon n="mat" size={36} /><p><b>Ancora niente tatami registrato.</b></p><p className="small muted">Segna gi o no-gi, minuti, round e quanto è stato duro: il check-in del giorno dopo lo usa per "botte del tatami".</p></div> : <>
+    {list.length === 0 ? <Empty fig="copenhagen" title="Ancora niente tatami registrato." text={'Segna gi o no-gi, minuti, round e quanto è stato duro: il check-in del giorno dopo lo usa per "botte del tatami".'} /> : <>
       <div className="card pad stack-s"><h3>Questa settimana</h3>
         <div className="kpis"><div><b className="num">{cur.n}</b><span>allenamenti</span></div><div><b className="num">{minutes(cur.min)}</b><span>sul tatami</span></div><div><b className="num">{cur.rounds}</b><span>round di sparring</span></div></div>
         <p className="small muted">Settimana scorsa: {prev.n} allenamenti, {minutes(prev.min)}, {prev.rounds} round.</p>
@@ -132,10 +133,10 @@ function pace(e: EnduranceLog): string | null {
   if (e.sport === "nuoto") return `${mmss(e.min / (e.km * 10))}/100 m`;
   return `${dec(e.km / (e.min / 60))} km/h`;
 }
-function Endurance() {
+function Endurance({ initial }: { initial?: Sport }) {
   const toast = useToast();
   const [list, setList] = useState(store.endurance());
-  const [sport, setSport] = useState<Sport>("corsa"); const [date, setDate] = useState(isoToday());
+  const [sport, setSport] = useState<Sport>(initial ?? "corsa"); const [date, setDate] = useState(isoToday());
   const [min, setMin] = useState(""); const [km, setKm] = useState(""); const [rpe, setRpe] = useState(""); const [note, setNote] = useState("");
   const save = () => { const m = parseNum(min); if (!m || m <= 0) return;
     store.saveEndurance({ id: `${Date.now()}`, date, sport, min: m, km: parseNum(km) ?? undefined, rpe: parseNum(rpe) ?? undefined, note: note.trim() || undefined });

@@ -4,6 +4,7 @@ import { FIGS } from "../data/figures";
 import { LIB } from "../data/library";
 import Thumb from "../components/Thumb";
 import Icon from "../components/Icon";
+import Empty from "../components/Empty";
 import { raceDate } from "../lib/labels";
 
 /* Libreria dei 71 esercizi: ricerca per nome o muscolo, filtri per gruppo, miniatura, dove compare nella fase attuale. */
@@ -34,7 +35,7 @@ export default function Library({ onOpen }: { onOpen: (id: string) => void }) {
     <label className="search" htmlFor="lq"><Icon n="search" size={20} /><input id="lq" type="search" placeholder="Cerca un esercizio o un muscolo" value={q} onChange={e => setQ(e.target.value)} /></label>
     <div className="hscroll chips nowrap">{GROUPS.map(([l], i) => <button key={l} type="button" aria-pressed={g === i} onClick={() => setG(i)}>{l}</button>)}
       <button type="button" aria-pressed={anim} onClick={() => setAnim(!anim)}>Solo animati</button></div>
-    {list.length === 0 ? <div className="empty"><Icon n="search" size={32} /><p className="small muted">Nessun esercizio trovato.</p></div> :
+    {list.length === 0 ? <Empty fig="dead_bug" title="Nessun esercizio trovato." text="Prova con un altro nome o con un muscolo, per esempio “glutei”." /> :
       <div className="card list">{list.map(id => { const m = mus(id); const w = where.get(id);
         return <button key={id} type="button" className="lrow" onClick={() => onOpen(id)}>
           <Thumb ex={id} />

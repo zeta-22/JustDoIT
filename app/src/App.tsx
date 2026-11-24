@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { currentPhaseId, isoToday, phase } from "./lib/plan";
-import { store, type SessionLog } from "./lib/store";
+import { store, type SessionLog, type Sport } from "./lib/store";
 import { sessionStats } from "./lib/session";
 import { TimerProvider, useRestStop } from "./components/Timer";
 import { ToastProvider, useToast } from "./components/Toast";
@@ -34,6 +34,7 @@ function Shell() {
   const [rev, setRev] = useState(0); // cambia quando arrivano dati da un altro dispositivo
   const after = useRef<(() => void) | null>(null);
   const [openCheck, setOpenCheck] = useState(false);
+  const [endSport, setEndSport] = useState<Sport | undefined>();
 
   useEffect(() => {
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
@@ -76,10 +77,10 @@ function Shell() {
         : view === "run" && running ? <Runner log={running} onChange={setRunning} onOpen={openSheet} onFinish={() => push({ tab: nav.tab, view: "sum" })} onMinimize={() => history.back()} />
         : <>
           {nav.tab === "oggi" && <Today onStart={l => { store.saveSession(l); setRunning(l); push({ tab: "oggi", view: "run" }); }} onOpen={openSheet}
-            onAccount={() => goTab("profilo")} onEndurance={() => { setProg("endurance"); goTab("progressi"); }} running={running} onResume={() => push({ tab: nav.tab, view: "run" })} onTatami={() => openSheet("@tatami")} openCheck={openCheck} />}
+            onAccount={() => goTab("profilo")} onEndurance={sp => { setEndSport(sp); setProg("endurance"); goTab("progressi"); }} running={running} onResume={() => push({ tab: nav.tab, view: "run" })} onTatami={() => openSheet("@tatami")} openCheck={openCheck} />}
           {nav.tab === "piano" && <PlanView onOpen={openSheet} />}
           {nav.tab === "esercizi" && <Library onOpen={openSheet} />}
-          {nav.tab === "progressi" && <ProgressView mode={prog} onMode={setProg} onTatami={() => openSheet("@tatami")} />}
+          {nav.tab === "progressi" && <ProgressView mode={prog} onMode={setProg} onTatami={() => openSheet("@tatami")} sport={endSport} />}
           {nav.tab === "profilo" && <Profile />}
         </>}
     </main>
