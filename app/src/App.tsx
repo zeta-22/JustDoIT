@@ -6,6 +6,7 @@ import { LIB } from "./data/library";
 import { suggest, targetRpe } from "./lib/progress";
 import Figure from "./components/Figure";
 import MuscleMap from "./components/MuscleMap";
+import LineChart from "./components/LineChart";
 import { TimerProvider, useRest } from "./components/Timer";
 
 type Tab = "oggi" | "piano" | "peso" | "storico" | "altro";
@@ -251,16 +252,40 @@ function Weight() {
       <p>Con la divisa: <b>{(avg + st.uniformKg).toFixed(1)} kg</b> · limite {div.limit.toFixed(1)} kg · margine <b>{margin!.toFixed(1)} kg</b></p>
       <p className="small">{light === "verde" ? "Sei dentro con margine: mangia per allenarti." : light === "giallo" ? "Dentro ma al limite: niente extra, porzioni un po’ più piccole nei giorni di riposo." : "Fuori categoria con la media attuale. Niente tagli d’acqua: valuta la categoria sopra."}</p>
     </div>}
+    {ws.length > 1 && <div className="card pad stack-s"><h2>Andamento</h2>
+      <LineChart label="Peso del mattino" unit="kg" points={ws.slice(-60).map(w => ({ x: w.date, y: w.kg }))}
+        line={ws.slice(-60).map((w, i, a) => { const b = a.slice(Math.max(0, i - 6), i + 1); return { x: w.date, y: b.reduce((x, z) => x + z.kg, 0) / b.length }; })}
+        refLine={{ y: div.limit - st.uniformKg, label: `limite senza divisa ${(div.limit - st.uniformKg).toFixed(1)}` }} />
+      <p className="small muted">Punti: le pesate. Linea: media degli ultimi 7 giorni. Tratteggio: il limite della categoria meno il peso della divisa.</p>
+    </div>}
     {ws.length > 0 && <div className="card pad"><h2>Ultime pesate</h2><ul className="plain">{ws.slice(-14).reverse().map(w => <li key={w.date}><span>{w.date}</span><b>{w.kg.toFixed(1)} kg</b></li>)}</ul></div>}
   </section>;
 }
 
 /* ---------------- Storico ---------------- */
+function Progress({ sessions }: { sessions: SessionLog[] }) {
+  const series = useMemo(() => {
+    const m = new Map<string, Map<string, number>>();
+    sessions.forEach(l => l.items.forEach(it => it.sets.forEach(z => { const k = parseFloat(String(z.kg).replace(",", "."));
+      if (!z.done || !(k > 0)) return; const d = m.get(it.ex) ?? new Map(); d.set(l.date, Math.max(d.get(l.date) ?? 0, k)); m.set(it.ex, d); })));
+    return [...m.entries()].map(([ex, d]) => ({ ex, pts: [...d.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([x, y]) => ({ x, y })) })).sort((a, b) => b.pts.length - a.pts.length);
+  }, [sessions]);
+  const [ex, setEx] = useState<string | null>(null);
+  if (!series.length) return null;
+  const cur = series.find(x => x.ex === ex) ?? series[0];
+  return <div className="card pad stack-s">
+    <h2>Progressi</h2>
+    <label className="field" htmlFor="pex">Esercizio<select id="pex" value={cur.ex} onChange={e => setEx(e.target.value)}>
+      {series.map(x => <option key={x.ex} value={x.ex}>{exercise(x.ex).name} ({x.pts.length})</option>)}</select></label>
+    <LineChart label="Carico più alto della seduta" unit="kg" points={cur.pts} fmt={v => String(Math.round(v * 10) / 10).replace(".", ",")} />
+  </div>;
+}
 function History() {
   const [all, setAll] = useState(store.sessions().filter(s => s.finished).reverse());
   if (!all.length) return <p className="muted pad">Ancora nessuna seduta salvata.</p>;
   return <section className="stack">
     <h1 className="h1s">Storico</h1>
+    <Progress sessions={all} />
     {all.map(l => { const ph = phase(l.phaseId); const s = [...ph.sessions, ...phase("bjj_domenica").sessions].find(x => x.id === l.sessionId);
       return <details key={l.id} className="card pad"><summary><b>{l.date}</b> · {s?.title ?? l.sessionId} · {VL[l.vol]}</summary>
         {l.items.filter(it => it.sets.some(z => z.done)).map((it, i) => <p key={i} className="small"><b>{exercise(it.ex).name}:</b> {it.sets.filter(z => z.done).map(z => `${z.kg || "–"}×${z.reps || "–"}${z.rpe ? ` @${z.rpe}` : ""}`).join(" · ")}{it.pain ? " · dolore" : ""}</p>)}
