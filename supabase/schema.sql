@@ -26,6 +26,10 @@ drop trigger if exists records_touch on public.records;
 create trigger records_touch before insert or update on public.records
 for each row execute function public.records_touch();
 
+-- permessi sulla tabella per gli utenti collegati (nei progetti nuovi non sono automatici)
+grant usage on schema public to authenticated;
+grant select, insert, update, delete on public.records to authenticated;
+
 alter table public.records enable row level security;
 
 drop policy if exists "records: leggo i miei" on public.records;
@@ -41,3 +45,6 @@ create policy "records: modifico i miei" on public.records
   for update to authenticated using ((select auth.uid()) = user_id) with check ((select auth.uid()) = user_id);
 create policy "records: cancello i miei" on public.records
   for delete to authenticated using ((select auth.uid()) = user_id);
+
+-- fa rileggere subito la struttura all'API
+notify pgrst, 'reload schema';

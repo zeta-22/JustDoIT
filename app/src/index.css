@@ -137,3 +137,5 @@ details[open] summary { margin-bottom: 8px; }
 .sync.ok { border-left-color: var(--ok); } .sync.offline, .sync.syncing { border-left-color: var(--warn); } .sync.error { border-left-color: var(--bad); }
 .filebtn { position: relative; overflow: hidden; display: inline-flex; align-items: center; cursor: pointer; }
 .filebtn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.syncbanner { display: grid; gap: 2px; text-align: left; width: 100%; border-left: 4px solid var(--warn); cursor: pointer; font: inherit; color: inherit; }
+.syncbanner.error { border-left-color: var(--bad); }

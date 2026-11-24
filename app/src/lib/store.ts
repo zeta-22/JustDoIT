@@ -55,9 +55,9 @@ export const store = {
 };
 
 /* ---------- sincronizzazione ---------- */
-export type SyncStatus = "anon" | "syncing" | "ok" | "offline" | "error";
+export type SyncStatus = "init" | "anon" | "syncing" | "ok" | "offline" | "error";
 export const syncState: { status: SyncStatus; email: string | null; pending: number; last: string | null; error: string | null } =
-  { status: "anon", email: null, pending: outbox().length, last: null, error: null };
+  { status: "init", email: null, pending: outbox().length, last: null, error: null };
 const emit = (changed = false) => { syncState.pending = outbox().length; window.dispatchEvent(new CustomEvent("jdi:sync", { detail: { changed } })); };
 
 let timer = 0;
@@ -80,12 +80,24 @@ function applyRemote(kind: Kind, id: string, data: unknown, deleted: boolean) {
   } else if (!deleted) write(K.settings, data);
 }
 
+/* Errori di Supabase → spiegazione in italiano (il testo originale resta visibile sotto). */
+function explain(e: unknown): string {
+  const o = (e ?? {}) as { code?: string; message?: string; status?: number };
+  const m = o.message ?? String(e); const c = o.code ?? "";
+  if (c === "42501" && /row-level security/i.test(m)) return `Le regole di sicurezza bloccano la scrittura: riesegui supabase/schema.sql. (${m})`;
+  if (c === "42501" || /permission denied/i.test(m)) return `Manca il permesso sulla tabella: esegui i GRANT di supabase/schema.sql nel SQL Editor. (${m})`;
+  if (c === "42P01" || c === "PGRST205" || /does not exist|schema cache/i.test(m)) return `La tabella "records" non esiste ancora: esegui supabase/schema.sql nel SQL Editor. (${m})`;
+  if (/jwt|token|expired|401/i.test(m) || o.status === 401) return `Accesso scaduto: esci e rifai l'accesso. (${m})`;
+  if (/fetch|network|load failed/i.test(m)) return `Supabase non raggiungibile: riprovo da solo appena c'è rete. (${m})`;
+  return m;
+}
+
 let running = false;
 export async function sync(): Promise<void> {
   if (running) return; running = true;
   try {
     const { data: { session } } = await sb.auth.getSession();
-    if (!session) { syncState.status = "anon"; syncState.email = null; return; }
+    if (!session) { syncState.status = "anon"; syncState.email = null; emit(); return; }
     syncState.email = session.user.email ?? null;
     if (!navigator.onLine) { syncState.status = "offline"; return; }
     syncState.status = "syncing"; emit();
@@ -114,7 +126,7 @@ export async function sync(): Promise<void> {
     emit(changed);
   } catch (e) {
     syncState.status = navigator.onLine ? "error" : "offline";
-    syncState.error = e instanceof Error ? e.message : String((e as { message?: string })?.message ?? e);
+    syncState.error = explain(e);
   } finally { running = false; emit(); }
 }
 

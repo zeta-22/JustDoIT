@@ -29,7 +29,7 @@ export default function App() {
             {(["oggi", "piano", "peso", "storico", "altro"] as Tab[]).map(t => <button key={t} type="button" aria-pressed={tab === t} onClick={() => setTab(t)}>{{ oggi: "Oggi", piano: "Piano", peso: "Peso", storico: "Storico", altro: "Altro" }[t]}</button>)}
           </nav>
           <div key={rev} className="stack">
-            {tab === "oggi" && <Today onStart={l => { store.saveSession(l); setRunning(l); }} onOpen={setSheet} />}
+            {tab === "oggi" && <Today onStart={l => { store.saveSession(l); setRunning(l); }} onOpen={setSheet} onAccount={() => setTab("altro")} />}
             {tab === "piano" && <PlanView onOpen={setSheet} />}
             {tab === "peso" && <Weight />}
             {tab === "storico" && <History />}
@@ -42,7 +42,8 @@ export default function App() {
 }
 
 /* ---------------- Oggi ---------------- */
-function Today({ onStart, onOpen }: { onStart: (l: SessionLog) => void; onOpen: (id: string) => void }) {
+function Today({ onStart, onOpen, onAccount }: { onStart: (l: SessionLog) => void; onOpen: (id: string) => void; onAccount: () => void }) {
+  const sy = useSync();
   const pid = currentPhaseId(); const ph = phase(pid);
   const before = isoToday() < START.bjj1_accumulo;
   const [sid, setSid] = useState(ph.sessions[0].id);
@@ -52,6 +53,10 @@ function Today({ onStart, onOpen }: { onStart: (l: SessionLog) => void; onOpen: 
   const all = sundays ? [...ph.sessions, ...sundays.sessions] : ph.sessions;
   const sess = all.find(x => x.id === sid) ?? s;
   return <section className="stack">
+    {(sy.status === "anon" || sy.status === "error") && <button type="button" className={"card pad syncbanner " + sy.status} onClick={onAccount}>
+      <b>{sy.status === "anon" ? "Collegati per salvare online" : "Errore di sincronizzazione"}</b>
+      <span className="small">{sy.status === "anon" ? "Ora i dati restano solo su questo telefono. Tocca qui per accedere con la tua email." : "I dati sono al sicuro sul telefono. Tocca qui per vedere cosa succede."}</span>
+    </button>}
     <div className="hero-card" style={{ ["--pc" as string]: `var(--${ph.program})` }}>
       <span className="lab">{before ? "Si parte lunedì 23 novembre" : "Fase attuale"} · {PROG_LABEL[ph.program]}</span>
       <h1>{ph.name}</h1>
@@ -223,7 +228,7 @@ function useSync() {
   useEffect(() => { const on = () => set(x => x + 1); window.addEventListener("jdi:sync", on); return () => window.removeEventListener("jdi:sync", on); }, []);
   return syncState;
 }
-const SYNC_LABEL = { anon: "Non collegato: i dati restano solo su questo telefono", syncing: "Sincronizzo…", ok: "Dati salvati online", offline: "Senza rete: salvo sul telefono e invio appena torna", error: "Errore di sincronizzazione" };
+const SYNC_LABEL = { init: "Controllo l'accesso…", anon: "Non collegato: i dati restano solo su questo telefono", syncing: "Sincronizzo…", ok: "Dati salvati online", offline: "Senza rete: salvo sul telefono e invio appena torna", error: "Errore di sincronizzazione" };
 function More() {
   const st = useSync(); const [email, setEmail] = useState(""); const [msg, setMsg] = useState<string | null>(null); const [busy, setBusy] = useState(false);
   const exportFile = () => {
