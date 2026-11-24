@@ -46,6 +46,14 @@
   - Esercizi: libreria dei 71 con ricerca, filtri e miniature; la scheda mostra le ultime volte
   - Progressi (palestra, resistenza, peso) e Profilo (gara, categoria, account, backup) prendono il posto di Diario, Peso e Altro
 
+- **Fase 2 — fatta sul ramo `claude/loving-fermi-tjov7d`, da provare prima di main** (24/11):
+  - Diario del tatami (gi/no-gi, minuti, round, RPE) dal + in Oggi, da Progressi e dalla scorciatoia; il check-in propone "botte del tatami" dal diario di ieri/l'altro ieri. Online viaggia come record "endurance" con id `tat-…` (lo schema non cambia)
+  - Progressi → Insieme: sedute del mese fatte/previste, settimane complete di fila, record del mese, peso con tendenza e previsione al giorno gara, carico della settimana (minuti × RPE: palestra, tatami, resistenza), 1RM stimato, muscoli della settimana (`lib/stats.ts`, `components/BarChart.tsx`)
+  - Palestra: grafico 1RM stimato o carico massimo; Tatami: settimana e storico; Resistenza: ore a settimana a barre
+  - Piano: calendario del mese con sedute previste, fatte, saltate, tatami e resistenza
+  - Dischi per lato e avvicinamento in kg nella seduta (primo esercizio col bilanciere) e nella scheda esercizio; Profilo → Attrezzi: bilanciere, trap bar, dischi (`lib/plates.ts`)
+  - Scorciatoie dall'icona dell'app: check-in, tatami, progressi, esercizi
+
 ## Prossimi passi
 1. **Analisi generale di grafica e UX** e rinnovo (in una chat nuova): confronto con le migliori app di allenamento, prototipo da approvare, rinnovo a pezzi
 2. **Gruppo 3** entro il 20 dicembre: kit Messico (piegamenti, inverted row, pistol, broad jump), mobilità (90/90, dorsiflessione, McGill, open book/couch), adductor squeeze, snapdown; poi Y-T-W da dietro ed esercizi Ironman

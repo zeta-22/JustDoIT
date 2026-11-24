@@ -13,7 +13,7 @@ import { VL, VOLS, raceDate } from "../lib/labels";
 
 
 /** running: seduta già aperta (ridotta): al posto di "Inizia" c'è "Riprendi", così non se ne apre una seconda. */
-export default function Today({ onStart, onOpen, onAccount, onEndurance, running, onResume }: { onStart: (l: SessionLog) => void; onOpen: (id: string) => void; onAccount: () => void; onEndurance: () => void; running: SessionLog | null; onResume: () => void }) {
+export default function Today({ onStart, onOpen, onAccount, onEndurance, onTatami, running, onResume, openCheck = false }: { onStart: (l: SessionLog) => void; onOpen: (id: string) => void; onAccount: () => void; onEndurance: () => void; onTatami: () => void; running: SessionLog | null; onResume: () => void; openCheck?: boolean }) {
   const sy = useSync();
   const race = raceDate(); const today = isoToday();
   const pid = currentPhaseId(today, race); const ph = phase(pid);
@@ -49,7 +49,7 @@ export default function Today({ onStart, onOpen, onAccount, onEndurance, running
 
     <WeekStrip today={today} labels={labels} />
 
-    <MorningCheck program={program} noAlto={noAlto} race={race} ck={ck} onDone={c => { setCk(c); if (c) setVol(c.vol); }} />
+    <MorningCheck program={program} noAlto={noAlto} race={race} ck={ck} startOpen={openCheck} onDone={c => { setCk(c); if (c) setVol(c.vol); }} />
 
     {sess ? <div className="card hero">
       <div className="row between"><span className="over">{todays.some(x => x.id === sess.id) ? "Seduta di oggi" : "Seduta scelta"}</span>
@@ -74,6 +74,7 @@ export default function Today({ onStart, onOpen, onAccount, onEndurance, running
     {sess && list && <SessionPreview s={sess} vol={vol} week={week} onOpen={onOpen} head={false} />}
 
     <div className="quick">
+      <button type="button" className="chipbtn" onClick={onTatami}><Icon n="mat" size={18} className="c-accent" />Tatami</button>
       <button type="button" className="chipbtn" onClick={onEndurance}><Icon n="wave" size={18} className="c-ironman" />Nuoto, bici, corsa</button>
     </div>
   </section>;
@@ -119,10 +120,14 @@ function WeekStrip({ today, labels }: { today: string; labels: (string | null)[]
 }
 
 /* ---------- check-in del mattino: pesata + 4 domande → volume ---------- */
-function MorningCheck({ program, noAlto, race, ck, onDone }: { program: "bjj" | "ironman"; noAlto: boolean; race: string; ck: ReturnType<typeof store.checkin>; onDone: (c: ReturnType<typeof store.checkin>) => void }) {
+function MorningCheck({ program, noAlto, race, ck, onDone, startOpen }: { program: "bjj" | "ironman"; noAlto: boolean; race: string; ck: ReturnType<typeof store.checkin>; onDone: (c: ReturnType<typeof store.checkin>) => void; startOpen: boolean }) {
   const today = isoToday(); const cfg = SCORE[program];
   const w0 = store.weights().find(w => w.date === today);
-  const [open, setOpen] = useState(false); const [ans, setAns] = useState<(number | undefined)[]>(ck?.ans ?? []);
+  /* "Botte del tatami (24–48 h)": proposta dal diario del tatami di ieri e l'altro ieri (RPE ≥ 8 guerra, 5–7 normale, ≤ 4 tecnica). */
+  const tat = program === "bjj" ? store.tatami().filter(t => t.date >= addDays(today, -2) && t.date < today) : [];
+  const tmax = tat.reduce((a, t) => Math.max(a, t.rpe ?? 0), 0);
+  const tIdx = tmax ? (tmax >= 8 ? 0 : tmax >= 5 ? 1 : 2) : undefined;
+  const [open, setOpen] = useState(startOpen && !ck); const [ans, setAns] = useState<(number | undefined)[]>(ck?.ans ?? (tIdx !== undefined ? [undefined, tIdx] : []));
   const [kg, setKg] = useState(w0 ? String(w0.kg).replace(".", ",") : "");
   useEffect(() => { setOpen(false); }, [ck]);
   const done = cfg.qs.every((_, i) => ans[i] !== undefined); const tot = ans.reduce<number>((a, b) => a + (b ?? 0), 0);
@@ -140,7 +145,7 @@ function MorningCheck({ program, noAlto, race, ck, onDone }: { program: "bjj" | 
     <div className="row between"><h3>Check-in del mattino</h3><button type="button" className="link" onClick={() => setOpen(false)}>Chiudi</button></div>
     <label className="field inline" htmlFor="ckkg"><span><Icon n="scale" size={18} /> Pesata <span className="muted small">(dopo il bagno, prima di mangiare)</span></span>
       <span className="unit"><input id="ckkg" inputMode="decimal" placeholder={store.weights().slice(-1)[0] ? String(store.weights().slice(-1)[0].kg).replace(".", ",") : "78,0"} value={kg} onChange={e => setKg(e.target.value)} />kg</span></label>
-    {cfg.qs.map(([q, opts], i) => <div key={q} className="q"><span className="qt">{q}</span>
+    {cfg.qs.map(([q, opts], i) => <div key={q} className="q"><span className="qt">{q}{program === "bjj" && i === 1 && tat.length > 0 && <span className="small muted"> · dal diario: {tat.map(t => `${t.kind === "gi" ? "gi" : "no-gi"}${t.rpe ? ` RPE ${t.rpe}` : ""}`).join(", ")}</span>}</span>
       <div className="seg3">{opts.map((o, j) => <button key={o} type="button" aria-pressed={ans[i] === j} onClick={() => { const a = [...ans]; a[i] = j; setAns(a); }}>{o}</button>)}</div></div>)}
     <p className="small muted">Un dolore articolare o tendineo sopra 3/10 vince sul punteggio: Basso e togli l’esercizio che lo provoca.{program === "bjj" ? ` Dal ${dayLong(noAltoFrom(race))} niente Alto.` : ""}</p>
     <button type="button" className="primary" disabled={!done} onClick={() => {

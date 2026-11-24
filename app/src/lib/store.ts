@@ -13,13 +13,18 @@ export interface Checkin { date: string; program: "bjj" | "ironman"; ans: number
 export interface WeightLog { date: string; kg: number }
 export type Sport = "nuoto" | "bici" | "corsa";
 export interface EnduranceLog { id: string; date: string; sport: Sport; min: number; km?: number; rpe?: number; note?: string }
-export interface Settings { division: "gi_medio" | "gi_leve" | "nogi_medio" | "nogi_leve" | "nogi_meio_pesado"; uniformKg: number; raceDate?: string }
+/** Tatami: gi o no-gi, minuti, round di sparring, quanto è stato duro (RPE 1–10).
+ *  Online viaggia come record "endurance" con id che inizia per "tat-" (lo schema Supabase accetta già quel tipo). */
+export interface TatamiLog { id: string; date: string; kind: "gi" | "nogi"; min: number; rounds?: number; rpe?: number; note?: string }
+/** barKg/trapKg: peso del bilanciere e della trap bar; plates: dischi che hai (kg, uno per tipo, si caricano a coppie). */
+export interface Settings { division: "gi_medio" | "gi_leve" | "nogi_medio" | "nogi_leve" | "nogi_meio_pesado"; uniformKg: number; raceDate?: string; barKg?: number; trapKg?: number; plates?: number[] }
 
 type Kind = "session" | "weight" | "settings" | "endurance";
-const K = { checkin: "jdi.checkin", endurance: "jdi.endurance", sessions: "jdi.sessions", weights: "jdi.weights", settings: "jdi.settings", outbox: "jdi.outbox", pulled: "jdi.pulledAt" };
+const K = { tatami: "jdi.tatami", checkin: "jdi.checkin", endurance: "jdi.endurance", sessions: "jdi.sessions", weights: "jdi.weights", settings: "jdi.settings", outbox: "jdi.outbox", pulled: "jdi.pulledAt" };
 const read = <T,>(k: string, d: T): T => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) as T : d; } catch { return d; } };
 const write = (k: string, v: unknown) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch { /* storage pieno o bloccato */ } };
 const DEF_SETTINGS: Settings = { division: "gi_medio", uniformKg: 2 };
+const isTat = (id: string) => id.startsWith("tat-");
 
 /* ---------- coda delle modifiche da mandare online ---------- */
 /* chiave "tipo|id" → numero di modifiche: dopo l'invio tolgo solo le voci non cambiate nel frattempo */
@@ -47,19 +52,23 @@ export const store = {
   endurance: () => read<EnduranceLog[]>(K.endurance, []),
   saveEndurance(e: EnduranceLog) { const all = store.endurance().filter(x => x.id !== e.id); all.push(e); all.sort((a, b) => a.date.localeCompare(b.date)); write(K.endurance, all); mark("endurance", e.id); },
   deleteEndurance(id: string) { write(K.endurance, store.endurance().filter(x => x.id !== id)); mark("endurance", id); },
+  tatami: () => read<TatamiLog[]>(K.tatami, []),
+  saveTatami(t: TatamiLog) { const all = store.tatami().filter(x => x.id !== t.id); all.push(t); all.sort((a, b) => a.date.localeCompare(b.date)); write(K.tatami, all); mark("endurance", t.id); },
+  deleteTatami(id: string) { write(K.tatami, store.tatami().filter(x => x.id !== id)); mark("endurance", id); },
   settings: () => ({ ...DEF_SETTINGS, ...read<Partial<Settings>>(K.settings, {}) }),
   checkin: (date: string): Checkin | null => { const c = read<Checkin | null>(K.checkin, null); return c && c.date === date ? c : null; },
   saveCheckin(c: Checkin | null) { if (c) write(K.checkin, c); else { try { localStorage.removeItem(K.checkin); } catch { /* */ } } },
   saveSettings(s: Settings) { write(K.settings, s); mark("settings", "main"); },
 
   /** Backup completo in un file JSON (paracadute, indipendente da Supabase). */
-  exportAll: () => JSON.stringify({ app: "JustDoIT", v: 2, at: new Date().toISOString(), sessions: store.sessions(), weights: store.weights(), endurance: store.endurance(), settings: store.settings() }, null, 1),
+  exportAll: () => JSON.stringify({ app: "JustDoIT", v: 2, at: new Date().toISOString(), sessions: store.sessions(), weights: store.weights(), endurance: store.endurance(), tatami: store.tatami(), settings: store.settings() }, null, 1),
   importAll(json: string): string {
     const d = JSON.parse(json);
     if (d?.app !== "JustDoIT") throw new Error("Questo file non è un backup di JustDoIT.");
     (d.sessions as SessionLog[] ?? []).forEach(s => store.saveSession(s));
     (d.weights as WeightLog[] ?? []).forEach(w => store.saveWeight(w));
     (d.endurance as EnduranceLog[] ?? []).forEach(e => store.saveEndurance(e));
+    (d.tatami as TatamiLog[] ?? []).forEach(t => store.saveTatami(t));
     if (d.settings) store.saveSettings({ ...DEF_SETTINGS, ...d.settings });
     return `${(d.sessions ?? []).length} sedute e ${(d.weights ?? []).length} pesate importate.`;
   },
@@ -77,7 +86,7 @@ function scheduleSync() { syncState.pending = outbox().length; clearTimeout(time
 function localData(kind: Kind, id: string): unknown | null {
   if (kind === "session") return store.sessions().find(s => s.id === id) ?? null;
   if (kind === "weight") return store.weights().find(w => w.date === id) ?? null;
-  if (kind === "endurance") return store.endurance().find(e => e.id === id) ?? null;
+  if (kind === "endurance") return (isTat(id) ? store.tatami() : store.endurance()).find(e => e.id === id) ?? null;
   return read<Settings | null>(K.settings, null);
 }
 function applyRemote(kind: Kind, id: string, data: unknown, deleted: boolean) {
@@ -89,6 +98,10 @@ function applyRemote(kind: Kind, id: string, data: unknown, deleted: boolean) {
     const all = read<WeightLog[]>(K.weights, []).filter(w => w.date !== id);
     if (!deleted) { all.push(data as WeightLog); all.sort((a, b) => a.date.localeCompare(b.date)); }
     write(K.weights, all);
+  } else if (kind === "endurance" && isTat(id)) {
+    const all = read<TatamiLog[]>(K.tatami, []).filter(e => e.id !== id);
+    if (!deleted) { all.push(data as TatamiLog); all.sort((a, b) => a.date.localeCompare(b.date)); }
+    write(K.tatami, all);
   } else if (kind === "endurance") {
     const all = read<EnduranceLog[]>(K.endurance, []).filter(e => e.id !== id);
     if (!deleted) { all.push(data as EnduranceLog); all.sort((a, b) => a.date.localeCompare(b.date)); }

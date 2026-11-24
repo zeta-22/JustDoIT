@@ -1,5 +1,6 @@
 -- JustDoIT: archivio online. Da incollare una volta in Supabase → SQL Editor → Run.
 -- Un'unica tabella "records": ogni riga è una seduta, una pesata o le impostazioni, salvata come JSON.
+-- Il diario del tatami viaggia come kind 'endurance' con id che inizia per "tat-" (app/src/lib/store.ts): nessuna modifica allo schema.
 -- Ogni riga appartiene a un utente e solo lui la vede (Row Level Security).
 
 create table if not exists public.records (

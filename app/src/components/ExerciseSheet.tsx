@@ -1,5 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
-import { exercise } from "../lib/plan";
+import { currentPhaseId, exercise, isoToday, phase, planWeek, volFor } from "../lib/plan";
+import { suggest } from "../lib/progress";
+import { BAR_OF } from "../lib/plates";
+import { BIG_LIFTS } from "../data/library";
+import { raceDate } from "../lib/labels";
+import { PlateLine, RampChips } from "./Plates";
 import { store } from "../lib/store";
 import { FIGS } from "../data/figures";
 import { LIB } from "../data/library";
@@ -16,6 +21,11 @@ export default function ExerciseSheet({ id, onClose }: { id: string; onClose: ()
   useEffect(() => { const k = (e: KeyboardEvent) => e.key === "Escape" && onClose(); window.addEventListener("keydown", k); return () => window.removeEventListener("keydown", k); }, [onClose]);
   const hist = useMemo(() => store.sessions().filter(s => s.finished).flatMap(s => s.items.filter(x => x.ex === id && x.sets.some(z => z.done))
     .map(x => ({ date: s.date, sets: x.sets.filter(z => z.done) }))).reverse(), [id]);
+  /* carico consigliato per la prossima volta (volume Medio della fase attuale), altrimenti l'ultimo carico */
+  const nextKg = useMemo(() => { const last = store.lastFor(id); if (!last) return null; const race = raceDate(); const ph = phase(currentPhaseId(isoToday(), race));
+    const it = [...ph.sessions, ...phase("bjj_domenica").sessions].flatMap(s => s.items).find(i => i.ex === id);
+    if (it) { const a = suggest(id, volFor(it, "medio", planWeek(ph.id, isoToday(), race)), it.intensity, last); if (a) return a.kg; }
+    return Math.max(0, ...last.map(z => parseNum(z.kg) ?? 0)) || null; }, [id]);
   const best = useMemo(() => { let b: { kg: number; reps: number; e: number } | null = null;
     hist.forEach(h => h.sets.forEach(z => { const k = parseNum(z.kg) ?? 0, r = parseNum(z.reps) ?? 0; if (k > 0 && (!b || e1rm(k, r) > b.e)) b = { kg: k, reps: r, e: e1rm(k, r) }; })); return b as { kg: number; reps: number; e: number } | null; }, [hist]);
   return <div className="sheet-bg" onClick={onClose}>
@@ -33,6 +43,8 @@ export default function ExerciseSheet({ id, onClose }: { id: string; onClose: ()
       {ex.why && <p><b>Perché:</b> {ex.why}</p>}
       {ex.mistake && <p className="muted"><b>Errore tipico:</b> {ex.mistake}</p>}
       {lib?.reg && <p className="regbox"><b>Versione più facile</b> (se fa male o sei stanco): {lib.reg}</p>}
+      {BAR_OF[id] && nextKg && <div className="stack-s card-in"><span className="over">Prossima volta</span>
+        <PlateLine ex={id} kg={nextKg} />{BIG_LIFTS.has(id) && <RampChips ex={id} kg={nextKg} />}</div>}
       {hist.length > 0 && <div className="stack-s">
         <div className="row between"><span className="over">Le tue ultime volte</span>{best && best.reps > 0 && <span className="small muted">1RM stimato <b className="num">{kgStr(best.e)} kg</b></span>}</div>
         <ul className="plain">{hist.slice(0, 4).map((h, i) => <li key={i}><span>{dayMonth(h.date)}</span>

@@ -5,6 +5,7 @@ import { sessionStats } from "./lib/session";
 import { TimerProvider, useRestStop } from "./components/Timer";
 import { ToastProvider, useToast } from "./components/Toast";
 import ExerciseSheet from "./components/ExerciseSheet";
+import TatamiSheet from "./components/TatamiSheet";
 import Icon, { type IconName } from "./components/Icon";
 import Today from "./screens/Today";
 import { raceDate } from "./lib/labels";
@@ -29,14 +30,20 @@ function Shell() {
   const toast = useToast(); const stopRest = useRestStop();
   const [running, setRunning] = useState<SessionLog | null>(() => store.sessions().find(s => !s.finished) ?? null);
   const [nav, setNav] = useState<Nav>({ tab: "oggi", d: 0 });
-  const [prog, setProg] = useState<ProgMode>("palestra");
+  const [prog, setProg] = useState<ProgMode>("insieme");
   const [rev, setRev] = useState(0); // cambia quando arrivano dati da un altro dispositivo
   const after = useRef<(() => void) | null>(null);
+  const [openCheck, setOpenCheck] = useState(false);
 
   useEffect(() => {
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
     const base: Nav = { tab: "oggi", d: 0 }; history.replaceState(base, "");
+    /* scorciatoie dall'icona dell'app (manifest): ?go=checkin | tatami | piano | esercizi | progressi */
+    const go = new URLSearchParams(location.search).get("go"); if (go) history.replaceState(base, "", location.pathname);
     if (running) { const n: Nav = { ...base, view: "run", d: 1 }; history.pushState(n, ""); setNav(n); }
+    else if (go === "tatami") { const n: Nav = { ...base, sheet: "@tatami", d: 1 }; history.pushState(n, ""); setNav(n); }
+    else if (go === "checkin") setOpenCheck(true);
+    else if (go && ["piano", "esercizi", "progressi", "profilo"].includes(go)) { const n: Nav = { tab: go as Tab, d: 1 }; history.pushState(n, ""); setNav(n); }
     const onPop = (e: PopStateEvent) => { setNav((e.state as Nav) ?? base); const f = after.current; after.current = null; f?.(); };
     const onSync = (e: Event) => { if ((e as CustomEvent).detail?.changed) setRev(r => r + 1); };
     window.addEventListener("popstate", onPop); window.addEventListener("jdi:sync", onSync);
@@ -69,10 +76,10 @@ function Shell() {
         : view === "run" && running ? <Runner log={running} onChange={setRunning} onOpen={openSheet} onFinish={() => push({ tab: nav.tab, view: "sum" })} onMinimize={() => history.back()} />
         : <>
           {nav.tab === "oggi" && <Today onStart={l => { store.saveSession(l); setRunning(l); push({ tab: "oggi", view: "run" }); }} onOpen={openSheet}
-            onAccount={() => goTab("profilo")} onEndurance={() => { setProg("endurance"); goTab("progressi"); }} running={running} onResume={() => push({ tab: nav.tab, view: "run" })} />}
+            onAccount={() => goTab("profilo")} onEndurance={() => { setProg("endurance"); goTab("progressi"); }} running={running} onResume={() => push({ tab: nav.tab, view: "run" })} onTatami={() => openSheet("@tatami")} openCheck={openCheck} />}
           {nav.tab === "piano" && <PlanView onOpen={openSheet} />}
           {nav.tab === "esercizi" && <Library onOpen={openSheet} />}
-          {nav.tab === "progressi" && <ProgressView mode={prog} onMode={setProg} />}
+          {nav.tab === "progressi" && <ProgressView mode={prog} onMode={setProg} onTatami={() => openSheet("@tatami")} />}
           {nav.tab === "profilo" && <Profile />}
         </>}
     </main>
@@ -80,6 +87,7 @@ function Shell() {
       <Icon n="dumb" size={20} /><span><b>Seduta in corso</b><span className="num"> · {st.done}/{st.total} serie</span></span><span className="go">Riprendi</span></button>}
     {!full && <nav className="bottomnav" aria-label="Sezioni">{TABS.map(([t, l, ic]) =>
       <button key={t} type="button" aria-current={nav.tab === t ? "page" : undefined} onClick={() => goTab(t)}><span className="ni"><Icon n={ic} /></span>{l}</button>)}</nav>}
-    {nav.sheet && <ExerciseSheet id={nav.sheet} onClose={() => history.back()} />}
+    {nav.sheet === "@tatami" ? <TatamiSheet onClose={() => { setRev(r => r + 1); history.back(); }} />
+      : nav.sheet && <ExerciseSheet id={nav.sheet} onClose={() => history.back()} />}
   </>;
 }

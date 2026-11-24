@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { RACE_DEFAULT, isoToday, noAltoFrom, planB } from "../lib/plan";
+import { ALL_PLATES, DEF_PLATES } from "../lib/plates";
 import { DIVISIONS, setPassword, signIn, signInPassword, signOut, store, sync, type Settings } from "../lib/store";
 import { SYNC_LABEL, useSync } from "../lib/useSync";
 import { dayLong, dec, parseNum } from "../lib/format";
@@ -12,6 +13,7 @@ export default function Profile() {
     <header className="top"><div><span className="over">Impostazioni e dati</span><h1>Profilo</h1></div></header>
     <RaceSetting />
     <Category />
+    <Gear />
     <Account />
     <Backup />
     <p className="small muted center">JustDoIT · uso personale</p>
@@ -40,6 +42,24 @@ function Category() {
     <label className="field" htmlFor="unif">Peso del {div.uniform === "gi" ? "kimono" : "rashguard e pantaloncini"} (kg)<input id="unif" inputMode="decimal" value={u}
       onChange={e => { setU(e.target.value); const n = parseNum(e.target.value); if (n !== null && n >= 0 && n < 6) { const s = { ...st, uniformKg: n }; setSt(s); store.saveSettings(s); } }} /></label>
     <p className="small muted">Limiti IBJJF, pesata con la divisa subito prima del primo incontro. Verifica sul regolamento della tua gara.</p>
+  </div>;
+}
+
+/** Attrezzi della tua palestra: servono al calcolo dei dischi e dell'avvicinamento. */
+function Gear() {
+  const [st, setSt] = useState<Settings>(store.settings()); const plates = st.plates?.length ? st.plates : DEF_PLATES;
+  const save = (s: Settings) => { setSt(s); store.saveSettings(s); };
+  const [bar, setBar] = useState(dec(st.barKg ?? 20, 0)); const [trap, setTrap] = useState(dec(st.trapKg ?? 25, 0));
+  return <div className="card pad stack-s">
+    <h3>Attrezzi</h3>
+    <div className="grid2">
+      <label className="field" htmlFor="barkg">Bilanciere (kg)<input id="barkg" inputMode="decimal" value={bar} onChange={e => { setBar(e.target.value); const n = parseNum(e.target.value); if (n && n > 0 && n < 50) save({ ...store.settings(), barKg: n }); }} /></label>
+      <label className="field" htmlFor="trapkg">Trap bar (kg)<input id="trapkg" inputMode="decimal" value={trap} onChange={e => { setTrap(e.target.value); const n = parseNum(e.target.value); if (n && n > 0 && n < 50) save({ ...store.settings(), trapKg: n }); }} /></label>
+    </div>
+    <span className="field">Dischi che ci sono in palestra</span>
+    <div className="chips">{ALL_PLATES.map(p => <button key={p} type="button" aria-pressed={plates.includes(p)} onClick={() => {
+      const next = plates.includes(p) ? plates.filter(x => x !== p) : [...plates, p].sort((a, b) => b - a); if (next.length) save({ ...store.settings(), plates: next }); }}>{dec(p, p % 1 ? (p * 100 % 10 ? 2 : 1) : 0)}</button>)}</div>
+    <p className="small muted">Servono per dirti quali dischi mettere per lato e per le serie di avvicinamento.</p>
   </div>;
 }
 

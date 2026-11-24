@@ -9,6 +9,9 @@ import { useRest } from "../components/Timer";
 import Thumb from "../components/Thumb";
 import Icon from "../components/Icon";
 import MuscleMap from "../components/MuscleMap";
+import { PlateLine, RampChips } from "../components/Plates";
+import { BAR_OF, ramp as rampOf } from "../lib/plates";
+import { parseNum } from "../lib/format";
 import { VL, raceDate } from "../lib/labels";
 
 /** Schermo sempre acceso durante la seduta (se il telefono lo permette): il timer resta visibile tra una serie e l'altra. */
@@ -41,6 +44,7 @@ export function Runner({ log, onChange, onOpen, onFinish, onMinimize }: { log: S
   const nextLabel = (l: SessionLog) => { const n = nextSet(l); if (!n) return "fine della seduta"; const it = s.items[n.i];
     return `${it.code} · ${exercise(it.ex).name}, serie ${n.j + 1}`; };
   const warm = s.warmup ? splitWarm(s.warmup) : null;
+  const firstBar = s.warmup && rampOf(s.warmup).length ? s.items.findIndex(x => BAR_OF[x.ex]) : -1;
   return <section className="stack run">
     <div className="runbar">
       <button type="button" className="iconbtn" onClick={onMinimize} aria-label="Riduci la seduta"><Icon n="down" /></button>
@@ -63,7 +67,7 @@ export function Runner({ log, onChange, onOpen, onFinish, onMinimize }: { log: S
       </button>;
       return <div key={gi} className={"card exg" + (g.length > 1 ? " superset" : "")}>
         {g.length > 1 && <button type="button" className="ss-lab" onClick={toggle}><Icon n="link" size={14} />Superserie {s.items[g[0]].code.replace(/\d+$/, "")} · alterna gli esercizi<Icon n="up" size={16} /></button>}
-        {g.map(i => <RunItem key={i} it={s.items[i]} vol={log.vol} v={volFor(s.items[i], log.vol, week)} log={log.items[i]} cur={nx?.i === i ? nx.j : -1}
+        {g.map(i => <RunItem key={i} it={s.items[i]} vol={log.vol} v={volFor(s.items[i], log.vol, week)} log={log.items[i]} cur={nx?.i === i ? nx.j : -1} rampText={i === firstBar ? s.warmup : undefined}
           onChange={x => {
             const ticked = x.sets.filter(z => z.done).length > log.items[i].sets.filter(z => z.done).length;
             const nl = { ...log, items: log.items.map((y, j) => j === i ? x : y) }; upd(nl);
@@ -84,7 +88,7 @@ function splitWarm(w: string) {
   return { head: m ? m[1].trim() : "", items: body.split(/\s·\s/).map(x => x.trim()).filter(Boolean) };
 }
 
-function RunItem({ it, vol, v, log, cur, onChange, onOpen, onBasso, onToggle }: { it: Item; vol: Vol; v: string; log: ItemLog; cur: number; onChange: (l: ItemLog) => void; onOpen: (id: string) => void; onBasso: () => void; onToggle?: () => void }) {
+function RunItem({ it, vol, v, log, cur, rampText, onChange, onOpen, onBasso, onToggle }: { it: Item; vol: Vol; v: string; log: ItemLog; cur: number; rampText?: string; onChange: (l: ItemLog) => void; onOpen: (id: string) => void; onBasso: () => void; onToggle?: () => void }) {
   const ex = exercise(it.ex); const last = useMemo(() => store.lastFor(it.ex), [it.ex]);
   const adv = useMemo(() => adviceFor(it, v, last), [it, v, last]);
   const lib = LIB[it.ex]; const trpe = targetRpe(it.intensity);
@@ -116,6 +120,8 @@ function RunItem({ it, vol, v, log, cur, onChange, onOpen, onBasso, onToggle }: 
     {it.note && <p className="inote">{it.note}</p>}
     {showReg && lib?.reg && <p className="regbox small"><b>Versione più facile:</b> {lib.reg}</p>}
     {adv && <p className="advice"><b>{kgStr(adv.kg)} kg{adv.reps ? ` × ${adv.reps}` : ""}.</b> {adv.why}</p>}
+    {BAR_OF[it.ex] && (() => { const j = cur >= 0 ? cur : Math.max(0, log.sets.findIndex(z => !z.done)); const k = parseNum(log.sets[j]?.kg) ?? parseNum(prop[j]?.kg);
+      return k ? <>{rampText && !log.sets.some(z => z.done) && <RampChips ex={it.ex} kg={k} text={rampText} />}<PlateLine ex={it.ex} kg={k} /></> : null; })()}
     {!last && log.sets.length > 0 && lib?.kind !== "cond" && trpe !== null && <p className="advice"><b>Prima volta: trova il carico.</b> 2–3 serie di avvicinamento salendo di peso finché la serie ti sembra RPE {trpe} (ne restano {Math.max(0, 10 - trpe)}). Segna kg, ripetizioni e RPE: dalla prossima volta il carico te lo propongo io.</p>}
     {log.sets.length === 0 ? <p className="small muted">Con questo volume l’esercizio si salta.</p> :
       <div className="sets" role="table" aria-label={`Serie di ${ex.name}`}>
