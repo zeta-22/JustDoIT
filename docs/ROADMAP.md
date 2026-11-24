@@ -24,16 +24,16 @@
 - Diario nuoto/bici/corsa: registro, passo, riepilogo settimanale, avviso +10%, ore/settimana (sincronizzato)
 - 10 animazioni nuove approvate e nell'app (`docs/prototipi/revisione-animazioni-1.html`): Nordic, trap bar, hip thrust, single-leg RDL, swing, front squat, jump squat, mid-thigh pull, panca, trazioni
 
-## v0.4 — in corso (25 novembre)
+## v0.4 — fatto (25 novembre)
 - Vista da dietro (`engine/back.js`, figure con `view: "back"` in figures.ts) per i movimenti che di profilo non si capiscono
-- Gruppo 2 di animazioni in revisione (`docs/prototipi/revisione-animazioni-2.html`): extrarotazioni e band pull-apart (da dietro), rematore col gi, chest-supported row, Zercher, hang clean, box jump, rollout, corda, Spanish squat
+- Gruppo 2 di animazioni approvato e nell'app, 34 esercizi animati su 71 (`docs/prototipi/revisione-animazioni-2.html`): extrarotazioni e band pull-apart (da dietro), rematore col gi, chest-supported row, Zercher, hang clean, box jump, rollout, corda, Spanish squat
 - Ritocchi gruppo 1: trazioni (viso libero), hip thrust (glutei visibili), swing (kettlebell in linea con il braccio)
 - Schermo sempre acceso durante la seduta (Wake Lock, se il telefono lo permette)
 - Tolti da piano.json i campi `fig` (inutilizzati e in parte sbagliati): le animazioni stanno solo in figures.ts
 - Estensioni delle dita: niente animazione (movimento della sola mano), restano testo e mappa muscoli
 
 ## Prossimi passi
-1. Approvazione gruppo 2 → collegare in figures.ts (FIG: girow, csrow, zercher, clean, boxjump, rollout, rope, spanish; FIGB da dietro: extrarot, pullapart)
+1. **Analisi generale di grafica e UX** e rinnovo (in una chat nuova): confronto con le migliori app di allenamento, prototipo da approvare, rinnovo a pezzi
 2. **Gruppo 3** entro il 20 dicembre: kit Messico (piegamenti, inverted row, pistol, broad jump), mobilità (90/90, dorsiflessione, McGill, open book/couch), adductor squeeze, snapdown; poi Y-T-W da dietro ed esercizi Ironman
 3. Prova sul campo: una settimana in palestra + prova in modalità aereo prima del Messico
 4. Ironman vero (dopo la gara): ricerca nuoto/bici/corsa e valutazione sub-10 h, piano settimanale che si adatta al diario (oggi c'è solo il registro)

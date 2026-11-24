@@ -28,4 +28,15 @@ export const FIGS: Record<string, FigInfo> = {
   panca: { fig: "bench", p: ["pettorali"], s: ["tricipiti", "deltoidi"] },
   trazioni_gi: { fig: "pullup", p: ["dorsali", "avambracci"], s: ["bicipiti", "trapezi"] },
   trazioni: { fig: "pullup", p: ["dorsali"], s: ["bicipiti", "trapezi", "avambracci"] },
+  // gruppo 2, approvato da Matteo il 25/11 (docs/prototipi/revisione-animazioni-2.html)
+  extrarot: { fig: "extrarot", view: "back", p: ["deltoidi"], s: ["trapezi"] },
+  band_pull_apart: { fig: "pullapart", view: "back", p: ["deltoidi", "trapezi"], s: [] },
+  rematore_gi: { fig: "girow", p: ["dorsali", "avambracci"], s: ["bicipiti", "trapezi", "deltoidi"] },
+  cs_row: { fig: "csrow", p: ["dorsali"], s: ["trapezi", "bicipiti", "deltoidi"] },
+  zercher: { fig: "zercher", p: ["quadricipiti", "glutei"], s: ["erettori", "addominali", "bicipiti"] },
+  hang_clean: { fig: "clean", p: ["glutei", "quadricipiti", "trapezi"], s: ["femorali", "polpacci", "deltoidi"] },
+  box_jump: { fig: "boxjump", p: ["quadricipiti", "glutei"], s: ["polpacci"] },
+  rollout: { fig: "rollout", p: ["addominali"], s: ["dorsali", "obliqui"] },
+  rope: { fig: "rope", p: ["dorsali", "avambracci"], s: ["bicipiti", "addominali"] },
+  spanish_squat: { fig: "spanish", p: ["quadricipiti"], s: ["glutei"] },
 };
