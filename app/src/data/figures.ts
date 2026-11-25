@@ -70,4 +70,6 @@ export const FIGS: Record<string, FigInfo> = {
   passi_laterali: { fig: "bandwalk", view: "back", p: ["glutei"], s: ["quadricipiti"] },
   abduzione: { fig: "abduction", view: "back", p: ["glutei"], s: ["obliqui"] },
   cossack: { fig: "cossack", view: "back", p: ["adduttori", "quadricipiti"], s: ["glutei"] },
+  // 90/90 di fronte, approvato da Matteo il 25/11 (docs/prototipi/revisione-90-90.html): figura seduta, engine/front.js
+  mob_90_90: { fig: "n9090", view: "front", p: ["glutei", "adduttori"], s: [], part: "il 90/90 con il cambio lato senza mani (i CARs a quattro zampe sono descritti sotto)" },
 };
