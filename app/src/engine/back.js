@@ -116,7 +116,7 @@ FIGB.pullapart = {
 /* geometria: a -69,6° il gomito (sotto la spalla, braccio verticale) e il piede di sotto toccano entrambi il pavimento */
 (() => { const A = { rot: -69.6, tx: 71, ty: -7.8, arm: { u: [.16, .99], f: [-.05, .99] }, armL: { u: [.95, .3], f: [.05, .04] } };
   FIGB.sideplank = { poses: [A, { ...A, rot: -70 }], t1: 1.6, t2: 1.6, h1: .6, h2: .6 }; })();
-/* ---------- gruppo 5 (in revisione: docs/prototipi/revisione-animazioni-5.html) ---------- */
+/* ---------- gruppo 5 (approvato il 25/11, collegato in data/figures.ts) ---------- */
 const HANG = { u: [.2, .98], f: [.12, .99] };
 /* Pelvic drop: in piedi sul gradino con la gamba destra (del disegno), il bacino scende dal lato libero e risale */
 (() => { const lv = t => { const r = t * Math.PI / 180, h = [107 - 14 * Math.cos(r), 54 - 14 * Math.sin(r)];

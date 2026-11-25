@@ -65,4 +65,9 @@ export const FIGS: Record<string, FigInfo> = {
   step_up: { fig: "stepup", p: ["quadricipiti", "glutei"], s: ["adduttori"] },
   back_squat: { fig: "bsquat", p: ["quadricipiti", "glutei"], s: ["adduttori", "erettori"] },
   suitcase: { fig: "suitcase", p: ["obliqui", "avambracci"], s: ["trapezi", "addominali", "glutei"] },
+  // gruppo 5, approvato da Matteo il 25/11 (docs/prototipi/revisione-animazioni-5.html): vista da dietro con gambe mobili
+  pelvic_drop: { fig: "pelvicdrop", view: "back", p: ["glutei"], s: ["obliqui"] },
+  passi_laterali: { fig: "bandwalk", view: "back", p: ["glutei"], s: ["quadricipiti"] },
+  abduzione: { fig: "abduction", view: "back", p: ["glutei"], s: ["obliqui"] },
+  cossack: { fig: "cossack", view: "back", p: ["adduttori", "quadricipiti"], s: ["glutei"] },
 };
