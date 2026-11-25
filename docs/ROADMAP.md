@@ -55,7 +55,7 @@
   - Scorciatoie dall'icona dell'app: check-in, tatami, progressi, esercizi
 
 - **Icona nuova** (24/11): la punta di una cintura blu con la barra nera, tre gradi e il quarto tratteggiato (`app/public/icon-*.png`, `favicon.svg`); al posto di "JDI" rosso
-- **Fase 3 — fatta sul ramo `claude/loving-fermi-tjov7d`, da provare prima di main** (24/11):
+- **Fase 3 — fatta e approvata, su main** (25/11):
   - Profilo → App (preferenze di questo telefono, `lib/prefs.ts`): tema automatico/chiaro/scuro, timer automatico, suono e vibrazione a fine recupero, schermo acceso in seduta, avviso di fine recupero con l'app in secondo piano (notifica; a schermo spento può arrivare in ritardo)
   - Promemoria del mattino: evento giornaliero in Google Calendar con il link al check-in (una web app non può svegliarsi da sola; le notifiche push vere richiedono una funzione su Supabase, da fare se servono)
   - Pulsante timer nella barra della seduta (per far partire il recupero a mano)
