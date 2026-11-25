@@ -52,4 +52,17 @@ export const FIGS: Record<string, FigInfo> = {
   bird_dog: { fig: "birddog", p: ["erettori", "glutei"], s: ["addominali", "deltoidi"] },
   mcgill: { fig: "birddog", p: ["erettori", "glutei"], s: ["addominali", "deltoidi"], part: "il bird dog, uno dei 3 (curl-up e side plank sono tenute ferme descritte sotto)" },
   mobilita_im: { fig: "couch2", p: ["quadricipiti"], s: ["glutei"], part: "il couch stretch, uno dei 3 (open book e sleeper stretch si fanno sul fianco e sono descritti sotto)" },
+  // gruppo 4, approvato da Matteo il 25/11 (docs/prototipi/revisione-animazioni-4.html)
+  ytw: { fig: "ytw", view: "back", p: ["trapezi", "deltoidi"], s: ["erettori"] },
+  side_plank: { fig: "sideplank", view: "back", p: ["obliqui"], s: ["glutei", "addominali"] },
+  pulldown_bt: { fig: "straightpd", p: ["dorsali"], s: ["tricipiti", "addominali"] },
+  pogo: { fig: "pogo", p: ["polpacci"], s: ["tibiale", "quadricipiti"] },
+  corda: { fig: "jumprope", p: ["polpacci"], s: ["avambracci", "deltoidi"] },
+  bounding: { fig: "bounding", p: ["glutei", "polpacci"], s: ["femorali", "quadricipiti"] },
+  drop_jump: { fig: "dropjump", p: ["polpacci", "quadricipiti"], s: ["glutei"] },
+  leg_press_mono: { fig: "legpress", p: ["quadricipiti", "glutei"], s: ["femorali"] },
+  flex_anca: { fig: "hipflex", p: ["quadricipiti"], s: ["addominali"] },
+  step_up: { fig: "stepup", p: ["quadricipiti", "glutei"], s: ["adduttori"] },
+  back_squat: { fig: "bsquat", p: ["quadricipiti", "glutei"], s: ["adduttori", "erettori"] },
+  suitcase: { fig: "suitcase", p: ["obliqui", "avambracci"], s: ["trapezi", "addominali", "glutei"] },
 };

@@ -376,7 +376,7 @@ const FIG={};
   FIG.couch2={poses:[A,mod(A,P=>{P.hip=[82,98];P.t=-4;P.arms=[{h:[112,92],b:[1,1]},{h:[114,93],b:[1,1]}];})],t1:2,t2:2,h1:.8,h2:2,
   props:[{k:"wall",x:48},{k:"txt",x:118,y:22,s:"tieni 45–60\"",anchor:"start"}]};})();
 
-/* ---------- gruppo 4 (in revisione: docs/prototipi/revisione-animazioni-4.html) ---------- */
+/* ---------- gruppo 4 (approvato il 25/11, collegato in data/figures.ts) ---------- */
 /* Pulldown a braccia tese: busto inclinato, braccia tese dal cavo alto fino alle cosce */
 (()=>{const A={hip:[88,70],t:38,hd:-10,legs:[{f:[100,127],b:[1,0]},{f:[76,127],b:[1,0]}],arms:[{h:[154,20],b:[0,1]},{h:[152,21],b:[0,1]}]};
   FIG.straightpd={poses:[A,mod(A,P=>{P.arms=[{h:[106,81],b:[1,0]},{h:[104,82],b:[1,0]}];})],t1:1,t2:2,h1:.4,h2:.5,
@@ -878,7 +878,7 @@ window.ENG={FIG,PROP,skel,lerp,hero,heroFlat,FIGB:BACK.FIGB,renderBack:BACK.rend
   ];
   const ease = x => .5 - .5 * Math.cos(Math.PI * x);
   function state(ex, time) {
-    if (ex.loop) { const P = ex.poses, n = P.length, tt = (time % (n * ex.loop)) / ex.loop, i = Math.floor(tt); return { pose: lerp(P[i], P[(i + 1) % n], tt - i), act: .8 }; }
+    if (ex.loop) { const P = ex.poses, n = P.length, tt = (time % (n * ex.loop)) / ex.loop, i = Math.min(n - 1, Math.floor(tt)); return { pose: lerp(P[i], P[(i + 1) % n], tt - i), act: .8 }; }
     const P = ex.poses, h1 = ex.h1 || 0, t1 = ex.t1 || 1, h2 = ex.h2 || 0, t2 = ex.t2 || 1; let x = time % (h1 + t1 + h2 + t2);
     if (x < h1) return { pose: P[0], act: .45 }; x -= h1;
     if (x < t1) return { pose: lerp(P[0], P[1], ease(x / t1)), act: .7 }; x -= t1;
@@ -903,6 +903,6 @@ window.ENG={FIG,PROP,skel,lerp,hero,heroFlat,FIGB:BACK.FIGB,renderBack:BACK.rend
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) speed = 0;
   document.querySelectorAll("[data-sp]").forEach(b => b.addEventListener("click", () => { speed = +b.dataset.sp;
     document.querySelectorAll("[data-sp]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); }));
-  frame(T); const loop = now => { T += (now - prev) / 1000 * speed; prev = now; frame(T); requestAnimationFrame(loop); }; requestAnimationFrame(loop);
+  frame(T); const loop = now => { T += Math.max(0, now - prev) / 1000 * speed; prev = now; frame(T); requestAnimationFrame(loop); }; requestAnimationFrame(loop);
 })();
 </script>

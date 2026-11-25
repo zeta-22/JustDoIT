@@ -14,7 +14,7 @@ function markup(id: string): string {
   const info = FIGS[id]; if (!info) return "";
   const mus = { p: info.p, s: info.s };
   try {
-    if (info.view === "back") { const ex = FIGB[info.fig] as Ex; if (!ex) return ""; return renderBack(ex, lerp(ex.poses[0], ex.poses[1], .6), mus, .9); }
+    if (info.view === "back") { const ex = FIGB[info.fig] as Ex; if (!ex) return ""; return renderBack(ex, lerp(ex.poses[0], ex.poses[1], .6), mus, .9).replace(/<line class="gnd"[^>]*\/>/, ""); }
     const ex = FIG[info.fig] as Ex; if (!ex) return "";
     const s = skel(lerp(ex.poses[0], ex.poses[1], .6));
     const pr = (front: boolean) => (ex.props || []).filter(p => (p.z === "front") === front).map(p => PROP[p.k](p, s, 0)).join("");

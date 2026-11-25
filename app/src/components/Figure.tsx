@@ -8,7 +8,8 @@ const ease = (x: number) => 0.5 - 0.5 * Math.cos(Math.PI * x);
 type Ex = { poses: unknown[]; t1?: number; t2?: number; h1?: number; h2?: number; loop?: number; props?: { k: string; z?: string }[] };
 function state(ex: Ex, time: number) {
   const P = ex.poses;
-  if (ex.loop) { const n = P.length, seg = ex.loop, tt = (time % (n * seg)) / seg, i = Math.floor(tt); return { pose: lerp(P[i], P[(i + 1) % n], tt - i), act: .8 }; }
+  /* tempo sempre ≥ 0 e indice dentro le pose: al primo fotogramma il browser può dare un tempo appena precedente all'avvio */
+  if (ex.loop) { const n = P.length, seg = ex.loop, L = n * seg, tt = (((time % L) + L) % L) / seg, i = Math.min(n - 1, Math.max(0, Math.floor(tt))); return { pose: lerp(P[i], P[(i + 1) % n], Math.min(1, tt - i)), act: .8 }; }
   const h1 = ex.h1 || 0, t1 = ex.t1 || 1, h2 = ex.h2 || 0, t2 = ex.t2 || 1; let x = time % (h1 + t1 + h2 + t2);
   if (x < h1) return { pose: P[0], act: .45 }; x -= h1;
   if (x < t1) return { pose: lerp(P[0], P[1], ease(x / t1)), act: .7 }; x -= t1;
@@ -35,7 +36,7 @@ export default function Figure({ info, speed = 1 }: { info: FigInfo; speed?: num
     const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     if (reduce) { draw((ex.h1 || 0) + (ex.t1 || 1) + .01); return; }
     let T = 0, prev = performance.now(), raf = 0;
-    const loop = (now: number) => { T += (now - prev) / 1000 * sp.current; prev = now; draw(T); raf = requestAnimationFrame(loop); };
+    const loop = (now: number) => { T += Math.max(0, now - prev) / 1000 * sp.current; prev = now; draw(T); raf = requestAnimationFrame(loop); };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
   }, [info]);

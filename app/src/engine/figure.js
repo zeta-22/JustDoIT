@@ -302,7 +302,7 @@ const FIG={};
   FIG.couch2={poses:[A,mod(A,P=>{P.hip=[82,98];P.t=-4;P.arms=[{h:[112,92],b:[1,1]},{h:[114,93],b:[1,1]}];})],t1:2,t2:2,h1:.8,h2:2,
   props:[{k:"wall",x:48},{k:"txt",x:118,y:22,s:"tieni 45–60\"",anchor:"start"}]};})();
 
-/* ---------- gruppo 4 (in revisione: docs/prototipi/revisione-animazioni-4.html) ---------- */
+/* ---------- gruppo 4 (approvato il 25/11, collegato in data/figures.ts) ---------- */
 /* Pulldown a braccia tese: busto inclinato, braccia tese dal cavo alto fino alle cosce */
 (()=>{const A={hip:[88,70],t:38,hd:-10,legs:[{f:[100,127],b:[1,0]},{f:[76,127],b:[1,0]}],arms:[{h:[154,20],b:[0,1]},{h:[152,21],b:[0,1]}]};
   FIG.straightpd={poses:[A,mod(A,P=>{P.arms=[{h:[106,81],b:[1,0]},{h:[104,82],b:[1,0]}];})],t1:1,t2:2,h1:.4,h2:.5,

@@ -91,7 +91,7 @@ td:first-child { font-weight: 600; white-space: nowrap; }
   ];
   const ease = x => .5 - .5 * Math.cos(Math.PI * x);
   function state(ex, time) {
-    if (ex.loop) { const P = ex.poses, n = P.length, tt = (time % (n * ex.loop)) / ex.loop, i = Math.floor(tt); return { pose: lerp(P[i], P[(i + 1) % n], tt - i), act: .8 }; }
+    if (ex.loop) { const P = ex.poses, n = P.length, tt = (time % (n * ex.loop)) / ex.loop, i = Math.min(n - 1, Math.floor(tt)); return { pose: lerp(P[i], P[(i + 1) % n], tt - i), act: .8 }; }
     const P = ex.poses, h1 = ex.h1 || 0, t1 = ex.t1 || 1, h2 = ex.h2 || 0, t2 = ex.t2 || 1; let x = time % (h1 + t1 + h2 + t2);
     if (x < h1) return { pose: P[0], act: .45 }; x -= h1;
     if (x < t1) return { pose: lerp(P[0], P[1], ease(x / t1)), act: .7 }; x -= t1;
@@ -115,6 +115,6 @@ td:first-child { font-weight: 600; white-space: nowrap; }
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) speed = 0;
   document.querySelectorAll("[data-sp]").forEach(b => b.addEventListener("click", () => { speed = +b.dataset.sp;
     document.querySelectorAll("[data-sp]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); }));
-  frame(T); const loop = now => { T += (now - prev) / 1000 * speed; prev = now; frame(T); requestAnimationFrame(loop); }; requestAnimationFrame(loop);
+  frame(T); const loop = now => { T += Math.max(0, now - prev) / 1000 * speed; prev = now; frame(T); requestAnimationFrame(loop); }; requestAnimationFrame(loop);
 })();
 </script>
