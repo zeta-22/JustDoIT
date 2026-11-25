@@ -3,6 +3,7 @@ import { currentPhaseId, isoToday, phase } from "./lib/plan";
 import { store, type SessionLog, type Sport } from "./lib/store";
 import { sessionStats } from "./lib/session";
 import { TimerProvider, useRestStop } from "./components/Timer";
+import { justUpdated, maybeReload } from "./lib/update";
 import { ToastProvider, useToast } from "./components/Toast";
 import ExerciseSheet from "./components/ExerciseSheet";
 import TatamiSheet from "./components/TatamiSheet";
@@ -48,6 +49,7 @@ function Shell() {
     const onPop = (e: PopStateEvent) => { setNav((e.state as Nav) ?? base); const f = after.current; after.current = null; f?.(); };
     const onSync = (e: Event) => { if ((e as CustomEvent).detail?.changed) setRev(r => r + 1); };
     window.addEventListener("popstate", onPop); window.addEventListener("jdi:sync", onSync);
+    if (justUpdated()) toast("App aggiornata all'ultima versione");
     return () => { window.removeEventListener("popstate", onPop); window.removeEventListener("jdi:sync", onSync); };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -66,7 +68,7 @@ function Shell() {
   const program = phase(currentPhaseId(isoToday(), raceDate())).program;
   useEffect(() => { const r = document.documentElement; r.dataset.program = program; r.dataset.nav = full ? "0" : "1"; }, [program, full]);
 
-  const finishSession = (msg: string) => { stopRest(); toBase(() => { setRunning(null); toast(msg); }); };
+  const finishSession = (msg: string) => { stopRest(); toBase(() => { setRunning(null); toast(msg); window.setTimeout(maybeReload, 2500); }); };
   const st = running ? sessionStats(running) : null;
 
   return <>

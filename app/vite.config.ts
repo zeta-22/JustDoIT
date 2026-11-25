@@ -7,6 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
+      injectRegister: false, // la registrazione è in src/lib/update.ts (controlla gli aggiornamenti anche al ritorno in primo piano)
       manifest: {
         name: "JustDoIT", short_name: "JustDoIT", lang: "it",
         description: "Piano palestra: gara BJJ, poi Ironman",
@@ -21,7 +22,8 @@ export default defineConfig({
           { name: "Esercizi", short_name: "Esercizi", url: "/?go=esercizi", icons: [{ src: "/icon-192.png", sizes: "192x192" }] },
         ],
       },
-      workbox: { globPatterns: ["**/*.{js,css,html,png,svg}"] },
+      // la versione nuova prende subito il controllo; la pagina si ricarica da sola quando può (src/lib/update.ts)
+      workbox: { globPatterns: ["**/*.{js,css,html,png,svg}"], skipWaiting: true, clientsClaim: true },
     }),
   ],
 });
