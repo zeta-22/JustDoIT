@@ -6,6 +6,9 @@
    la scheda lo dice e la mappa dei muscoli usa quelli dell'esercizio intero (data/library.ts). */
 export interface FigInfo { fig: string; p: string[]; s: string[]; view?: "back" | "front" | "detail"; part?: string }
 export const FIGS: Record<string, FigInfo> = {
+  /* primi piani (engine/detail.js), approvati il 25/11 */
+  short_foot: { fig: "shortfoot", view: "detail", p: ["muscoli del piede"], s: [] },
+  estensioni_dita: { fig: "fingerext", view: "detail", p: ["avambracci"], s: [] },
   rdl: { fig: "rdl", p: ["femorali", "glutei"], s: ["erettori", "avambracci"] },
   bulgaro: { fig: "bss", p: ["quadricipiti", "glutei"], s: ["adduttori", "femorali"] },
   copenhagen: { fig: "cop", p: ["adduttori"], s: ["obliqui", "addominali"] },
