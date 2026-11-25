@@ -39,5 +39,7 @@ export default function Figure({ info, speed = 1 }: { info: FigInfo; speed?: num
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
   }, [info]);
-  return <svg className="fig" viewBox="10 -8 180 140" role="img" aria-label="Animazione dell'esercizio"><g ref={g} /></svg>;
+  /* vb: alcune figure (es. step-up sul box) chiedono un riquadro più alto per non tagliare la testa */
+  const vb = ((info.view === "back" ? FIGB[info.fig] : FIG[info.fig]) as { vb?: string } | undefined)?.vb ?? "10 -8 180 140";
+  return <svg className="fig" viewBox={vb} role="img" aria-label="Animazione dell'esercizio"><g ref={g} /></svg>;
 }

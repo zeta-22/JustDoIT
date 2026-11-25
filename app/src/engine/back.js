@@ -69,7 +69,7 @@ export function heroBack(pose, mus, op) {
   o += `<circle cx="100" cy="13.5" r="8.6" fill="${C.skin}"/><path d="M91.6 13 Q91 4.6 100 4.6 Q109 4.6 108.4 13 Q107 19 100 18.4 Q93 19 91.6 13Z" fill="${C.hair}"/>`;
   // braccia
   for (const sd of [1, -1]) {
-    const { S, E, H } = armPts(pose, sd);
+    const { S, E, H } = armPts(sd > 0 || !pose.armL ? pose : { arm: pose.armL }, sd);
     // contorno leggero: le braccia passano davanti al busto dello stesso colore
     const ln = `stroke="${C.line}" stroke-width=".9"`;
     o += cap(S, E, 5.8, 4.4, C.skin, ln) + cap(E, H, 4.2, 3, C.skin, ln) + `<circle cx="${f(H[0])}" cy="${f(H[1])}" r="3.3" fill="${C.skin}" ${ln}/>` + cap(S, E, 5, 3.8, C.skin);
@@ -92,6 +92,14 @@ FIGB.pullapart = {
   poses: [{ arm: { u: [-.12, .06], f: [-.12, .04] } }, { arm: { u: [.99, .03], f: [.99, .03] } }],
   t1: 1, t2: 2.2, h1: .5, h2: .6, props: [{ k: "band" }],
 };
+/* Y-T-W: le tre posizioni delle braccia (nella realtà sei prono su una panca a 45°), con una pausa su ognuna */
+(() => { const R = { arm: { u: [.16, .99], f: [.1, .99] } }, Y = { arm: { u: [.56, -.83], f: [.56, -.83] } },
+  T = { arm: { u: [.99, .04], f: [.99, .04] } }, W = { arm: { u: [.5, .87], f: [.5, -.87] } };
+  FIGB.ytw = { poses: [R, Y, Y, R, T, T, R, W, W], loop: .8 }; })();
+/* Side plank visto da dietro: figura sul fianco (ruotata), gomito sotto la spalla, gambe sovrapposte, tenuta */
+/* geometria: a -69,6° il gomito (sotto la spalla, braccio verticale) e il piede di sotto toccano entrambi il pavimento */
+(() => { const A = { rot: -69.6, tx: 71, ty: -7.8, arm: { u: [.16, .99], f: [-.05, .99] }, armL: { u: [.95, .3], f: [.05, .04] } };
+  FIGB.sideplank = { poses: [A, { ...A, rot: -70 }], t1: 1.6, t2: 1.6, h1: .6, h2: .6 }; })();
 /* attrezzi vista da dietro */
 const PROPB = {
   band: pose => { const r = armPts(pose, 1).H, l = armPts(pose, -1).H;
@@ -100,6 +108,9 @@ const PROPB = {
 /** Disegna una posa vista da dietro: l'elastico sta davanti al corpo, quindi lo disegno PRIMA (dietro, per chi guarda). */
 export function renderBack(ex, pose, mus, op) {
   const pr = (ex.props || []).map(p => PROPB[p.k](pose)).join("");
-  return `<line class="gnd" x1="0" y1="130" x2="200" y2="130"/>` + pr + heroBack(pose, mus, op);
+  const body = pr + heroBack(pose, mus, op);
+  /* rot: figura ruotata attorno ai piedi (es. side plank: sul fianco, vista da dietro); tx/ty la spostano */
+  const g = pose.rot ? `<g transform="translate(${f(pose.tx || 0)} ${f(pose.ty || 0)}) rotate(${f(pose.rot)} 100 128)">${body}</g>` : body;
+  return `<line class="gnd" x1="0" y1="130" x2="200" y2="130"/>` + g;
 }
 export { FIGB };
