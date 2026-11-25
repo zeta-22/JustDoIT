@@ -63,8 +63,8 @@
   - Stati vuoti con l'Atleta flat, animazioni leggere (entrata delle schermate, record nel riepilogo), rispettano "riduci animazioni"
 
 ## Prossimi passi
-1. **Analisi generale di grafica e UX** e rinnovo (in una chat nuova): confronto con le migliori app di allenamento, prototipo da approvare, rinnovo a pezzi
-2. **Gruppo 3** entro il 20 dicembre: kit Messico (piegamenti, inverted row, pistol, broad jump), mobilità (90/90, dorsiflessione, McGill, open book/couch), adductor squeeze, snapdown; poi Y-T-W da dietro ed esercizi Ironman
+1. **Gruppo 3 in revisione** (25/11, `docs/prototipi/revisione-animazioni-3.html`): piegamenti, inverted row, pistol, broad jump, dorsiflessione, adductor squeeze, snapdown/sprawl, bird dog (anche per McGill), couch stretch (per la mobilità). Pose in `engine/figure.js` (FIG: pushup, invrow, pistol, broad, dorsi, addsq, sprawl, birddog, couch2; attrezzi nuovi ball e table). Dopo l'ok: collegarle in `data/figures.ts`. Il 90/90 resta senza animazione (di profilo non si capisce)
+2. **Gruppo 4**: Y-T-W da dietro ed esercizi Ironman (side plank, pogo, corda, step-up, abduzione, pelvic drop…)
 3. Prova sul campo: una settimana in palestra + prova in modalità aereo prima del Messico
 4. Ironman vero (dopo la gara): ricerca nuoto/bici/corsa e valutazione sub-10 h, piano settimanale che si adatta al diario (oggi c'è solo il registro)
 5. Notifiche push vere (pesata, fine recupero a schermo spento): servono una funzione e una tabella su Supabase, da valutare dopo la gara

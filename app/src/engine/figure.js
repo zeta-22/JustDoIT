@@ -69,7 +69,10 @@ const PROP={
   plate:(p,s)=>{const h0=pt(s,p.at);const h=[h0[0]+(p.dx||0),h0[1]+(p.dy||0)];const r=p.r||16;return `<circle class="pk" cx="${f(h[0])}" cy="${f(h[1])}" r="${r}"/><circle class="pf" cx="${f(h[0])}" cy="${f(h[1])}" r="${(r*.28).toFixed(1)}"/>`;},
   vrope:p=>`<line x1="${p.x}" y1="-10" x2="${p.x}" y2="130" stroke="var(--prop2)" stroke-width="3.2" stroke-linecap="round"/>`,
   incline:p=>`<line class="pl" x1="${p.x1}" y1="${p.y1}" x2="${p.x2}" y2="${p.y2}" style="stroke-width:6"/><line class="pl" x1="${p.x2-6}" y1="${p.y2+3}" x2="${p.x2-6}" y2="130"/><line class="pl" x1="${p.x1+4}" y1="${p.y1}" x2="${p.x1+4}" y2="130"/>`,
-  txt:p=>`<text class="ptxt" x="${p.x}" y="${p.y}" text-anchor="${p.anchor||'start'}">${p.s}</text>`
+  txt:p=>`<text class="ptxt" x="${p.x}" y="${p.y}" text-anchor="${p.anchor||'start'}">${p.s}</text>`,
+  ball:(p,s,ph)=>{const h0=pt(s,p.at);const h=[h0[0]+(p.dx||0),h0[1]+(p.dy||0)];const r=(p.r||6)*(p.pulse?(1-.06*(0.5+0.5*Math.sin(ph*6.283*.8))):1);
+    return `<circle cx="${f(h[0])}" cy="${f(h[1])}" r="${r.toFixed(1)}" fill="var(--prop)" stroke="var(--prop2)" stroke-width="1.6"/>`;},
+  table:p=>`<rect class="pf" x="${p.x}" y="${p.y}" width="${p.w}" height="6" rx="1.5"/><line class="pl" x1="${p.x+8}" y1="${p.y+6}" x2="${p.x+8}" y2="130" style="stroke-width:4"/>`
 };
 function limb(a,b,c,cls){return `<polyline class="fg ${cls}" points="${pts([a,b,c])}"/>`;}
 function figure(s){
@@ -252,6 +255,46 @@ const FIG={};
 (()=>{const A={hip:[68.4,100],t:10,legs:[{f:[100,127],b:[1,0]},{f:[96,127],b:[1,0]}],arms:[{u:80,f:84},{u:78,f:82}]};
   FIG.spanish={poses:[A,mod(A,P=>{P.hip=[68.4,100.6];})],t1:.3,t2:.3,h1:1.6,h2:1.6,
   props:[{k:"column",x:182,px:180,py:95},{k:"cable",from:[180,95],at:"k0"},{k:"txt",x:120,y:84,s:"tieni 30–45\""}]};})();
+
+/* ---------- gruppo 3 (in revisione: docs/prototipi/revisione-animazioni-3.html) ---------- */
+/* Piegamenti lenti: corpo in linea dalle caviglie alle spalle, giù in 3", su in 1" */
+(()=>{const A={hip:[100.3,100.6],t:68.8,legs:[{f:[40,121],b:[0,1],fa:25},{f:[38,121],b:[0,1],fa:25}],arms:[{h:[139,127],b:[-1,-1]},{h:[137,127],b:[-1,-1]}]};
+  FIG.pushup={poses:[A,mod(A,P=>{P.hip=[103.3,116.1];P.t=85.5;})],t1:3,t2:1,h1:.4,h2:.3};})();
+/* Inverted row sotto un tavolo: talloni a terra, corpo dritto, petto verso il bordo, pausa 1" */
+(()=>{const A={hip:[106,117.5],t:-84,legs:[{f:[170,124],b:[0,-1],fa:180},{f:[168,124],b:[0,-1],fa:180}],arms:[{h:[67,73],b:[1,1]},{h:[65,73],b:[1,1]}]};
+  FIG.invrow={poses:[A,mod(A,P=>{P.hip=[109,100];P.t=-69;})],t1:1,t2:2,h1:.4,h2:1,
+  props:[{k:"table",x:10,y:68,w:62}]};})();
+/* Pistol assistito: su una gamba tenendosi allo stipite, l'altra gamba tesa avanti, discesa in 3" */
+(()=>{const A={hip:[100,64],t:0,legs:[{f:[100,127],b:[1,0]},{f:[126,118],b:[1,0],fa:120}],arms:[{u:70,f:80},{h:[136,48],b:[0,1]}]};
+  FIG.pistol={poses:[A,mod(A,P=>{P.hip=[84,106];P.t=38;P.legs=[{f:[100,127],b:[1,0]},{f:[146,103],b:[1,0],fa:160}];P.arms=[{u:95,f:95},{h:[138,78],b:[0,1]}];})],t1:3,t2:1.4,h1:.5,h2:.4,
+  props:[{k:"post",x:140,y:20}]};})();
+/* Broad jump: braccia indietro, salto in avanti, atterraggio morbido e fermo */
+(()=>{const A={hip:[40,64],t:0,legs:[{f:[44,127],b:[1,0]},{f:[40,127],b:[1,0]}],arms:[{u:4,f:4},{u:2,f:2}]};
+  const D={hip:[34,86],t:36,legs:[{f:[44,127],b:[1,0]},{f:[40,127],b:[1,0]}],arms:[{u:-55,f:-48},{u:-53,f:-46}]};
+  const T={hip:[68,68],t:44,legs:[{f:[46,124],b:[1,0],fa:30},{f:[43,125],b:[1,0],fa:30}],arms:[{u:128,f:132},{u:126,f:130}]};
+  const J={hip:[98,60],t:16,legs:[{f:[118,92],b:[1,0],fa:70},{f:[114,94],b:[1,0],fa:70}],arms:[{u:110,f:115},{u:108,f:113}]};
+  const Lnd={hip:[128,92],t:34,legs:[{f:[146,127],b:[1,0]},{f:[142,127],b:[1,0]}],arms:[{u:80,f:88},{u:78,f:86}]};
+  const Up={hip:[142,66],t:4,legs:[{f:[146,127],b:[1,0]},{f:[142,127],b:[1,0]}],arms:[{u:6,f:6},{u:4,f:4}]};
+  FIG.broad={poses:[A,D,T,J,Lnd,Up],loop:.5};})();
+/* Dorsiflessione in mezzo-ginocchio: piede davanti piatto, il ginocchio va oltre le dita, tallone giù */
+(()=>{const A={hip:[88,94],t:4,legs:[{f:[118,127],b:[.3,-1],fa:90},{f:[56,126],b:[.3,1],fa:-90}],arms:[{h:[114,98],b:[0,1]},{h:[112,99],b:[0,1]}]};
+  FIG.dorsi={poses:[A,mod(A,P=>{P.hip=[100,95];P.t=8;P.arms=[{h:[129,99],b:[0,1]},{h:[127,100],b:[0,1]}];})],t1:1.4,t2:1.4,h1:.4,h2:1,
+  props:[{k:"txt",x:132,y:118,s:"tallone giù",anchor:"start"}]};})();
+/* Adductor squeeze: supino, ginocchia piegate, palla tra le ginocchia, stringi e respira */
+(()=>{const A={hip:[104,120],t:-90,legs:[{f:[136,127],b:[0,-1],fa:90},{f:[134,127],b:[0,-1],fa:90}],arms:[{h:[100,126],b:[0,-1]},{h:[98,126],b:[0,-1]}]};
+  FIG.addsq={poses:[A,mod(A,P=>{P.hip=[104,119.6];})],t1:.4,t2:.4,h1:1.6,h2:2.4,
+  props:[{k:"ball",at:"k0",dy:-1,r:6.5,pulse:true,z:"front"},{k:"txt",x:62,y:74,s:"palla tra le ginocchia:",anchor:"start"},{k:"txt",x:62,y:84,s:"stringi 70–100% e respira",anchor:"start"}]};})();
+/* Sprawl (snapdown): dalla guardia le gambe scattano indietro, anche giù, petto alto, poi subito su */
+(()=>{const A={hip:[96,72],t:14,hd:-8,legs:[{f:[106,127],b:[1,0]},{f:[86,127],b:[1,0]}],arms:[{u:65,f:115},{u:62,f:112}]};
+  FIG.sprawl={poses:[A,mod(A,P=>{P.hip=[84,118];P.t=52;P.hd=-24;P.legs=[{f:[30,124],b:[0,1],fa:25},{f:[38,126],b:[0,1],fa:25}];P.arms=[{u:72,f:86},{u:69,f:84}];})],t1:.3,t2:.45,h1:.6,h2:.3};})();
+/* Bird dog: a quattro zampe, braccio e gamba opposti si allungano, schiena ferma */
+(()=>{const A={hip:[78,94],t:69.5,hd:10,legs:[{f:[46,126],b:[.3,1],fa:-90},{f:[44,126],b:[.3,1],fa:-90}],arms:[{h:[116,127],b:[-1,0]},{h:[113,127],b:[-1,0]}]};
+  FIG.birddog={poses:[A,mod(A,P=>{P.t=72;P.legs[1]={f:[16,88],b:[0,1],fa:-60};P.arms[0]={h:[160,74],b:[0,1]};})],t1:1.5,t2:1.2,h1:.6,h2:2,
+  props:[{k:"txt",x:14,y:22,s:"bird dog: 1 dei Big 3 di McGill",anchor:"start"}]};})();
+/* Couch stretch: ginocchio dietro a terra vicino al muro, collo del piede sul muro, glutei stretti, busto dritto */
+(()=>{const A={hip:[78,96],t:2,legs:[{f:[52,92],b:[0,1],fa:180},{f:[120,127],b:[1,-.3]}],arms:[{h:[110,92],b:[1,1]},{h:[112,93],b:[1,1]}]};
+  FIG.couch2={poses:[A,mod(A,P=>{P.hip=[82,98];P.t=-4;P.arms=[{h:[112,92],b:[1,1]},{h:[114,93],b:[1,1]}];})],t1:2,t2:2,h1:.8,h2:2,
+  props:[{k:"wall",x:48},{k:"txt",x:118,y:22,s:"tieni 45–60\"",anchor:"start"}]};})();
 
 /* ---------- personaggio v3: sagome continue, muscoli parametrici ---------- */
 const H={skin:"var(--skin)",skinF:"var(--skinF)",shade:"var(--shade)",line:"var(--ink-line)",def:"var(--def)",shorts:"var(--shorts)",shortsF:"var(--shortsF)",shoe:"var(--shoe)",sole:"var(--sole)",hair:"var(--hair)",mus:"var(--mus)",mus2:"var(--mus2)"};
