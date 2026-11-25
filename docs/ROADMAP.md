@@ -63,7 +63,7 @@
   - Stati vuoti con l'Atleta flat, animazioni leggere (entrata delle schermate, record nel riepilogo), rispettano "riduci animazioni"
 
 ## Prossimi passi
-1. **Gruppo 3 in revisione** (25/11, `docs/prototipi/revisione-animazioni-3.html`): piegamenti, inverted row, pistol, broad jump, dorsiflessione, adductor squeeze, snapdown/sprawl, bird dog (anche per McGill), couch stretch (per la mobilità). Pose in `engine/figure.js` (FIG: pushup, invrow, pistol, broad, dorsi, addsq, sprawl, birddog, couch2; attrezzi nuovi ball e table). Dopo l'ok: collegarle in `data/figures.ts`. Il 90/90 resta senza animazione (di profilo non si capisce)
+1. **Gruppo 3 fatto** (25/11, approvato e collegato, 44 esercizi animati su 71): piegamenti, inverted row, pistol, broad jump, dorsiflessione, adductor squeeze, snapdown/sprawl, bird dog e McGill, couch stretch per la mobilità (`docs/prototipi/revisione-animazioni-3.html`). Per gli esercizi composti la scheda dice quale parte mostra l'animazione (`part` in `data/figures.ts`) e la mappa usa i muscoli dell'esercizio intero. Il 90/90 resta senza animazione (di profilo non si capisce); le miniature non mostrano le scritte
 2. **Gruppo 4**: Y-T-W da dietro ed esercizi Ironman (side plank, pogo, corda, step-up, abduzione, pelvic drop…)
 3. Prova sul campo: una settimana in palestra + prova in modalità aereo prima del Messico
 4. Ironman vero (dopo la gara): ricerca nuoto/bici/corsa e valutazione sub-10 h, piano settimanale che si adatta al diario (oggi c'è solo il registro)

@@ -18,7 +18,7 @@ function markup(id: string): string {
     const ex = FIG[info.fig] as Ex; if (!ex) return "";
     const s = skel(lerp(ex.poses[0], ex.poses[1], .6));
     const pr = (front: boolean) => (ex.props || []).filter(p => (p.z === "front") === front).map(p => PROP[p.k](p, s, 0)).join("");
-    return pr(false) + heroFlat(s, mus, .9) + pr(true);
+    return (pr(false) + heroFlat(s, mus, .9) + pr(true)).replace(/<text[^>]*>[^<]*<\/text>/g, ""); // niente scritte nelle miniature
   } catch { return ""; }
 }
 

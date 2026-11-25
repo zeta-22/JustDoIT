@@ -330,7 +330,7 @@ const FIG={};
   FIG.spanish={poses:[A,mod(A,P=>{P.hip=[68.4,100.6];})],t1:.3,t2:.3,h1:1.6,h2:1.6,
   props:[{k:"column",x:182,px:180,py:95},{k:"cable",from:[180,95],at:"k0"},{k:"txt",x:120,y:84,s:"tieni 30–45\""}]};})();
 
-/* ---------- gruppo 3 (in revisione: docs/prototipi/revisione-animazioni-3.html) ---------- */
+/* ---------- gruppo 3 (approvato il 25/11, collegato in data/figures.ts) ---------- */
 /* Piegamenti lenti: corpo in linea dalle caviglie alle spalle, giù in 3", su in 1" */
 (()=>{const A={hip:[100.3,100.6],t:68.8,legs:[{f:[40,121],b:[0,1],fa:25},{f:[38,121],b:[0,1],fa:25}],arms:[{h:[139,127],b:[-1,-1]},{h:[137,127],b:[-1,-1]}]};
   FIG.pushup={poses:[A,mod(A,P=>{P.hip=[103.3,116.1];P.t=85.5;})],t1:3,t2:1,h1:.4,h2:.3};})();
@@ -363,8 +363,7 @@ const FIG={};
   FIG.sprawl={poses:[A,mod(A,P=>{P.hip=[84,118];P.t=52;P.hd=-24;P.legs=[{f:[30,124],b:[0,1],fa:25},{f:[38,126],b:[0,1],fa:25}];P.arms=[{u:72,f:86},{u:69,f:84}];})],t1:.3,t2:.45,h1:.6,h2:.3};})();
 /* Bird dog: a quattro zampe, braccio e gamba opposti si allungano, schiena ferma */
 (()=>{const A={hip:[78,94],t:69.5,hd:10,legs:[{f:[46,126],b:[.3,1],fa:-90},{f:[44,126],b:[.3,1],fa:-90}],arms:[{h:[116,127],b:[-1,0]},{h:[113,127],b:[-1,0]}]};
-  FIG.birddog={poses:[A,mod(A,P=>{P.t=72;P.legs[1]={f:[16,88],b:[0,1],fa:-60};P.arms[0]={h:[160,74],b:[0,1]};})],t1:1.5,t2:1.2,h1:.6,h2:2,
-  props:[{k:"txt",x:14,y:22,s:"bird dog: 1 dei Big 3 di McGill",anchor:"start"}]};})();
+  FIG.birddog={poses:[A,mod(A,P=>{P.t=72;P.legs[1]={f:[16,88],b:[0,1],fa:-60};P.arms[0]={h:[160,74],b:[0,1]};})],t1:1.5,t2:1.2,h1:.6,h2:2};})();
 /* Couch stretch: ginocchio dietro a terra vicino al muro, collo del piede sul muro, glutei stretti, busto dritto */
 (()=>{const A={hip:[78,96],t:2,legs:[{f:[52,92],b:[0,1],fa:180},{f:[120,127],b:[1,-.3]}],arms:[{h:[110,92],b:[1,1]},{h:[112,93],b:[1,1]}]};
   FIG.couch2={poses:[A,mod(A,P=>{P.hip=[82,98];P.t=-4;P.arms=[{h:[112,92],b:[1,1]},{h:[114,93],b:[1,1]}];})],t1:2,t2:2,h1:.8,h2:2,

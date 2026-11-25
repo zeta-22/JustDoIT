@@ -1,7 +1,9 @@
 /* Esercizi con animazione approvata: chiave della posa in engine/FIG + muscoli (p = principali, s = secondari).
    Gli esercizi non elencati qui mostrano solo la scheda testuale finché non viene creata la loro animazione. */
 /* view "back" = figura vista da dietro (engine/back.js, FIGB); senza view = di profilo (engine/figure.js, FIG). */
-export interface FigInfo { fig: string; p: string[]; s: string[]; view?: "back" }
+/* part = l'animazione mostra solo una parte di un esercizio composto (es. il bird dog del McGill Big 3):
+   la scheda lo dice e la mappa dei muscoli usa quelli dell'esercizio intero (data/library.ts). */
+export interface FigInfo { fig: string; p: string[]; s: string[]; view?: "back"; part?: string }
 export const FIGS: Record<string, FigInfo> = {
   rdl: { fig: "rdl", p: ["femorali", "glutei"], s: ["erettori", "avambracci"] },
   bulgaro: { fig: "bss", p: ["quadricipiti", "glutei"], s: ["adduttori", "femorali"] },
@@ -39,4 +41,15 @@ export const FIGS: Record<string, FigInfo> = {
   rollout: { fig: "rollout", p: ["addominali"], s: ["dorsali", "obliqui"] },
   rope: { fig: "rope", p: ["dorsali", "avambracci"], s: ["bicipiti", "addominali"] },
   spanish_squat: { fig: "spanish", p: ["quadricipiti"], s: ["glutei"] },
+  // gruppo 3, approvato da Matteo il 25/11 (docs/prototipi/revisione-animazioni-3.html)
+  piegamenti: { fig: "pushup", p: ["pettorali"], s: ["tricipiti", "deltoidi", "addominali"] },
+  inverted_row: { fig: "invrow", p: ["dorsali"], s: ["bicipiti", "trapezi", "addominali"] },
+  pistol: { fig: "pistol", p: ["quadricipiti", "glutei"], s: ["adduttori", "addominali"] },
+  broad_jump: { fig: "broad", p: ["glutei", "quadricipiti"], s: ["femorali", "polpacci"] },
+  dorsiflessione: { fig: "dorsi", p: ["polpacci"], s: ["tibiale"] },
+  adductor_squeeze: { fig: "addsq", p: ["adduttori"], s: ["addominali"] },
+  snapdown: { fig: "sprawl", p: ["dorsali", "trapezi"], s: ["addominali", "avambracci"] },
+  bird_dog: { fig: "birddog", p: ["erettori", "glutei"], s: ["addominali", "deltoidi"] },
+  mcgill: { fig: "birddog", p: ["erettori", "glutei"], s: ["addominali", "deltoidi"], part: "il bird dog, uno dei 3 (curl-up e side plank sono tenute ferme descritte sotto)" },
+  mobilita_im: { fig: "couch2", p: ["quadricipiti"], s: ["glutei"], part: "il couch stretch, uno dei 3 (open book e sleeper stretch si fanno sul fianco e sono descritti sotto)" },
 };

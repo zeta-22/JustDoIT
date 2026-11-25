@@ -17,7 +17,7 @@ import Icon from "./Icon";
 /** Scheda esercizio a foglio dal basso: animazione, muscoli, come si fa, versione più facile, le ultime volte. */
 export default function ExerciseSheet({ id, onClose }: { id: string; onClose: () => void }) {
   const ex = exercise(id); const fi = FIGS[id]; const lib = LIB[id]; const [sp, setSp] = useState(1);
-  const mus = fi ?? (lib && lib.p.length ? lib : null);
+  const mus = fi && !(fi.part && lib?.p.length) ? fi : (lib && lib.p.length ? lib : null);
   useEffect(() => { const k = (e: KeyboardEvent) => e.key === "Escape" && onClose(); window.addEventListener("keydown", k); return () => window.removeEventListener("keydown", k); }, [onClose]);
   const hist = useMemo(() => store.sessions().filter(s => s.finished).flatMap(s => s.items.filter(x => x.ex === id && x.sets.some(z => z.done))
     .map(x => ({ date: s.date, sets: x.sets.filter(z => z.done) }))).reverse(), [id]);
@@ -32,6 +32,7 @@ export default function ExerciseSheet({ id, onClose }: { id: string; onClose: ()
     <div className="sheet" role="dialog" aria-modal="true" aria-label={ex.name} onClick={e => e.stopPropagation()}>
       <span className="grab" aria-hidden="true" />
       <div className="row between"><h2>{ex.name}</h2><button type="button" className="iconbtn" onClick={onClose} aria-label="Chiudi"><Icon n="x" /></button></div>
+      {fi?.part && <p className="small muted">L'animazione mostra {fi.part}.</p>}
       {fi ? <div className="stage"><Figure info={fi} speed={sp} />
         <div className="speed">{[0.5, 1, 0].map(v => <button key={v} type="button" aria-pressed={sp === v} onClick={() => setSp(v)}>{v === 0 ? "Pausa" : `${String(v).replace(".", ",")}×`}</button>)}</div></div>
         : <p className="small muted">{lib?.kind === "cond" ? "Lavoro di condizionamento: coinvolge tutto il corpo." : "Animazione in arrivo per questo esercizio."}</p>}
