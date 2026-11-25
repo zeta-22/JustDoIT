@@ -12,6 +12,7 @@ import { e1rm } from "../lib/session";
 import { dayMonth, kgStr, parseNum } from "../lib/format";
 import Figure from "./Figure";
 import MuscleMap from "./MuscleMap";
+import { onMap } from "../engine/figure.js";
 import Icon from "./Icon";
 
 /** Scheda esercizio a foglio dal basso: animazione, muscoli, come si fa, versione più facile, le ultime volte. */
@@ -38,7 +39,7 @@ export default function ExerciseSheet({ id, onClose }: { id: string; onClose: ()
         : <p className="small muted">{lib?.kind === "cond" ? "Lavoro di condizionamento: coinvolge tutto il corpo." : "Animazione in arrivo per questo esercizio."}</p>}
       {mus && <>
         <div className="row gap wrap-row">{mus.p.map(m => <span key={m} className="tag p">{m}</span>)}{mus.s.map(m => <span key={m} className="tag s">{m}</span>)}</div>
-        <MuscleMap p={mus.p} s={mus.s} />
+        {[...mus.p, ...mus.s].some(onMap) && <MuscleMap p={mus.p} s={mus.s} />}
       </>}
       {ex.how.length > 0 && <ol className="how">{ex.how.map((h, i) => <li key={i}>{h}</li>)}</ol>}
       {ex.why && <p><b>Perché:</b> {ex.why}</p>}

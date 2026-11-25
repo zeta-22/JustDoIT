@@ -3,6 +3,7 @@ import { FIG, PROP, skel, lerp } from "../engine/figure.js";
 import { heroFlat } from "../engine/flat.js";
 import { FIGB, renderBack } from "../engine/back.js";
 import { FIGF, renderFront } from "../engine/front.js";
+import { FIGD, renderDetail } from "../engine/detail.js";
 import { FIGS } from "../data/figures";
 import Icon from "./Icon";
 
@@ -15,6 +16,7 @@ function markup(id: string): string {
   const info = FIGS[id]; if (!info) return "";
   const mus = { p: info.p, s: info.s };
   try {
+    if (info.view === "detail") { const ex = FIGD[info.fig] as Ex; if (!ex) return ""; return renderDetail(ex, ex.poses[1], mus, .9).replace(/<line class="gnd"[^>]*\/>/, "").replace(/<text[^>]*>[^<]*<\/text>/g, "").replace(/<path class="arrow"[^>]*\/>/g, ""); }
     if (info.view === "front") { const ex = FIGF[info.fig] as Ex; if (!ex) return ""; return renderFront(ex, ex.poses[0], mus, .9).replace(/<line class="gnd"[^>]*\/>/, "").replace(/<path d="M34 100[^>]*\/>/, ""); }
     if (info.view === "back") { const ex = FIGB[info.fig] as Ex; if (!ex) return ""; return renderBack(ex, lerp(ex.poses[0], ex.poses[1], .6), mus, .9).replace(/<line class="gnd"[^>]*\/>/, ""); }
     const ex = FIG[info.fig] as Ex; if (!ex) return "";

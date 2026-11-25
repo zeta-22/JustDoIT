@@ -493,4 +493,6 @@ function maps(mp,ms){return `<div class="maps"><figure><svg viewBox="0 0 120 245
 
 
 
-export { L, skel, lerp, FIG, PROP, hero, maps, render };
+/* i nomi che la mappa sa colorare (per non mostrarla vuota, es. "muscoli del piede") */
+const onMap = n => ZF.some(z => z[0] === n) || ZB.some(z => z[0] === n);
+export { L, skel, lerp, FIG, PROP, hero, maps, onMap, render };

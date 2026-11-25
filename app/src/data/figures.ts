@@ -1,9 +1,10 @@
 /* Esercizi con animazione approvata: chiave della posa in engine/FIG + muscoli (p = principali, s = secondari).
    Gli esercizi non elencati qui mostrano solo la scheda testuale finché non viene creata la loro animazione. */
-/* view "back" = figura vista da dietro (engine/back.js, FIGB); "front" = di fronte, seduta (engine/front.js, FIGF); senza view = di profilo (engine/figure.js, FIG). */
+/* view "back" = figura vista da dietro (engine/back.js, FIGB); "front" = di fronte, seduta (engine/front.js, FIGF);
+   "detail" = primo piano di piede o mano (engine/detail.js, FIGD); senza view = di profilo (engine/figure.js, FIG). */
 /* part = l'animazione mostra solo una parte di un esercizio composto (es. il bird dog del McGill Big 3):
    la scheda lo dice e la mappa dei muscoli usa quelli dell'esercizio intero (data/library.ts). */
-export interface FigInfo { fig: string; p: string[]; s: string[]; view?: "back" | "front"; part?: string }
+export interface FigInfo { fig: string; p: string[]; s: string[]; view?: "back" | "front" | "detail"; part?: string }
 export const FIGS: Record<string, FigInfo> = {
   rdl: { fig: "rdl", p: ["femorali", "glutei"], s: ["erettori", "avambracci"] },
   bulgaro: { fig: "bss", p: ["quadricipiti", "glutei"], s: ["adduttori", "femorali"] },
